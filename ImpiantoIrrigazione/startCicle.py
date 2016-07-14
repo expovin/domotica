@@ -14,7 +14,7 @@ COMMON="08"
 TIMING = [5, 5, 5, 5, 5]
 NUM_SEC=60
 MAX_TENTATIVE = 5 
-DEBUG="False"
+DEBUG="True"
 
 ON="01"
 OFF="00"

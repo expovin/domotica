@@ -1,6 +1,7 @@
 import pymongo 
 import sys
 import time
+from datetime import date, timedelta
 from config import acquario
 
 #Connect to the local  Server
@@ -112,6 +113,27 @@ def logEvent(level, module, action, message):
 
 
     connection.close()
+
+
+def getRain():
+    db = connection.domotica.meteo
+    yesterday = date.today() - timedelta(1)
+    month_year = yesterday.strftime("%Y%m")
+    local_day = yesterday.strftime("%d")
+    path = month_year+"."+local_day
+
+    result = db.find({},{path:1})
+    array = result[0][month_year][local_day]
+
+    print(path)
+    mmRain = 0
+    for ele in array:
+        if len(ele['rain']) > 0:
+            print(ele['rain'])
+            mmRain += ele['rain']['1h']
+
+    return(mmRain)
+
 
 
 if __name__ == "__main__":

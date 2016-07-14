@@ -12,7 +12,11 @@ CMD_GSV = ':GSV\r'                  # Get Module supply voltage
 
 
 sockfd = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-sockfd.connect((DEVICE, 1))
+
+try:
+    sockfd.connect((DEVICE, 1))
+except:
+    sendMail("ERRORE Connessione a BT004","Errore di connessione a BT004","False")
 
 def GetInfo():
     sockfd.send(CMD_GetModuleInfo)

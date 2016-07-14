@@ -6,6 +6,9 @@ from common.MongoDbHandler import *
 import SensorLibrary
 from common.config import acquario
 from common.config import GPIOconfig
+import subprocess
+
+
 
 GPIO.setmode(GPIO.BCM)
 os.system('modprobe w1-gpio')
@@ -28,10 +31,17 @@ GPIO.setup(HEATER, GPIO.OUT)
 print HEATER
 logEvent('INFO', 'getWaterTemp', 'Script Boot', 'Script fired at the system boot')
 
-def read_temp_raw():
+def read_temp_raw_legacy():
     f = open(device_file,'r')
     lines = f.readlines()
     f.close()
+    return lines
+
+def read_temp_raw():
+    catdata = subprocess.Popen(['cat',device_file], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = catdata.communicate()
+    out_decode = out.decode('utf-8')
+    lines = out_decode.split('\n')
     return lines
 	
 def read_temp():
