@@ -3330,3 +3330,113 @@ Traceback (most recent call last):
 KeyboardInterrupt
 getTemp.py:29: RuntimeWarning: This channel is already in use, continuing anyway.  Use GPIO.setwarnings(False) to disable warnings.
   GPIO.setup(HEATER, GPIO.OUT)
+24
+Da inserire temperatura : 26.81
+Ultima temperatura letta :0.0
+Temperatura variata, aggiungo nuova lettura! 26.81 : 0.0
+Da inserire temperatura : 26.88
+Ultima temperatura letta :26.81
+Vado ad aggiornare la data 14/07/2016 20:52:34
+Con la data : 14/07/2016 20:57:49
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 26.88
+Ultima temperatura letta :26.81
+Vado ad aggiornare la data 14/07/2016 20:57:49
+Con la data : 14/07/2016 21:03:05
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 26.88
+Ultima temperatura letta :26.81
+Vado ad aggiornare la data 14/07/2016 21:03:05
+Con la data : 14/07/2016 21:08:20
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 26.91
+Ultima temperatura letta :26.81
+Temperatura variata, aggiungo nuova lettura! 26.91 : 26.81
+Da inserire temperatura : 26.94
+Ultima temperatura letta :26.91
+Vado ad aggiornare la data 14/07/2016 21:13:37
+Con la data : 14/07/2016 21:18:52
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 26.94
+Ultima temperatura letta :26.91
+Vado ad aggiornare la data 14/07/2016 21:18:52
+Con la data : 14/07/2016 21:24:08
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 26.94
+Ultima temperatura letta :26.91
+Vado ad aggiornare la data 14/07/2016 21:24:08
+Con la data : 14/07/2016 21:29:26
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 27.0
+Ultima temperatura letta :26.91
+Vado ad aggiornare la data 14/07/2016 21:29:26
+Con la data : 14/07/2016 21:34:41
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 27.0
+Ultima temperatura letta :26.91
+Vado ad aggiornare la data 14/07/2016 21:34:41
+Con la data : 14/07/2016 21:39:59
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 27.0
+Ultima temperatura letta :26.91
+Vado ad aggiornare la data 14/07/2016 21:39:59
+Con la data : 14/07/2016 21:45:14
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 27.0
+Ultima temperatura letta :26.91
+Vado ad aggiornare la data 14/07/2016 21:45:14
+Con la data : 14/07/2016 21:50:30
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 27.06
+Ultima temperatura letta :26.91
+Temperatura variata, aggiungo nuova lettura! 27.06 : 26.91
+Da inserire temperatura : 27.06
+Ultima temperatura letta :27.06
+Vado ad aggiornare la data 14/07/2016 21:55:46
+Con la data : 14/07/2016 22:01:02
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 27.06
+Ultima temperatura letta :27.06
+Vado ad aggiornare la data 14/07/2016 22:01:02
+Con la data : 14/07/2016 22:06:19
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 27.06
+Ultima temperatura letta :27.06
+Vado ad aggiornare la data 14/07/2016 22:06:19
+Con la data : 14/07/2016 22:11:35
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 27.13
+Ultima temperatura letta :27.06
+Vado ad aggiornare la data 14/07/2016 22:11:35
+Con la data : 14/07/2016 22:16:50
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 27.13
+Ultima temperatura letta :27.06
+Vado ad aggiornare la data 14/07/2016 22:16:50
+Con la data : 14/07/2016 22:22:08
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 27.13
+Ultima temperatura letta :27.06
+Vado ad aggiornare la data 14/07/2016 22:22:08
+Con la data : 14/07/2016 22:27:23
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 27.16
+Ultima temperatura letta :27.06
+Temperatura variata, aggiungo nuova lettura! 27.16 : 27.06
+Da inserire temperatura : 27.19
+Ultima temperatura letta :27.16
+Vado ad aggiornare la data 14/07/2016 22:32:39
+Con la data : 14/07/2016 22:37:54
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 27.19
+Ultima temperatura letta :27.16
+Vado ad aggiornare la data 14/07/2016 22:37:54
+Con la data : 14/07/2016 22:43:10
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 27.19
+Ultima temperatura letta :27.16
+Vado ad aggiornare la data 14/07/2016 22:43:10
+Con la data : 14/07/2016 22:48:26
+Path di aggiornamento : 201607.14.acquario
+Da inserire temperatura : 27.21
+Ultim

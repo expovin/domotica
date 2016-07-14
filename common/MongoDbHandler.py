@@ -1,28 +1,42 @@
+################################################################################
+# MongoDbHandler.py                                                            #
+#                                                                              #
+# Questa funzione gestisce le interfaccie di comunicazione verso il repository #
+# per (quasi) tutti i moduli.                                                  #
+#                                                                              #
+################################################################################
+
 import pymongo 
 import sys
 import time
 from datetime import date, timedelta
 from config import acquario
 
-#Connect to the local  Server
-connection = pymongo.MongoClient()
-config_acq  =acquario()
+connection = pymongo.MongoClient()    # Connect to the local  Server
+config_acq  =acquario()               # Lettura configurazione acquario
 
+# Questa e la temperatura entro la quale non viene considerata rilevante una
+# variazione di temperatura, quindi non viene tracciata. Vengono tracciate solo
+# le temperature che differiscono di DELTA dalla precedente.
+# Questo parametro viene letto solo allo start del modulo
 DELTA = config_acq['getTemp']['Temp']['Delta Trace']
 
+# Questa funzione si occupa di tracciare la temperatura nel DB solo se supera
+# DELTA altrimenti si limita ad aggiornare la data di ultimo update
 def getTemp( temp):
    
     print ("Da inserire temperatura : "+str(temp))
     #Connect to the Acquarium DataBase Collection "Sensors"
     db = connection.domotica.temperature
 
-    month_year = time.strftime("%Y%m")
-    local_day = time.strftime("%d")
-    Periodo = {}
-    giorno = {}
-    sensore = {}
-    tempList = []
+    month_year = time.strftime("%Y%m")    # Anno Mese attuale
+    local_day = time.strftime("%d")       # Giorno attuale in CET
+    Periodo = {}                          # Root Document (Periodo)
+    giorno = {}                           # Giorno del mese
+    sensore = {}                          # Sensore letto
+    tempList = []                         # Array di temperature lette
 
+    # Documento da memorizzare
     acq_temp = {
             "temp":float(temp),
             "DataPrimoInserimento":time.strftime("%d/%m/%Y")+" "+time.strftime("%X"),
@@ -35,8 +49,9 @@ def getTemp( temp):
     Periodo[month_year] = giorno
     path = month_year+"."+local_day+".acquario"
 
-
-    result = db.find({},{month_year:1})
+    # Verifico se il documento del periodo corrente gia esiste per inserirlo o
+    # modificarlo
+    result = db.find({},{month_year:1})    
     if(result.count() == 0):
         db.insert(Periodo)
     else:
@@ -47,6 +62,7 @@ def getTemp( temp):
             temp_read=0.0
     
         print ("Ultima temperatura letta :"+str(temp_read))
+
         if (abs(float(temp) - temp_read) > float(DELTA)):
             print ("Temperatura variata, aggiungo nuova lettura! "+str(temp)+" : "+str(temp_read))
             db.update({
@@ -57,9 +73,6 @@ def getTemp( temp):
               }
             },upsert=False)
         else:
-            print("Vado ad aggiornare la data "+result[0][month_year][local_day]['acquario'][-1]['DataUltimoAggiornamento'])
-            print("Con la data : "+acq_temp['DataUltimoAggiornamento'])
-            print("Path di aggiornamento : "+path)
             db.update({
               "_id" : result[0]['_id'],path+'.DataUltimoAggiornamento':result[0][month_year][local_day]['acquario'][-1]['DataUltimoAggiornamento']
             },{
@@ -72,7 +85,8 @@ def getTemp( temp):
     connection.close()
 
 
-
+# Questa funzione si occupa di tracciare gli eventi di sistema sul DB
+# suddividendoli per periodo (ANNO_MESE)
 def logEvent(level, module, action, message):
 
     #Connect to acquarium DataBase Events Collection
@@ -115,11 +129,14 @@ def logEvent(level, module, action, message):
     connection.close()
 
 
+# Questa funzione restituisce il totale dei mm di pioggia caduti il giorno 
+# precedente
 def getRain():
     db = connection.domotica.meteo
-    yesterday = date.today() - timedelta(1)
-    month_year = yesterday.strftime("%Y%m")
-    local_day = yesterday.strftime("%d")
+
+    yesterday = date.today() - timedelta(1)    # Calcolo la giornata di ieri
+    month_year = yesterday.strftime("%Y%m")    # Anno_Mese ieri
+    local_day = yesterday.strftime("%d")       # Giorno di ieri
     path = month_year+"."+local_day
 
     result = db.find({},{path:1})

@@ -1,12 +1,19 @@
+################################################################################
+#  config.py                                                                   #
+#                                                                              #
+#  Questa funzione legge la configurazione in JSON da MongoDB, ogni metodo     #
+#  ritorna la sottoparte del JSON relativa                                     #
+################################################################################
 import pymongo
 import sys
-import time
+import time             # Questa e da cancellare
 
 #Connect to the local  Server
 connection = pymongo.MongoClient()
 
 db = connection.domotica.config
 
+# Risultato della find (assumo che la collection abbia solo un documento)
 c = db.find({})
 
 def acquario():
