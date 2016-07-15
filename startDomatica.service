@@ -1,0 +1,12 @@
+[Unit]
+Description=Domotica
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/home/pi/domotica/startAll.sh
+TimeoutSec=infinity
+
+[Install]
+WantedBy=default.target

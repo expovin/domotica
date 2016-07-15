@@ -16,6 +16,9 @@ db = connection.domotica.config
 # Risultato della find (assumo che la collection abbia solo un documento)
 c = db.find({})
 
+def general():
+	return c[0]['general']
+
 def acquario():
     return c[0]['Acquario']
 

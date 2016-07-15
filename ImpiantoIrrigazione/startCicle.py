@@ -2,7 +2,7 @@ import socket
 import sys
 import time
 from common.MongoDbHandler import logEvent
-from common.sendMail import sendMail
+from common.logAction import sendMail
 
 
 UDP_IP="192.168.0.199"

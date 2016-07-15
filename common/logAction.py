@@ -1,13 +1,18 @@
 import sys 
 import smtplib
+import inspect
+import time
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEBase import MIMEBase
 from email.MIMEText import MIMEText
 from email import Encoders
-from config import mail
+from config import mail,general
 
 emailCfg = mail()
+genCfg = general()
 
+lvl  = genCfg['Level']
+LogLvl = genCfg['LogLevel']
 username = emailCfg['username'] 
 password = emailCfg['password'] 
 
@@ -20,9 +25,12 @@ def sendMail(subject,body,attach):
 
         msg.attach(MIMEText(body, 'plain'))
 
-        if(attach == 'True'):
+        if(attach != 'False'):
+            date = time.strftime("%Y-%m-%d")
+            fileLog="/var/log/domotica/Irrigazione/"+attach+"_"+date+".log" 
+            print("Invio in attach il file "+fileLog)
             part = MIMEBase('application', "octet-stream")
-            part.set_payload(open("/tmp/domoticaDett.json", "rb").read())
+            part.set_payload(open(fileLog, "rb").read())
 
             #on the pi, the path is different, but the email is being built properly, its the smtp part..
 
@@ -41,6 +49,16 @@ def sendMail(subject,body,attach):
     except smtplib.SMTPException:
         pass
         #os.system('sudo reboot now') --- actual exception action. Modified to run on windows..
+
+def logOut(level,fileName,message):
+
+    if(level <= lvl):
+        curframe = inspect.currentframe()
+        calframe = inspect.getouterframes(curframe, 2)
+        callerFunc = calframe[1][3]
+
+        date_time = time.strftime("%d/%m/%Y %X")
+        print(date_time+"\t"+LogLvl[level]+"\t"+fileName+"\t"+callerFunc+"\t"+message)
 
 
 if __name__ == "__main__":

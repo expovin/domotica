@@ -11,6 +11,7 @@ import sys
 import time
 from datetime import date, timedelta
 from config import acquario
+from logAction import *
 
 connection = pymongo.MongoClient()    # Connect to the local  Server
 config_acq  =acquario()               # Lettura configurazione acquario
@@ -24,8 +25,9 @@ DELTA = config_acq['getTemp']['Temp']['Delta Trace']
 # Questa funzione si occupa di tracciare la temperatura nel DB solo se supera
 # DELTA altrimenti si limita ad aggiornare la data di ultimo update
 def getTemp( temp):
+
+    logOut(4,sys.argv[0],"Temperatura da memorizzare "+str(temp)+" verifico il valore dell'ultima lettura")
    
-    print ("Da inserire temperatura : "+str(temp))
     #Connect to the Acquarium DataBase Collection "Sensors"
     db = connection.domotica.temperature
 
@@ -42,6 +44,7 @@ def getTemp( temp):
             "DataPrimoInserimento":time.strftime("%d/%m/%Y")+" "+time.strftime("%X"),
             "DataUltimoAggiornamento":time.strftime("%d/%m/%Y")+" "+time.strftime("%X")
     };
+    logOut(4,sys.argv[0],"Documento da memorizzare "+str(acq_temp))
     
     tempList.append(acq_temp)
     sensore['acquario'] = tempList
@@ -49,20 +52,26 @@ def getTemp( temp):
     Periodo[month_year] = giorno
     path = month_year+"."+local_day+".acquario"
 
+    logOut(4,sys.argv[0],"Path di memorizzazione "+path)
+
     # Verifico se il documento del periodo corrente gia esiste per inserirlo o
     # modificarlo
+    logOut(4,sys.argv[0],"Verifico se esiste un documento per il periodo "+month_year)
     result = db.find({},{month_year:1})    
     if(result.count() == 0):
+        logOut(3,sys.argv[0],"Documento non esistente, ne inserisco uno nuovo")
         db.insert(Periodo)
     else:
-        try:
+        logOut(3,sys.argv[0],"Documento esistente, vado in aggiunta")
+        try:            
             temp_read = float(  result[0][month_year][local_day]['acquario'][-1]['temp'])
+            logOut(3,sys.argv[0],"Leggo ultima lettura memorizzata nel periodo "+ str(temp_read))
         except:
-            print("Lettura precedente non presente, inizzializzo a zero");
+            logOut(2,sys.argv[0],"Lettura precedente non presente, inizzializzo a zero")
             temp_read=0.0
-    
-        print ("Ultima temperatura letta :"+str(temp_read))
 
+
+        logOut(4,sys.argv[0],"Verifico che la temperatura superi il delta per la memorizzazione di un nuovo valore"+ str(temp_read))
         if (abs(float(temp) - temp_read) > float(DELTA)):
             print ("Temperatura variata, aggiungo nuova lettura! "+str(temp)+" : "+str(temp_read))
             db.update({
@@ -146,7 +155,6 @@ def getRain():
     mmRain = 0
     for ele in array:
         if len(ele['rain']) > 0:
-            print(ele['rain'])
             mmRain += ele['rain']['1h']
 
     return(mmRain)

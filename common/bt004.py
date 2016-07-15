@@ -24,7 +24,7 @@
 import bluetooth
 import serial
 from time import sleep
-
+from logAction import *
 
 DEVICE = '20:14:04:25:16:07'  # ID Device
 CMD_GetModuleInfo = ':GMI\r'  # GetModuleInfo
@@ -41,7 +41,7 @@ sockfd = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 try:
     sockfd.connect((DEVICE, 1))
 except:
-    sendMail("ERRORE Connessione a BT004","Errore di connessione a BT004","False")
+    logOut(0,"bt004","ERRORE Connessione a BT004")
 
 
 def GetInfo():
