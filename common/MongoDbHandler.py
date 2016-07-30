@@ -147,15 +147,21 @@ def getRain():
     month_year = yesterday.strftime("%Y%m")    # Anno_Mese ieri
     local_day = yesterday.strftime("%d")       # Giorno di ieri
     path = month_year+"."+local_day
-
-    result = db.find({},{path:1})
-    array = result[0][month_year][local_day]
-
-    print(path)
-    mmRain = 0
-    for ele in array:
-        if len(ele['rain']) > 0:
-            mmRain += ele['rain']['1h']
+    
+    try :
+        result = db.find({},{path:1})
+        array = result[0][month_year][local_day]
+        print(path)
+        mmRain = 0
+        for ele in array:
+            if len(ele['rain']) > 0:
+                mmRain += ele['rain']['1h']
+        
+    except KeyError:
+        # Correzione errore 5. Nel caso non siano state raccolte informazioni meteo
+        # nella giornata precedente, considero pioggia 0
+        print("Non ci sono informazioni meteo, considero no pioggia")
+        mmRain = 0         
 
     return(mmRain)
 
