@@ -138,13 +138,20 @@ def getStatusPort():
     sock.sendto(COMMAND, (UDP_IP, UDP_PORT))
     sleep(1)
 
-    while True:
-        try:
-            data, addr = sock.recvfrom(1024)
-            return data
-        except:
-            return -1
+    try:
+        data, addr = sock.recvfrom(1024)
+        # Pulisco il buffer da dati sporchi
+        FlushListen(sock) 
+        return data
+    except:
+        return -1
 
+
+def FlushListen(sock):
+    try:
+        data, addr = sock.recvfrom(1024)
+    except:
+        return;
 
 # Questo ciclo viene lanciato quando, pur riuscendo ad arrivare alla scheda 
 # relay, viene riscontrato errore nella ricezione dei comandi. Nel caso la 
