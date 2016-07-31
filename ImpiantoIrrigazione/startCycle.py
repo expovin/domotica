@@ -7,9 +7,11 @@ from common.logAction import *
 from common.bt004 import *
 from common.config import irrigazione
 from common.irrigazione import sendCommand,initPorts
+from os import path
 
+FILE_NAME=path.basename(__file__)
 
-logOut(4,argv[0],"Avvio "+argv[0]+" lettura configurazione")
+logOut(4,FILE_NAME,"Avvio "+argv[0]+" lettura configurazione")
 cfgIrr = irrigazione()
 
 
@@ -24,7 +26,7 @@ COMMON=cfgIrr['Common Gate']
 
 
 def cycle():
-    logOut(4,argv[0],"Inizio Ciclo irrigazione DEBUG= "+DEBUG)
+    logOut(4,FILE_NAME,"Inizio Ciclo irrigazione DEBUG= "+DEBUG)
     logEvent('INFO', 'Irrigazione', 'Inizio ciclo irrigazione', 'DEBUG='+DEBUG)
     if(DEBUG!="True"):
         sendCommand(COMMON, ON,0)                   # Se non sono in debug attivo il connettore comune
@@ -33,17 +35,16 @@ def cycle():
     for tzona in TIMING:
         cont+=1
         zona="0"+str(cont)
-        logOut(4,argv[0],"Inizio zona  "+zona+" per minuti "+str(tzona))
+        logOut(4,FILE_NAME,"Inizio zona  "+zona+" per minuti "+str(tzona))
         logEvent('INFO', 'Irrigazione', 'Inizio irrigazione zona', 'Zona='+zona+' per minuti :'+str(tzona))
         sendCommand(zona, ON, 0)
         time.sleep(tzona['timing']*NUM_SEC)
-        logOut(4,argv[0],"Fine zona  "+zona+" per minuti "+str(tzona))
+        logOut(4,FILE_NAME,"Fine zona  "+zona+" per minuti "+str(tzona))
         sendCommand(zona, OFF, 0)
         logEvent('INFO', 'Irrigazione', 'Fine irrigazione zona', 'Zona='+zona+' per minuti :'+str(tzona))
 
     sendCommand(COMMON, OFF, 0)                      # Chiudo anche il connettore comune
     logEvent('INFO', 'Irrigazione', 'Fine ciclo irrigazione', '')
-    #sendMail("INFO Ciclo irrigazione","Ciclo irrigazione finito correttamente","False")
     exit(0)
 
 
@@ -63,14 +64,13 @@ if (rc<0):
 #  IRRIGAZIONE = Razione Acqua - PIOGGIA CADUTA
 
 rain = getRain()
-logOut(3,argv[0],"Millimetri pioggia caduti ieri "+str(rain))
+logOut(3,FILE_NAME,"Millimetri pioggia caduti ieri "+str(rain))
 if ( rain > SOGLIA_IRRIGAZIONE):  # Temporaneamente verifico solo se sono al di sopra di una certa soglia per irrigare
-    logOut(3,argv[0],"Soglia superata, non irrigo")
-    #sendMail("INFO Ciclo irrigazione","Nella giornata di ieri sono caduti "+str(rain)+" mm di pioggia. Non irrigo perche non necessario","False")
+    logOut(3,FILE_NAME,"Soglia superata, non irrigo")
     exit(1)
 
 
-logOut(4,argv[0],"Inizio Ciclo irrigazione, richiamo Cycle() ")
+logOut(4,FILE_NAME,"Inizio Ciclo irrigazione, richiamo Cycle() ")
 cycle()
 
 

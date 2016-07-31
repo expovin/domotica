@@ -11,8 +11,10 @@ from MongoDbHandler import logEvent
 from time import sleep
 from bt004 import *
 from logAction import *
+from os import path
 
-logOut(4,argv[0],"Avvio "+argv[0]+" lettura configurazione")
+FILE_NAME=path.basename(__file__)
+logOut(4,FILE_NAME,"Avvio "+argv[0]+" lettura configurazione")
 
 # Lettura configurazione da MongoDB
 cfgIrr = irrigazione()
@@ -46,7 +48,7 @@ UDP_PORT=cfgIrr['Relay Board Port']   # Porta di comunicazione UDP Relay Board
 COMMON=cfgIrr['Common Gate']          # Porta comune Relay Board
 
 
-logOut(4,argv[0],"Inizzializzazione socket e set timeout")
+logOut(4,FILE_NAME,"Inizzializzazione socket e set timeout")
 sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 sock.settimeout(SOCKET_TIME_OUT)
 
@@ -60,17 +62,17 @@ def initPorts():
     SCHADA_OK = False                     # Flag se la scheda risponde o meno.
     # Ciclo per il numero di tentativi presenti nell'ARRAY di Retry
     if(SCHADA_OK==False):
-        logOut(4,argv[0],"Inizzializzazione Porte")
+        logOut(4,FILE_NAME,"Inizzializzazione Porte")
         for r in RETRY:
-            logOut(3,argv[0],"Inizio ciclo irrigazione variabile DEBUG = "+DEBUG)
+            logOut(3,FILE_NAME,"Inizio ciclo irrigazione variabile DEBUG = "+DEBUG)
             logEvent('INFO', 'Irrigazione', 'Inizio ciclo irrigazione', 'DEBUG='+DEBUG)  
             # Comando reset porte
             COMMAND=MESSAGE_PREFIX+"E000"
             sock.sendto(COMMAND, (UDP_IP, UDP_PORT))
             statusPort = getStatusPort()
-            logOut(3,argv[0],"Inviato comando reset Porte. Stato porte ritornato : "+str(statusPort))
+            logOut(3,FILE_NAME,"Inviato comando reset Porte. Stato porte ritornato : "+str(statusPort))
             if(statusPort == -1):
-                logOut(1,argv[0],"La scheda non risponde, riprovo tra "+str(r)+" minuti")
+                logOut(1,FILE_NAME,"La scheda non risponde, riprovo tra "+str(r)+" minuti")
                 sleep(r*60)
             else:
                 SCHADA_OK = True
@@ -78,18 +80,18 @@ def initPorts():
 
     if(SCHADA_OK):
         # Tolgo la corrente alla scheda relay in modo da chiudere l'acqua
-        #logOut(3,argv[0],"Chiudo per precauzione il relay, nel caso fosse rimasto aperto")
+        #logOut(3,FILE_NAME,"Chiudo per precauzione il relay, nel caso fosse rimasto aperto")
         #InactivePort("1","0")
 
-        logOut(3,argv[0],"Scheda correttamente resettata, parto con il ciclo di irrigazione")
+        logOut(3,FILE_NAME,"Scheda correttamente resettata, parto con il ciclo di irrigazione")
         # La scheda ha risposto, parto con l'irrigazione. Verifico prima il flag di DEBUG
         if(DEBUG!="True"):
-            logOut(3,argv[0],"Stato di Esercizio, collego il connettore comune")
+            logOut(3,FILE_NAME,"Stato di Esercizio, collego il connettore comune")
             sendCommand(COMMON, "01",0)                   # Se non sono in debug attivo il connettore comune
         return 0
     else:
         #La scheda non risponde, ritorno -1
-        logOut(0,argv[0],"La scheda non ha risposto nei tentativi interrompo l'irrigazione")
+        logOut(0,FILE_NAME,"La scheda non ha risposto nei tentativi interrompo l'irrigazione")
         logEvent('ERROR', 'Irrigazione', 'Errore  scheda fuori linea', 'La scheda relay non ha risposto. Irrigazione terminata ')
         return -1
 
@@ -103,27 +105,27 @@ def sendCommand(channel, status, tentative):
     COMMAND=MESSAGE_PREFIX+channel+status
 
     while tentative < MAX_TENTATIVE:
-        logOut(4,argv[0],"Invio comando "+COMMAND+" Tentativo n "+str(tentative))
+        logOut(4,FILE_NAME,"Invio comando "+COMMAND+" Tentativo n "+str(tentative))
         sock.sendto(COMMAND, (UDP_IP, UDP_PORT))    
         statusPort = getStatusPort()
-        logOut(4,argv[0],"Stato porte ricevuto "+str(statusPort))
+        logOut(4,FILE_NAME,"Stato porte ricevuto "+str(statusPort))
 
         if(int(statusPort) == -1):
-            logOut(0,argv[0],"Errore TIME-OUT scheda non raggiungibile, richiamo procedura di mergenza ")
+            logOut(0,FILE_NAME,"Errore TIME-OUT scheda non raggiungibile, richiamo procedura di mergenza ")
             emergencyExit()
         else:
             idx = int(channel)-1
             ch = int(statusPort[idx])
             st = int(status)
             if(ch == st):
-                logOut(4,argv[0],"Comando eseguito correttamente")
+                logOut(4,FILE_NAME,"Comando eseguito correttamente")
                 break;
             else:
                 if(tentative == MAX_TENTATIVE):
-                    logOut(1,argv[0],"Raggiunto numero massimo di tentativi con comunicazione alla scheda, interrompo ciclo irrigazione")
+                    logOut(1,FILE_NAME,"Raggiunto numero massimo di tentativi con comunicazione alla scheda, interrompo ciclo irrigazione")
                     stopCycle()
                 
-                logOut(2,argv[0],"Letto stato porte "+str(statusPort)+" reinvio comando ")
+                logOut(2,FILE_NAME,"Letto stato porte "+str(statusPort)+" reinvio comando ")
                 tentative +=1
                 sleep(2)
                 sendCommand(channel, status, tentative)
@@ -158,18 +160,18 @@ def FlushListen(sock):
 # procedura di stop non funzioni viene lanciata la procedura di emergenza.
 def stopCycle():
     statusPort = getStatusPort()
-    logOut(1,argv[0],"Procedura di interruzione ciclo, stato attuale porte "+str(statusPort))
+    logOut(1,FILE_NAME,"Procedura di interruzione ciclo, stato attuale porte "+str(statusPort))
     logEvent('ERROR', 'Irrigazione', 'Errore  invio comando', 'Stato attuale delle porte '+str(statusPort))
-    logOut(1,argv[0],"Provo a resettare porte ")
+    logOut(1,FILE_NAME,"Provo a resettare porte ")
     COMMAND=MESSAGE_PREFIX+"E000"
     sock.sendto(COMMAND, (UDP_IP, UDP_PORT))
     statusPort = getStatusPort()
-    logOut(1,argv[0],"Stato porte "+str(statusPort))
+    logOut(1,FILE_NAME,"Stato porte "+str(statusPort))
     if(statusPort != "00000000"):
-        logOut(0,argv[0],"La scheda non risponde, avvio procedura di emergenza")
+        logOut(0,FILE_NAME,"La scheda non risponde, avvio procedura di emergenza")
         emergencyExit() 
     else:
-        logOut(1,argv[0],"Ciclo fermato correttamente")
+        logOut(1,FILE_NAME,"Ciclo fermato correttamente")
         #sendMail("Errore ciclo di irrigazione","Errore durante l'invio di un comando alla scheda relay","False")
         exit(-2)
 
@@ -179,7 +181,7 @@ def stopCycle():
 # caso viene attivata la porta 1 del relay BT004 che toglie corrente alla scheda 
 # relay.
 def emergencyExit():
-    logOut(0,argv[0],"PROCEDURA DI EMERGENZA PER INTERROMPERE CORRENTE")
+    logOut(0,FILE_NAME,"PROCEDURA DI EMERGENZA PER INTERROMPERE CORRENTE")
     logEvent('FATAL', 'Irrigazione', 'Errore Modulo realy non risponde ', 'Avvio tentativo di emergenza per chiudere acqua')
 
     # Tolgo la corrente alla scheda relay in modo da chiudere l'acqua
@@ -189,12 +191,10 @@ def emergencyExit():
     # TODO : In caso venga riscontrato errore nella ricezone del comando entrare 
     # in un lop per MAX_RETRY definiti
     if(getPortState("1") == "ACTIVE\r"):
-        logOut(0,argv[0],"Corrente Tolta, attendo 10 min prima di riattivarla")
-        #sendMail("Errore grave ciclo irrigazione","Scheda non piu rangiungibile via IP, avviata procedura di stop in emergenza, tolta corrente all'impianto","Irrigazione")
+        logOut(0,FILE_NAME,"Corrente Tolta, attendo 10 min prima di riattivarla")
         sleep(600)
         InactivePort("1","0")                    # dopo 10 min.  riabilito la corrente
-        logOut(0,argv[0],"Corrente riattivata")
+        logOut(0,FILE_NAME,"Corrente riattivata")
     else:
-        logOut(0,argv[0],"ATTENZIONE!!! Non sono riuscito a modificare lo stato della porta BT004")
-        #sendMail("Errore grave ciclo irrigazione","Scheda non piu rangiungibile via IP, Errore nel togliere la corrente alla scheda","Irrigazione")
+        logOut(0,FILE_NAME,"ATTENZIONE!!! Non sono riuscito a modificare lo stato della porta BT004")
     exit(-3)  
