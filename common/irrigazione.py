@@ -80,8 +80,8 @@ def initPorts():
 
     if(SCHADA_OK):
         # Tolgo la corrente alla scheda relay in modo da chiudere l'acqua
-        #logOut(3,FILE_NAME,"Chiudo per precauzione il relay, nel caso fosse rimasto aperto")
-        #InactivePort("1","0")
+        logOut(3,FILE_NAME,"Chiudo per precauzione il relay, nel caso fosse rimasto aperto")
+        InactivePort("1","0")
 
         logOut(3,FILE_NAME,"Scheda correttamente resettata, parto con il ciclo di irrigazione")
         # La scheda ha risposto, parto con l'irrigazione. Verifico prima il flag di DEBUG

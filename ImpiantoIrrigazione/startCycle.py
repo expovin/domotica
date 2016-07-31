@@ -48,12 +48,6 @@ def cycle():
     exit(0)
 
 
-#Inizzializzazione Porte
-rc = initPorts()
-if (rc<0):
-    exit(rc)
-
-
 # Controllo della temperatura media durante la giornata precedente
 # eventuale incremento di acqua se temperatura media maggiore di una soglia
 # Razione Acqua = BASE + INCREMENTO
@@ -68,6 +62,13 @@ logOut(3,FILE_NAME,"Millimetri pioggia caduti ieri "+str(rain))
 if ( rain > SOGLIA_IRRIGAZIONE):  # Temporaneamente verifico solo se sono al di sopra di una certa soglia per irrigare
     logOut(3,FILE_NAME,"Soglia superata, non irrigo")
     exit(1)
+
+
+
+#Inizzializzazione Porte
+rc = initPorts()
+if (rc<0):
+    exit(rc)
 
 
 logOut(4,FILE_NAME,"Inizio Ciclo irrigazione, richiamo Cycle() ")
