@@ -57,7 +57,7 @@ def cycle():
 # Decrementare la razione d'acqua calcolata precedentemente con acqua caduta per pioggia
 #  IRRIGAZIONE = Razione Acqua - PIOGGIA CADUTA
 
-rain = getRain()
+rain = getRain(1)
 logOut(3,FILE_NAME,"Millimetri pioggia caduti ieri "+str(rain))
 if ( rain > SOGLIA_IRRIGAZIONE):  # Temporaneamente verifico solo se sono al di sopra di una certa soglia per irrigare
     logOut(3,FILE_NAME,"Soglia superata, non irrigo")

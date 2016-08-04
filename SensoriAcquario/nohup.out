@@ -1,0 +1,2 @@
+/home/pi/domotica/SensoriAcquario/pushButtonControl.py:12: RuntimeWarning: This channel is already in use, continuing anyway.  Use GPIO.setwarnings(False) to disable warnings.
+  GPIO.setup(PortCfg['Lights'], GPIO.OUT)                  # PIN 23 PRESA BASSA
