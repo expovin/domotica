@@ -27,7 +27,7 @@ DELTA = config_acq['getTemp']['Temp']['Delta Trace']
 
 # Questa funzione si occupa di tracciare la temperatura nel DB solo se supera
 # DELTA altrimenti si limita ad aggiornare la data di ultimo update
-def getTemp( temp):
+def recordTemp( temp):
 
     logOut(4,FILE_NAME,"Temperatura da memorizzare "+str(temp)+" verifico il " \
      "valore dell'ultima lettura")
@@ -232,13 +232,15 @@ def getTemp(nDay):
     local_day = yesterday.strftime("%d")       # Giorno di ieri
     path = month_year+"."+local_day
 
-    logOut(4,FILE_NAME,"Recupero informazioni meteo <Temperatura> per il giorno "+path) 
+    logOut(4,FILE_NAME,"Recupero informazioni meteo <Temperatura> per il giorno "\
+        +path) 
     try :
         result = db.find({},{path:1})
         array = result[0][month_year][local_day]
         temp = 0.0
         for ele in array:
-            logOut(5,FILE_NAME,"Lettura elemento "+str(ele['time'])+" : "+str(ele['temp']['temp']))     
+            logOut(5,FILE_NAME,"Lettura elemento "+\
+                str(ele['time'])+" : "+str(ele['temp']['temp']))     
             if (len(ele['temp']) > 0):
 
                 # Calcolo gli oggetti time per il currenti time sunrise e sunset
@@ -253,20 +255,49 @@ def getTemp(nDay):
 
                 if(obj_time > obj_sunrise_time) and (obj_time < obj_sunset_time):
                     temp += ele['temp']['temp']
-                    logOut(5,FILE_NAME,"Temperatura per elemento  "+str(ele['time'])+" : "+str(ele['temp']['temp'])) 
+                    logOut(5,FILE_NAME,"Temperatura per elemento  "\
+                        +str(ele['time'])+" : "+str(ele['temp']['temp'])) 
 
         avgTemp = temp/len(array)
         logOut(3,FILE_NAME,"Temperatura media per il giorno "+path+" :"+str(avgTemp))
  
-    except KeyError:
+    except KeyError as err:
         # Correzione errore 5. Nel caso non siano state raccolte informazioni meteo
         # nella giornata precedente, considero pioggia 0
-        logOut(2,FILE_NAME,"Non ci sono informazioni meteo, considero no temp") 
+        logOut(2,FILE_NAME,"Non ci sono informazioni meteo, considero no temp"+str(err)) 
         avgTemp = 0         
 
     connection.close()
     return(avgTemp)
 
+# Questa funzione restituisce 
+
+def getIrrigatedWater(nDay,zona):
+    totIrrigatedWater = 0.0
+    db = connection.domotica.irrigazione
+
+    yesterday = date.today() - timedelta(nDay) # Calcolo la giornata nDay fa
+    month_year = yesterday.strftime("%Y%m")    # Anno_Mese ieri
+    local_day = yesterday.strftime("%d")       # Giorno di ieri
+    path = month_year+"."+local_day
+
+    logOut(4,FILE_NAME,"Recupero informazioni irrigazione per il giorno "+path) 
+    try :
+        result = db.find({},{path:1})
+        array = result[0][month_year][local_day]
+        totIrrigatedWater += array[zona]['Irrigated']
+        logOut(5,FILE_NAME,"Irrigazione per zona  "+str(zona)+" : "\
+            +str(array[zona]['Irrigated'])) 
+
+ 
+    except KeyError as err:
+        # Correzione errore 5. Nel caso non siano state raccolte informazioni meteo
+        # nella giornata precedente, considero pioggia 0
+        logOut(2,FILE_NAME,"Errore KeyError "+str(err)+" considero irrigazione nulla") 
+        totIrrigatedWater = 0         
+
+    connection.close()
+    return totIrrigatedWater
 
 
 # Questa funzione restituisce in uscita la temperatura media calcolata sugli 
@@ -274,13 +305,14 @@ def getTemp(nDay):
 # offset di ore dopo l'alba e prima del tramonto, specificato nel db config
 
 def getAvgTempNDays(nDays):
-    avgTemp = 0.0
-    totTemp = 0.0    
+    avgTemp = []
+    #totTemp = 0.0    
 
     for day in range(nDays):
-        totTemp += getTemp(day+1)
-    avgTemp = totTemp / nDays
-    logOut(3,FILE_NAME,"Temperatura media per gli ultimi "+str(nDays)+" giorni :"+str(avgTemp))
+        avgTemp.append(getTemp(day))
+
+    logOut(3,FILE_NAME,"Temperatura media per gli ultimi "+\
+        str(nDays)+" giorni :"+str(avgTemp))
 
     return avgTemp
 
@@ -290,13 +322,13 @@ def getAvgTempNDays(nDays):
 # degli nDays precedenti
 
 def getAvgWindDays(nDays):
-    avgWind = 0.0
-    totWind = 0.0
+    avgWind = []
 
     for day in range(nDays):
-        totWind += getWind(day+1)
-    avgWind = totWind / nDays
-    logOut(3,FILE_NAME,"Vento medio per gli ultimi "+str(nDays)+" giorni :"+str(avgWind))
+        avgWind.append(getWind(day))
+
+    logOut(3,FILE_NAME,"Vento medio per gli ultimi "+str(nDays)+" giorni :"\
+        +str(avgWind))
 
     return avgWind
 
@@ -304,19 +336,24 @@ def getAvgWindDays(nDays):
 # restituisce il totale dei mm di pioggia caduti negli ultimi giorni
 
 def getTotalRainDays(nDays):
-    totRain = 0.0
+    totRain = []
 
     for day in range(nDays):
-        totRain += getRain(day+1)
-    logOut(3,FILE_NAME,"Pioggia totale negli ultimi "+str(nDays)+" giorni :"+str(totRain))
+        totRain.append(getRain(day))
+
+    logOut(3,FILE_NAME,"Pioggia totale negli ultimi "+str(nDays)+" giorni :"\
+        +str(totRain))
 
     return totRain
 
 # Questa funzione restituisce il totale dell'acqua irrigata negli nDays 
 # precedenti, leggendola da db
 
-def getTotalIrrigatedWater(nDays):
-    totalIrrigatedWater = 0.0
+def getTotalIrrigatedWater(nDays, zona):
+    totalIrrigatedWater = []
+
+    for day in range(nDays):
+        totalIrrigatedWater.append(getIrrigatedWater(day,zona))
 
     return totalIrrigatedWater
 

@@ -74,5 +74,5 @@ while True:
          logEvent('INFO', 'getWaterTemp', 'Heater Start', 'Reached the lowerbound temperature,("+str(temp_c)+") start the heater')
          GPIO.output(HEATER, 0)
 
-    getTemp(temp_c)
+    recordTemp(temp_c)
     time.sleep(TIME_BETWEEN_READING)
