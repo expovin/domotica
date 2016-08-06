@@ -1,39 +1,61 @@
+################################################################################
+# getWeatherCondition                                                          #
+#                                                                              #
+# Questa funzione sfrutta i servizi di OpenWeatherMap (OWM) per prelevare      #
+# informazioni sullo stato attuale del meteo a Grezzago. Le condizioni meteo   #
+# vengono salvate ogni ora su db nella collection meteo                        #
+#                                                                              #
+################################################################################
+
 from pymongo import MongoClient
 import pyowm
 import time
 from datetime import datetime
+from common.config import weather
+from common.logAction import *
+from os import path
 
-owm = pyowm.OWM('4dbcc04a35845437037427248c4a9446')
+config_weather = weather()
+
+FILE_NAME=path.basename(__file__)
+OWN_KEY = config_weather['OWM KEY']
+LOCATION = config_weather['Place']
+
+
+owm = pyowm.OWM(OWN_KEY)
 client = MongoClient()
 
 db = client.domotica.meteo
 
+logOut(3,FILE_NAME,"Processo raccolta informazioni meteo partito")
+while True:    
+    
+    try:
+        observation = owm.weather_at_place(LOCATION)
+        w = observation.get_weather()
+        t = observation.get_reception_time(timeformat='iso') 
 
-while True:
-	
-	observation = owm.weather_at_place('Grezzago,it')
-	w = observation.get_weather()
-	t = observation.get_reception_time(timeformat='iso') 
-
-	print ("Prelevo condizioni del tempo "+str(t))
-	ref_time = w.get_reference_time(timeformat='iso')
+        ref_time = w.get_reference_time(timeformat='iso')
         ref_time_ux = w.get_reference_time()
-	status = w.get_status()
-	det_status = w.get_detailed_status() 
-	weather_code = w.get_weather_code()
-	sunrise_time = w.get_sunrise_time('iso') 
-	sunset_time = w.get_sunset_time('iso') 
-	wind = w.get_wind()
-	humidity = w.get_humidity()
-	rain = w.get_rain()
-	temp = w.get_temperature('celsius')
-	snow = w.get_snow() 
-	pressure = w.get_pressure()
+        status = w.get_status()
+        det_status = w.get_detailed_status() 
+        weather_code = w.get_weather_code()
+        sunrise_time = w.get_sunrise_time() 
+        sunset_time = w.get_sunset_time() 
+        wind = w.get_wind()
+        humidity = w.get_humidity()
+        rain = w.get_rain()
+        temp = w.get_temperature('celsius')
+        snow = w.get_snow() 
+        pressure = w.get_pressure()
 
         month_year = time.strftime("%Y%m", time.localtime(ref_time_ux))
         local_day = time.strftime("%d", time.localtime(ref_time_ux))
         local_date = time.strftime("%D", time.localtime(ref_time_ux))
         local_time = time.strftime("%H:%M", time.localtime(ref_time_ux))
+
+        local_sunrise_time = time.strftime("%H:%M", time.localtime(sunrise_time))
+        local_sunset_time  = time.strftime("%H:%M", time.localtime(sunset_time))
 
 
 
@@ -45,13 +67,12 @@ while True:
                 'pressure' : pressure,
                 'det_status' : det_status,
                 'weather_code' : weather_code,
-                'sunrise_time' : sunrise_time,
-                'sunset_time' : sunset_time,
+                'sunrise_time' : local_sunrise_time,
+                'sunset_time' : local_sunset_time,
                 'wind' : wind,
                 'humidity' : humidity,
                 'rain' : rain,
                 'snow': snow
-
         }
 
 
@@ -63,10 +84,7 @@ while True:
         giorni = []
         kgiorni = {}
         dettaglio_orario.append(weather)
-        #kdett['dettaglio orario'] = dettaglio_orario
         giorno[local_day] = dettaglio_orario 
-        #giorni.append(giorno)
-        #kgiorni['Giorni'] = giorni
         Periodo[month_year] = giorno
         path = month_year+"."+local_day 
 
@@ -78,12 +96,16 @@ while True:
               "_id" : result[0]['_id'],
             },{
               '$push' : {
-                path : Periodo[month_year][local_day][0]	
+                path : Periodo[month_year][local_day][0]    
               }
             },upsert=False)
 
-
-
         time.sleep(60*60)
-#        time.sleep(20)
 
+    except AttributeError as Attr:
+        logOut(2,FILE_NAME,"ATTENZIONE, errore observation data not available "+str(Attr))
+        time.sleep(60*60)
+
+    except:
+        logOut(2,FILE_NAME,"ATTENZIONE, non sono riuscito a recuperare le informazioni meteo, ritento al prossimo ciclo ")
+        time.sleep(60*60)

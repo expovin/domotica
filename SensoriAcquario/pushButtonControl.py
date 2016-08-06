@@ -22,4 +22,4 @@ while True:
         else:
             GPIO.output(PortCfg['Lights'], 0)
             logEvent('INFO', 'pushButtonHandler', 'Manual Switch', 'Manual switch light to ON')
-        time.sleep(0.7)
+    time.sleep(0.7)
