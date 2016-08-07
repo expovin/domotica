@@ -14,7 +14,10 @@ rc=$?
 echo $! > save_pid.txt
 
 case "$rc" in
-
+   2) echo "Stop ciclo controllato"
+      SUBJ="Ciclo fermato dall'utente"
+      BODY="Il ciclo di irrigazione e' stato fermato dall'utente"
+   ;;
    1) echo "Ha piovuto non innaffio"
       SUBJ="Irrigazione non partita per pioggia"
       BODY="Coclo irrigazione non partito perchè nella giorata di oeri è caduta sufficente pioggia, log in allegato"
