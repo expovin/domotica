@@ -213,7 +213,7 @@ def calcolaFabbisognoAcqua(day):
         return(ACQUA_MIN_MQ + v * avgWind)
 
     fabisogno = m * (avgTemp - TEMP_MIN) + ACQUA_MIN_MQ + v * avgWind
-    logOut(4,FILE_NAME,"Fabbisogno acqua per giorno -"+str(day)+": "+str(fabisogno))
+    logOut(3,FILE_NAME,"Fabbisogno acqua per giorno -"+str(day)+": "+str(fabisogno))
 
 
     return fabisogno
@@ -241,6 +241,10 @@ def stopCycle():
         # comando alla scheda relay","False")
         exit(-2)
 
+
+def controlledStopCycle():
+    logOut(3,FILE_NAME,"Arrivato segnale di stop controllato")
+    exit(2)
 
 # Procedura di interruzione corrente. Questa procedura viene chiamata quando in 
 # fase di irrigazione non e possibile piu raggiungere la scheda relay. In questo 

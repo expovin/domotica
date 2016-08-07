@@ -105,6 +105,79 @@ def recordTemp( temp):
     connection.close()
 
 
+# Questa funzione si occupa di scrivere nel DB l'acqua effettivamente irrigata
+# per la zona di competenza
+
+def recordIrrigatedWater(Acqua, zona, sec):
+    logOut(4,FILE_NAME,"Memorizzo in DB per la zona "+zona+" Acqua irrigata:"\
+        +str(Acqua))
+
+    #Connect to the Acquarium DataBase Collection "Sensors"
+    db = connection.domotica.irrigazione
+
+    month_year = time.strftime("%Y%m")           # Anno Mese attuale
+    local_day = time.strftime("%d")              # Giorno attuale in CET
+    local_time = time.strftime("%H:%M:%S")       # Giorno attuale in CET
+    docZona = {}
+    Periodo = {}
+    giorno = {}
+
+    startAt = datetime.strptime(local_time,"%H:%M:%S") - timedelta(seconds=sec)
+
+     # Documento da memorizzare
+    docZona[zona] = {
+        "StartAt" : startAt.strftime("%H:%M:%S"),
+        "EndAt" : local_time,
+        "Irrigated" : Acqua
+    }
+
+    logOut(4,FILE_NAME,"Documento da memorizzare "+str(docZona))
+
+    giorno[local_day] = docZona
+    Periodo[month_year] = giorno
+    path = month_year+"."+local_day+"."+zona
+    pathUpdAcq = path+".Irrigated"
+    pathUpdStr = path+".StartAt"
+    pathUpdEnd = path+".EndAt"
+
+
+    logOut(4,FILE_NAME,"Path di memorizzazione "+path)
+    logOut(4,FILE_NAME,"Documento da aggiungere "+str(Periodo[month_year][local_day][zona]))
+
+    result = db.find({},{month_year:1})    
+    if(result.count() == 0):
+        logOut(3,FILE_NAME,"Documento non esistente, ne inserisco uno nuovo")
+        db.insert(Periodo)
+    else:
+        logOut(3,FILE_NAME,"Documento esistente, vado in aggiunta")
+
+        try : 
+            db.update({
+              "_id" : result[0]['_id'],
+            },{
+              '$inc' : {
+                pathUpdAcq : Acqua
+              },
+              '$set' : {
+                pathUpdStr : startAt.strftime("%H:%M:%S"),
+                pathUpdEnd : local_time
+              }
+            },upsert=False)
+            logOut(3,FILE_NAME,"Presente documento, vado in aggiunta")
+
+        except KeyError:
+            db.update({
+              "_id" : result[0]['_id'],
+            },{
+              '$set' : {
+                path : Periodo[month_year][local_day][zona]
+              }
+            },upsert=False)
+            logOut(3,FILE_NAME,"Non presente irrigazione, inserisco nuovo documento")
+
+
+    connection.close()
+
 # Questa funzione si occupa di tracciare gli eventi di sistema sul DB
 # suddividendoli per periodo (ANNO_MESE)
 def logEvent(level, module, action, message):
@@ -118,7 +191,6 @@ def logEvent(level, module, action, message):
     giorno = {}
     events = []
     path = month_year+"."+local_day
-    
 
 
     event = {
@@ -238,6 +310,7 @@ def getTemp(nDay):
         result = db.find({},{path:1})
         array = result[0][month_year][local_day]
         temp = 0.0
+        numEle = 0
         for ele in array:
             logOut(5,FILE_NAME,"Lettura elemento "+\
                 str(ele['time'])+" : "+str(ele['temp']['temp']))     
@@ -255,10 +328,11 @@ def getTemp(nDay):
 
                 if(obj_time > obj_sunrise_time) and (obj_time < obj_sunset_time):
                     temp += ele['temp']['temp']
+                    numEle +=1
                     logOut(5,FILE_NAME,"Temperatura per elemento  "\
                         +str(ele['time'])+" : "+str(ele['temp']['temp'])) 
 
-        avgTemp = temp/len(array)
+        avgTemp = temp/numEle
         logOut(3,FILE_NAME,"Temperatura media per il giorno "+path+" :"+str(avgTemp))
  
     except KeyError as err:

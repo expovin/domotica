@@ -1,0 +1,11 @@
+[Unit]
+Description=Impianto di irrigazione
+
+[Service]
+Type=oneshot
+ExecStart=/home/pi/domotica/ImpiantoIrrigazione/startCycle.sh start
+ExecStop=/home/pi/domotica/ImpiantoIrrigazione/startCycle.sh  stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
