@@ -25,7 +25,7 @@ start() {
     echo "Process starting..."
     DATE=`date +%Y-%m-%d`
 
-    /usr/bin/python /home/pi/domotica/ImpiantoIrrigazione/startCycle.py 1>/var/log/domotica/Irrigazione/Irrigazione_$DATE.log 2>&1 
+    /usr/bin/python /home/pi/domotica/ImpiantoIrrigazione/startCycle.py  1>/var/log/domotica/Irrigazione/Irrigazione_$DATE.log 2>&1 
 
     #Recupero il return code
     rc=$?

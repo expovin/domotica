@@ -150,20 +150,19 @@ def recordIrrigatedWater(Acqua, zona, sec):
         db.insert(Periodo)
     else:
         logOut(3,FILE_NAME,"Documento esistente, vado in aggiunta")
-
         try : 
+            Irrigato = result[0][month_year][local_day][zona]['Irrigated']
+            logOut(3,FILE_NAME,"Questa zona oggi ha gia ricevuto "+str(Irrigato)\
+                +" litri. Vado in aggiunta")
             db.update({
               "_id" : result[0]['_id'],
             },{
-              '$inc' : {
-                pathUpdAcq : Acqua
-              },
               '$set' : {
                 pathUpdStr : startAt.strftime("%H:%M:%S"),
+                pathUpdAcq : Acqua + Irrigato,
                 pathUpdEnd : local_time
               }
             },upsert=False)
-            logOut(3,FILE_NAME,"Presente documento, vado in aggiunta")
 
         except KeyError:
             db.update({
@@ -174,6 +173,7 @@ def recordIrrigatedWater(Acqua, zona, sec):
               }
             },upsert=False)
             logOut(3,FILE_NAME,"Non presente irrigazione, inserisco nuovo documento")
+
 
 
     connection.close()

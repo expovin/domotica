@@ -2,9 +2,12 @@
 Description=Controllo temperatura acquario
 
 [Service]
-Type=oneshot
+Type=simple
+Restart=always
+RestartSec=5
 ExecStart=/home/pi/domotica/SensoriAcquario/sensorTempStartUp.sh start
 ExecStop=/home/pi/domotica/SensoriAcquario/sensorTempStartUp.sh  stop
+ExecReload=/home/pi/domotica/SensoriAcquario/sensorTempStartUp.sh restart
 RemainAfterExit=yes
 
 [Install]

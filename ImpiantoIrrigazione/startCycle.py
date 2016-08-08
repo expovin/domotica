@@ -38,13 +38,8 @@ def getFabbisognoPioggia():
 
     return (FabbisognoAcqua)
 
-
-
-# Questa funzione viene lanciata durante il ciclo di attesa per
-# interrompere l'irrigazione epassare alla zona successiva. Durante
-# questo tempo viene controllato se viene forzato un arresto del sistema
-
-def waitingForStop(zona,tempo,FabbisognoAcqua,pioggiaCaduta):
+def calcolaTempoIrrigazione(zona,FabbisognoAcqua,pioggiaCaduta):
+    TempoIrrigazione = 0
 
     # Calcolo Per quanto tempo devo tenere aperto il rubinetto
     # Faccio il loop sulle giornate precedenti e verifico la differenza, per 
@@ -57,60 +52,55 @@ def waitingForStop(zona,tempo,FabbisognoAcqua,pioggiaCaduta):
     PORTATA = float(cfgIrr['PolicyIrrigazione']['03']['Zone'][int(zona)-1]\
         ['Portata_lsec'])    
 
-    if(tempo == 0):
-        AcquaIrrigata = getTotalIrrigatedWater(GG_TOT_ACQUA,zona)
-        AcquaEffettivaTotale = 0.0
-        for gg in range(GG_TOT_ACQUA):
+    AcquaIrrigata = getTotalIrrigatedWater(GG_TOT_ACQUA,zona)
+    AcquaEffettivaTotale = 0.0
+    for gg in range(GG_TOT_ACQUA):
+        MQ_ZONA = float(cfgIrr['PolicyIrrigazione']['03']['Zone']\
+            [int(zona)-1]['Mq'])
 
-            MQ_ZONA = float(cfgIrr['PolicyIrrigazione']['03']['Zone']\
-                [int(zona)-1]['Mq'])
+        AcquaEffettiva = FabbisognoAcqua[gg] - pioggiaCaduta[gg] -\
+            ( AcquaIrrigata[gg] / MQ_ZONA)
 
-            AcquaEffettiva = FabbisognoAcqua[gg] - pioggiaCaduta[gg] -\
-                ( AcquaIrrigata[gg] / MQ_ZONA)
+        logOut(5,FILE_NAME,"Per il giorno "+str(gg)+\
+            " Il fabbisogno era di "+str(FabbisognoAcqua[gg])+\
+            " Pioggia caduta "+str(pioggiaCaduta[gg])+\
+            " Acqua irrigata "+str(AcquaIrrigata[gg])+\
+            " Acqua da irrigare "+str(AcquaEffettiva))
 
-            logOut(5,FILE_NAME,"Per il giorno "+str(gg)+\
-                " Il fabbisogno era di "+str(FabbisognoAcqua[gg])+\
-                " Pioggia caduta "+str(pioggiaCaduta[gg])+\
-                " Acqua irrigata "+str(AcquaIrrigata[gg])+\
-                " Acqua da irrigare "+str(AcquaEffettiva))
+        AcquaEffettivaTotale += AcquaEffettiva
 
-            AcquaEffettivaTotale += AcquaEffettiva
+    # Verifico per questa zona se il quantitativo d'acqua da distribuire 
+    # supera la soglia minima.
+    SOGLIA_IRRIGAZIONE = float(cfgIrr['PolicyIrrigazione']['03']['Zone']\
+        [int(zona)-1]['SogliaLitriIrrigazioneMq'])
 
-        # Verifico per questa zona se il quantitativo d'acqua da distribuire 
-        # supera la soglia minima.
-        SOGLIA_IRRIGAZIONE = float(cfgIrr['PolicyIrrigazione']['03']['Zone']\
-            [int(zona)-1]['SogliaLitriIrrigazioneMq'])
+    logOut(5,FILE_NAME,"La sogia minima di irrigazione per la zona  "+zona+\
+        " e' di "+str(SOGLIA_IRRIGAZIONE * MQ_ZONA)+" litri"\
+        " L'acqua effettiva da irrigare e' "+str(AcquaEffettivaTotale * MQ_ZONA))
+
+    if(AcquaEffettivaTotale * MQ_ZONA > SOGLIA_IRRIGAZIONE * MQ_ZONA):
+
+        # Mi calcono il numeor di secondi in cui l'elettrovalvola deve 
+        # rimanere aperta.
+        TempoIrrigazione = int(ceil(AcquaEffettivaTotale * MQ_ZONA / PORTATA))
+
+    return(TempoIrrigazione)
 
 
-        logOut(5,FILE_NAME,"La sogia minima di irrigazione per la zona  "+zona+\
-            " e' di "+str(SOGLIA_IRRIGAZIONE * MQ_ZONA)+" litri"\
-            " L'acqua effettiva da irrigare e' "+str(AcquaEffettivaTotale * MQ_ZONA))
+# Questa funzione viene lanciata durante il ciclo di attesa per
+# interrompere l'irrigazione epassare alla zona successiva. Durante
+# questo tempo viene controllato se viene forzato un arresto del sistema
 
-        if(AcquaEffettivaTotale * MQ_ZONA > SOGLIA_IRRIGAZIONE * MQ_ZONA):
- 
+def waitingForStop(zona,tempo):
 
-            # Mi calcono il numeor di secondi in cui l'elettrovalvola deve 
-            # rimanere aperta.
-            TempoIrrigazione = int(ceil(AcquaEffettivaTotale * MQ_ZONA / PORTATA))
-
-            logOut(3,FILE_NAME,"Soglia minima superata. Irrigo per "+str(TempoIrrigazione)+" secondi")
-
-        else:
-            logOut(5,FILE_NAME,"Soglia irrigazione non superata per  "+zona+" non irrigo")
-            return
-
-    else:
-        TempoIrrigazione = tempo
-
-        # Aggiungo un offset per tener conto del tempo di start dell'impianto
-        TempoIrrigazione += 3
-        logOut(4,FILE_NAME,"Tempo irrigazione : "+str(TempoIrrigazione))
+    PORTATA = float(cfgIrr['PolicyIrrigazione']['03']['Zone'][int(zona)-1]\
+        ['Portata_lsec'])    
 
      ###########################################################################   
 
     # Entro in loop ed attendo la fine del ciclo. Intanto verifico
     # eventuali stop del sistema
-    for sec in range(TempoIrrigazione):
+    for sec in range(tempo):
         # Faccio la verifica di un eventuale salto di questa zona
         if(path.isfile('skipZone.tmp')):
             remove('skipZone.tmp')
@@ -131,16 +121,25 @@ def waitingForStop(zona,tempo,FabbisognoAcqua,pioggiaCaduta):
 
 def irrigaZona(zona,tempo,FabbisognoAcqua,pioggiaCaduta):
     
-    sendCommand(zona, ON, 0)
-            
-    # Questa funzione calcola il tempo necessario all'impianto per erogare
-    # la quantita giusta di acqua calcolata. Durante l'irrigazione verifica il caso
-    # di un eventuale arresto forzato.
-    waitingForStop(zona,tempo,FabbisognoAcqua,pioggiaCaduta)
+    TempoIrrigazione = calcolaTempoIrrigazione(zona,FabbisognoAcqua,pioggiaCaduta)
 
-    logOut(4,FILE_NAME,"Fine zona  "+zona+" per minuti "+zona)
-    sendCommand(zona, OFF, 0)
-    
+    if(TempoIrrigazione > 0):
+        # Tempo di apertura ugelli in secondi 
+        TempoIrrigazione += 10
+
+        logOut(3,FILE_NAME,"Soglia minima superata. Irrigo per "\
+            +str(TempoIrrigazione)+" secondi")
+
+        sendCommand(zona, ON, 0)
+            
+        # Attesa secondi. Durante l'irrigazione verifica il caso
+        # di un eventuale arresto forzato.
+        waitingForStop(zona,TempoIrrigazione)
+
+        logOut(4,FILE_NAME,"Fine zona  "+zona+" per minuti "+zona)
+        sendCommand(zona, OFF, 0)
+    else:
+        logOut(5,FILE_NAME,"Soglia irrigazione non superata per  "+zona+" non irrigo")    
 
 
 
@@ -155,9 +154,11 @@ def cycle(FabbisognoAcqua,pioggiaCaduta):
         cont+=1
         zona="0"+str(cont)
 
-        logEvent('INFO', 'Irrigazione', 'Inizio irrigazione zona', 'Zona='+zona+' per minuti :'+str(tzona))
+        logEvent('INFO', 'Irrigazione', 'Inizio irrigazione zona', 'Zona='+zona+\
+            ' per minuti :'+str(tzona))
         irrigaZona(zona,0,FabbisognoAcqua,pioggiaCaduta)
-        logEvent('INFO', 'Irrigazione', 'Fine irrigazione zona', 'Zona='+zona+' per minuti :'+str(tzona))
+        logEvent('INFO', 'Irrigazione', 'Fine irrigazione zona', 'Zona='+zona+\
+            ' per minuti :'+str(tzona))
 
 
     sendCommand(COMMON, OFF, 0)                      # Chiudo anche il connettore comune

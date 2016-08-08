@@ -2,9 +2,12 @@
 Description=Controllo bottone luci acquario
 
 [Service]
-Type=oneshot
+Type=simple
+Restart=always
+RestartSec=5
 ExecStart=/home/pi/domotica/SensoriAcquario/pushButtonStartUp.sh start
 ExecStop=/home/pi/domotica/SensoriAcquario/pushButtonStartUp.sh  stop
+ExecReload=/home/pi/domotica/SensoriAcquario/pushButtonStartUp.sh restart
 RemainAfterExit=yes
 
 [Install]
