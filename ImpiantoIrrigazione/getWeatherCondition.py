@@ -13,11 +13,11 @@ import time
 from datetime import datetime
 from common.config import weather
 from common.logAction import *
-from os import path
+import os
 
 config_weather = weather()
 
-FILE_NAME=path.basename(__file__)
+FILE_NAME=os.path.basename(__file__)
 OWN_KEY = config_weather['OWM KEY']
 LOCATION = config_weather['Place']
 
@@ -29,8 +29,10 @@ db = client.domotica.meteo
 
 logOut(3,FILE_NAME,"Processo raccolta informazioni meteo partito")
 while True:    
+
     
     try:
+        logOut(4,FILE_NAME,"Recupero informazioni meteo")
         observation = owm.weather_at_place(LOCATION)
         w = observation.get_weather()
         t = observation.get_reception_time(timeformat='iso') 
@@ -74,7 +76,7 @@ while True:
                 'rain' : rain,
                 'snow': snow
         }
-
+        logOut(4,FILE_NAME,"Documento da memorizzare "+str(weather))
 
        #Check if the document MONTH_YEAR exist on mongodb
         Periodo = {}
@@ -91,6 +93,7 @@ while True:
         result = db.find({},{"Jul 2016":1})    
         if(result.count() == 0):
             db.insert(Periodo)
+            logOut(2,FILE_NAME,"Periodo non presente in DB, lo creo")
         else:
             db.update({
               "_id" : result[0]['_id'],
@@ -100,12 +103,20 @@ while True:
               }
             },upsert=False)
 
-        time.sleep(60*60)
+            logOut(3,FILE_NAME,"Periodo presente in DB, vado in aggiunta ")
 
     except AttributeError as Attr:
         logOut(2,FILE_NAME,"ATTENZIONE, errore observation data not available "+str(Attr))
-        time.sleep(60*60)
 
     except:
         logOut(2,FILE_NAME,"ATTENZIONE, non sono riuscito a recuperare le informazioni meteo, ritento al prossimo ciclo ")
-        time.sleep(60*60)
+
+
+
+    for t in range(int(3600 / 2)):
+        if(os.path.isfile('stopWeatherCondition.tmp')):
+            os.remove('stopWeatherCondition.tmp')
+            logOut(2,FILE_NAME,"Stop controllato del processo")
+            exit(0)
+
+        time.sleep(2)

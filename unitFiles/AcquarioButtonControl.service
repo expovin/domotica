@@ -1,0 +1,11 @@
+[Unit]
+Description=Controllo bottone luci acquario
+
+[Service]
+Type=oneshot
+ExecStart=/home/pi/domotica/SensoriAcquario/pushButtonStartUp.sh start
+ExecStop=/home/pi/domotica/SensoriAcquario/pushButtonStartUp.sh  stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

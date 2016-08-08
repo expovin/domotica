@@ -1,0 +1,11 @@
+[Unit]
+Description=Recupero informazioni meteo
+
+[Service]
+Type=oneshot
+ExecStart=/home/pi/domotica/ImpiantoIrrigazione/getWeatherCondition.sh start
+ExecStop=/home/pi/domotica/ImpiantoIrrigazione/getWeatherCondition.sh  stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

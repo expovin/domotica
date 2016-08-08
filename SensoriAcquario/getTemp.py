@@ -75,4 +75,13 @@ while True:
          GPIO.output(HEATER, 0)
 
     recordTemp(temp_c)
-    time.sleep(TIME_BETWEEN_READING)
+
+    for t in range(int(TIME_BETWEEN_READING / 2)):
+        if(os.path.isfile('stopGetTemp.tmp')):
+            os.remove('stopGetTemp.tmp')
+            logOut(2,FILE_NAME,"Stop controllato del processo stopGetTemp")
+            logEvent('INFO', 'getWaterTemp', 'Heater Stop', 'RStop controllato processo acquisizione temperatura acquario')
+            exit(0)
+
+        time.sleep(2)
+

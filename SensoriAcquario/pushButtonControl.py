@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+import os
 from common.MongoDbHandler import logEvent
 from common.config import GPIOconfig
 
@@ -15,6 +16,7 @@ logEvent('INFO', 'pushButtonHandler', 'Script Boot', 'Script fired at the system
 
 while True:
     input_state = GPIO.input(PortCfg['pushButton'])
+    time.sleep(0.2)
     if input_state == True:
         if(GPIO.input(PortCfg['Lights']) == 0):
             logEvent('INFO', 'pushButtonHandler', 'Manual Switch', 'Manual switch light to OFF')
@@ -23,4 +25,12 @@ while True:
             print("Accendo la luce")
             GPIO.output(PortCfg['Lights'], 0)
             logEvent('INFO', 'pushButtonHandler', 'Manual Switch', 'Manual switch light to ON')
+
         time.sleep(0.7)
+
+    if(os.path.isfile('stopPushButton.tmp')):
+        os.remove('stopPushButton.tmp')
+        logOut(2,FILE_NAME,"Stop controllato del processo")
+        exit(0)
+
+    

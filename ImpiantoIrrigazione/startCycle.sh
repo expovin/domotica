@@ -4,11 +4,6 @@
 export PYTHONPATH=/home/pi/domotica
 
 
-restart() {
-  stop
-  start
-}
-
 status() {
   echo "Not yet implemented"
 }
