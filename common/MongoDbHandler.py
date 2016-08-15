@@ -262,13 +262,17 @@ def getRain(nDay,dbgPath = None):
 
 # Questa funzione restituisce la media del vento nDay precedenti ad oggi
 
-def getWind(nDay):
+def getWind(nDay,dbgPath = None):
     db = connection.domotica.meteo
 
-    yesterday = date.today() - timedelta(nDay) # Calcolo la giornata nDay fa
-    month_year = yesterday.strftime("%Y%m")    # Anno_Mese ieri
-    local_day = yesterday.strftime("%d")       # Giorno di ieri
-    path = month_year+"."+local_day
+    if(dbgPath == None):
+        yesterday = date.today() - timedelta(nDay) # Calcolo la giornata nDay fa
+        month_year = yesterday.strftime("%Y%m")    # Anno_Mese ieri
+        local_day = yesterday.strftime("%d")       # Giorno di ieri
+        path = month_year+"."+local_day
+    else:
+        path = dbgPath
+        month_year, local_day = path.split(".")
 
     logOut(4,FILE_NAME,"Recupero informazioni meteo <Vento> per il giorno "+path) 
     try :
@@ -297,7 +301,7 @@ def getWind(nDay):
 # il calcolo della temperatura viene fatto x ore dopo l'alba e y ore prima del
 # tramonto
 
-def getTemp(nDay):
+def getTemp(nDay,dbgPath = None):
     db = connection.domotica.meteo
     config_Irg  = irrigazione()               # Lettura configurazione irrigazione
 
@@ -306,10 +310,15 @@ def getTemp(nDay):
     OFFSET_ALBA = config_Irg['PolicyIrrigazione']['03']['OffsetAlbaOre']
     OFFSET_TRAMONTO = config_Irg['PolicyIrrigazione']['03']['OffsetTramontoOre']
 
-    yesterday = date.today() - timedelta(nDay) # Calcolo la giornata nDay fa
-    month_year = yesterday.strftime("%Y%m")    # Anno_Mese ieri
-    local_day = yesterday.strftime("%d")       # Giorno di ieri
-    path = month_year+"."+local_day
+    if(dbgPath == None):
+        yesterday = date.today() - timedelta(nDay) # Calcolo la giornata nDay fa
+        month_year = yesterday.strftime("%Y%m")    # Anno_Mese ieri
+        local_day = yesterday.strftime("%d")       # Giorno di ieri
+        path = month_year+"."+local_day
+    else:
+        path = dbgPath
+        month_year, local_day = path.split(".")
+
 
     logOut(4,FILE_NAME,"Recupero informazioni meteo <Temperatura> per il giorno "\
         +path) 
@@ -353,14 +362,18 @@ def getTemp(nDay):
 
 # Questa funzione restituisce 
 
-def getIrrigatedWater(nDay,zona):
+def getIrrigatedWater(nDay,zona,dbgPath = None):
     totIrrigatedWater = 0.0
     db = connection.domotica.irrigazione
 
-    yesterday = date.today() - timedelta(nDay) # Calcolo la giornata nDay fa
-    month_year = yesterday.strftime("%Y%m")    # Anno_Mese ieri
-    local_day = yesterday.strftime("%d")       # Giorno di ieri
-    path = month_year+"."+local_day
+    if(dbgPath == None):
+        yesterday = date.today() - timedelta(nDay) # Calcolo la giornata nDay fa
+        month_year = yesterday.strftime("%Y%m")    # Anno_Mese ieri
+        local_day = yesterday.strftime("%d")       # Giorno di ieri
+        path = month_year+"."+local_day
+    else:
+        path = dbgPath
+        month_year, local_day = path.split(".")
 
     logOut(4,FILE_NAME,"Recupero informazioni irrigazione per il giorno "+path) 
     try :
@@ -387,7 +400,6 @@ def getIrrigatedWater(nDay,zona):
 
 def getAvgTempNDays(nDays):
     avgTemp = []
-    #totTemp = 0.0    
 
     for day in range(nDays):
         avgTemp.append(getTemp(day+1))
