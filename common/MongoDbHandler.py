@@ -398,11 +398,11 @@ def getIrrigatedWater(nDay,zona,dbgPath = None):
 # ultimi nDays ricevuti come parametro. La temperatura media e calcolata tra un
 # offset di ore dopo l'alba e prima del tramonto, specificato nel db config
 
-def getAvgTempNDays(nDays):
+def getAvgTempNDays(nDays,offset=0):
     avgTemp = []
 
     for day in range(nDays):
-        avgTemp.append(getTemp(day+1))
+        avgTemp.append(getTemp(day+1+offset))
 
     logOut(3,FILE_NAME,"Temperatura media per gli ultimi "+\
         str(nDays)+" giorni :"+str(avgTemp))
@@ -414,11 +414,11 @@ def getAvgTempNDays(nDays):
 # ultimi nDays ricevuti come parametro. Il vento medio e calcolata nelle 24h
 # degli nDays precedenti
 
-def getAvgWindDays(nDays):
+def getAvgWindDays(nDays,offset=0):
     avgWind = []
 
     for day in range(nDays):
-        avgWind.append(getWind(day+1))
+        avgWind.append(getWind(day+1+offset))
 
     logOut(3,FILE_NAME,"Vento medio per gli ultimi "+str(nDays)+" giorni :"\
         +str(avgWind))
@@ -428,11 +428,11 @@ def getAvgWindDays(nDays):
 # Questa funzione richiama piu volte getRain sulle nDays precedenti e 
 # restituisce il totale dei mm di pioggia caduti negli ultimi giorni
 
-def getTotalRainDays(nDays):
+def getTotalRainDays(nDays,offset=0):
     totRain = []
 
     for day in range(nDays):
-        totRain.append(getRain(day+1))
+        totRain.append(getRain(day+1+offset))
 
     logOut(3,FILE_NAME,"Pioggia totale negli ultimi "+str(nDays)+" giorni :"\
         +str(totRain))
@@ -442,11 +442,11 @@ def getTotalRainDays(nDays):
 # Questa funzione restituisce il totale dell'acqua irrigata negli nDays 
 # precedenti, leggendola da db
 
-def getTotalIrrigatedWater(nDays, zona):
+def getTotalIrrigatedWater(nDays, zona, offset=0):
     totalIrrigatedWater = []
 
     for day in range(nDays+1):
-        totalIrrigatedWater.append(getIrrigatedWater(day,zona))
+        totalIrrigatedWater.append(getIrrigatedWater(day+offset,zona))
 
     return totalIrrigatedWater
 
