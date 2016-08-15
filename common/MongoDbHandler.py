@@ -223,13 +223,17 @@ def logEvent(level, module, action, message):
 
 # Questa funzione restituisce il totale dei mm di pioggia caduti il nDay 
 # precedenti
-def getRain(nDay):
+def getRain(nDay,dbgPath = None):
     db = connection.domotica.meteo
 
-    yesterday = date.today() - timedelta(nDay) # Calcolo la giornata nDay fa
-    month_year = yesterday.strftime("%Y%m")    # Anno_Mese ieri
-    local_day = yesterday.strftime("%d")       # Giorno di ieri
-    path = month_year+"."+local_day
+    if(dbgPath == None):
+        yesterday = date.today() - timedelta(nDay) # Calcolo la giornata nDay fa
+        month_year = yesterday.strftime("%Y%m")    # Anno_Mese ieri
+        local_day = yesterday.strftime("%d")       # Giorno di ieri
+        path = month_year+"."+local_day
+    else:
+        path = dbgPath
+        month_year, local_day = path.split(".")
    
     logOut(4,FILE_NAME,"Recupero informazioni meteo <Pioggia> per il giorno "+path) 
     try :
@@ -237,16 +241,19 @@ def getRain(nDay):
         array = result[0][month_year][local_day]
         mmRain = 0
         for ele in array:
-            if len(ele['rain']) > 0:
+            if '1h' in ele['rain']:
                 mmRain += ele['rain']['1h']
-                logOut(5,FILE_NAME,"Pioggia per elemento  "+str(ele['time'])+" : "+str(ele['rain']['1h']))
+                logOut(5,FILE_NAME,"Pioggia 1h per elemento  "+str(ele['time'])+" : "+str(ele['rain']['1h']))
+            if '3h' in ele['rain']:
+                mmRain += ele['rain']['3h']
+                logOut(5,FILE_NAME,"Pioggia 3h per elemento  "+str(ele['time'])+" : "+str(ele['rain']['3h']))
 
         logOut(3,FILE_NAME,"Pioggia caduta il "+path+" mm :"+str(mmRain))
  
-    except KeyError:
+    except KeyError, err:
         # Correzione errore 5. Nel caso non siano state raccolte informazioni meteo
         # nella giornata precedente, considero pioggia 0
-        logOut(2,FILE_NAME,"Non ci sono informazioni meteo, considero no pioggia") 
+        logOut(2,FILE_NAME,"Non ci sono informazioni meteo, considero no pioggia. Errore :"+str(err)) 
         mmRain = 0         
 
     connection.close()
@@ -383,7 +390,7 @@ def getAvgTempNDays(nDays):
     #totTemp = 0.0    
 
     for day in range(nDays):
-        avgTemp.append(getTemp(day))
+        avgTemp.append(getTemp(day+1))
 
     logOut(3,FILE_NAME,"Temperatura media per gli ultimi "+\
         str(nDays)+" giorni :"+str(avgTemp))
@@ -399,7 +406,7 @@ def getAvgWindDays(nDays):
     avgWind = []
 
     for day in range(nDays):
-        avgWind.append(getWind(day))
+        avgWind.append(getWind(day+1))
 
     logOut(3,FILE_NAME,"Vento medio per gli ultimi "+str(nDays)+" giorni :"\
         +str(avgWind))
@@ -413,7 +420,7 @@ def getTotalRainDays(nDays):
     totRain = []
 
     for day in range(nDays):
-        totRain.append(getRain(day))
+        totRain.append(getRain(day+1))
 
     logOut(3,FILE_NAME,"Pioggia totale negli ultimi "+str(nDays)+" giorni :"\
         +str(totRain))
@@ -426,7 +433,7 @@ def getTotalRainDays(nDays):
 def getTotalIrrigatedWater(nDays, zona):
     totalIrrigatedWater = []
 
-    for day in range(nDays):
+    for day in range(nDays+1):
         totalIrrigatedWater.append(getIrrigatedWater(day,zona))
 
     return totalIrrigatedWater
