@@ -25,6 +25,7 @@ while True:
             print("Accendo la luce")
             GPIO.output(PortCfg['Lights'], 0)
             logEvent('INFO', 'pushButtonHandler', 'Manual Switch', 'Manual switch light to ON')
+<<<<<<< HEAD
 
         time.sleep(0.7)
 
@@ -34,3 +35,6 @@ while True:
         exit(0)
 
     
+=======
+    time.sleep(0.7)
+>>>>>>> 9760522bad10f38b132b6f0d2943f2a647e785af
