@@ -31,9 +31,8 @@ def getFabbisognoPioggia():
     # Calcolo il fabbisogno d'acqua al Mq in relazione alla
     # Temperatura e vento dei gg precedenti
     FabbisognoAcqua=[]
-    pioggiaCaduta=[]
     for gg in range(GG_TOT_ACQUA):
-        FabbisognoAcqua.append(calcolaFabbisognoAcqua(gg))
+        FabbisognoAcqua.append(calcolaFabbisognoAcqua(gg+1))
 
 
     return (FabbisognoAcqua)
@@ -59,15 +58,20 @@ def calcolaTempoIrrigazione(zona,FabbisognoAcqua,pioggiaCaduta):
             [int(zona)-1]['Mq'])
 
         AcquaEffettiva = FabbisognoAcqua[gg] - pioggiaCaduta[gg] -\
-            ( AcquaIrrigata[gg] / MQ_ZONA)
+            ( AcquaIrrigata[gg+1] / MQ_ZONA)
+
 
         logOut(5,FILE_NAME,"Per il giorno "+str(gg)+\
             " Il fabbisogno era di "+str(FabbisognoAcqua[gg])+\
             " Pioggia caduta "+str(pioggiaCaduta[gg])+\
-            " Acqua irrigata "+str(AcquaIrrigata[gg])+\
+            " Acqua irrigata "+str(AcquaIrrigata[gg+1])+\
             " Acqua da irrigare "+str(AcquaEffettiva))
 
         AcquaEffettivaTotale += AcquaEffettiva
+
+    logOut(5,FILE_NAME,"Oggi e' stato gia irrigato "+str(AcquaIrrigata[0]))
+    AcquaEffettivaTotale += AcquaIrrigata[0] / MQ_ZONA
+
 
     # Verifico per questa zona se il quantitativo d'acqua da distribuire 
     # supera la soglia minima.
