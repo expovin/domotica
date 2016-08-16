@@ -76,4 +76,8 @@ Prelevo condizioni del tempo 2016-07-13 17:57:32+00
 Prelevo condizioni del tempo 2016-07-13 18:57:32+00
 Prelevo condizioni del tempo 2016-07-13 19:57:33+00
 Prelevo condizioni del tempo 2016-07-13 20:57:41+00
-Prelevo condizioni del tempo 2016-07-13 
+Prelevo condizioni del tempo 2016-07-13 OWM API: observation data not available - response payload: {"message": "Error: Not found city", "cod": "404"}
+Traceback (most recent call last):
+  File "/home/pi/domotica/ImpiantoIrrigazione/getWeatherCondition.py", line 34, in <module>
+    w = observation.get_weather()
+AttributeError: 'NoneType' object has no attribute 'get_weather'

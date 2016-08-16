@@ -74,5 +74,14 @@ while True:
          logEvent('INFO', 'getWaterTemp', 'Heater Start', 'Reached the lowerbound temperature,("+str(temp_c)+") start the heater')
          GPIO.output(HEATER, 0)
 
-    getTemp(temp_c)
-    time.sleep(TIME_BETWEEN_READING)
+    recordTemp(temp_c)
+
+    for t in range(int(TIME_BETWEEN_READING / 2)):
+        if(os.path.isfile('stopGetTemp.tmp')):
+            os.remove('stopGetTemp.tmp')
+            logOut(2,FILE_NAME,"Stop controllato del processo stopGetTemp")
+            logEvent('INFO', 'getWaterTemp', 'Heater Stop', 'RStop controllato processo acquisizione temperatura acquario')
+            exit(0)
+
+        time.sleep(2)
+

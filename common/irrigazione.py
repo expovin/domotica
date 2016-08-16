@@ -7,7 +7,7 @@
 from sys import argv
 import socket
 from config import irrigazione
-from MongoDbHandler import logEvent
+from MongoDbHandler import *
 from time import sleep
 from bt004 import *
 from logAction import *
@@ -70,9 +70,11 @@ def initPorts():
             COMMAND=MESSAGE_PREFIX+"E000"
             sock.sendto(COMMAND, (UDP_IP, UDP_PORT))
             statusPort = getStatusPort()
-            logOut(3,FILE_NAME,"Inviato comando reset Porte. Stato porte ritornato : "+str(statusPort))
+            logOut(3,FILE_NAME,"Inviato comando reset Porte. Stato porte ritornato : " \
+                +str(statusPort))
             if(statusPort == -1):
-                logOut(1,FILE_NAME,"La scheda non risponde, riprovo tra "+str(r)+" minuti")
+                logOut(1,FILE_NAME,"La scheda non risponde, riprovo tra " \
+                    +str(r)+" minuti")
                 sleep(r*60)
             else:
                 SCHADA_OK = True
@@ -81,7 +83,7 @@ def initPorts():
     if(SCHADA_OK):
         # Tolgo la corrente alla scheda relay in modo da chiudere l'acqua
         logOut(3,FILE_NAME,"Chiudo per precauzione il relay, nel caso fosse rimasto aperto")
-        InactivePort("1","0")
+        #InactivePort("1","0")
 
         logOut(3,FILE_NAME,"Scheda correttamente resettata, parto con il ciclo di irrigazione")
         # La scheda ha risposto, parto con l'irrigazione. Verifico prima il flag di DEBUG
@@ -92,7 +94,8 @@ def initPorts():
     else:
         #La scheda non risponde, ritorno -1
         logOut(0,FILE_NAME,"La scheda non ha risposto nei tentativi interrompo l'irrigazione")
-        logEvent('ERROR', 'Irrigazione', 'Errore  scheda fuori linea', 'La scheda relay non ha risposto. Irrigazione terminata ')
+        logEvent('ERROR', 'Irrigazione', 'Errore  scheda fuori linea', \
+         'La scheda relay non ha risposto. Irrigazione terminata ')
         return -1
 
 # Questa funzione attiva o disattiva una certa zona di irrigazione relativamente 
@@ -122,10 +125,12 @@ def sendCommand(channel, status, tentative):
                 break;
             else:
                 if(tentative == MAX_TENTATIVE):
-                    logOut(1,FILE_NAME,"Raggiunto numero massimo di tentativi con comunicazione alla scheda, interrompo ciclo irrigazione")
+                    logOut(1,FILE_NAME,"Raggiunto numero massimo di tentativi" \
+                        " con comunicazione alla scheda, interrompo ciclo irrigazione")
                     stopCycle()
                 
-                logOut(2,FILE_NAME,"Letto stato porte "+str(statusPort)+" reinvio comando ")
+                logOut(2,FILE_NAME,"Letto stato porte "+str(statusPort)+ \
+                    " reinvio comando ")
                 tentative +=1
                 sleep(2)
                 sendCommand(channel, status, tentative)
@@ -155,13 +160,73 @@ def FlushListen(sock):
     except:
         return;
 
+# Questa funzione calcola il fabisogno di acqua per singola zona in
+# relazione alla temperatura e al vento degli ultimi n gg come
+# specificato nel db di configurazione
+
+def calcolaFabbisognoAcqua(day):
+    fabisogno = 0.0
+
+    # Lettura parametri da DB
+    ACQUA_MIN_MQ = float(cfgIrr['PolicyIrrigazione']['03']['AcquaMinMq'])
+    ACQUA_MAX_MQ = float(cfgIrr['PolicyIrrigazione']['03']['AcquaMaxMq'])
+    TEMP_MIN = float(cfgIrr['PolicyIrrigazione']['03']['TempMin'])
+    TEMP_MAX = float(cfgIrr['PolicyIrrigazione']['03']['TempMax'])
+    VENTO_MAX = float(cfgIrr['PolicyIrrigazione']['03']['VentoMax'])
+    ACQ_OFFSET_VENTO = float(cfgIrr['PolicyIrrigazione']['03']['AcquaOffsetVentoMq'])
+    GG_MEDIA_TEMP = (cfgIrr['PolicyIrrigazione']['03']['GiorniCalcoloMediaTemperatura'])
+    GG_MEDIA_VENTO = (cfgIrr['PolicyIrrigazione']['03']['GiorniCalcoloMediaVento'])    
+
+    logOut(4,FILE_NAME,"Calcolo fabbisogno acqua con i seguenti parametri: ")
+    logOut(4,FILE_NAME,"Day :"+str(day))
+    logOut(4,FILE_NAME,"AcquaMinMq: "+str(ACQUA_MIN_MQ))
+    logOut(4,FILE_NAME,"AcquaMaxMq: "+str(ACQUA_MAX_MQ))
+    logOut(4,FILE_NAME,"TempMin: "+str(TEMP_MIN))
+    logOut(4,FILE_NAME,"TempMax: "+str(TEMP_MAX))
+    logOut(4,FILE_NAME,"VentoMax: "+str(VENTO_MAX))
+    logOut(4,FILE_NAME,"AcquaOffsetVentoMq: "+str(ACQ_OFFSET_VENTO))
+
+
+    # Calcolo coefficente m (inclinazione retta)
+    m = (ACQUA_MAX_MQ - ACQUA_MIN_MQ) / (TEMP_MAX - TEMP_MIN)
+    logOut(5,FILE_NAME,"Parametro m : "+str(m))
+
+    # Calcolo coefficente offset Vento v
+    v = ACQ_OFFSET_VENTO / VENTO_MAX
+    logOut(5,FILE_NAME,"Parametro v : "+str(v))
+
+    # Calcolo della temperatura media giorni precedenti
+    avgTemp = getTemp(day)
+    logOut(5,FILE_NAME,"Temperatura Media per giorno -"+str(day)+": "+str(avgTemp))
+
+    #Calcolo del vento medio
+    avgWind = getWind(day)
+    logOut(5,FILE_NAME,"Vento Medio per giorno -"+str(day)+": "+str(avgWind))
+
+    #Calcolo fabbisogno acqua per Mq
+    if(avgTemp < TEMP_MIN):
+        logOut(4,FILE_NAME,"Fabbisogno acqua minimo: "+str(ACQUA_MIN_MQ + v * avgWind))
+        return(ACQUA_MIN_MQ + v * avgWind)
+
+    if(avgTemp > TEMP_MAX):
+        logOut(4,FILE_NAME,"Fabbisogno acqua massimo: "+str(ACQUA_MAX_MQ + v * avgWind))
+        return(ACQUA_MIN_MQ + v * avgWind)
+
+    fabisogno = m * (avgTemp - TEMP_MIN) + ACQUA_MIN_MQ + v * avgWind
+    logOut(3,FILE_NAME,"Fabbisogno acqua per giorno -"+str(day)+": "+str(fabisogno))
+
+
+    return fabisogno
+
 # Questo ciclo viene lanciato quando, pur riuscendo ad arrivare alla scheda 
 # relay, viene riscontrato errore nella ricezione dei comandi. Nel caso la 
 # procedura di stop non funzioni viene lanciata la procedura di emergenza.
 def stopCycle():
     statusPort = getStatusPort()
-    logOut(1,FILE_NAME,"Procedura di interruzione ciclo, stato attuale porte "+str(statusPort))
-    logEvent('ERROR', 'Irrigazione', 'Errore  invio comando', 'Stato attuale delle porte '+str(statusPort))
+    logOut(1,FILE_NAME,"Procedura di interruzione ciclo, stato attuale porte " \
+        +str(statusPort))
+    logEvent('ERROR', 'Irrigazione', 'Errore  invio comando', 'Stato attuale delle porte ' \
+        +str(statusPort))
     logOut(1,FILE_NAME,"Provo a resettare porte ")
     COMMAND=MESSAGE_PREFIX+"E000"
     sock.sendto(COMMAND, (UDP_IP, UDP_PORT))
@@ -172,9 +237,14 @@ def stopCycle():
         emergencyExit() 
     else:
         logOut(1,FILE_NAME,"Ciclo fermato correttamente")
-        #sendMail("Errore ciclo di irrigazione","Errore durante l'invio di un comando alla scheda relay","False")
+        # sendMail("Errore ciclo di irrigazione","Errore durante l'invio di un 
+        # comando alla scheda relay","False")
         exit(-2)
 
+
+def controlledStopCycle():
+    logOut(3,FILE_NAME,"Arrivato segnale di stop controllato")
+    exit(2)
 
 # Procedura di interruzione corrente. Questa procedura viene chiamata quando in 
 # fase di irrigazione non e possibile piu raggiungere la scheda relay. In questo 
@@ -182,7 +252,8 @@ def stopCycle():
 # relay.
 def emergencyExit():
     logOut(0,FILE_NAME,"PROCEDURA DI EMERGENZA PER INTERROMPERE CORRENTE")
-    logEvent('FATAL', 'Irrigazione', 'Errore Modulo realy non risponde ', 'Avvio tentativo di emergenza per chiudere acqua')
+    logEvent('FATAL', 'Irrigazione', 'Errore Modulo realy non risponde ', \
+        'Avvio tentativo di emergenza per chiudere acqua')
 
     # Tolgo la corrente alla scheda relay in modo da chiudere l'acqua
     ActivePort("1","0")
