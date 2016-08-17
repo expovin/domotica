@@ -13,19 +13,16 @@ import time
 from datetime import datetime
 from common.config import weather
 from common.logAction import *
-<<<<<<< HEAD
 import os
 
 config_weather = weather()
 
 FILE_NAME=os.path.basename(__file__)
-=======
 from os import path
 
 config_weather = weather()
 
 FILE_NAME=path.basename(__file__)
->>>>>>> 9760522bad10f38b132b6f0d2943f2a647e785af
 OWN_KEY = config_weather['OWM KEY']
 LOCATION = config_weather['Place']
 
@@ -37,7 +34,6 @@ db = client.domotica.meteo
 
 logOut(3,FILE_NAME,"Processo raccolta informazioni meteo partito")
 while True:    
-<<<<<<< HEAD
 
     
     try:
@@ -46,14 +42,7 @@ while True:
         w = observation.get_weather()
         t = observation.get_reception_time(timeformat='iso') 
 
-=======
     
-    try:
-        observation = owm.weather_at_place(LOCATION)
-        w = observation.get_weather()
-        t = observation.get_reception_time(timeformat='iso') 
-
->>>>>>> 9760522bad10f38b132b6f0d2943f2a647e785af
         ref_time = w.get_reference_time(timeformat='iso')
         ref_time_ux = w.get_reference_time()
         status = w.get_status()
@@ -120,7 +109,6 @@ while True:
               }
             },upsert=False)
 
-<<<<<<< HEAD
             logOut(3,FILE_NAME,"Periodo presente in DB, vado in aggiunta ")
 
     except AttributeError as Attr:
@@ -138,14 +126,9 @@ while True:
             exit(0)
 
         time.sleep(2)
-=======
-        time.sleep(60*60)
+        #time.sleep(60*60)
 
     except AttributeError as Attr:
         logOut(2,FILE_NAME,"ATTENZIONE, errore observation data not available "+str(Attr))
         time.sleep(60*60)
 
-    except:
-        logOut(2,FILE_NAME,"ATTENZIONE, non sono riuscito a recuperare le informazioni meteo, ritento al prossimo ciclo ")
-        time.sleep(60*60)
->>>>>>> 9760522bad10f38b132b6f0d2943f2a647e785af
