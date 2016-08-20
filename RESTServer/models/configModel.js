@@ -359,8 +359,88 @@ var GPIO = new Schema ({
      }
 });
 
+/*
+    SEZIONE Weather Info
+    Questa sezione definisce l'utilizzo delle API OWM per recuperare le 
+    informazioni meteo
+*/
 var WeatherInfo = new Schema ({ 
 
+    // Nome univoco del modulo, per scopi futuri
+    "Module Name" : {
+      type : String,
+      require : true
+    },
+    // Chiave per la chiamata API a Open Weather Map
+    "OWM KEY" : {
+      type : String,
+      require : true
+    },
+    // Localita' per la quale viene richiesta le info meteo
+    "Place" : {
+      type : String,
+      require : true
+    },
+    // Tempo in secondi tra una query e la successiva
+    "Interval Query" : {
+      type : Number,
+      min : 60,
+      require : true
+    }
+});
+
+
+/*
+    SEZIONE email
+    Questa sezione riporta tutti i parametri di configurazione dell'email
+*/
+var email = new Schema ({ 
+      // Username di configurazione email
+     "username" : {
+        type : String,
+        require : true
+     },
+    // Password di configurazione email
+     "password" : {
+        type : String,
+        require : true
+     },
+    // Nominativo in From di configurazione email
+     "from" : {
+        type : String,
+        require : true
+     },
+    // Elenco indirizzi a cui spedire le email
+     "to" : {
+        type : String,
+        require : true
+     },
+    // SMTP Server di configurazione email
+     "smtpServer" : {
+        type : String,
+        require : true
+     },
+     "smtpPort" : {
+        type : Number,
+        min: 1,
+        require : true
+     },
+    // debug level di configurazione email
+     "debugLevel" : {
+        type : String,
+        min: 0,
+        require : true
+     }
+});
+
+
+var general = new Schema ({ 
+
+    "LogLevel" : [String],
+    "Level" : {
+        type : Number,
+        require : true
+    }
 });
 
 
@@ -380,16 +460,22 @@ var config = new Schema ({
      },
 
     // Sezione irrigazione
-    "Irrigazione" :  [Irrigazione],
+    "Irrigazione" :  Irrigazione,
 
     // Sezione controllo Acquario
-    "Acquario" : [Acquario],
+    "Acquario" : Acquario,
 
     // Sezione GPIO
-    "GPIO" : [GPIO],
+    "GPIO" : GPIO,
 
     // Sezione Weather Info
-    "Weather Info" : [WeatherInfo]
+    "Weather Info" : WeatherInfo,
+
+    //Sezione email
+    "email" : email,
+
+    // Sezione General
+    "general" : general
 
 });
 
