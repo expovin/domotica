@@ -23,20 +23,15 @@ router.route('/')
 		res.json(conf);
 	    
 	 });
+})
+
+
+.post(function(req, res, next){
+
+    MyConf.create(req.body, function(err, saveConf){
+    	if (err) throw err;
+    	res.json(saveConf);
+    });
+
 });
-
-
-/*
-.put(function(req, res, next){   	
-        // Put the reference in the user detail
-	MyConf.findOne({"Tag":"Current"},  function(err, currConf){
-	    if(err) throw err;
-	    currConf = req.body;
-	    currConf.save(function(err,newConf){
-	    	res.json(newConf);
-	    })
-
-	 });
-});
-*/
 module.exports = router;
