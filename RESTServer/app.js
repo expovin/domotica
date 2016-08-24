@@ -20,6 +20,7 @@ db.once('open', function () {
 var routes = require('./routes/index');
 var users = require('./routes/save');
 var config = require('./routes/config');
+var sensori = require('./routes/sensori');
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/save', users);
 app.use('/config', config);
+app.use('/sensori', sensori);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

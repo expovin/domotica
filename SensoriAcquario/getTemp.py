@@ -23,7 +23,7 @@ DELTA_TEMP = AcqCfg['getTemp']['Temp']['Delta Trigger']
 CONSEC_READING = AcqCfg['getTemp']['Number of Consecutive Reading']
 TIME_CONSEC_READING =  AcqCfg['getTemp']['Time Between Consecutive Reading']
 TIME_BETWEEN_READING = AcqCfg['getTemp']['Interval Between Reading']
-
+_ID_TEMP_ACQ="57ba13a90b5af92e0a000e56"
 
 HEATER = Gpio['Heater']                # PIN in uscita che pilota l'accensione del riscaldatore
 GPIO.setup(HEATER, GPIO.OUT)
@@ -74,7 +74,7 @@ while True:
          logEvent('INFO', 'getWaterTemp', 'Heater Start', 'Reached the lowerbound temperature,("+str(temp_c)+") start the heater')
          GPIO.output(HEATER, 0)
 
-    recordTemp(temp_c)
+    recordTemp(temp_c,_ID_TEMP_ACQ)
 
     for t in range(int(TIME_BETWEEN_READING / 2)):
         if(os.path.isfile('stopGetTemp.tmp')):

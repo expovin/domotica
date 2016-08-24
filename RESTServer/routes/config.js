@@ -16,8 +16,10 @@ router.route('/')
 .get(function(req, res, next){
 
     MyConf.find({"Tag":"Current"}, function(err, conf){
-      if(err) throw err;
-       res.json(conf);
+    	if (err) 
+    		{ res.json(RC(100,"GET /config",err)); }
+    	else
+    		res.json(conf);
     });
 })
 
@@ -29,9 +31,11 @@ router.route('/')
 .put(function(req, res, next){   	
         // Put the reference in the user detail
 	MyConf.findOneAndUpdate({"Tag":"Current"}, req.body, {upsert:true}, 
-		function(err, conf){
-	    if(err) throw err;
-		res.json(RC(200));
+		function(err, conf) {
+    	if (err) 
+    		{ res.json(RC(300,"PUT /config",err)); }
+    	else
+			res.json(RC(200,"PUT /config"));
 	    
 	 });
 })
@@ -46,10 +50,10 @@ router.route('/')
 
     MyConf.create(req.body, function(err, saveConf){
     	if (err) {
-    		res.json(RC(300,"POST",err));
+    		res.json(RC(400,"POST /config",err));
     	}
     	else
-    	    res.json(RC(200));
+    	    res.json(RC(200,"POST /config"));
     });
 
 })
@@ -67,22 +71,31 @@ router.route('/')
 	var Params = {upsert:true};
 
     MyConf.findOneAndUpdate(Query , Update , Params , function(err, conf){
-	    if(err) throw err;
+    	if (err) {
+    		res.json(RC(300,"DELETE /config - Primo update",err));
+    	}
+    	else {
+			var Query = {"Tag":req.body.Tag};
+			console.log(Query);
+			var Update = { $set: { "Tag": "Current" } };
+			var Params = {upsert:true};
 
-		var Query = {"Tag":req.body.Tag};
-		console.log(Query);
-		var Update = { $set: { "Tag": "Current" } };
-		var Params = {upsert:true};
-	    MyConf.findOneAndUpdate(Query , Update , Params , function(err, conf){
-	    	if (err) throw err;
-	    	MyConf.find({"Tag":"markForDelete"}).remove(function(err,deleted){
-	    		if (err) throw err;
-	    		res.json(deleted);
-	    	});
-	    	
-	    });
+		    MyConf.findOneAndUpdate(Query , Update , Params , function(err, conf){
+		    	if (err) {
+		    		res.json(RC(300,"DELETE /config - Secondo update",err));
+		    	}
+		    	else {
+			    	MyConf.find({"Tag":"markForDelete"}).remove(function(err,deleted){
+				    	if (err) {
+				    		res.json(RC(500,"DELETE /config",err));
+				    	}
+				    	else
+				    		res.json(deleted);
+			    	});
+		    	}
+		    });
+    	}
 	 });
-
 });
 
 module.exports = router;

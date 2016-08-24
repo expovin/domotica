@@ -16,6 +16,7 @@ from os import path
 
 FILE_NAME=path.basename(__file__)
 
+
 connection = pymongo.MongoClient()    # Connect to the local  Server
 config_acq  =acquario()               # Lettura configurazione acquario
 
@@ -27,13 +28,13 @@ DELTA = config_acq['getTemp']['Temp']['Delta Trace']
 
 # Questa funzione si occupa di tracciare la temperatura nel DB solo se supera
 # DELTA altrimenti si limita ad aggiornare la data di ultimo update
-def recordTemp( temp):
+def recordTemp(temp,IDSensore):
 
     logOut(4,FILE_NAME,"Temperatura da memorizzare "+str(temp)+" verifico il " \
      "valore dell'ultima lettura")
    
     #Connect to the Acquarium DataBase Collection "Sensors"
-    db = connection.domotica.temperature
+    db = connection.domotica.sensori
 
     month_year = time.strftime("%Y%m")    # Anno Mese attuale
     local_day = time.strftime("%d")       # Giorno attuale in CET
@@ -44,19 +45,20 @@ def recordTemp( temp):
 
     # Documento da memorizzare
     acq_temp = {
-            "temp":float(temp),
+            "lettura":float(temp),
             "DataPrimoInserimento":time.strftime("%d/%m/%Y")+" " \
                  +time.strftime("%X"),
             "DataUltimoAggiornamento":time.strftime("%d/%m/%Y")+" " \
-                 +time.strftime("%X")
+                 +time.strftime("%X"),
+			"idSensore" : IDSensore
     };
     logOut(4,FILE_NAME,"Documento da memorizzare "+str(acq_temp))
     
     tempList.append(acq_temp)
-    sensore['acquario'] = tempList
-    giorno[local_day] = sensore
+    #sensore['acquario'] = tempList
+    giorno[local_day] = tempList
     Periodo[month_year] = giorno
-    path = month_year+"."+local_day+".acquario"
+    path = month_year+"."+local_day
 
     logOut(4,FILE_NAME,"Path di memorizzazione "+path)
 
