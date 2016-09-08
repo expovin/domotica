@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var Sensors = require('../models/SensoriModel');
+var LettureSensori = require('../models/LettureSensoriModel');
 var RC = require('../ReturnCodes');
 var router = express.Router();
 
@@ -49,7 +50,7 @@ router.route('/:uid')
     	if (err) 
     		{ res.json(RC(100,"GET /sensori/"+req.params.uid,err)); }
     	else
-       		res.json(sensors);
+       		res.json(sensors[0]);
     });
 })
 /* PUT
@@ -78,5 +79,41 @@ router.route('/:uid')
 	    	res.json(RC(200,"DELETE /sensori/"+req.params.uid));
 	});
 });
+
+router.route('/:sid/:periodo')
+.get(function(req, res, next){
+    console.log('Periodo : '+req.params.periodo+' idSensore : '+req.params.sid);
+    LettureSensori.aggregate([
+          {$match : {'Periodo' : req.params.periodo}},
+          {$unwind : "$Letture"},
+          {$match : {'Letture.idSensore':req.params.sid }},
+          {$sort : {'Letture.DataUltimoAggiornamento' : -1}}
+
+        ]
+        , function(err, sensors){
+        if (err) 
+            { res.json(RC(100,"GET /sensori/"+req.params.uid,err)); }
+        else
+            res.json(sensors);
+    });
+});
+
+router.route('/:sid/:periodo/:minDate')
+.get(function(req, res, next){
+    
+    LettureSensori.aggregate([
+          {$match : {'Periodo' : req.params.periodo, 'Letture.DataPrimoInserimento' : { $gt : req.params.periodo } }  },
+          {$unwind : "$Letture"},
+          {$match : {'Letture.idSensore':req.params.sid }},
+          {$sort : {'Letture.DataUltimoAggiornamento' : -1}}
+
+        ]
+        , function(err, sensors){
+        if (err) 
+            { res.json(RC(100,"GET /sensori/"+req.params.uid,err)); }
+        else
+            res.json(sensors);
+    });
+})
 
 module.exports = router;

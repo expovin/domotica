@@ -7,6 +7,7 @@
 ################################################################################
 
 import pymongo 
+from bson.objectid import ObjectId
 import sys
 import time
 from datetime import date, timedelta, datetime
@@ -28,9 +29,9 @@ DELTA = config_acq['getTemp']['Temp']['Delta Trace']
 
 # Questa funzione si occupa di tracciare la temperatura nel DB solo se supera
 # DELTA altrimenti si limita ad aggiornare la data di ultimo update
-def recordTemp(temp,IDSensore):
+def tracciaLettura(lettura,IDSensore):
 
-    logOut(4,FILE_NAME,"Temperatura da memorizzare "+str(temp)+" verifico il " \
+    logOut(4,FILE_NAME,"Temperatura da memorizzare "+str(lettura)+" verifico il " \
      "valore dell'ultima lettura")
    
     #Connect to the Acquarium DataBase Collection "Sensors"
@@ -45,7 +46,7 @@ def recordTemp(temp,IDSensore):
 
     # Documento da memorizzare
     acq_temp = {
-            "lettura":float(temp),
+            "lettura":float(lettura),
             "DataPrimoInserimento":time.strftime("%d/%m/%Y")+" " \
                  +time.strftime("%X"),
             "DataUltimoAggiornamento":time.strftime("%d/%m/%Y")+" " \
@@ -56,9 +57,9 @@ def recordTemp(temp,IDSensore):
     
     tempList.append(acq_temp)
     #sensore['acquario'] = tempList
-    giorno[local_day] = tempList
-    Periodo[month_year] = giorno
-    path = month_year+"."+local_day
+    #giorno[local_day] = tempList
+    Periodo[month_year] = tempList
+    path = month_year
 
     logOut(4,FILE_NAME,"Path di memorizzazione "+path)
 
@@ -66,45 +67,88 @@ def recordTemp(temp,IDSensore):
     # modificarlo
     logOut(4,FILE_NAME,"Verifico se esiste un documento per il periodo " \
         +month_year)
-    result = db.find({},{month_year:1})    
+    result = db.find({'Periodo' : month_year})    
     if(result.count() == 0):
         logOut(3,FILE_NAME,"Documento non esistente, ne inserisco uno nuovo")
         db.insert(Periodo)
     else:
         logOut(3,FILE_NAME,"Documento esistente, vado in aggiunta")
+        logOut(3,FILE_NAME,"Recupero l'ultima lettura effettuata con : "\
+            +IDSensore)
+
+        result = db.aggregate([
+            {'$match' : {'Periodo' : month_year}},
+            {'$unwind' : "$Letture"},
+            {'$match' : {'Letture.idSensore':IDSensore}},
+            {'$sort' : {'Letture.DataUltimoAggiornamento' : -1}},
+            {'$limit' : 1}
+        ])
+        l = {}
+        for i in result:
+            _id=i['_id']
+            l=i['Letture']
+
         try:            
-            temp_read = float(  result[0][month_year][local_day][-1]['temp'])
-            logOut(3,FILE_NAME,"Leggo ultima lettura memorizzata nel periodo " \
-                + str(temp_read))
+            last_read = float(l['lettura'])
+            lastModDate = l['DataUltimoAggiornamento']
+
+            logOut(4,FILE_NAME,"Leggo ultima lettura memorizzata " +\
+                str(last_read)+ " Data ultimo aggiornamento "+str(lastModDate))
         except:
             logOut(2,FILE_NAME,"Lettura precedente non presente," \
                 " inizzializzo a zero")
-            temp_read=0.0
+            last_read=0.0
 
 
         logOut(4,FILE_NAME,"Verifico che la temperatura superi il delta per la" \
-            " memorizzazione di un nuovo valore"+ str(temp_read))
-        if (abs(float(temp) - temp_read) > float(DELTA)):
+            " memorizzazione di un nuovo valore"+ str(last_read))
+        if (abs(float(lettura) - last_read) > float(DELTA)):
             logOut(4,FILE_NAME,"Temperatura variata, aggiungo nuova lettura! " \
-                +str(temp)+" : "+str(temp_read))
+                +str(lettura)+" : "+str(last_read))            
             db.update({
-              "_id" : result[0]['_id'],
+              "_id" : _id,  
             },{
               '$push' : {
-                path : Periodo[month_year][local_day][0]
+                Letture : acq_temp
               }
             },upsert=False)
+
         else:
+            logOut(4,FILE_NAME,"Temperatura nei range, aggiorno data ultima lettura" \
+                +str(lettura)+" : "+str(last_read))
+
             db.update({
-              "_id" : result[0]['_id'],path+'.DataUltimoAggiornamento': \
-              result[0][month_year][local_day][-1]['DataUltimoAggiornamento']
+              "_id" : _id,'Letture.DataUltimoAggiornamento': acq_temp['DataUltimoAggiornamento']
             },{
               '$set' : {
-                path+'.$.DataUltimoAggiornamento' : acq_temp['DataUltimoAggiornamento']
+                'Letture.$.DataUltimoAggiornamento' : acq_temp['DataUltimoAggiornamento']
               }
             })
 
-    connection.close()
+    #connection.close()
+
+def recordLettura(lettura,IDSensore):
+
+    db = connection.domotica.Sensori
+
+    logOut(3,FILE_NAME,"Aggiornamento lettura per sensore "+IDSensore+" a : "+str(lettura))
+
+
+    db.update({
+        "_id" : ObjectId(IDSensore)
+        },{
+          '$set' : {
+              'ultimaLettura' : lettura,
+              "dataUltimoAggiornamento": datetime.utcnow()
+          }
+    },upsert=True)
+
+    result = db.find_one({'_id' : ObjectId(IDSensore)})
+    if(result['TracciaStoria']):
+        logOut(3,FILE_NAME,"Abilitata tracciatura per il sensore "+IDSensore+" registro : "+str(lettura))
+        tracciaLettura(lettura,IDSensore)
+
+
 
 
 # Questa funzione si occupa di scrivere nel DB l'acqua effettivamente irrigata

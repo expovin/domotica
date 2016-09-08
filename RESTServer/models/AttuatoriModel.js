@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 
 
-var sensori = new Schema ({ 
+var attuatori = new Schema ({ 
 
 	"Tipo" : {
         type : String
