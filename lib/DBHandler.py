@@ -11,7 +11,7 @@ from bson.objectid import ObjectId
 import sys
 import time
 from datetime import date, timedelta, datetime
-from config import acquario,irrigazione
+from config import *
 from logAction import *
 from os import path
 
@@ -19,13 +19,14 @@ FILE_NAME=path.basename(__file__)
 
 
 connection = pymongo.MongoClient()    # Connect to the local  Server
-config_acq  =acquario()               # Lettura configurazione acquario
+config_acq = acquario()               # Lettura configurazione acquario
+config_gen = general()                # Lettura configurazione sezione General
 
 # Questa e la temperatura entro la quale non viene considerata rilevante una
 # variazione di temperatura, quindi non viene tracciata. Vengono tracciate solo
 # le temperature che differiscono di DELTA dalla precedente.
 # Questo parametro viene letto solo allo start del modulo
-DELTA = config_acq['getTemp']['Temp']['Delta Trace']
+
 
 # Questa funzione si occupa di tracciare la temperatura nel DB solo se supera
 # DELTA altrimenti si limita ad aggiornare la data di ultimo update
@@ -36,12 +37,23 @@ def tracciaLettura(lettura,IDSensore):
    
     #Connect to the Acquarium DataBase Collection "Sensors"
     db = connection.domotica.LettureSensori
+    dbs = connection.domotica.Sensori 
+
+    s = dbs.find_one({"_id" : ObjectId(IDSensore)})
+    if 'DeltaVariazioneTraccia' in s:
+        DELTA = s['DeltaVariazioneTraccia']
+        logOut(5,FILE_NAME,"Letto valore di DELTA locale "+str(DELTA) )
+    else:
+        DELTA = config_gen['DeltaVariazioneTraccia']
+        logOut(5,FILE_NAME,"Valore di DELTA locale non presente, uso il default "\
+            +str(DELTA) )
+
 
     month_year = time.strftime("%Y%m")    # Anno Mese attuale
     local_day = time.strftime("%d")       # Giorno attuale in CET
     Periodo = {}                          # Root Document (Periodo)
-    giorno = {}                           # Giorno del mese
-    sensore = {}                          # Sensore letto
+    Doc = {}                           # Giorno del mese
+    Letture = {}                          # Sensore letto
     tempList = []                         # Array di temperature lette
 
     # Documento da memorizzare
@@ -56,23 +68,27 @@ def tracciaLettura(lettura,IDSensore):
     logOut(4,FILE_NAME,"Documento da memorizzare "+str(acq_temp))
     
     tempList.append(acq_temp)
-    #sensore['acquario'] = tempList
-    #giorno[local_day] = tempList
-    Periodo[month_year] = tempList
+    Doc = {
+        'Periodo' : month_year,
+        'Letture' : tempList
+    }
     path = month_year
 
     logOut(4,FILE_NAME,"Path di memorizzazione "+path)
 
     # Verifico se il documento del periodo corrente gia esiste per inserirlo o
     # modificarlo
-    logOut(4,FILE_NAME,"Verifico se esiste un documento per il periodo " \
-        +month_year)
-    result = db.find({'Periodo' : month_year})    
-    if(result.count() == 0):
+    logOut(4,FILE_NAME,"Verifico se esiste un documento per il periodo " +month_year)
+    result = db.find_one({'Periodo' : month_year})    
+    if type(result) is not dict:
         logOut(3,FILE_NAME,"Documento non esistente, ne inserisco uno nuovo")
-        db.insert(Periodo)
+        db.insert(Doc)
     else:
-        logOut(3,FILE_NAME,"Documento esistente, vado in aggiunta")
+        
+        _id=result['_id']
+        
+
+        logOut(3,FILE_NAME,"Documento esistente "+str(_id)+" vado in aggiunta")
         logOut(3,FILE_NAME,"Recupero l'ultima lettura effettuata con : "\
             +IDSensore)
 
@@ -83,9 +99,9 @@ def tracciaLettura(lettura,IDSensore):
             {'$sort' : {'Letture.DataUltimoAggiornamento' : -1}},
             {'$limit' : 1}
         ])
-        l = {}
+
         for i in result:
-            _id=i['_id']
+            l = {}
             l=i['Letture']
 
         try:            
@@ -100,25 +116,26 @@ def tracciaLettura(lettura,IDSensore):
             last_read=0.0
 
 
-        logOut(4,FILE_NAME,"Verifico che la temperatura superi il delta per la" \
+        logOut(4,FILE_NAME,"Verifico che la temperatura "+str(lettura)+
+            " superi il delta "+str(DELTA)+" per la" \
             " memorizzazione di un nuovo valore"+ str(last_read))
-        if (abs(float(lettura) - last_read) > float(DELTA)):
+        if (abs(float(lettura) - float(last_read)) > float(DELTA)):
             logOut(4,FILE_NAME,"Temperatura variata, aggiungo nuova lettura! " \
                 +str(lettura)+" : "+str(last_read))            
             db.update({
               "_id" : _id,  
             },{
               '$push' : {
-                Letture : acq_temp
+                'Letture' : acq_temp
               }
             },upsert=False)
 
         else:
-            logOut(4,FILE_NAME,"Temperatura nei range, aggiorno data ultima lettura" \
-                +str(lettura)+" : "+str(last_read))
+            logOut(4,FILE_NAME,"Temperatura nei range, aggiorno data ultima lettura " \
+                +str(lettura)+" : "+str(last_read)+" "+str(acq_temp['DataUltimoAggiornamento']))
 
             db.update({
-              "_id" : _id,'Letture.DataUltimoAggiornamento': acq_temp['DataUltimoAggiornamento']
+              "_id" : _id,'Letture.DataUltimoAggiornamento': lastModDate
             },{
               '$set' : {
                 'Letture.$.DataUltimoAggiornamento' : acq_temp['DataUltimoAggiornamento']

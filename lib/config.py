@@ -11,10 +11,10 @@ import time             # Questa e da cancellare
 #Connect to the local  Server
 connection = pymongo.MongoClient()
 
-db = connection.domotica.config
+dbc = connection.domotica.config
 
 # Risultato della find (assumo che la collection abbia solo un documento)
-c = db.find({})
+c = dbc.find({'Tag' : 'Current'})
 
 def general():
 	return c[0]['general']
