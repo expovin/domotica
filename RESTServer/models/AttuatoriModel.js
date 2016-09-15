@@ -13,8 +13,26 @@ var attuatori = new Schema ({
         type : String
     },
 
+    "Descrizione" : {
+        type : String
+    },
+
     "Sito" : {
         type : String
+    },
+
+    "idGruppo" : {
+        type : String
+    },
+
+    "Porta" : {
+        type : Number,
+        require
+    },
+
+    "GPIO" : {
+        type : Number,
+        require
     },
 
     "TracciaStoria" : {
@@ -31,10 +49,6 @@ var attuatori = new Schema ({
 
 	"dataUltimoAggiornamento" : {
         type : Date
-    },
-
-	"ultimaLettura" : {
-        type : Number
     }
 });
 

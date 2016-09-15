@@ -22,6 +22,9 @@ var sensori = new Schema ({
         require : true,
         default : false
     },
+    "DeltaVariazioneTraccia" : {
+        type : Number
+    },
 
 	"dataInserimento" : {
         type : Date,

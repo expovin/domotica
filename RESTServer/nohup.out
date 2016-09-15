@@ -1,0 +1,9 @@
+
+> Domotica@0.0.0 start /home/pi/domotica/RESTServer
+> node ./bin/www
+
+Connected correctly to server
+[0mGET /sensori [32m200 [0m211.997 ms - 1402[0m
+[0mGET /favicon.ico [33m404 [0m3142.071 ms - 1690[0m
+[0mGET /favicon.ico [33m404 [0m261.116 ms - 1690[0m
+[0mGET /sensori/57cc7e1fa712bbee2150133d [32m200 [0m42.605 ms - 283[0m
