@@ -38,7 +38,7 @@ var attuatori = new Schema ({
     "TracciaStoria" : {
         type : Boolean,
         require : true,
-        default : false
+        default : false 
     },
 
 	"dataInserimento" : {
@@ -52,5 +52,5 @@ var attuatori = new Schema ({
     }
 });
 
-var collectionName = 'Sensori'
-module.exports = mongoose.model('sensori', sensori, collectionName)
+var collectionName = 'Attuatori'
+module.exports = mongoose.model('attuatori', attuatori, collectionName)
