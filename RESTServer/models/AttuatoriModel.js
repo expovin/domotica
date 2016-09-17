@@ -35,7 +35,7 @@ var attuatori = new Schema ({
         require
     },
 
-    "TracciaStoria" : {
+    "Traccia" : {
         type : Boolean,
         require : true,
         default : false 

@@ -1,6 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var Attuatori = require('../models/AttuatoriModel');
+var sys = require('sys')
+var exec = require('child_process').exec;
+
 //var LettureSensori = require('../models/LettureSensoriModel');
 var RC = require('../ReturnCodes');
 var router = express.Router();
@@ -80,41 +83,35 @@ router.route('/:uid')
 	});
 });
 
-/*
-router.route('/:sid/:periodo')
-.get(function(req, res, next){
-    console.log('Periodo : '+req.params.periodo+' idSensore : '+req.params.sid);
-    LettureSensori.aggregate([
-          {$match : {'Periodo' : req.params.periodo}},
-          {$unwind : "$Letture"},
-          {$match : {'Letture.idSensore':req.params.sid }},
-          {$sort : {'Letture.DataUltimoAggiornamento' : -1}}
 
-        ]
-        , function(err, sensors){
-        if (err) 
-            { res.json(RC(100,"GET /sensori/"+req.params.uid,err)); }
+router.route('/:aid/setStato')
+.put(function(req, res, next){
+    Attuatori.find({"_id":req.params.aid}, function(err, attuatori){
+      var child;
+      var cmd = "python /home/pi/domotica/lib/attuatori.py setStato "+req.body.Appliance+" --stato "+req.body.stato;
+      console.log(cmd);
+      child = exec(cmd, function (error, stdout, stderr) {
+        if(err)
+          res.json("Errore :"+stderr)
         else
-            res.json(sensors);
+          res.json("Stdout:"+stdout+",Stderr:"+stderr)
+      });
     });
 });
 
-router.route('/:sid/:periodo/:minDate')
-.get(function(req, res, next){
-    
-    LettureSensori.aggregate([
-          {$match : {'Periodo' : req.params.periodo, 'Letture.DataPrimoInserimento' : { $gt : req.params.periodo } }  },
-          {$unwind : "$Letture"},
-          {$match : {'Letture.idSensore':req.params.sid }},
-          {$sort : {'Letture.DataUltimoAggiornamento' : -1}}
-
-        ]
-        , function(err, sensors){
-        if (err) 
-            { res.json(RC(100,"GET /sensori/"+req.params.uid,err)); }
+router.route('/:aid/getStato')
+.put(function(req, res, next){
+    Attuatori.find({"_id":req.params.aid}, function(err, attuatori){
+      var child;
+      var cmd = "python /home/pi/domotica/lib/attuatori.py getStato "+req.body.Appliance;
+      console.log(cmd);
+      child = exec(cmd, function (error, stdout, stderr) {
+        if(err)
+          res.json("Errore :"+stderr)
         else
-            res.json(sensors);
+          res.json("Stdout:"+stdout+",Stderr:"+stderr)
+      });
     });
-})
-*/
+});
+
 module.exports = router;
