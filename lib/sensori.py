@@ -33,7 +33,7 @@ def getTemp_TMP36(ch):
     _id[3] = '57cc7e1fa712bbee2150133d'  # Sensore esterno
 
     for i in range(NUM_LETTURE_CONSECUTIVE):
-         value = adc.read_adc(int(ch), gain=4)
+         #value = adc.read_adc(int(ch), gain=4)
          milliv = value * ( 33 / 1024.0 )
          temp_c[i]=((milliv - 500.0) /10)
          time.sleep(0.2)

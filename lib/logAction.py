@@ -16,6 +16,9 @@ LogLvl = genCfg['LogLevel']
 username = emailCfg['username'] 
 password = emailCfg['password'] 
 
+def setDbgLvl(dbglvl):
+    lvl = dbglvl
+
 def sendMail(subject,body,attach):
     try:
         msg = MIMEMultipart()

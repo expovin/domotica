@@ -253,7 +253,7 @@ def logEvent(level, module, action, message):
     Periodo = {}
     giorno = {}
     events = []
-    path = month_year+"."+local_day
+    path = month_year+local_day
 
 
     event = {
@@ -265,10 +265,13 @@ def logEvent(level, module, action, message):
     }
  
     events.append(event)
-    giorno[local_day] = events
-    Periodo[month_year] = giorno
+    #giorno[local_day] = events
+    Periodo = {
+        "Periodo" : path,   
+        "Eventi" : events
+    }
     
-    result = db.find({},{month_year:1})
+    result = db.find({"Periodo":path})
     if(result.count() == 0):
         db.insert(Periodo)
     else:
@@ -276,7 +279,7 @@ def logEvent(level, module, action, message):
           "_id" : result[0]['_id'],
         },{
           '$push' : {
-            path : Periodo[month_year][local_day][0]
+            "Eventi" : event  
           }
         },upsert=False)
 
