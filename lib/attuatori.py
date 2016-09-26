@@ -49,7 +49,7 @@ def BT(appli, stato):
 def setStato(appliance,stato):
     LG.logOut(4,FILE_NAME,"Richiesta di cambio stato per appliance : "+appliance\
 		+" nuovo stato :"+str(stato))
-    appli = db.find_one({'ApplianceCollegato':appliance})
+    appli = db.find_one({'ApplianceCollegato':appliance,'Tipo':'PN'})
     stato=int(stato)
 
     Tipo=appli['Tipo']					# Recupero il tipo attuatore
@@ -71,7 +71,7 @@ def PNGet(appli):
 
 
 def getStato(appliance):
-    appli = db.find_one({'ApplianceCollegato':appliance})
+    appli = db.find_one({'ApplianceCollegato':appliance,'Tipo':'PN'})
 
     Tipo=appli['Tipo']
     return (globals()[Tipo+"Get"](appli))

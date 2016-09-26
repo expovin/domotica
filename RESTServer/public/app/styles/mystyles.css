@@ -1,0 +1,19 @@
+.myTagCrossDelete, .myTagButtonDelete {
+	display:none;
+}
+
+.myTagCrossDelete > .glyphicon {
+	color : #999;
+}
+
+.myTagCrossDelete > .glyphicon:hover {
+    color: red;
+}
+
+#inserimentoNuovoSensore, #dettaglioSelezionato, #dettaglioLettureSensore {
+	display:none;
+}
+
+#dettaglioSelezionato > .row > .col-md-5 > .row > i {
+	color: red;
+}

@@ -7,3 +7,51 @@ Connected correctly to server
 [0mGET /favicon.ico [33m404 [0m3142.071 ms - 1690[0m
 [0mGET /favicon.ico [33m404 [0m261.116 ms - 1690[0m
 [0mGET /sensori/57cc7e1fa712bbee2150133d [32m200 [0m42.605 ms - 283[0m
+
+> Domotica@0.0.0 start /home/pi/domotica/RESTServer
+> node ./bin/www
+
+(node) sys is deprecated. Use util instead.
+Connected correctly to server
+[0mGET / [32m200 [0m1801.104 ms - 170[0m
+[0mGET /stylesheets/style.css [33m404 [0m171.969 ms - 1690[0m
+[0mGET /attuatori [32m200 [0m173.308 ms - 3307[0m
+[0mGET /attuatori/57db08ea2733836d0896e814 [32m200 [0m26.288 ms - 236[0m
+[0mGET /sensori [32m200 [0m47.513 ms - 1682[0m
+[0mGET /sensori [36m304 [0m54.497 ms - -[0m
+[0mGET /app [36m303 [0m9.266 ms - 41[0m
+[0mGET /app/ [32m200 [0m24.548 ms - 2196[0m
+[0mGET /bower_components/bootstrap/dist/css/bootstrap.min.css [33m404 [0m151.312 ms - 1690[0m
+[0mGET /bower_components/bootstrap/dist/css/bootstrap-theme.min.css [33m404 [0m103.837 ms - 1690[0m
+[0mGET /bower_components/font-awesome/css/font-awesome.min.css [33m404 [0m175.175 ms - 1690[0m
+[0mGET /bower_components/angular/angular.min.js [33m404 [0m211.233 ms - 1690[0m
+[0mGET /app/styles/bootstrap-social.css [32m200 [0m223.407 ms - 18525[0m
+[0mGET /app/styles/mystyles.css [32m200 [0m222.835 ms - 2670[0m
+[0mGET /bower_components/angular-ui-router/release/angular-ui-router.min.js [33m404 [0m82.118 ms - 1690[0m
+[0mGET /bower_components/angular-local-storage/dist/angular-local-storage.min.js [33m404 [0m173.967 ms - 1690[0m
+[0mGET /bower_components/jquery/dist/jquery.min.js [33m404 [0m213.386 ms - 1690[0m
+[0mGET /bower_components/angular-resource/angular-resource.min.js [33m404 [0m34.501 ms - 1690[0m
+[0mGET /bower_components/angular-ui-bootstrap/ui-bootstrap-tpls-0.13.0.min.js [33m404 [0m32.596 ms - 1690[0m
+[0mGET /app/scripts/services.js [32m200 [0m81.784 ms - 8063[0m
+[0mGET /bower_components/bootstrap/dist/js/bootstrap.min.js [33m404 [0m34.872 ms - 1690[0m
+[0mGET /app/scripts/app.js [32m200 [0m75.089 ms - 1261[0m
+[0mGET /app/scripts/controllers.js [32m200 [0m71.261 ms - 9986[0m
+[0mGET /app/ [32m200 [0m3.233 ms - 2196[0m
+[0mGET /bower_components/bootstrap/dist/css/bootstrap.min.css [33m404 [0m62.028 ms - 1690[0m
+[0mGET /bower_components/bootstrap/dist/css/bootstrap-theme.min.css [33m404 [0m61.949 ms - 1690[0m
+[0mGET /bower_components/font-awesome/css/font-awesome.min.css [33m404 [0m98.123 ms - 1690[0m
+[0mGET /bower_components/angular/angular.min.js [33m404 [0m142.579 ms - 1690[0m
+[0mGET /bower_components/angular-ui-router/release/angular-ui-router.min.js [33m404 [0m181.478 ms - 1690[0m
+[0mGET /bower_components/angular-resource/angular-resource.min.js [33m404 [0m214.197 ms - 1690[0m
+[0mGET /app/styles/bootstrap-social.css [36m304 [0m11.776 ms - -[0m
+[0mGET /app/styles/mystyles.css [36m304 [0m11.810 ms - -[0m
+[0mGET /bower_components/angular-ui-bootstrap/ui-bootstrap-tpls-0.13.0.min.js [33m404 [0m45.594 ms - 1690[0m
+[0mGET /bower_components/bootstrap/dist/js/bootstrap.min.js [33m404 [0m88.647 ms - 1690[0m
+[0mGET /app/scripts/controllers.js [36m304 [0m90.246 ms - -[0m
+[0mGET /app/scripts/app.js [36m304 [0m9.212 ms - -[0m
+[0mGET /bower_components/jquery/dist/jquery.min.js [33m404 [0m54.692 ms - 1690[0m
+[0mGET /bower_components/angular-local-storage/dist/angular-local-storage.min.js [33m404 [0m85.242 ms - 1690[0m
+[0mGET /app/scripts/services.js [36m304 [0m1.447 ms - -[0m
+[0mGET / [36m304 [0m62.611 ms - -[0m
+[0mGET /stylesheets/style.css [33m404 [0m32.876 ms - 1690[0m
+[0mGET /sensori [36m304 [0m37.041 ms - -[0m
