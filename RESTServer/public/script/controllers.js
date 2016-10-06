@@ -17,50 +17,6 @@ angular.module('DomoHome')
       }
     })
 
-    /*****************************************************************************
-
-    .controller('navMenuConfigControllers', ['$scope', function($scope) {
-
-        console.log("Sono nel navMenuConfig")
-
-    }])
-
-    .controller('footerConfigControllers', ['$scope', function($scope) {
-
-        console.log("Sono nel footerConfigControllers")
-
-    }])
-
-
-    .controller('ListRowsController', ['$scope','sensorFactory', function($scope,sensorFactory) {
-
-
-        $scope.sensori =  sensorFactory.Sensori().query(
-            function(response) {
-                console.log('OK');
-            },
-            function(response){
-                console.log('Errore')
-            }
-        )
-
-
-    }])
-
-    .controller('DetailedRowsController', ['$scope', function($scope) {
-
-        console.log("Sono nel footerConfigControllers")
-
-    }])
-
-    .controller('ReadingsSensorsController', ['$scope', function($scope) {
-
-        console.log("Sono nel ReadingsSensorsController")
-
-    }])
-
-    *****************************************************************************/
-
     .controller('HomeController', ['$scope','$timeout', function($scope,$timeout) {
 
             $scope.clock = "loading clock..."; // initialise the time variable
