@@ -75,20 +75,7 @@ angular.module('DomoHome')
             $('#inserimentoNuovoSensore').css("display","block");
         }
 
-        $scope.recuperoUltimeLetture = function() {
 
-            $('#dettaglioLettureSensore').css("display","block");
-
-           $scope.letture =  sensorFactory.Letture().query({ids:this.sensore._id,Periodo:'201609'},
-                function(response) {
-                    console.log('Recuperate letture');
-                    
-                },
-                function(response){
-                    console.log('Errore')
-                }
-            );
-        }
 
         $scope.selectSensor = function() {
             $scope.sensore = this.sensore;

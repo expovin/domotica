@@ -1,24 +1,30 @@
 'use strict';
 angular.module('DomoHome')
 
-
+	/* 	Controller per la gestione del menu navigazione su tutto il front-end di 
+		configurazione
+	*/
     .controller('navMenuConfigControllers', ['$scope', function($scope) {
 
-        console.log("Sono nel navMenuConfig")
+   
 
     }])
 
+    /*	Controller sul footer della sezione di configurazione
+    */
     .controller('footerConfigControllers', ['$scope', function($scope) {
 
-        console.log("Sono nel footerConfigControllers")
 
     }])
 
 
+    /*	Controller utilizzato per la generazione e la gestione della lista di una 
+    	"Collection" arbitraria
+    */
     .controller('ListRowsController', ['$scope','sensorFactory', function($scope,sensorFactory) {
 
         /* Recupero la lista di Sensori censita a sistema*/
-        $scope.sensori =  sensorFactory.Sensori().query(
+        $scope.sensori =  sensorFactory.getCollection('Sensori').query(
             function(response) {
                 console.log('OK');
             },
@@ -26,19 +32,7 @@ angular.module('DomoHome')
                 console.log('Errore')
             }
         )
-
-
     }])
 
-    .controller('DetailedRowsController', ['$scope', function($scope) {
 
-        console.log("Sono nel footerConfigControllers")
-
-    }])
-
-    .controller('ReadingsSensorsController', ['$scope', function($scope) {
-
-        console.log("Sono nel ReadingsSensorsController")
-
-    }])
     ;

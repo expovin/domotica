@@ -10,10 +10,23 @@
     color: red;
 }
 
+/*
 #inserimentoNuovoSensore, #dettaglioSelezionato, #dettaglioLettureSensore {
 	display:none;
 }
+*/
 
 #dettaglioSelezionato > .row > .col-md-5 > .row > i {
 	color: red;
+}
+
+.ultimaLettura {
+	color: green;
+}
+
+#RowsList {
+	border-color: #333;
+	border-radius: 15px;
+	border-style: solid;
+	border-width: 1px;
 }

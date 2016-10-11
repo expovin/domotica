@@ -1,0 +1,62 @@
+        <div class="row row-content" id="inserimentoNuovoSensore">  
+          <h2>Inserimento nuovo sensore</h2> 
+
+          <div class="col-md-6">
+              <form class="form-horizontal" name="nuovoSensore" ng-submit="inserisciNuovoSensore()" novalidate>
+
+                  <div class="form-group" ng-class="{ 'has-error' : nuovoSensore.sensore.Modello.$error.required && !nuovoSensore.sensore.Modello.$pristine }">
+                    <label for="Modello" class="col-sm-2 control-label">Modello</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="Modello" name="Modello" placeholder="Scegliere nome modello" ng-model="nuovoSensore.sensore.Modello" required>
+                      </div>
+                  </div>
+
+                  <div class="form-group" ng-class="{ 'has-error' : nuovoSensore.sensore.Sito.$error.required && !nuovoSensore.sensore.Sito.$pristine }">
+                    <label for="Sito" class="col-sm-2 control-label">Sito</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="Sito" name="Sito" placeholder="Dove si trova il sensore?" ng-model="nuovoSensore.sensore.Sito" required>
+                      </div>
+                  </div>
+
+                  <div class="form-group" ng-class="{ 'has-error' : nuovoSensore.sensore.Tipo.$error.required && !nuovoSensore.sensore.Tipo.$pristine }">
+                    <label for="Tipo" class="col-sm-2 control-label">Tipo</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="Tipo" name="Tipo" placeholder="Che tipo di sensore e'?" ng-model="nuovoSensore.sensore.Tipo" required>
+                      </div>
+                  </div>
+
+                
+
+                <div class="form-group row">
+
+                    <label for="TracciaStoria" class="col-sm-2 control-label">Tracciatura</label>
+                      <div class="col-md-3">
+                          <input type="checkbox" class="form-control" id="TracciaStoria" name="TracciaStoria" ng-model="nuovoSensore.sensore.TracciaStoria" bootstrap-switch>
+                      </div>
+
+
+
+                    <label for="DeltaVariazioneTraccia" class="col-sm-2 control-label">Delta</label>
+                      <div class="col-md-5">
+                          <input type="number" 
+                                 class="form-control" 
+                                 placeholder="Delta Variazione" 
+                                 ng-model="nuovoSensore.sensore.DeltaVariazioneTraccia" 
+                                 ng-disabled="!nuovoSensore.sensore.TracciaStoria">
+                      </div>
+                </div>
+
+                
+                  
+                   <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary" ng-disabled="nuovoSensore.$invalid">Inserisci</button>
+                            <button type="button"  class="btn btn-warning"  ng-click="pulisciCampi()">Pulisci</button>
+                        </div>
+                    </div>
+
+
+                  </div>
+              </form>
+          </div>
+        </div>

@@ -1,1 +1,18 @@
-<h1>Placeholder ReadingsSensors.html </h1>
+
+        <div id="dettaglioLettureSensore">
+
+              <table class="table table-condensed">
+                  <thead>
+                      <th>Primo Inserimento</th>
+                      <th>Ultimo Aggiornamento</th>
+                      <th>Lettura</th>
+                  </thead>
+                  <tbody>
+                      <tr ng-repeat="lettura in letture">
+                        <td>{{lettura.Letture.DataPrimoInserimento | date :  "dd.MM.y HH:MM:ss"}}</td>
+                        <td>{{lettura.Letture.DataUltimoAggiornamento | date :  "dd.MM.y HH:MM:ss"}}</td>
+                        <td>{{lettura.Letture.lettura}}</td>
+                      </tr>
+                  </tbody>
+              </table>
+        </div>

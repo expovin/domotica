@@ -1,10 +1,6 @@
 'use strict';
 
-angular.module('DomoHome', [
-                            'DomoHome.Config',
-                            'ui.router',
-                            'ngResource',
-                            'ui.bootstrap'])
+angular.module('DomoHome', ['DomoHome.Config'])
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
         

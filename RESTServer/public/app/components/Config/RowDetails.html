@@ -1,0 +1,42 @@
+
+        <!-- Sezione Record -->
+    <div class="container">
+        <div class="row row-content" id="dettaglioSelezionato">  
+          <h2>Dettaglio {{Titolo}} {{sensore.Modello}} <small>{{sensore._id}}</small></h2> 
+
+          <dl class="col-md-3">
+            <div ng-repeat="lable in Fields['SX']" class="row">
+                <dt class="col-sm-4">{{lable}}</dt>
+                <dd class="col-sm-8 text-truncate">{{sensore[lable]}}</dd>
+            </div>
+          </dl>
+
+          <dl class="col-md-4">
+            <div ng-repeat="lable in Fields['DX']" class="row">
+                <dt class="col-sm-6">{{lable}}</dt>
+                <dd class="col-sm-6 text-truncate">{{sensore[lable] | date :  "dd.MM.y HH:MM:ss"}}</dd>
+            </div>
+          </dl>
+
+
+          <!--  Sezione Letture -->
+          <div class="col-md-5">
+            <div ui-view="SensorsReadings"></div>
+          </div>
+
+        </div>
+
+          <div class="row row-content">
+          <div class="col-md-2">
+              <div class="btn-group">
+                  <a ui-sref=".Letture({sensoreId : sensore._id})"><button type="button" class="btn btn-primary">Letture</button></a>
+                  <button type="button" class="btn btn-warning">Modifica</button>
+              </div>
+            </div>
+          </div>
+
+        
+    </div>
+
+
+    

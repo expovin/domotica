@@ -23,6 +23,19 @@ router.route('/')
     });
 })
 
+/*  Il metodo PUT permette di selezionare solo alcune colonne della
+    collection da passare nel body con standard MongoDB
+*/
+.put(function(req, res, next){
+    var query = Sensors.find({}).select(req.body);
+    query.exec(function(err, sensors){
+      if (err) 
+        { res.json(RC(100,"PUT /sensori",err)); }
+      else
+        res.json(sensors);
+    });
+})
+
 /*
 	POST
 	Il metodo post viene utilizzato per inserire a sistema un nuovo sensore.
