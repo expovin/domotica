@@ -15,16 +15,8 @@ angular.module('DomoHome')
                     return $resource(baseURL+"sensori", null, {'update' : {method : 'PUT', isArray:true} });
                 };    
 
-                sensfac.setSensori = function(sensori) {
-                    Sensori = sensori;
-                }
-
-                sensfac.getSensori = function() {
-                    return(Sensori);
-                }
-
                 sensfac.Sensore = function() {
-                    return $resource(baseURL+'sensori/:ids');
+                    return $resource(baseURL+'sensori/:ids', null, {'update' : {method : 'PUT'} });
                 }
 
                 sensfac.Letture = function() {

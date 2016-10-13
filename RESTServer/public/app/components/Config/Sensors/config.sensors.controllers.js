@@ -29,7 +29,8 @@ angular.module('DomoHome')
 
         /* Recupero la lista di Sensori censita a sistema*/
         $scope.sensori =  sensorFactory.Sensori().update($scope.Fields);
-        sensorFactory.setSensori($scope.sensori);
+
+     //   $rootScope.sensori = $scope.sensori;
 
 
         /*  La funzione cambia stato permette di passare dallo stato consultazione allo stato
@@ -52,12 +53,9 @@ angular.module('DomoHome')
                  .$promise.then(
                     //success
                     function( value ){
-
                         var start = value['long Message'].indexOf("sensori/")+8;
                         var end = value['long Message'].indexOf("eseguita")-1;
                         var sensorId=value['long Message'].substring(start,end);
-
-
 
                         for (var s in $scope.sensori) {
                             if($scope.sensori[s]['_id'] == sensorId)
@@ -74,13 +72,15 @@ angular.module('DomoHome')
 
     }])
 
-    .controller('DetailedSensorsController', ['$scope','$stateParams','sensorFactory', function($scope,$stateParams,sensorFactory) {
-        var sensori = sensorFactory.getSensori();
+    .controller('DetailedSensorsController', ['$scope','$stateParams','sensorFactory', 
+        function($scope,$stateParams,sensorFactory) {
+
+        
         var sensoreId = $stateParams.rigaId;
 
-        for(var s in sensori) {
-            if(sensori[s]['_id'] == sensoreId)
-                $scope.sensore = sensori[s];
+        for(var s in $scope.sensori) {
+            if($scope.sensori[s]['_id'] == sensoreId)
+                $scope.sensore = $scope.sensori[s];
         }
 
         $scope.Fields = {
@@ -90,16 +90,79 @@ angular.module('DomoHome')
 
     }])
 
-    .controller('AddNewSensorController', ['$scope','$stateParams','sensorFactory', function($scope,$stateParams,sensorFactory) {
+    .controller('ModifySensorsController', ['$scope','$stateParams','sensorFactory', 
+        function($scope,$stateParams,sensorFactory) {
+
+        var save={};
+        var pos;
+
+        var queryString = window.location.href;
+        var start = queryString.indexOf("/details")+8;
+        var end = queryString.length;
+        var sensoreId=queryString.substring(start,end);
+
+        for(var s in $scope.sensori) {
+            if($scope.sensori[s]['_id'] == sensoreId){
+                $scope.sensore = JSON.parse(JSON.stringify($scope.sensori[s]));
+                save=JSON.parse(JSON.stringify($scope.sensore));
+                pos=s;
+            }
+        }
+
+        $scope.resetCampi = function(){
+            console.log("resetCampi");
+            $scope.sensore = JSON.parse(JSON.stringify(save));
+        }
+
+        $scope.applyModSensore = function() {
+
+             var id=$scope.sensore['_id'];
+             delete $scope.sensore['_id'];
+             $scope.result = sensorFactory.Sensore().update({ids:id}, $scope.sensore)
+                 .$promise.then(
+                    //success
+                    function( value ){
+                        console.log(value);
+                        $scope.sensore['_id']=id;
+                        $scope.sensori[pos] = $scope.sensore;
+                        
+                    },
+                    //error
+                    function( error ){
+                        console.log(error);
+                     }
+                  )
+        }
+
+
+
+
+
+
+    }])
+
+
+    .controller('AddNewSensorController', ['$scope','$stateParams','sensorFactory', 
+        function($scope,$stateParams,sensorFactory) {
 
         $scope.inserisciNuovoSensore = function() {
+
+            
 
             $scope.result = sensorFactory.Sensori().save($scope.nuovoSensore.sensore)
                  .$promise.then(
                     //success
                     function( value ){
-                      $scope.pulisciCampi();
+                        console.log(value);
 
+                        var start = value['long Message'].indexOf("Inserito id")+12;
+                        var end = value['long Message'].indexOf("eseguita")-1;
+                        var sensorId=value['long Message'].substring(start,end);
+                        $scope.nuovoSensore.sensore['_id']=sensorId;
+                        
+                        $scope.sensori.push($scope.nuovoSensore.sensore);
+                        $scope.nuovoSensore.sensore={};
+                        
                     },
                     //error
                     function( error ){

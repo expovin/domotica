@@ -54,6 +54,16 @@ angular.module('DomoHome.Config', [
                 }
             })
 
+            .state('app.Config.Sensors.List.Details.ModifySensor', {
+                url: '/modSensor',
+                views: {
+                    'SensorsDetails@app.Config.Sensors.List': {
+                        templateUrl : 'components/Config/Sensors/ModifySensor.html',
+                        controller  : 'ModifySensorsController'
+                    }
+                }
+            })
+
             .state('app.Config.Sensors.List.NewRow', {
                 url: '/newRow',
                 views: {
@@ -63,6 +73,8 @@ angular.module('DomoHome.Config', [
                     }
                 }
             })
+
+
 
     ;
 });
