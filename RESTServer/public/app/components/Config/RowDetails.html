@@ -2,7 +2,12 @@
         <!-- Sezione Record -->
     <div class="container">
         <div class="row row-content" id="dettaglioSelezionato">  
+        <div class="col-md-11">
           <h2>Dettaglio {{Titolo}} {{sensore.Modello}} <small>{{sensore._id}}</small></h2> 
+        </div>
+        <div class="col-md-1">
+          <a ui-sref="app.Config.Sensors.List"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>
 
           <dl class="col-md-3">
             <div ng-repeat="lable in Fields['SX']" class="row">

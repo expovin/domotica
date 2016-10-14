@@ -24,9 +24,16 @@
 	color: green;
 }
 
-#RowsList {
-	border-color: #333;
-	border-radius: 15px;
-	border-style: solid;
-	border-width: 1px;
+#ExternalWindiows {
+	margin-top: 15px;
+	background-color: #EEEEEE;
+}
+
+#inserimentoNuovoSensore, #ModificaSensore, #dettaglioSelezionato {
+	margin-left: 15px;
+}
+
+#rowAreaIconBar a:hover {
+	/*margin-top: 5px;*/
+	color: red;
 }

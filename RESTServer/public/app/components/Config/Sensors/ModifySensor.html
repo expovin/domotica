@@ -1,5 +1,11 @@
-        <div class="row row-content" id="inserimentoNuovoSensore">  
+ <div class="container">
+        <div class="row row-content" id="ModificaSensore">  
+        <div class="col-md-11">
           <h2>Modifica sensore {{sensore.Modello}} <small>{{sensore._id}}</small></h2> 
+        </div>
+        <div class="col-md-1" id="rowAreaIconBar">
+          <a ui-sref="app.Config.Sensors.List"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>          
 
           <div class="col-md-6">
               <form class="form-horizontal" name="modificaSensore" ng-submit="applyModSensore()" novalidate>
@@ -66,3 +72,4 @@
               </form>
           </div>
         </div>
+  </div>

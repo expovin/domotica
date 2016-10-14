@@ -1,5 +1,12 @@
+ <div class="container">
         <div class="row row-content" id="inserimentoNuovoSensore">  
+        <div class="col-md-11">
           <h2>Inserimento nuovo sensore</h2> 
+        </div>
+        <div class="col-md-1" id="rowAreaIconBar">
+          <a ui-sref="app.Config.Sensors.List"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>          
+
 
           <div class="col-md-6">
               <form class="form-horizontal" name="nuovoSensore" ng-submit="inserisciNuovoSensore()" novalidate>
@@ -60,3 +67,4 @@
               </form>
           </div>
         </div>
+</div>

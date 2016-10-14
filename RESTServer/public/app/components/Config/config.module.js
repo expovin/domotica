@@ -68,7 +68,7 @@ angular.module('DomoHome.Config', [
                 url: '/newRow',
                 views: {
                     'SensorsDetails@app.Config.Sensors.List': {
-                        templateUrl : 'components/Config/AddRow.html',
+                        templateUrl : 'components/Config/Sensors/AddSensor.html',
                         controller  : 'AddNewSensorController'
                     }
                 }

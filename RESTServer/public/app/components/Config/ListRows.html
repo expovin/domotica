@@ -23,6 +23,7 @@
                                   id={{riga[_id]}}
                                   ng-click="eliminaRiga()">Elimina</button>
                       </td>
+
                       <td ng-repeat="(Lable, Row) in Fields" ng-if="Row == 1">{{riga[Lable]}}</td>
                     </tr>
 
@@ -45,4 +46,6 @@
         </div>
 
         <!-- Spazio dedicato al dettaglio o aggiunta record-->
-        <div ui-view="SensorsDetails"></div>
+        <div class="container" id="ExternalWindiows">
+            <div ui-view="SensorsDetails"></div>
+        </div>
