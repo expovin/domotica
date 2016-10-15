@@ -6,10 +6,11 @@ angular.module('DomoHome')
     /*  Controller utilizzato per la generazione e la gestione della lista di una 
         "Collection" arbitraria
     */
-    .controller('ListaSensori', ['$scope','sensorFactory','ListRowsFactory','$stateParams', 
-        function($scope,sensorFactory,ListRowsFactory,$stateParams) {
+    .controller('ListaAttuatori', ['$scope','attuatorFactory','ListRowsFactory','$stateParams', 
+        function($scope,attuatorFactory,ListRowsFactory,$stateParams) {
 
-        $scope.Titolo = "Sensori";
+        console.log("ListaAttuatoriController fired!");
+        $scope.Titolo = "Attuatori";
 
         /*  Di seguito sono elencati i soli campi della Collection che si vogliono elencare
             La chiave rappresenta l'etichetta del campo mentra il valore è il nome tecnico.
@@ -19,18 +20,15 @@ angular.module('DomoHome')
                                 'Modello' : 1, 
                                 'Tipo':1, 
                                 'Sito':1, 
-                                'TracciaStoria' : 1, 
-                                'ultimaLettura' :1,
-                                'dataUltimoAggiornamento' : 1,
+                                'Descrizione':1,
+                                'Traccia' : 1, 
                                 'dataInserimento' : 2,
                                 
                             };
         
 
         /* Recupero la lista di Sensori censita a sistema*/
-        $scope.sensori =  sensorFactory.Sensori().update($scope.Fields);
-
-     //   $rootScope.sensori = $scope.sensori;
+        $scope.sensori =  attuatorFactory.Attuatori().update($scope.Fields);
 
 
         /*  La funzione cambia stato permette di passare dallo stato consultazione allo stato
@@ -49,13 +47,14 @@ angular.module('DomoHome')
 
         $scope.eliminaRiga = function() {
 
-            $scope.result = sensorFactory.Sensore().delete({ids:this.riga._id})
+            $scope.result = attuatorFactory.Attuatore().delete({ids:this.riga._id})
                  .$promise.then(
                     //success
                     function( value ){
-                        var start = value['long Message'].indexOf("sensori/")+8;
+                        var start = value['long Message'].indexOf("attuatori/")+10;
                         var end = value['long Message'].indexOf("eseguita")-1;
                         var sensorId=value['long Message'].substring(start,end);
+                        console.log(sensorId);
 
                         for (var s in $scope.sensori) {
                             if($scope.sensori[s]['_id'] == sensorId)
@@ -72,27 +71,28 @@ angular.module('DomoHome')
 
     }])
 
-    .controller('DetailedSensorsController', ['$scope','$stateParams','sensorFactory', 
+    .controller('DetailedAttuatorsController', ['$scope','$stateParams','sensorFactory', 
         function($scope,$stateParams,sensorFactory) {
 
-        
-        var sensoreId = $stateParams.rigaId;
+        console.log("DetailedAttuatorsController fired!");
+        var attuatoreId = $stateParams.rigaId;
 
         for(var s in $scope.sensori) {
-            if($scope.sensori[s]['_id'] == sensoreId)
+            if($scope.sensori[s]['_id'] == attuatoreId)
                 $scope.sensore = $scope.sensori[s];
         }
 
         $scope.Fields = {
-            'SX' : ["Modello", "Tipo", "Sito", "TracciaStoria", "ultimaLettura"],
-            'DX' : ["dataUltimoAggiornamento", "dataInserimento"]
+            'SX' : ["Modello", "Tipo", "Sito", "Traccia", "Descrizione","idGruppo","Porta","GPIO"],
+            'DX' : ["dataInserimento"]
         }
 
     }])
 
-    .controller('ModifySensorsController', ['$scope','$stateParams','sensorFactory', 
+    .controller('ModifyAttuatorController', ['$scope','$stateParams','sensorFactory', 
         function($scope,$stateParams,sensorFactory) {
 
+        console.log("ModifyAttuatorController fired");
         var save={};
         var pos;
 

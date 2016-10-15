@@ -4,9 +4,12 @@ angular.module('DomoHome')
 	/* 	Controller per la gestione del menu navigazione su tutto il front-end di 
 		configurazione
 	*/
-    .controller('navMenuConfigControllers', ['$scope', function($scope) {
+    .controller('navMenuConfigControllers', ['$scope','$location', function($scope,$location) {
 
-   
+        $scope.isActive = function (viewLocation) { 
+            return $location.path().includes(viewLocation);
+        };
+
 
     }])
 

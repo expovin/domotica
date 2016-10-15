@@ -5,7 +5,7 @@
         <div class="col-md-11">
           <h2>Dettaglio {{Titolo}} {{sensore.Modello}} <small>{{sensore._id}}</small></h2> 
         </div>
-        <div class="col-md-1">
+        <div class="col-md-1" id="rowAreaIconBar">
           <a ui-sref="app.Config.Sensors.List"><span class="glyphicon glyphicon-remove"></span></a>
         </div>
 
@@ -35,7 +35,7 @@
           <div class="col-md-2">
               <div class="btn-group">
                   <a ui-sref=".Letture({sensoreId : sensore._id})"><button type="button" class="btn btn-primary">Letture</button></a>
-                  <a ui-sref=".ModifySensor"><button type="button" class="btn btn-warning">Modifica</button></a>
+                  <a ui-sref=".Modify"><button type="button" class="btn btn-warning">Modifica</button></a>
               </div>
             </div>
           </div>

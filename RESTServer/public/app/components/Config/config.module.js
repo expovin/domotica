@@ -7,6 +7,8 @@ angular.module('DomoHome.Config', [
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
 
+            /*  SEZIONE SENSORI */
+
             .state('app.Config.Sensors', {
                 url: '/sensors',
                 views: {
@@ -54,7 +56,7 @@ angular.module('DomoHome.Config', [
                 }
             })
 
-            .state('app.Config.Sensors.List.Details.ModifySensor', {
+            .state('app.Config.Sensors.List.Details.Modify', {
                 url: '/modSensor',
                 views: {
                     'SensorsDetails@app.Config.Sensors.List': {
@@ -75,6 +77,54 @@ angular.module('DomoHome.Config', [
             })
 
 
+        /*  SEZIONE ATTUATORI */
+
+            .state('app.Config.Attuators', {
+                url: '/attuators',
+                views: {
+                    'navMenuConfig@app.Config' : {
+                        templateUrl : 'components/Config/navMenuConfig.html',
+                        controller : 'navMenuConfigControllers'
+                    },
+                    'contentConfig@app.Config': {
+                        templateUrl : 'components/Config/Attuators/indexConfigAttuators.html'
+                    },
+                    'footerConfig@app.Config' : {
+                        templateUrl : 'components/Config/footerConfig.html',
+                        controller : 'footerConfigControllers'
+                    }
+                }
+            })
+
+            .state('app.Config.Attuators.List', {
+                url: '/list',
+                views: {
+                    'AttuatorsList@app.Config.Attuators' : {
+                        templateUrl : 'components/Config/ListRows.html',
+                        controller : 'ListaAttuatori'
+                    }
+                }
+            })
+
+            .state('app.Config.Attuators.List.Details', {
+                url: '/details:rigaId',
+                views: {
+                    'SensorsDetails@app.Config.Attuators.List': {
+                        templateUrl : 'components/Config/RowDetails.html',
+                        controller  : 'DetailedAttuatorsController'
+                    }
+                }
+            })
+
+            .state('app.Config.Attuators.List.Details.Modify', {
+                url: '/modAttuator',
+                views: {
+                    'SensorsDetails@app.Config.Attuators.List': {
+                        templateUrl : 'components/Config/Attuators/ModifyAttuator.html',
+                        controller  : 'ModifyAttuatorController'
+                    }
+                }
+            })
 
     ;
 });
