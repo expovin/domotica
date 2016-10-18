@@ -46,16 +46,6 @@ angular.module('DomoHome.Config', [
                 }
             })
 
-            .state('app.Config.Sensors.List.Details.Letture', {
-                url: '/letture:sensoreId',
-                views: {
-                    'SensorsReadings@app.Config.Sensors.List.Details': {
-                        templateUrl : 'components/Config/Sensors/ReadingsSensors.html',
-                        controller  : 'ReadingsSensorsController'
-                    }
-                }
-            })
-
             .state('app.Config.Sensors.List.Details.Modify', {
                 url: '/modSensor',
                 views: {
@@ -125,6 +115,38 @@ angular.module('DomoHome.Config', [
                     }
                 }
             })
+
+            .state('app.Config.Attuators.List.Details.Dispositivi', {
+                url: '/dispositivi',
+                views: {
+                    'SensorsDetails@app.Config.Attuators.List': {
+                        templateUrl : 'components/Config/Attuators/ModifyAttuator.html',
+                        controller  : 'ModifyAttuatorController'
+                    }
+                }
+            })
+
+
+            .state('app.Config.Attuators.List.NewRow', {
+                url: '/newRow',
+                views: {
+                    'SensorsDetails@app.Config.Attuators.List': {
+                        templateUrl : 'components/Config/Attuators/AddAttuator.html',
+                        controller  : 'AddNewAttuatorController'
+                    }
+                }
+            })
+
+            .state('app.Config.Attuators.List.Details.NewAppliances', {
+                url: '/newAppl',
+                views: {
+                    'formAddAppliance@app.Config.Attuators.List.Details': {
+                        templateUrl : 'components/Config/Attuators/AddAppliance.html',
+                        controller  : 'AddNewApplianceController'
+                    }
+                }
+            })
+
 
     ;
 });

@@ -17,12 +17,15 @@ angular.module('DomoHome')
         */
          $scope.Fields = { 
                             //    '_id' : 0,
-                                'Modello' : 1, 
+                                'Produttore' : 1,
+                                'Datasheet' : 2, 
                                 'Tipo':1, 
                                 'Sito':1, 
                                 'Descrizione':1,
-                                'Traccia' : 1, 
+                                'TracciaStoria' : 1, 
                                 'dataInserimento' : 2,
+                                'dataUltimaModifica' : 2,
+                                'Image' :2
                                 
                             };
         
@@ -71,8 +74,8 @@ angular.module('DomoHome')
 
     }])
 
-    .controller('DetailedAttuatorsController', ['$scope','$stateParams','sensorFactory', 
-        function($scope,$stateParams,sensorFactory) {
+    .controller('DetailedAttuatorsController', ['$scope','$stateParams','sensorFactory', '$modal',
+        function($scope,$stateParams,sensorFactory,$modal) {
 
         console.log("DetailedAttuatorsController fired!");
         var attuatoreId = $stateParams.rigaId;
@@ -83,14 +86,31 @@ angular.module('DomoHome')
         }
 
         $scope.Fields = {
-            'SX' : ["Modello", "Tipo", "Sito", "Traccia", "Descrizione","idGruppo","Porta","GPIO"],
-            'DX' : ["dataInserimento"]
+            'SX' : ["Produttore", "Tipo", "Sito", "TracciaStoria", "Descrizione","Connessione"],
+            'DX' : ["dataInserimento","dataUltimaModifica"]
         }
+
+        $scope.OpenModalAppliances = function(idAttuatore) {
+
+            $modal.open({ 
+            
+                templateUrl : 'components/Config/Attuators/ModalDispositivi.html',
+                controller  : 'ModalDispositiviController',
+                resolve : {
+                    param : function () {
+                        return idAttuatore;
+                    }
+                }
+            
+            
+            });
+        }
+
 
     }])
 
-    .controller('ModifyAttuatorController', ['$scope','$stateParams','sensorFactory', 
-        function($scope,$stateParams,sensorFactory) {
+    .controller('ModifyAttuatorController', ['$scope','$stateParams','attuatorFactory', 
+        function($scope,$stateParams,attuatorFactory) {
 
         console.log("ModifyAttuatorController fired");
         var save={};
@@ -118,7 +138,7 @@ angular.module('DomoHome')
 
              var id=$scope.sensore['_id'];
              delete $scope.sensore['_id'];
-             $scope.result = sensorFactory.Sensore().update({ids:id}, $scope.sensore)
+             $scope.result = attuatorFactory.Attuatore().update({ids:id}, $scope.sensore)
                  .$promise.then(
                     //success
                     function( value ){
@@ -134,22 +154,17 @@ angular.module('DomoHome')
                   )
         }
 
-
-
-
-
-
     }])
 
 
-    .controller('AddNewSensorController', ['$scope','$stateParams','sensorFactory', 
-        function($scope,$stateParams,sensorFactory) {
+    .controller('AddNewAttuatorController', ['$scope','$stateParams','attuatorFactory', 
+        function($scope,$stateParams,attuatorFactory) {
 
         $scope.inserisciNuovoSensore = function() {
 
             
 
-            $scope.result = sensorFactory.Sensori().save($scope.nuovoSensore.sensore)
+            $scope.result = attuatorFactory.Attuatori().save($scope.nuovoSensore.sensore)
                  .$promise.then(
                     //success
                     function( value ){
@@ -173,36 +188,65 @@ angular.module('DomoHome')
 
 
         $scope.pulisciCampi = function(){
-            $scope.nuovoSensore.sensore.Modello='';
-            $scope.nuovoSensore.sensore.Sito='';
-            $scope.nuovoSensore.sensore.Tipo='';
-            $scope.nuovoSensore.sensore.TracciaStoria=false;
-            $scope.nuovoSensore.sensore.DeltaVariazioneTraccia='';
+            $scope.nuovoSensore.sensore={};
         }        
+
+        $scope.AddAppliance = function(){
+            console.log("Aggiungere un nuovo appliance");
+        }
+    }])
+
+    .controller('AddNewApplianceController', ['$scope','attuatorFactory', 
+        function($scope,attuatorFactory) {
+
+            console.log("AddNewApplianceController");
+
     }])
 
 
-    .controller('ReadingsSensorsController', ['$scope','$stateParams','sensorFactory', function($scope,$stateParams,sensorFactory) {
+    .controller('ModalDispositiviController', ['$scope','$modalInstance','param','attuatorFactory', 
+        function($scope,$modalInstance,param,attuatorFactory) {
 
-        var id = $stateParams.sensoreId;
-
-        var today = new Date();
-        var mm = today.getMonth()+1
-        var pad= "00"
-        var mm = pad.substring(0,pad.length - mm.length) + mm;
-        var yyyy = today.getFullYear();
-        var periodo = yyyy+mm;
-     
+        var id = param;
+        console.log("id : "+id);
 
 
-        $scope.letture =  sensorFactory.Letture().query({ids:id,Periodo:periodo},
+        $scope.devices =  attuatorFactory.Dispositivi().query({ids:id},
             function(response) {
-                console.log('Recuperate letture');        
+                console.log('Recuperate Devices');        
             },
             function(response){
                 console.log('Errore')
             }
         );
 
+        $scope.cancel = function () {
+            console.log("Cancel");
+            $modalInstance.dismiss('cancel');
+        }
+
+        $scope.changeStatus = function(posizione) {
+
+            var id=$scope.devices[posizione]['_id'];
+            delete $scope.devices[posizione]['_id'];
+            attuatorFactory.Dispositivo().update({ids:id},$scope.devices[posizione])
+                 .$promise.then(
+                    //success
+                    function( value ){
+                        console.log(value);
+                        $scope.devices[posizione]['_id']=id;
+                    },
+                    //error
+                    function( error ){
+                        console.log(error);
+                     }
+                  )
+
+
+        }
+
+
+
     }])
+
     ;

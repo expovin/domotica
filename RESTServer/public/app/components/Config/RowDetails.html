@@ -1,47 +1,74 @@
 
         <!-- Sezione Record -->
-    <div class="container">
-        <div class="row row-content" id="dettaglioSelezionato">  
-        <div class="col-md-11">
-          <h2>Dettaglio {{Titolo}} {{sensore.Modello}} <small>{{sensore._id}}</small></h2> 
-        </div>
-        <div class="col-md-1" id="rowAreaIconBar">
-          <a ui-sref="app.Config.Sensors.List"><span class="glyphicon glyphicon-remove"></span></a>
-        </div>
+          <div class="media">
 
-          <dl class="col-md-3">
-            <div ng-repeat="lable in Fields['SX']" class="row">
-                <dt class="col-sm-4">{{lable}}</dt>
-                <dd class="col-sm-8 text-truncate">{{sensore[lable]}}</dd>
-            </div>
-          </dl>
+      <!--      <div class="container"> -->
 
-          <dl class="col-md-4">
-            <div ng-repeat="lable in Fields['DX']" class="row">
-                <dt class="col-sm-6">{{lable}}</dt>
-                <dd class="col-sm-6 text-truncate">{{sensore[lable] | date :  "dd.MM.y HH:MM:ss"}}</dd>
-            </div>
-          </dl>
+        <!--      <div class="row row-content" id="dettaglioSelezionato">  -->
+
+                  <div class="media-left media-middle">
+                      <img class="media-object" src="{{sensore.Image}}" alt="{{sensore.Modello}}" width="200px">
+                  </div>
+
+                  <div class="media-body">
+
+                    <div class="col-md-11">
+                      <h2>Dettaglio {{Titolo}} {{sensore.Modello}} <small>{{sensore._id}}</small></h2> 
+                    </div>
+                    <div class="col-md-1" id="rowAreaIconBar">
+                      <a ui-sref="app.Config.Sensors.List"><span class="glyphicon glyphicon-remove"></span></a>
+                    </div>
+
+                    <dl class="col-md-6">
+                      <div ng-repeat="lable in Fields['SX']" class="row">
+                          <dt class="col-sm-4">{{lable}}</dt>
+                          <dd class="col-sm-8 text-truncate">{{sensore[lable]}}</dd>
+                      </div>
+                      <div class="row">
+                           <dt class="col-sm-4">Datasheet</dt>
+                           <dd class="col-sm-8 text-truncate">
+                              <a href="{{sensore.Datasheet}}" target="_blank">
+                                <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
+                              </a>
+                            </dd>
+                      </div>
+                    </dl>
+
+                    <dl class="col-md-6">
+                      <div ng-repeat="lable in Fields['DX']" class="row">
+                          <dt class="col-sm-6">{{lable}}</dt>
+                          <dd class="col-sm-6 text-truncate">{{sensore[lable] | date :  "dd.MM.y HH:MM:ss"}}</dd>
+                      </div>
+                    </dl>
+
+                  </div>
+
+         <!--       </div> -->
 
 
-          <!--  Sezione Letture -->
-          <div class="col-md-5">
-            <div ui-view="SensorsReadings"></div>
+                <div class="row row-content">
+                <div class="col-md-4">
+                    <div class="btn-group">
+
+                        <button type="button" class="btn btn-primary" data-toggle="modal" 
+                                ng-show="Titolo =='Attuatori'" ng-click="OpenModalAppliances(sensore._id)">Stato</button>
+                        <button type="button" class="btn btn-info" data-toggle="modal" 
+                                ng-show="Titolo =='Attuatori'" ng-click="OpenModalAppliancesManager(sensore._id)">Gestione</button>
+
+                        <button type="button" class="btn btn-primary" data-toggle="modal" 
+                                ng-show="Titolo =='Sensori'" ng-click="OpenModalLetture(sensore._id)">Letture</button>
+                        <a ui-sref=".Modify"><button type="button" class="btn btn-warning">Modifica</button></a>
+                    </div>
+                  </div>
+                </div>
+
+        <!--      </div> -->
+
           </div>
 
-        </div>
+ 
 
-          <div class="row row-content">
-          <div class="col-md-2">
-              <div class="btn-group">
-                  <a ui-sref=".Letture({sensoreId : sensore._id})"><button type="button" class="btn btn-primary">Letture</button></a>
-                  <a ui-sref=".Modify"><button type="button" class="btn btn-warning">Modifica</button></a>
-              </div>
-            </div>
-          </div>
 
-        
-    </div>
 
 
     

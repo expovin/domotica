@@ -1,7 +1,7 @@
  <div class="container">
         <div class="row row-content" id="ModificaSensore">  
         <div class="col-md-11">
-          <h2>Modifica Attuatore {{sensore.Modello}} <small>{{sensore._id}}</small></h2> 
+          <h2>Modifica Attuatore {{sensore.Tipo}} <small>{{sensore._id}}</small></h2> 
         </div>
         <div class="col-md-1" id="rowAreaIconBar">
           <a ui-sref="app.Config.Sensors.List"><span class="glyphicon glyphicon-remove"></span></a>
@@ -10,11 +10,11 @@
           <div class="col-md-6">
               <form class="form-horizontal" name="modificaSensore" ng-submit="applyModSensore()" novalidate>
 
-                  <div class="form-group" ng-class="{ 'has-error' : sensore.Modello.$error.required && !sensore.Modello.$pristine }">
-                    <label for="Modello" class="col-sm-2 control-label">Modello</label>
+                  <div class="form-group" ng-class="{ 'has-error' : sensore.Produttore.$error.required && !sensore.Produttore.$pristine }">
+                    <label for="Produttore" class="col-sm-2 control-label">Produttore</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="Modello" name="Modello"
-                               ng-model="sensore.Modello" required>
+                        <input type="text" class="form-control" id="Produttore" name="Produttore"
+                               ng-model="sensore.Produttore" required>
                       </div>
                   </div>
 
@@ -39,19 +39,27 @@
                       </div>
                   </div>
 
-                  <div class="form-group" ng-class="{ 'has-error' : sensore.idGruppo.$error.required && !sensore.idGruppo.$pristine }">
-                    <label for="idGruppo" class="col-sm-2 control-label">idGruppo</label>
+                  <div class="form-group" ng-class="{ 'has-error' : sensore.Prefix.$error.required && !sensore.Prefix.$pristine }">
+                    <label for="Prefix" class="col-sm-2 control-label">Prefix</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="idGruppo" name="idGruppo" ng-model="sensore.idGruppo" required>
+                        <input type="text" class="form-control" id="Prefix" name="Prefix" ng-model="sensore.Prefix" required>
                       </div>
                   </div>
 
-                  <div class="form-group" ng-class="{ 'has-error' : sensore.Porta.$error.required && !sensore.Porta.$pristine }">
-                    <label for="Porta" class="col-sm-2 control-label">Porta</label>
+                  <div class="form-group" ng-class="{ 'has-error' : sensore.Datasheet.$error.required && !sensore.Datasheet.$pristine }">
+                    <label for="Datasheet" class="col-sm-2 control-label">Datasheet</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="Porta" name="Porta" ng-model="sensore.Porta" required>
+                        <input type="text" class="form-control" id="Datasheet" name="Datasheet" ng-model="sensore.Datasheet" required>
                       </div>
                   </div>
+
+                  <div class="form-group" ng-class="{ 'has-error' : sensore.Image.$error.required && !sensore.Image.$pristine }">
+                    <label for="Image" class="col-sm-2 control-label">Image</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="Image" name="Image" ng-model="sensore.Image" required>
+                      </div>
+                  </div>
+
 
 
                 <div class="form-group row">
@@ -69,23 +77,15 @@
                           bootstrap-switch>
                       </div>
 
-
-                    <label for="DeltaVariazioneTraccia" class="col-sm-2 control-label">Delta</label>
-                      <div class="col-md-5">
-                          <input type="number" 
-                                 class="form-control" 
-                                 ng-model="sensore.DeltaVariazioneTraccia" 
-                                 ng-disabled="!sensore.TracciaStoria">
-                      </div>
                 </div>
 
                   
-                   <div class="form-group">
+                <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" class="btn btn-primary" ng-disabled="nuovoSensore.$invalid">Applica</button>
                             <button type="button"  class="btn btn-warning"  ng-click="resetCampi()">Reset</button>
                         </div>
-                    </div>
+                </div>
 
 
                   </div>

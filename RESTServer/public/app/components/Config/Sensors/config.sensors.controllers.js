@@ -23,6 +23,8 @@ angular.module('DomoHome')
                                 'ultimaLettura' :1,
                                 'dataUltimoAggiornamento' : 1,
                                 'dataInserimento' : 2,
+                                'Image' : 2,
+                                'Datasheet' : 2
                                 
                             };
         
@@ -72,8 +74,8 @@ angular.module('DomoHome')
 
     }])
 
-    .controller('DetailedSensorsController', ['$scope','$stateParams','sensorFactory', 
-        function($scope,$stateParams,sensorFactory) {
+    .controller('DetailedSensorsController', ['$scope','$stateParams','sensorFactory', '$modal',
+        function($scope,$stateParams,sensorFactory,$modal) {
 
         
         var sensoreId = $stateParams.rigaId;
@@ -86,6 +88,20 @@ angular.module('DomoHome')
         $scope.Fields = {
             'SX' : ["Modello", "Tipo", "Sito", "TracciaStoria", "ultimaLettura"],
             'DX' : ["dataUltimoAggiornamento", "dataInserimento"]
+        }
+
+        $scope.OpenModalLetture = function(idSensore) {
+            console.log("idSensore : "+idSensore);
+
+            $modal.open({
+                templateUrl : 'components/Config/Sensors/ReadingsSensors.html',
+                controller  : 'ReadingsSensorsController',
+                resolve : {
+                    param : function () {
+                        return idSensore;
+                    }
+                }
+            });
         }
 
     }])
@@ -134,11 +150,6 @@ angular.module('DomoHome')
                   )
         }
 
-
-
-
-
-
     }])
 
 
@@ -182,9 +193,11 @@ angular.module('DomoHome')
     }])
 
 
-    .controller('ReadingsSensorsController', ['$scope','$stateParams','sensorFactory', function($scope,$stateParams,sensorFactory) {
+    .controller('ReadingsSensorsController', ['$scope','$modalInstance','param','sensorFactory', 
+        function($scope,$modalInstance,param,sensorFactory) {
 
-        var id = $stateParams.sensoreId;
+        var id = param;
+        console.log("id : "+id);
 
         var today = new Date();
         var mm = today.getMonth()+1
@@ -192,7 +205,8 @@ angular.module('DomoHome')
         var mm = pad.substring(0,pad.length - mm.length) + mm;
         var yyyy = today.getFullYear();
         var periodo = yyyy+mm;
-     
+
+        console.log("Periodo :"+periodo);
 
 
         $scope.letture =  sensorFactory.Letture().query({ids:id,Periodo:periodo},
@@ -203,6 +217,12 @@ angular.module('DomoHome')
                 console.log('Errore')
             }
         );
+
+        $scope.cancel = function () {
+            console.log("Cancel");
+            $modalInstance.dismiss('cancel');
+        }
+        
 
     }])
     ;

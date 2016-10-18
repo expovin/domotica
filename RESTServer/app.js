@@ -22,6 +22,7 @@ var users = require('./routes/save');
 var config = require('./routes/config');
 var sensori = require('./routes/sensori');
 var attuatori = require('./routes/attuatori');
+var dispositivi = require('./routes/dispositivi');
 
 var app = express();
 
@@ -41,6 +42,7 @@ app.use('/save', users);
 app.use('/config', config);
 app.use('/sensori', sensori);
 app.use('/attuatori',attuatori);
+app.use('/dispositivi',dispositivi);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

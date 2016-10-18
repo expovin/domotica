@@ -2,14 +2,30 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 
-
+/*
+var Porta = new Schema ({
+    "Numero" : {
+        type : Number,
+        require : true
+    },
+    "GPIO" : {
+        type : String
+    },
+    "Appliance" : {
+        type : String
+    },
+    "Stato" : {
+        type : Boolean
+    }
+});
+*/
 var attuatori = new Schema ({ 
 
 	"Tipo" : {
         type : String
     },
 
-	"Modello" : {
+	"Produttore" : {
         type : String
     },
 
@@ -21,21 +37,27 @@ var attuatori = new Schema ({
         type : String
     },
 
-    "idGruppo" : {
+    "Image" : {
         type : String
     },
 
-    "Porta" : {
+    "Datasheet" : {
+        type : String
+    },    
+
+    "Porte" : [ObjectId],
+
+    "Prefix" : {
+        type : String,
+        require
+    },
+
+    "Connessione" : {
         type : Number,
         require
     },
 
-    "GPIO" : {
-        type : Number,
-        require
-    },
-
-    "Traccia" : {
+    "TracciaStoria" : {
         type : Boolean,
         require : true,
         default : false 
@@ -47,7 +69,7 @@ var attuatori = new Schema ({
         default: Date.now
     },
 
-	"dataUltimoAggiornamento" : {
+	"dataUltimaModifica" : {
         type : Date
     }
 });

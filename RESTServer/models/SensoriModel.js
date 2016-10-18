@@ -22,6 +22,12 @@ var sensori = new Schema ({
         require : true,
         default : false
     },
+    "Datasheet" : {
+        type : String
+    },
+    "Image" : {
+        type : String
+    },
     "DeltaVariazioneTraccia" : {
         type : Number
     },
