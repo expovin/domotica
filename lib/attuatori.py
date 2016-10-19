@@ -7,6 +7,7 @@
 ################################################################################
 import RPi.GPIO as GPIO
 import pymongo
+from bson.objectid import ObjectId
 #import bt004 as BT
 import logAction as LG
 import sys
@@ -20,14 +21,15 @@ FILE_NAME=path.basename(__file__)
 # Configurazione connessione locale Mongo
 connection = pymongo.MongoClient()
 # Utilizzo della Collection catalogo degli attuatori
-db=connection.domotica.Attuatori
+db=connection.domotica.Dispositivi
+db1=connection.domotica.Attuatori
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 # Funzione di gestione degli attuatori connessi ai PIN del GPIO. Per questi
 # attuatori e' sufficente modificare lo stato del PIN di uscita
 def PN(appli, stato):
-    PinOut=appli['GPIO']                # Recupero il numero PIN del GPIO
+    PinOut=int(appli['GPIO'])                # Recupero il numero PIN del GPIO
     LG.logOut(5,FILE_NAME,"Pin da modificare "+str(PinOut))
 
     GPIO.setup(PinOut,GPIO.OUT)         # Setto il pin in uscita WARNING
@@ -49,21 +51,24 @@ def BT(appli, stato):
 def setStato(appliance,stato):
     LG.logOut(4,FILE_NAME,"Richiesta di cambio stato per appliance : "+appliance\
 		+" nuovo stato :"+str(stato))
-    appli = db.find_one({'ApplianceCollegato':appliance,'Tipo':'PN'})
+    appli = db.find_one({'_id':ObjectId(appliance)})
     stato=int(stato)
 
-    Tipo=appli['Tipo']					# Recupero il tipo attuatore
+    LG.logOut(4,FILE_NAME,"Recuperato Appliance : "+appli['Dispositivo'])
+
+    Attuatore=db1.find_one({'_id':ObjectId(appli['AttuatoreId'])})				# Recupero il tipo attuatore
+    Tipo=Attuatore['Prefix']
     LG.logOut(5,FILE_NAME,"Trovato tipo appliance "+Tipo)
     
 
     globals()[Tipo](appli,stato)		# Richiamo della funzione di gestione
 
-    if(appli['Traccia'] == 1):
+    if(Attuatore['TracciaStoria'] == 1):
         logEvent('INFO', appliance, stato, "Cambio stato ")
     
 
 def PNGet(appli):
-    PinOut=appli['GPIO']
+    PinOut=int(appli['GPIO'])
     GPIO.setup(PinOut,GPIO.OUT)
     stato=GPIO.input(PinOut)
     LG.logOut(5,FILE_NAME,"Lo stato PIN "+str(PinOut)+" e': "+str(stato))	
@@ -71,9 +76,11 @@ def PNGet(appli):
 
 
 def getStato(appliance):
-    appli = db.find_one({'ApplianceCollegato':appliance,'Tipo':'PN'})
+    appli = db.find_one({'_id':ObjectId(appliance)}) 
 
-    Tipo=appli['Tipo']
+    Attuatore=db1.find_one({'_id':ObjectId(appli['AttuatoreId'])})
+
+    Tipo=Attuatore['Prefix']
     return (globals()[Tipo+"Get"](appli))
 
 
