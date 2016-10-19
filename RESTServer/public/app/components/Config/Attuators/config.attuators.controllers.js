@@ -106,6 +106,21 @@ angular.module('DomoHome')
             });
         }
 
+        $scope.OpenModalAddAppliances = function(idAttuatore) {
+
+            $modal.open({ 
+            
+                templateUrl : 'components/Config/Attuators/ModalAddAppliance.html',
+                controller  : 'ModalAddNewApplianceController',
+                resolve : {
+                    param : function () {
+                        return idAttuatore;
+                    }
+                }
+            
+            
+            });
+        }
 
     }])
 
@@ -157,12 +172,12 @@ angular.module('DomoHome')
     }])
 
 
-    .controller('AddNewAttuatorController', ['$scope','$stateParams','attuatorFactory', 
+    .controller('AddNewAttuatorController', ['$scope','$stateParams','attuatorFactory',
         function($scope,$stateParams,attuatorFactory) {
 
-        $scope.inserisciNuovoSensore = function() {
 
-            
+
+        $scope.inserisciNuovoSensore = function() { 
 
             $scope.result = attuatorFactory.Attuatori().save($scope.nuovoSensore.sensore)
                  .$promise.then(
@@ -191,15 +206,80 @@ angular.module('DomoHome')
             $scope.nuovoSensore.sensore={};
         }        
 
-        $scope.AddAppliance = function(){
-            console.log("Aggiungere un nuovo appliance");
-        }
     }])
 
-    .controller('AddNewApplianceController', ['$scope','attuatorFactory', 
-        function($scope,attuatorFactory) {
 
-            console.log("AddNewApplianceController");
+    .controller('ModalAddNewApplianceController', ['$scope','$modalInstance','param','attuatorFactory', 
+        function($scope,$modalInstance,param,attuatorFactory) {
+
+        var id = param;
+        console.log("id : "+id);
+
+        $scope.devices =  attuatorFactory.Dispositivi().query({ids:id},
+            function(response) {
+                console.log('Recuperate Devices');        
+            },
+            function(response){
+                console.log('Errore')
+            }
+        );
+
+        $scope.eliminaAppliance = function() {
+            $scope.result = attuatorFactory.Dispositivo().delete({ids:this.device._id})
+                 .$promise.then(
+                    //success
+                    function( value ){
+                        var start = value['long Message'].indexOf("dispositivi/")+12;
+                        var end = value['long Message'].indexOf("eseguita")-1;
+                        var deviceId=value['long Message'].substring(start,end);
+                        console.log(deviceId);
+
+                        for (var s in $scope.devices) {
+                            if($scope.devices[s]['_id'] == deviceId)
+                                $scope.devices.splice(s,1);          
+                        }
+                     
+                    },
+                    //error
+                    function( error ){
+                        console.log(error);
+                     }
+                  )
+        }
+
+
+        $scope.AddAppliance = function(){
+            $scope.newAppliance['AttuatoreId'] = id;
+            $scope.newAppliance['Stato'] = false;
+            $scope.result = attuatorFactory.Dispositivo().save($scope.newAppliance)
+                 .$promise.then(
+                    //success
+                    function( value ){
+                        var start = value['long Message'].indexOf("Inserito id")+12;
+                        var end = value['long Message'].indexOf("eseguita")-1;
+                        var deviceId=value['long Message'].substring(start,end);
+                        console.log(deviceId);
+                        
+                        $scope.newAppliance['_id']=deviceId;
+                        $scope.devices.push($scope.newAppliance);
+                        $scope.newAppliance = {};
+                        
+                    },
+                    //error
+                    function( error ){
+                        console.log(error);
+                     }
+                  )
+        }
+
+        $scope.cancel = function () {
+            console.log("Cancel");
+            $modalInstance.dismiss('cancel');
+        }
+
+        $scope.pulisciCampi = function(){
+            $scope.newAppliance = {};
+        }   
 
     }])
 
@@ -229,6 +309,7 @@ angular.module('DomoHome')
 
             var id=$scope.devices[posizione]['_id'];
             delete $scope.devices[posizione]['_id'];
+            delete $scope.devices[posizione]['__v'];
             attuatorFactory.Dispositivo().update({ids:id},$scope.devices[posizione])
                  .$promise.then(
                     //success
@@ -244,8 +325,6 @@ angular.module('DomoHome')
 
 
         }
-
-
 
     }])
 
