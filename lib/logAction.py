@@ -61,7 +61,7 @@ def logOut(level,fileName,message):
         callerFunc = calframe[1][3]
 
         date_time = time.strftime("%d/%m/%Y %X")
-        print(date_time+"\t"+LogLvl[level]+"\t"+fileName+"\t"+callerFunc+"\t"+message)
+        print(date_time+"\t"+LogLvl[level-1]['Label']+"\t"+fileName+"\t"+callerFunc+"\t"+message)
 
 
 if __name__ == "__main__":

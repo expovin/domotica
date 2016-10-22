@@ -7,6 +7,94 @@ angular.module('DomoHome.Config', [
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
 
+            /* SEZIONE SETTINGS*/
+
+            .state('app.Config.Settings', {
+                url: '/settings',
+                views: {
+                    'navMenuConfig@app.Config' : {
+                        templateUrl : 'components/Config/navMenuConfig.html',
+                        controller : 'navMenuConfigControllers'
+                    },
+                    'contentConfig@app.Config': {
+                        templateUrl : 'components/Config/Settings/indexConfigSettings.html',
+                        controller : 'SettingsControllers'
+                    }
+                    /*,
+                    'footerConfig@app.Config' : {
+                        templateUrl : 'components/Config/footerConfig.html',
+                        controller : 'footerConfigControllers'
+                    }
+                    */
+                }
+            })
+
+
+            .state('app.Config.Settings.General', {
+                url: '/general',
+                views: {
+                    'SettingsLeftPane@app.Config.Settings' : {
+                        templateUrl : 'components/Config/Settings/leftPane.html',
+                        controller : 'leftPaneControllers'
+                    },
+                    'SettingsMainCanvas@app.Config.Settings': {
+                        templateUrl : 'components/Config/Settings/General.html',
+                        controller : 'generalSettingsControllers'
+                    }
+                }
+            })
+
+            .state('app.Config.Settings.General.Acquario', {
+                url: '/Acquario',
+                views: {
+                    'SettingsMainCanvas@app.Config.Settings': {
+                        templateUrl : 'components/Config/Settings/Acquario.html',
+                        controller : 'acquarioSettingsControllers'
+                    }
+                }
+            })
+
+            .state('app.Config.Settings.General.GPIO', {
+                url: '/GPIO',
+                views: {
+                    'SettingsMainCanvas@app.Config.Settings': {
+                        templateUrl : 'components/Config/Settings/GPIO.html',
+                        controller : 'GPIOSettingsControllers'
+                    }
+                }
+            })
+
+
+            .state('app.Config.Settings.General.Irrigazione', {
+                url: '/Irrigazione',
+                views: {
+                    'SettingsMainCanvas@app.Config.Settings': {
+                        templateUrl : 'components/Config/Settings/Irrigazione.html',
+                        controller : 'irrigazioneSettingsControllers'
+                    }
+                }
+            })
+
+            .state('app.Config.Settings.General.WeatherInfo', {
+                url: '/WeatherInfo',
+                views: {
+                    'SettingsMainCanvas@app.Config.Settings': {
+                        templateUrl : 'components/Config/Settings/WeatherInfo.html',
+                        controller : 'weatherInfoSettingsControllers'
+                    }
+                }
+            })
+
+            .state('app.Config.Settings.General.Email', {
+                url: '/Email',
+                views: {
+                    'SettingsMainCanvas@app.Config.Settings': {
+                        templateUrl : 'components/Config/Settings/Email.html',
+                        controller : 'emailSettingsControllers'
+                    }
+                }
+            })
+
             /*  SEZIONE SENSORI */
 
             .state('app.Config.Sensors', {

@@ -1,0 +1,17 @@
+{
+    "name": "domoRESTService",
+    "description": "Domohome full fladge REST API Server",
+    "path": "/home/pi/domotica/RESTServer/bin",
+    "script":"www",
+    "pid": "/var/run/domoRESTService.pid",
+    "log": "/var/log/domoRESTService/log",
+    "error": "/var/log/domoRESTService/error",
+    "wrap": "forever",
+    "wrap.bin": "/usr/local/bin/forever",
+    "logrotate": "logrotate",
+    "logrotate.rotate": "10",
+    "logrotate.frequency": "daily",
+    "user": "root",
+    "group": "root"
+}
+

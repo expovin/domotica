@@ -19,6 +19,14 @@ angular.module('DomoHome')
                     return $resource(baseURL+'attuatori/:ids', null, {'update' : {method : 'PUT'} });
                 }
 
+                sensfac.setStato = function() {
+                    return $resource(baseURL+'attuatori/:ids/setStato', null, {'update' : {method : 'PUT'} });
+                }
+
+                sensfac.getStato = function() {
+                    return $resource(baseURL+'attuatori/:ids/getStato', null, {'update' : {method : 'PUT'} });
+                }
+
                 sensfac.Dispositivi = function() {
                     return $resource(baseURL+'dispositivi/attuatore/:ids', null, {'update' : {method : 'PUT'} });
                 }

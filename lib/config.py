@@ -17,7 +17,7 @@ dbc = connection.domotica.config
 c = dbc.find({'Tag' : 'Current'})
 
 def general():
-	return c[0]['general']
+	return c[0]['General']
 
 def acquario():
     return c[0]['Acquario']
@@ -26,10 +26,10 @@ def GPIOconfig():
     return c[0]['GPIO']
 
 def weather():
-    return c[0]['Weather Info']
+    return c[0]['WeatherInfo']
 
 def irrigazione():
     return c[0]['Irrigazione']
 
 def mail():
-    return c[0]['email'] 
+    return c[0]['Email'] 

@@ -114,16 +114,16 @@ router.route('/:aid/setStato')
 });
 
 router.route('/:aid/getStato')
-.put(function(req, res, next){
+.get(function(req, res, next){
     Attuatori.find({"_id":req.params.aid}, function(err, attuatori){
       var child;
-      var cmd = "python /home/pi/domotica/lib/attuatori.py getStato "+req.body.Appliance;
+      var cmd = "python /home/pi/domotica/lib/attuatori.py getStato "+req.params.aid;
       console.log(cmd);
       child = exec(cmd, function (error, stdout, stderr) {
         if(err)
           res.json("Errore :"+stderr)
         else
-          res.json("Stdout:"+stdout+",Stderr:"+stderr)
+          res.json({"Stdout":stdout,"Stderr":stderr})
       });
     });
 });

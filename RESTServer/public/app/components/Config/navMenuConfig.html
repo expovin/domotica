@@ -16,7 +16,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li ng-class="{ active: isActive('/Config/general')}"><a href="#">Settings </a></li>
+        <li ng-class="{ active: isActive('/Config/settings')}"><a ui-sref="app.Config.Settings.General">Settings</a></li>
         <li ng-class="{ active: isActive('/Config/sensors/list')}"><a ui-sref="app.Config.Sensors.List">Sensori</a></li>
         <li ng-class="{ active: isActive('/Config/attuators/list')}"><a ui-sref="app.Config.Attuators.List">Attuatori</a></li>
       </ul>

@@ -41,3 +41,23 @@
 .green {
 	color: green;
 }
+
+.yellow {
+	color: #D1D121;	
+}
+
+.helpMessage{
+	margin-top: 4px;
+	margin-bottom: 4px;
+	background: #F3F6C3;
+}
+
+#EmailSettingsTitle  {
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	border-bottom-color: #999;
+
+	margin-bottom: 25px;
+	margin-left: 20px;
+	margin-right: 40px;
+}

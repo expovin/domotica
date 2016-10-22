@@ -259,7 +259,7 @@ angular.module('DomoHome')
                         var end = value['long Message'].indexOf("eseguita")-1;
                         var deviceId=value['long Message'].substring(start,end);
                         console.log(deviceId);
-                        
+
                         $scope.newAppliance['_id']=deviceId;
                         $scope.devices.push($scope.newAppliance);
                         $scope.newAppliance = {};
@@ -316,6 +316,15 @@ angular.module('DomoHome')
                     function( value ){
                         console.log(value);
                         $scope.devices[posizione]['_id']=id;
+                        if($scope.devices[posizione]['Stato'])
+                            var stato="1"
+                        else
+                            var stato="0"
+
+                        var body={'Appliance':id, 'stato':stato}
+
+                        attuatorFactory.setStato().update({ids:id},body);
+
                     },
                     //error
                     function( error ){

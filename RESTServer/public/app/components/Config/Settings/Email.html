@@ -1,0 +1,120 @@
+
+<div class="container">
+    <div id="EmailSettingsTitle" class="row row-content">
+        <h2>
+            <span class="col-md-11">Email Settings</span>
+            <span class="col-md-1 glyphicon {{sections.Email.glyphicon}} yellow" aria-hidden="true"></span> 
+        </h2>
+    </div>
+</div>
+
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <div class="form-group" ng-class="{ 'has-error' : sections.Email.debugLevel.$error.required && !sections.Email.debugLevel.$pristine }">
+                <label for="debugLevel" class="col-sm-4 control-label">Log Level</label>
+                    <div class="col-sm-8">
+                      <select class="form-control" id="generalDebugLevelSelect">
+                        <option value="{{level.id}}" ng-repeat="level in sections.General.LogLevel">{{level.Label}}</option>
+                      </select>
+                       <p class="form-text text-muted helpMessage">
+                            Inserire il livello di debug con cui verranno scritti i file di log.
+                        </p>
+                    </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group" ng-class="{ 'has-error' : sections.Email.smtpServer.$error.required && !sections.Email.smtpServer.$pristine }">
+                <label for="smtpServer" class="col-sm-4 control-label">Server SMTP</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="smtpServer" name="smtpServer"
+                           ng-model="sections.Email.smtpServer" required>
+                    <p class="form-text text-muted helpMessage">
+                        Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                    </p>
+                </div>
+            </div>
+        </div>
+            
+        <div class="col-md-6">
+            <div class="form-group" ng-class="{ 'has-error' : sections.Email.smtpPort.$error.required && !sections.Email.smtpPort.$pristine }">
+                <label for="smtpPort" class="col-sm-4 control-label">Porta SMTP</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="smtpPort" name="smtpPort"
+                           ng-model="sections.Email.smtpPort" required>
+                    <p class="form-text text-muted helpMessage">
+                        Inserire la porta di comunicazione sul protocollo SMTP del server. Fare riferimento alla 
+                        configurazione del proprio provider di posta
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group" ng-class="{ 'has-error' : sections.Email.username.$error.required && !sections.Email.username.$pristine }">
+                <label for="username" class="col-sm-4 control-label">Nome Utente</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="username" name="username"
+                           ng-model="sections.Email.username" required>
+                    <p class="form-text text-muted helpMessage">
+                        Inserire il nome utente utilizzato per l'autenticazione alla casella di posta. Cliccare sul tasto
+                        Change Password qui a lato per inserire la password
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group" ng-class="{ 'has-error' : sections.Email.password.$error.required && !sections.Email.password.$pristine }">
+                <label for="password" class="col-sm-4 control-label">Password</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" id="password" name="password"
+                           ng-model="sections.Email.password" required>
+                    <p class="form-text text-muted helpMessage">
+                        Inserire la password di autenticazione alla casella di posta
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group" ng-class="{ 'has-error' : sections.Email.from.$error.required && !sections.Email.from.$pristine }">
+                <label for="from" class="col-sm-4 control-label">Sender</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="from" name="from"
+                           ng-model="sections.Email.from" required>
+                    <p class="form-text text-muted helpMessage">
+                        Inserire il nome che verra visualizzato come Sender nelle mail che verranno spedite
+                    </p>
+                </div>
+            </div>
+        </div>
+
+         <div class="col-md-6">
+            <div class="form-group" ng-class="{ 'has-error' : sections.Email.to.$error.required && !sections.Email.to.$pristine }">
+                <label for="to" class="col-sm-4 control-label">Recipients</label>
+                <div class="col-sm-8">
+                    <input type="email" class="form-control" id="to" name="to"
+                           ng-model="sections.Email.to" required>
+                    <p class="form-text text-muted helpMessage">
+                        Inserire la lista delle mail destinatarie a cui inviare i messaggi. Separare i singoli indirizzi mail con
+                        un punto e virgola (;)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
