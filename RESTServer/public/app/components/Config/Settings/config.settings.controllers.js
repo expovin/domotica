@@ -11,28 +11,25 @@ angular.module('DomoHome')
 
         $scope.alertMessage = {};
 
-
+/*
         $scope.alertMessage = {
-            "show" : true,
+            "show" : false,
             "type" : "danger",
             "glyphicon" : "glyphicon-exclamation-sign",
             "shortMsg" : "Stika!",
             "longMsg" : "Better check yourself, you're not looking too good"
 
         }
-        
+*/
 
 
         $scope.showAlert = function(msg) {
-            console.log("sono in showAlert");
 
-            //$scope.alertMessage =msg;
-            $scope.alertMessage.show = true;
+            $scope.alertMessage = msg;
             console.log($scope.alertMessage);
         };
 
         $scope.closeAlert = function() {
-            console.log("Alert chiuso");
             $scope.alertMessage.show = false;     
         };
 
@@ -56,11 +53,10 @@ angular.module('DomoHome')
                             "show" : true,
                             "type" : "success",
                             "glyphicon" : "glyphicon-ok",
-                            "shortMsg" : "Configurazione aggiornata",
-                            "longMsg" : "Configurazione aggiornata correttamente"
+                            "shortMsg" : "OK",
+                            "longMsg" : "Configurazione aggiornata correttamente."
 
                         }
-                        console.log("chiamo showalerrt");
                         $scope.showAlert(msg);
 
                         
@@ -68,7 +64,16 @@ angular.module('DomoHome')
                     //error
                     function( error ){
                         
-                        console.log(error);
+                        var msg = {
+                            "show" : true,
+                            "type" : "danger",
+                            "glyphicon" : "glyphicon-remove",
+                            "shortMsg" : "Errore",
+                            "longMsg" : "Errore nell'aggiornamento della configurazione : "+error
+
+                        }
+                        $scope.showAlert(msg);
+
                      }
                   )
 
@@ -91,11 +96,22 @@ angular.module('DomoHome')
 
             },
             function(response){
-                console.log('Errore')
+
+                        var msg = {
+                            "show" : true,
+                            "type" : "danger",
+                            "glyphicon" : "glyphicon-remove",
+                            "shortMsg" : "Errore",
+                            "longMsg" : "Errore nel reperimento della configurazione: "+response
+
+                        }
+                        $scope.showAlert(msg);
+
             }
         );
 
     }])  	
+    
     /*  Controller utilizzato per la generazione e la gestione della lista di una 
         "Collection" arbitraria
     */

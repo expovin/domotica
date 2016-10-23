@@ -8,7 +8,7 @@
 
     </div>
 
-    <div class="alert alert-{{alertMessage.type}} alert-dismissible fade in" role="alert" ng-show="{{alertMessage.show}}" id="settingsAlerts">
+    <div class="alert alert-{{alertMessage.type}} alert-dismissible fade in" role="alert" ng-show="alertMessage.show" id="settingsAlerts">
       <span class="glyphicon {{alertMessage.glyphicon}}" aria-hidden="true"></span>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="closeAlert()"><span aria-hidden="true">&times;</span></button>
       <strong>{{alertMessage.shortMsg}}</strong> {{alertMessage.longMsg}}.
