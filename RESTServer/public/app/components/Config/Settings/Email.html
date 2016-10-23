@@ -5,7 +5,16 @@
             <span class="col-md-11">Email Settings</span>
             <span class="col-md-1 glyphicon {{sections.Email.glyphicon}} yellow" aria-hidden="true"></span> 
         </h2>
+
     </div>
+
+    <div class="alert alert-{{alertMessage.type}} alert-dismissible fade in" role="alert" ng-show="{{alertMessage.show}}" id="settingsAlerts">
+      <span class="glyphicon {{alertMessage.glyphicon}}" aria-hidden="true"></span>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="closeAlert()"><span aria-hidden="true">&times;</span></button>
+      <strong>{{alertMessage.shortMsg}}</strong> {{alertMessage.longMsg}}.
+    </div>
+
+
 </div>
 
     <div class="row">
@@ -14,11 +23,15 @@
             <div class="form-group" ng-class="{ 'has-error' : sections.Email.debugLevel.$error.required && !sections.Email.debugLevel.$pristine }">
                 <label for="debugLevel" class="col-sm-4 control-label">Log Level</label>
                     <div class="col-sm-8">
+
+                        <select ng-options="item as item.Label for item in sections.General.LogLevel track by item.id" ng-model="selected"></select>
+                    <!--
                       <select class="form-control" id="generalDebugLevelSelect">
                         <option value="{{level.id}}" ng-repeat="level in sections.General.LogLevel">{{level.Label}}</option>
                       </select>
+                      -->
                        <p class="form-text text-muted helpMessage">
-                            Inserire il livello di debug con cui verranno scritti i file di log.
+                            Inserire il livello di debug con cui verranno scritti i file di log. {{selected}}
                         </p>
                     </div>
             </div>

@@ -9,12 +9,69 @@ angular.module('DomoHome')
         $scope.sections = {};
         var save = {};
 
+        $scope.alertMessage = {};
+
+
+        $scope.alertMessage = {
+            "show" : true,
+            "type" : "danger",
+            "glyphicon" : "glyphicon-exclamation-sign",
+            "shortMsg" : "Stika!",
+            "longMsg" : "Better check yourself, you're not looking too good"
+
+        }
+        
+
+
+        $scope.showAlert = function(msg) {
+            console.log("sono in showAlert");
+
+            //$scope.alertMessage =msg;
+            $scope.alertMessage.show = true;
+            console.log($scope.alertMessage);
+        };
+
+        $scope.closeAlert = function() {
+            console.log("Alert chiuso");
+            $scope.alertMessage.show = false;     
+        };
+
+
+        
         $scope.isActive = function (viewLocation) { 
             return $location.path().includes(viewLocation);
         };
 
         $scope.applyNewSettings = function(){
-            console.log($scope.newSettings);
+            console.log($scope.sections);
+
+            
+            $scope.sections.Email.debugLevel = $scope.sections.General.LogLevel.id;
+            configFactory.Config().update($scope.sections)
+                 .$promise.then(
+                    //success
+                    function( value ){
+
+                        var msg = {
+                            "show" : true,
+                            "type" : "success",
+                            "glyphicon" : "glyphicon-ok",
+                            "shortMsg" : "Configurazione aggiornata",
+                            "longMsg" : "Configurazione aggiornata correttamente"
+
+                        }
+                        console.log("chiamo showalerrt");
+                        $scope.showAlert(msg);
+
+                        
+                    },
+                    //error
+                    function( error ){
+                        
+                        console.log(error);
+                     }
+                  )
+
         }
 
         $scope.resetCampi = function(){
@@ -30,14 +87,13 @@ angular.module('DomoHome')
 		        delete $scope.sections['_id'];
 		        delete $scope.sections['Tag'];
 		        delete $scope.sections['version'];
-		        save = JSON.parse(JSON.stringify($scope.sections));
+		        save = JSON.parse(JSON.stringify($scope.sections)); 
 
             },
             function(response){
                 console.log('Errore')
             }
         );
-
 
     }])  	
     /*  Controller utilizzato per la generazione e la gestione della lista di una 
@@ -110,26 +166,10 @@ angular.module('DomoHome')
     .controller('emailSettingsControllers', ['$scope','attuatorFactory','ListRowsFactory','$stateParams','$modal', 
         function($scope,attuatorFactory,ListRowsFactory,$stateParams,$modal) {
 
-        //    $scope.newSettings.Email = $scope.sections.Email;
 
 
 
     }])
-
-
-    .controller('ModalChangePasswordController', ['$scope','$modalInstance','param','attuatorFactory', 
-        function($scope,$modalInstance,param,attuatorFactory) {
-
-            $scope.changePassword = {};
-
-            $scope.cancel = function () {
-                console.log("Cancel");
-                $modalInstance.dismiss('cancel');
-            }
-
-
-    }])
-
 
 
  ;

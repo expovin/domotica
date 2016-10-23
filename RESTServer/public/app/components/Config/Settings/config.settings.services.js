@@ -9,7 +9,7 @@ angular.module('DomoHome')
 	var conffac = {};
 
     conffac.Config = function(){
-        return $resource(baseURL+"config", null, {'update' : {method : 'PUT', isArray:true} });
+        return $resource(baseURL+"config", null, {'update' : {method : 'PUT'} });
     };    
 
     return conffac;

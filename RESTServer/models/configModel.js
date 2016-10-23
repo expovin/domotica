@@ -66,6 +66,12 @@ var Zona = new Schema ({
     dell'impianto di irrigazione
 */
 var Irrigazione = new Schema ({
+  // Icona identificativa della sezione config.
+    "glyphicon" : {
+      type : String,
+      require : true,
+      default : "glyphicon-tree-conifer"
+    },
     // Indirizzo IP della scheda relay che attiva le elettrovalvole
     "Relay Board IP" : {
       type : String,
@@ -246,6 +252,14 @@ var Irrigazione = new Schema ({
     dell'acquario
 */
 var Acquario = new Schema ({ 
+
+  // Icona identificativa della sezione config.
+    "glyphicon" : {
+      type : String,
+      require : true,
+      default : "glyphicon-tint"
+    },
+
       "getTemp" : {
 
          // Nome univoco del modulo, per scopi futuri
@@ -336,6 +350,14 @@ var Acquario = new Schema ({
     Questa sezione definisce l'utilizzo delle porte del GPIO del Raspberry
 */
 var GPIO = new Schema ({ 
+
+  // Icona identificativa della sezione config.
+    "glyphicon" : {
+      type : String,
+      require : true,
+      default : "glyphicon-random"
+    },
+
       // Pin per il bottone di accensione spegnimento      
      "pushButton" : {
         type : Number,
@@ -366,6 +388,13 @@ var GPIO = new Schema ({
 */
 var WeatherInfo = new Schema ({ 
 
+  // Icona identificativa della sezione config.
+    "glyphicon" : {
+      type : String,
+      require : true,
+      default : "glyphicon-flash"
+    },
+
     // Nome univoco del modulo, per scopi futuri
     "Module Name" : {
       type : String,
@@ -395,6 +424,14 @@ var WeatherInfo = new Schema ({
     Questa sezione riporta tutti i parametri di configurazione dell'email
 */
 var email = new Schema ({ 
+
+  // Icona identificativa della sezione config.
+    "glyphicon" : {
+      type : String,
+      require : true,
+      default : "glyphicon-envelope"
+    },
+
       // Username di configurazione email
      "username" : {
         type : String,
@@ -436,11 +473,34 @@ var email = new Schema ({
 
 var general = new Schema ({ 
 
-    "LogLevel" : [String],
-    "Level" : {
-        type : Number,
-        require : true
-    }
+  // Icona identificativa della sezione config.
+    "glyphicon" : {
+      type : String,
+      require : true,
+      default : "glyphicon-cog"
+    },
+    
+    "Level" : Number,
+    "LogLevel" : [
+        {
+          "id": {
+            type : Number,
+            require : true
+          },
+          "Label" : {
+            type : String,
+            require : true
+          },
+          "icon" : {
+            type : String,
+            require : true
+          },
+          "glyphicon" : {
+            type : String,
+            require : true
+          }
+        }
+    ], 
 });
 
 
@@ -469,13 +529,13 @@ var config = new Schema ({
     "GPIO" : GPIO,
 
     // Sezione Weather Info
-    "Weather Info" : WeatherInfo,
+    "WeatherInfo" : WeatherInfo,
 
     //Sezione email
-    "email" : email,
+    "Email" : email,
 
     // Sezione General
-    "general" : general
+    "General" : general
 
 });
 
