@@ -1,0 +1,84 @@
+<div class="tab-pane fade active in" id="GenTab">
+
+        <div class="row headerTabRow"> <h4>Settings Relay Board</h4></div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione['Relay Board IP'].$error.required && !sections.Irrigazione['Relay Board IP'].$pristine }">
+                    <label for="IPAddress" class="col-sm-4 control-label">IP Address</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="IPAddress" name="IPAddress"
+                               ng-model="sections.Irrigazione['Relay Board IP']" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione['Relay Board Port'].$error.required && !sections.Irrigazione['Relay Board Port'].$pristine }">
+                    <label for="Port" class="col-sm-4 control-label">Port Number</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="Port" name="Port"
+                               ng-model="sections.Irrigazione['Relay Board Port']" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione['Message Prefix'].$error.required && !sections.Irrigazione['Message Prefix'].$pristine }">
+                    <label for="Message Prefix" class="col-sm-4 control-label">Message Prefix</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="Message Prefix" name="Message Prefix"
+                               ng-model="sections.Irrigazione['Message Prefix']" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione['Message Stop'].$error.required && !sections.Irrigazione['Message Stop'].$pristine }">
+                    <label for="Message Stop" class="col-sm-4 control-label">Message Stop</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="Message Stop" name="Message Stop"
+                               ng-model="sections.Irrigazione['Message Stop']" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione['socket timeout'].$error.required && !sections.Irrigazione['socket timeout'].$pristine }">
+                    <label for="socket timeout" class="col-sm-4 control-label">Socket timeout</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="socket timeout" name="socket timeout"
+                               ng-model="sections.Irrigazione['socket timeout']" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+
+
+</div>

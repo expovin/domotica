@@ -1,0 +1,53 @@
+<div class="tab-pane fade active in" id="GenTab">
+
+        <div class="row headerTabRow"> <h4>Settings generici</h4></div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" ng-class="{ 'has-error' : sections.Irrigazione.NumSec.$error.required && !sections.Irrigazione.NumSec.$pristine }">
+                    <label for="NumSec" class="col-sm-4 control-label">Num Sec</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="NumSec" name="NumSec"
+                               ng-model="sections.Irrigazione.NumSec" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col-md-6">
+                <div class="form-group" ng-class="{ 'has-error' : sections.Irrigazione.Debug.$error.required && !sections.Irrigazione.Debug.$pristine }">
+                    <label for="Debug" class="col-sm-4 control-label">Debug Mode</label>
+                    <div class="col-sm-8">
+
+                        <input type="checkbox" class="form-control" id="Debug" name="Debug"
+                            ng-model="sections.Irrigazione.Debug"
+                            checked bootstrap-switch>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione['Soglia Irrigazione'].$error.required && !sections.Irrigazione['Soglia Irrigazione'].$pristine }">
+                    <label for="SogliaIrrigazione" class="col-sm-4 control-label">Soglia Irrigazione</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="Soglia Irrigazione" name="Soglia Irrigazione"
+                               ng-model="sections.Irrigazione['Soglia Irrigazione']" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+
+
+</div>

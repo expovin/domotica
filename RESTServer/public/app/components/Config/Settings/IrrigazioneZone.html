@@ -1,0 +1,20 @@
+<div class="tab-pane fade in active" id="GenTab">
+
+    <div class="row headerTabRow"> <h4>Settings Zone</h4></div>
+
+    <div class="row row-content">
+	    <div class="col-md-2">
+			<ul class="nav nav-pills nav-stacked">
+			  <li 	role="presentation"
+			  		ng-repeat="zona in sections.Irrigazione.PolicyIrrigazione.Zone"
+			  		ng-class="{ active: isActive('zone{{zona.zoneId}}')}">
+			  				<a ui-sref=".zone{{zona.zoneId}}">Zona {{zona.zoneId}}</a>
+			  </li>
+			  
+			</ul>
+		</div>
+		<div class="col-md-10">
+			<div ui-view="PillContent" class="tab-content"></div>
+		</div>
+	</div>
+</div>

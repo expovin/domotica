@@ -72,6 +72,13 @@ var Irrigazione = new Schema ({
       require : true,
       default : "glyphicon-tree-conifer"
     },
+
+    "glyphicon-color" : {
+      type : String,
+      require : true,
+      default : "green"
+    },
+
     // Indirizzo IP della scheda relay che attiva le elettrovalvole
     "Relay Board IP" : {
       type : String,
@@ -260,6 +267,12 @@ var Acquario = new Schema ({
       default : "glyphicon-tint"
     },
 
+    "glyphicon-color" : {
+      type : String,
+      require : true,
+      default : "blue"
+    },
+
       "getTemp" : {
 
          // Nome univoco del modulo, per scopi futuri
@@ -357,6 +370,11 @@ var GPIO = new Schema ({
       require : true,
       default : "glyphicon-random"
     },
+    "glyphicon-color" : {
+      type : String,
+      require : true,
+      default : "gray"
+    },
 
       // Pin per il bottone di accensione spegnimento      
      "pushButton" : {
@@ -395,6 +413,13 @@ var WeatherInfo = new Schema ({
       default : "glyphicon-flash"
     },
 
+
+    "glyphicon-color" : {
+      type : String,
+      require : true,
+      default : "red"
+    },
+
     // Nome univoco del modulo, per scopi futuri
     "Module Name" : {
       type : String,
@@ -430,6 +455,13 @@ var email = new Schema ({
       type : String,
       require : true,
       default : "glyphicon-envelope"
+    },
+
+
+    "glyphicon-color" : {
+      type : String,
+      require : true,
+      default : "yellow"
     },
 
       // Username di configurazione email

@@ -11,17 +11,6 @@ angular.module('DomoHome')
 
         $scope.alertMessage = {};
 
-/*
-        $scope.alertMessage = {
-            "show" : false,
-            "type" : "danger",
-            "glyphicon" : "glyphicon-exclamation-sign",
-            "shortMsg" : "Stika!",
-            "longMsg" : "Better check yourself, you're not looking too good"
-
-        }
-*/
-
 
         $scope.showAlert = function(msg) {
 
@@ -111,7 +100,7 @@ angular.module('DomoHome')
         );
 
     }])  	
-    
+
     /*  Controller utilizzato per la generazione e la gestione della lista di una 
         "Collection" arbitraria
     */
@@ -156,7 +145,6 @@ angular.module('DomoHome')
     .controller('acquarioSettingsControllers', ['$scope','attuatorFactory','ListRowsFactory','$stateParams', 
         function($scope,attuatorFactory,ListRowsFactory,$stateParams) {
 
-        console.log($scope.sections['Acquario']);
 
     }])
 

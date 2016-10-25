@@ -15,7 +15,8 @@
 		<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li ng-repeat="(key,value) in sections"  ng-class="{ active: isActive('/Config/settings/general/{{key}}')}" >
-					<a ui-sref=".{{key}}">{{key}}<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon {{value['glyphicon']}}"></span></a>
+					<a ui-sref=".{{key}}">{{key}}<span style="font-size:16px;" 
+					class="pull-right hidden-xs showopacity glyphicon {{value['glyphicon']}} {{value['glyphicon-color']}}"></span></a>
 				</li>
 
 			</ul>

@@ -30,13 +30,25 @@ angular.module('DomoHome.Config', [
             })
 
 
-            .state('app.Config.Settings.General', {
+            .state('app.Config.Settings.CFG', {
                 url: '/general',
                 views: {
                     'SettingsLeftPane@app.Config.Settings' : {
                         templateUrl : 'components/Config/Settings/leftPane.html',
                         controller : 'leftPaneControllers'
-                    },
+                    }
+                    /*,
+                    'SettingsMainCanvas@app.Config.Settings': {
+                        templateUrl : 'components/Config/Settings/General.html',
+                        controller : 'generalSettingsControllers'
+                    }
+                    */
+                }
+            })
+
+            .state('app.Config.Settings.CFG.General', {
+                url: '/General',
+                views: {
                     'SettingsMainCanvas@app.Config.Settings': {
                         templateUrl : 'components/Config/Settings/General.html',
                         controller : 'generalSettingsControllers'
@@ -44,7 +56,8 @@ angular.module('DomoHome.Config', [
                 }
             })
 
-            .state('app.Config.Settings.General.Acquario', {
+
+            .state('app.Config.Settings.CFG.Acquario', {
                 url: '/Acquario',
                 views: {
                     'SettingsMainCanvas@app.Config.Settings': {
@@ -54,7 +67,7 @@ angular.module('DomoHome.Config', [
                 }
             })
 
-            .state('app.Config.Settings.General.GPIO', {
+            .state('app.Config.Settings.CFG.GPIO', {
                 url: '/GPIO',
                 views: {
                     'SettingsMainCanvas@app.Config.Settings': {
@@ -65,7 +78,7 @@ angular.module('DomoHome.Config', [
             })
 
 
-            .state('app.Config.Settings.General.Irrigazione', {
+            .state('app.Config.Settings.CFG.Irrigazione', {
                 url: '/Irrigazione',
                 views: {
                     'SettingsMainCanvas@app.Config.Settings': {
@@ -75,7 +88,58 @@ angular.module('DomoHome.Config', [
                 }
             })
 
-            .state('app.Config.Settings.General.WeatherInfo', {
+            .state('app.Config.Settings.CFG.Irrigazione.Gen', {
+                url: '/gen',
+                views: {
+                    'TabContent@app.Config.Settings.CFG.Irrigazione': {
+                        templateUrl : 'components/Config/Settings/IrrigazioneGen.html',
+                        controller : 'irrigazioneSettingsControllers'
+                    }
+                }
+            })
+
+            .state('app.Config.Settings.CFG.Irrigazione.Relay', {
+                url: '/relay',
+                views: {
+                    'TabContent@app.Config.Settings.CFG.Irrigazione': {
+                        templateUrl : 'components/Config/Settings/IrrigazioneRelay.html',
+                        controller : 'irrigazioneSettingsControllers'
+                    }
+                }
+            })
+
+
+            .state('app.Config.Settings.CFG.Irrigazione.Policy', {
+                url: '/policy',
+                views: {
+                    'TabContent@app.Config.Settings.CFG.Irrigazione': {
+                        templateUrl : 'components/Config/Settings/IrrigazionePolicy.html',
+                        controller : 'irrigazioneSettingsControllers'
+                    }
+                }
+            })
+
+            .state('app.Config.Settings.CFG.Irrigazione.Zone', {
+                url: '/zone',
+                views: {
+                    'TabContent@app.Config.Settings.CFG.Irrigazione': {
+                        templateUrl : 'components/Config/Settings/IrrigazioneZone.html',
+                        controller : 'irrigazioneSettingsControllers'
+                    }
+                }
+            })
+
+            .state('app.Config.Settings.CFG.Irrigazione.Zone.zone01', {
+                url: '/zone01',
+                views: {
+                    'PillContent@app.Config.Settings.CFG.Irrigazione.Zone': {
+                        templateUrl : 'components/Config/Settings/IrrigazioneZone01.html',
+                        controller : 'irrigazioneSettingsControllers'
+                    }
+                }
+            })
+
+            .state('app.Config.Settings.CFG.WeatherInfo', {
                 url: '/WeatherInfo',
                 views: {
                     'SettingsMainCanvas@app.Config.Settings': {
@@ -85,7 +149,7 @@ angular.module('DomoHome.Config', [
                 }
             })
 
-            .state('app.Config.Settings.General.Email', {
+            .state('app.Config.Settings.CFG.Email', {
                 url: '/Email',
                 views: {
                     'SettingsMainCanvas@app.Config.Settings': {
