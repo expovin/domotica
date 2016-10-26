@@ -84,7 +84,13 @@ angular.module('DomoHome.Config', [
                     'SettingsMainCanvas@app.Config.Settings': {
                         templateUrl : 'components/Config/Settings/Irrigazione.html',
                         controller : 'irrigazioneSettingsControllers'
+                    },
+
+                    'TabContent@app.Config.Settings.CFG.Irrigazione': {
+                        templateUrl : 'components/Config/Settings/IrrigazioneGen.html',
+                        controller : 'irrigazioneSettingsControllers'
                     }
+                    
                 }
             })
 

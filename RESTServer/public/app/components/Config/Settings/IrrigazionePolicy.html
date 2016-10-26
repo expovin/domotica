@@ -77,25 +77,7 @@
                 </div>
             </div>
                 
-            <div class="col-md-6">
-                <div class="form-group" 
-                ng-class="{ 'has-error' : sections.Irrigazione.PolicyIrrigazione.Selected.$error.required && !sections.IrrigazionePolicyIrrigazione.Selected.$pristine }">
-                    <label for="Selected" class="col-sm-4 control-label">Selected</label>
-                    <div class="col-sm-8">
 
-                      <select class="form-control" id="Selected" ng-model="sections.Irrigazione.PolicyIrrigazione.Selected" 
-                      ng-init="sections.Irrigazione.PolicyIrrigazione.Selected" required>
-                        <option value="1">Irrigazione a tempo</option>
-                        <option value="2">Irrigazione a litri</option>
-                        <option value="3">Irrigazione a smart</option>
-                      </select>
-
-                        <p class="form-text text-muted helpMessage">
-                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com) {{sections.Irrigazione.PolicyIrrigazione.Selected}}
-                        </p>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="row">

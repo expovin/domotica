@@ -23,12 +23,14 @@
 	  		<a ui-sref="app.Config.Settings.CFG.Irrigazione.Relay">Relay</a>
 	  </li>
 
-	  <li ng-class="{ active: isActive('Config/settings/general/Irrigazione/policy')}" role="presentation">
-	  		<a ui-sref="app.Config.Settings.CFG.Irrigazione.Policy">Policy</a>
-	  </li>
-
 	  <li ng-class="{ active: isActive('Config/settings/general/Irrigazione/zone')}" role="presentation">
 	  		<a ui-sref="app.Config.Settings.CFG.Irrigazione.Zone">Zone</a>
+	  </li>
+
+	  <li 	ng-class="{ active: isActive('Config/settings/general/Irrigazione/policy')}" 
+	  		role="presentation"
+	  		ng-show="sections.Irrigazione.PolicyIrrigazione.Selected == 3" >
+	  		<a ui-sref="app.Config.Settings.CFG.Irrigazione.Policy">Policy</a>
 	  </li>
 
 	</ul>

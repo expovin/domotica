@@ -157,6 +157,19 @@ angular.module('DomoHome')
     .controller('irrigazioneSettingsControllers', ['$scope','attuatorFactory','ListRowsFactory','$stateParams', 
         function($scope,attuatorFactory,ListRowsFactory,$stateParams) {
 
+            console.log("Sono in irrigazioneSettingsControllers");
+            $scope.numZona=0;
+            $scope.buttonClass = "btn btn-primary";
+            $scope.disabled = "btn btn-primary disabled"
+
+            $scope.goUp = function() {
+                $scope.numZona+=1;
+            };
+
+            $scope.goDown = function() {
+                $scope.numZona-=1;
+            };
+
 
     }])
 
