@@ -504,7 +504,19 @@ var email = new Schema ({
 
 
 var general = new Schema ({ 
-
+  
+    // Valore univoco che indica la funzione di questa configurazione. Quella
+    // utilizzata dal sistema e' definita come Current
+     "Tag" : {
+        type : String,
+        unique: true,
+        require : true
+     },
+     // Versione del sistema
+     "version" : {
+        type : String,
+        require : true
+     },
   // Icona identificativa della sezione config.
     "glyphicon" : {
       type : String,
@@ -538,18 +550,6 @@ var general = new Schema ({
 
 var config = new Schema ({ 
 
-    // Valore univoco che indica la funzione di questa configurazione. Quella
-    // utilizzata dal sistema e' definita come Current
-     "Tag" : {
-        type : String,
-        unique: true,
-        require : true
-     },
-     // Versione del sistema
-     "version" : {
-        type : String,
-        require : true
-     },
 
     // Sezione irrigazione
     "Irrigazione" :  Irrigazione,

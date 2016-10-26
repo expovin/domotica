@@ -34,7 +34,7 @@ angular.module('DomoHome')
             
             $scope.sections.Email.debugLevel = $scope.sections.General.LogLevel.id;
 
-            if($scope.sections.Tag == "Current") {
+            if($scope.sections.General.Tag == "Current") {
                 configFactory.Config().update($scope.sections)
                      .$promise.then(
                         //success
@@ -68,8 +68,43 @@ angular.module('DomoHome')
                          }
                       )
                  }
-                 else
-                    console.log("Gestione salvataggio configurazione "+$scope.sections.Tag);
+                 else {
+                    console.log("Gestione salvataggio configurazione "+$scope.sections.General.Tag);
+                    delete $scope.sections['_id'];
+                    configFactory.Config().save($scope.sections)
+                         .$promise.then(
+                            //success
+                            function( value ){
+
+                                var msg = {
+                                    "show" : true,
+                                    "type" : "success",
+                                    "glyphicon" : "glyphicon-ok",
+                                    "shortMsg" : "OK",
+                                    "longMsg" : "Configurazione salvata correttamente"
+
+                                }
+                                $scope.showAlert(msg);
+
+                                
+                            },
+                            //error
+                            function( error ){
+                                
+                                var msg = {
+                                    "show" : true,
+                                    "type" : "danger",
+                                    "glyphicon" : "glyphicon-remove",
+                                    "shortMsg" : "Errore",
+                                    "longMsg" : "Errore nel salvataggio della configurazione : "+error
+
+                                }
+                                $scope.showAlert(msg);
+
+                             }
+                          )
+                 }
+                    
 
         }
 
@@ -84,8 +119,9 @@ angular.module('DomoHome')
                 
 
 		        delete $scope.sections['_id'];
-		        delete $scope.sections['Tag'];
-		        delete $scope.sections['version'];
+		    //    delete $scope.sections['Tag'];
+		    //    delete $scope.sections['version'];
+                delete $scope.sections['updatedAt'];
 		        save = JSON.parse(JSON.stringify($scope.sections)); 
 
             },

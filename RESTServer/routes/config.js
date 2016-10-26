@@ -15,7 +15,7 @@ router.route('/')
 */
 .get(function(req, res, next){
 
-    MyConf.find({"Tag":"Current"}, function(err, conf){
+    MyConf.find({"General.Tag":"Current"}, function(err, conf){
     	if (err) 
     		{ res.json(RC(100,"GET /config",err)); }
     	else
@@ -30,7 +30,7 @@ router.route('/')
 */
 .put(function(req, res, next){   	
         // Put the reference in the user detail
-	MyConf.findOneAndUpdate({"Tag":"Current"}, req.body, {upsert:true}, 
+	MyConf.findOneAndUpdate({"General.Tag":"Current"}, req.body, {upsert:true}, 
 		function(err, conf) {
     	if (err) 
     		{ res.json(RC(300,"PUT /config",err)); }
