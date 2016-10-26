@@ -569,6 +569,9 @@ var config = new Schema ({
     // Sezione General
     "General" : general
 
+},
+{
+    timestamps: true
 });
 
 

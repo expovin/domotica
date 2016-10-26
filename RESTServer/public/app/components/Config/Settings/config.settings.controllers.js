@@ -33,38 +33,43 @@ angular.module('DomoHome')
 
             
             $scope.sections.Email.debugLevel = $scope.sections.General.LogLevel.id;
-            configFactory.Config().update($scope.sections)
-                 .$promise.then(
-                    //success
-                    function( value ){
 
-                        var msg = {
-                            "show" : true,
-                            "type" : "success",
-                            "glyphicon" : "glyphicon-ok",
-                            "shortMsg" : "OK",
-                            "longMsg" : "Configurazione aggiornata correttamente."
+            if($scope.sections.Tag == "Current") {
+                configFactory.Config().update($scope.sections)
+                     .$promise.then(
+                        //success
+                        function( value ){
 
-                        }
-                        $scope.showAlert(msg);
+                            var msg = {
+                                "show" : true,
+                                "type" : "success",
+                                "glyphicon" : "glyphicon-ok",
+                                "shortMsg" : "OK",
+                                "longMsg" : "Configurazione aggiornata correttamente."
 
-                        
-                    },
-                    //error
-                    function( error ){
-                        
-                        var msg = {
-                            "show" : true,
-                            "type" : "danger",
-                            "glyphicon" : "glyphicon-remove",
-                            "shortMsg" : "Errore",
-                            "longMsg" : "Errore nell'aggiornamento della configurazione : "+error
+                            }
+                            $scope.showAlert(msg);
 
-                        }
-                        $scope.showAlert(msg);
+                            
+                        },
+                        //error
+                        function( error ){
+                            
+                            var msg = {
+                                "show" : true,
+                                "type" : "danger",
+                                "glyphicon" : "glyphicon-remove",
+                                "shortMsg" : "Errore",
+                                "longMsg" : "Errore nell'aggiornamento della configurazione : "+error
 
-                     }
-                  )
+                            }
+                            $scope.showAlert(msg);
+
+                         }
+                      )
+                 }
+                 else
+                    console.log("Gestione salvataggio configurazione "+$scope.sections.Tag);
 
         }
 
@@ -135,6 +140,14 @@ angular.module('DomoHome')
 
 
     }])
+
+    .controller('saveConfigSettingsControllers', ['$scope','attuatorFactory','ListRowsFactory','$stateParams', 
+        function($scope,attuatorFactory,ListRowsFactory,$stateParams) {
+
+            console.log("Configurazione da salvare con nome "+$scope.configName);
+
+    }])
+
 
     .controller('generalSettingsControllers', ['$scope','attuatorFactory','ListRowsFactory','$stateParams', 
         function($scope,attuatorFactory,ListRowsFactory,$stateParams) {

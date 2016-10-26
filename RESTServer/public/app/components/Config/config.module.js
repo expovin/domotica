@@ -56,6 +56,16 @@ angular.module('DomoHome.Config', [
                 }
             })
 
+            .state('app.Config.Settings.CFG.saveConfig', {
+                url: '/saveConfig',
+                views: {
+                    'SettingsMainCanvas@app.Config.Settings': {
+                        templateUrl : 'components/Config/Settings/saveConfigAs.html',
+                        controller : 'saveConfigSettingsControllers'
+                    }
+                }
+            })
+
 
             .state('app.Config.Settings.CFG.Acquario', {
                 url: '/Acquario',
@@ -90,7 +100,7 @@ angular.module('DomoHome.Config', [
                         templateUrl : 'components/Config/Settings/IrrigazioneGen.html',
                         controller : 'irrigazioneSettingsControllers'
                     }
-                    
+
                 }
             })
 

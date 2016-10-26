@@ -25,7 +25,7 @@
                       <select class="form-control" id="Level" ng-model="sections.General.Level" required>
                         <option ng-repeat="level in sections.General.LogLevel"
                         		value="{{level.id}}" 
-                        		ng-selected="level.id == sections.General.Level">{{level.id}} - {{level.Label}}</option>
+                        		ng-selected="level.id == sections.General.Level">{{level.id}} {{level.Label}}</option>
 
                       </select>
 
