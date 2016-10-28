@@ -23,9 +23,7 @@ angular.module('DomoHome')
 
 
         $scope.showAlert = function(msg) {
-
             $scope.alertMessage = msg;
-            console.log($scope.alertMessage);
         };
 
         $scope.closeAlert = function() {
@@ -39,9 +37,7 @@ angular.module('DomoHome')
         };
 
         $scope.applyNewSettings = function(){
-            console.log($scope.sections);
 
-            
             $scope.sections.Email.debugLevel = $scope.sections.General.LogLevel.id;
 
             if($scope.sections.General.Tag == "Current") {
@@ -122,37 +118,42 @@ angular.module('DomoHome')
 
 
                     var numInnerCall = 1;
+                    delete $scope.sections._id;
 
-                    var eliminaKeys = function myself (subSection,path) {
+                    var eliminaKeys = function myself (subSection,path, parentType) {
 
                         for (var key in subSection) {
 
                             if(typeof(subSection[key]) == 'object') {
                                 numInnerCall +=1;
-                                if (isArray(subSection[key]))
-                                    myself(subSection[key],path+"["+key+"]");
+                                var thisType;
+                                if(isArray(subSection[key]))
+                                    thisType="Array";
                                 else
-                                    myself(subSection[key],path+"."+key);
+                                    thisType="Obj";
+
+                                if (parentType=="Array")
+                                    myself(subSection[key],path+"["+key+"]",thisType);
+                                else
+                                    myself(subSection[key],path+"."+key,thisType);
                             }
                             else{
                                 if(key == '_id') {
-                                    console.log("$scope.sections."+path+"."+key +" : "+subSection[key]);
-                                    delete $scope.sections[path];
+                                    
+                                    var cmd ="delete $scope.sections"+path+"._id";
+
+                                    eval(cmd);
                                 }
                             }
 
                         }
                         numInnerCall --;
-                        console.log(numInnerCall);
 
-
-                        if(numInnerCall == 0){
-                            setTimeout(function(){ InsertNewConfig(); }, 2000);
-                            
-                        }
+                        if(numInnerCall == 0)
+                            InsertNewConfig();
                     };
 
-                    eliminaKeys($scope.sections,"");
+                    eliminaKeys($scope.sections,"","Obj");
 
 
                  }
@@ -232,7 +233,6 @@ angular.module('DomoHome')
     .controller('saveConfigSettingsControllers', ['$scope','attuatorFactory','ListRowsFactory','$stateParams', 
         function($scope,attuatorFactory,ListRowsFactory,$stateParams) {
 
-            console.log("Configurazione da salvare con nome "+$scope.configName);
 
     }])
 
