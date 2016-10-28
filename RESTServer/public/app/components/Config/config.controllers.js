@@ -18,6 +18,7 @@ angular.module('DomoHome')
     .controller('footerConfigControllers', ['$scope', function($scope) {
 
 
+        
     }])
 
 

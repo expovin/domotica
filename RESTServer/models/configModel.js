@@ -512,6 +512,9 @@ var general = new Schema ({
         unique: true,
         require : true
      },
+     "Comment" : {
+        type : String
+     },
      // Versione del sistema
      "version" : {
         type : String,

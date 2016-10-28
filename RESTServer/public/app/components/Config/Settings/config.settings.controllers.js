@@ -1,3 +1,4 @@
+
 'use strict';
 
 angular.module('DomoHome') 
@@ -5,6 +6,15 @@ angular.module('DomoHome')
     .controller('SettingsControllers', ['$scope','configFactory', '$location',
         function($scope,configFactory,$location) {
 
+
+            function isObject ( obj ) {
+               return obj && (typeof obj  === "object");
+            }
+
+            function isArray ( obj ) { 
+              return isObject(obj) && (obj instanceof Array);
+            }
+            
         var config = {};
         $scope.sections = {};
         var save = {};
@@ -69,40 +79,82 @@ angular.module('DomoHome')
                       )
                  }
                  else {
-                    console.log("Gestione salvataggio configurazione "+$scope.sections.General.Tag);
-                    delete $scope.sections['_id'];
-                    configFactory.Config().save($scope.sections)
-                         .$promise.then(
-                            //success
-                            function( value ){
 
-                                var msg = {
-                                    "show" : true,
-                                    "type" : "success",
-                                    "glyphicon" : "glyphicon-ok",
-                                    "shortMsg" : "OK",
-                                    "longMsg" : "Configurazione salvata correttamente"
+                    /*  Attraverso in modo recursivo tutta la struttura del JSON per eliminare tutte le chiavi
+                    */
 
+
+
+                    var InsertNewConfig = function(){
+                        configFactory.Config().save($scope.sections)
+                             .$promise.then(
+                                //success
+                                function( value ){
+
+                                    var msg = {
+                                        "show" : true,
+                                        "type" : "success",
+                                        "glyphicon" : "glyphicon-ok",
+                                        "shortMsg" : "OK",
+                                        "longMsg" : "Configurazione salvata correttamente"
+
+                                    }
+                                    $scope.showAlert(msg);
+
+                                    
+                                },
+                                //error
+                                function( error ){
+                                    
+                                    var msg = {
+                                        "show" : true,
+                                        "type" : "danger",
+                                        "glyphicon" : "glyphicon-remove",
+                                        "shortMsg" : "Errore",
+                                        "longMsg" : "Errore nel salvataggio della configurazione : "+error
+
+                                    }
+                                    $scope.showAlert(msg);
+
+                                 }
+                              )  
+                    };
+
+
+                    var numInnerCall = 1;
+
+                    var eliminaKeys = function myself (subSection,path) {
+
+                        for (var key in subSection) {
+
+                            if(typeof(subSection[key]) == 'object') {
+                                numInnerCall +=1;
+                                if (isArray(subSection[key]))
+                                    myself(subSection[key],path+"["+key+"]");
+                                else
+                                    myself(subSection[key],path+"."+key);
+                            }
+                            else{
+                                if(key == '_id') {
+                                    console.log("$scope.sections."+path+"."+key +" : "+subSection[key]);
+                                    delete $scope.sections[path];
                                 }
-                                $scope.showAlert(msg);
+                            }
 
-                                
-                            },
-                            //error
-                            function( error ){
-                                
-                                var msg = {
-                                    "show" : true,
-                                    "type" : "danger",
-                                    "glyphicon" : "glyphicon-remove",
-                                    "shortMsg" : "Errore",
-                                    "longMsg" : "Errore nel salvataggio della configurazione : "+error
+                        }
+                        numInnerCall --;
+                        console.log(numInnerCall);
 
-                                }
-                                $scope.showAlert(msg);
 
-                             }
-                          )
+                        if(numInnerCall == 0){
+                            setTimeout(function(){ InsertNewConfig(); }, 2000);
+                            
+                        }
+                    };
+
+                    eliminaKeys($scope.sections,"");
+
+
                  }
                     
 

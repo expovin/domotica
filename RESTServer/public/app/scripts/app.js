@@ -25,7 +25,8 @@ angular.module('DomoHome', ['DomoHome.Config'])
                 url : 'Config',
                 views : {
                     'content@' : {
-                        templateUrl : 'components/Config/IndexConfig.html'
+                        templateUrl : 'components/Config/IndexConfig.html',
+                        controller  : 'SettingsController'
                     }
                 }
                 

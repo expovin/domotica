@@ -32,4 +32,18 @@ angular.module('DomoHome')
 
     }])
 
+    .controller('SettingsController', ['$scope','$timeout', function($scope,$timeout) {
+
+
+            function isObject ( obj ) {
+               return obj && (typeof obj  === "object");
+            }
+
+            function isArray ( obj ) { 
+              return isObject(obj) && (obj instanceof Array);
+            }
+        
+
+    }])
+
 ;

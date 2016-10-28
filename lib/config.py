@@ -14,7 +14,7 @@ connection = pymongo.MongoClient()
 dbc = connection.domotica.config
 
 # Risultato della find (assumo che la collection abbia solo un documento)
-c = dbc.find({'Tag' : 'Current'})
+c = dbc.find({'General.Tag' : 'Current'})
 
 def general():
 	return c[0]['General']
