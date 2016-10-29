@@ -4,6 +4,12 @@
 
 <div class="offset-lg-2 col-lg-10">
 	<h1 class="text-center">CURRENT CONFIGURATION</h1>
+    <div class="container">
+        <div class="row row-content">
+            <div ui-view="SettingsListSavedConfig"></div>
+        </div>
+    </div>
+
 	<form class="form-horizontal" name="newSettings" ng-submit="applyNewSettings()" id="newSettingsForm" novalidate>
     	<div ui-view="SettingsMainCanvas"></div>
 

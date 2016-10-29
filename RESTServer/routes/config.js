@@ -98,4 +98,35 @@ router.route('/')
 	 });
 });
 
+/* GET all configs but CURRENT */
+router.route('/saved')
+/*
+	GET
+	Il metodo get ritorna tutte le configurazioni salvate eccetto TAG : Current
+*/
+.get(function(req, res, next){
+
+    MyConf.find({"General.Tag":{$ne : "Current"}}, function(err, conf){
+    	if (err) 
+    		{ res.json(RC(100,"GET /config",err)); }
+    	else
+    		res.json(conf);
+    });
+})
+
+/*  Il metodo PUT permette di selezionare solo alcune colonne della
+    collection da passare nel body con standard MongoDB
+*/
+.put(function(req, res, next){
+
+    var query = MyConf.find({"General.Tag":{$ne : "Current"}}).select(req.body);
+	    query.exec(function(err, config){
+	      if (err) 
+	        { res.json(RC(100,"PUT /config",err)); }
+	      else
+	        res.json(config);
+	    });
+
+});
+
 module.exports = router;

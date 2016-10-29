@@ -3,6 +3,99 @@
 
 angular.module('DomoHome') 
 
+    /*  Controller utilizzato per la generazione e la gestione della lista di una 
+        "Collection" arbitraria
+    */
+    .controller('ListaConfigurazioni', ['$scope','configFactory', 'ListRowsFactory',
+        function($scope,configFactory,ListRowsFactory) {
+
+        console.log("ListaConfigurazioni fired!");
+        $scope.Titolo = "config";
+
+        /*  Di seguito sono elencati i soli campi della Collection che si vogliono elencare
+            La chiave rappresenta l'etichetta del campo mentra il valore è il nome tecnico.
+        */
+         $scope.Fields = { 
+                            //    '_id' : 0,
+                                'General.Tag' : 1,
+                                'General.Comment' : 1, 
+                                'updatedAt':1
+                                
+                            };
+        
+        $scope.sensori = [];
+        /* Recupero la lista di Sensori censita a sistema*/
+        var configs =  configFactory.Saved().update($scope.Fields, function(){
+            
+            for(var key in configs){
+
+                if(configs[key].General != undefined){
+                        var config = {
+                        'updatedAt' : configs[key]['updatedAt'],
+                        'Tag' : configs[key]['General']['Tag'],
+                        'Comment' : configs[key]['General']['Comment']
+                    }
+                    $scope.sensori.push(config);
+                }
+            }
+
+         $scope.Fields = { 
+                            //    '_id' : 0,
+                                'Tag' : 1,
+                                'Comment' : 1, 
+                                'updatedAt':1
+                                
+                            };
+
+            console.log($scope.sensori);     
+            
+        });
+
+
+
+//$scope.sensori
+
+        /*  La funzione cambia stato permette di passare dallo stato consultazione allo stato
+            cancellazione. Viene richimata la factory perchè condivisa con le altre funzioni
+        */
+        $scope.changeStatus = function(status) {
+            ListRowsFactory.setStatus(status);
+        }
+        
+
+        $scope.selectRow = function() {
+            ListRowsFactory.setSelectedRow(this.riga);
+            ListRowsFactory.setStatus(2);
+        }
+
+
+        $scope.eliminaRiga = function() {
+
+            $scope.result = configFactory.Config().delete({ids:this.riga._id})
+                 .$promise.then(
+                    //success
+                    function( value ){
+                        var start = value['long Message'].indexOf("attuatori/")+10;
+                        var end = value['long Message'].indexOf("eseguita")-1;
+                        var sensorId=value['long Message'].substring(start,end);
+                        console.log(sensorId);
+
+                        for (var s in $scope.sensori) {
+                            if($scope.sensori[s]['_id'] == sensorId)
+                                $scope.sensori.splice(s,1);          
+                        }
+                     
+                    },
+                    //error
+                    function( error ){
+                        console.log(error);
+                     }
+                  )
+        }
+
+    }])
+
+
     .controller('SettingsControllers', ['$scope','configFactory', '$location','generalHelperLibFactory',
         function($scope,configFactory,$location,generalHelperLibFactory) {
 
@@ -68,11 +161,6 @@ angular.module('DomoHome')
                  }
                  else {
 
-                    /*  Attraverso in modo recursivo tutta la struttura del JSON per eliminare tutte le chiavi
-                    */
-
-
-
                     var InsertNewConfig = function(){
                         configFactory.Config().save($scope.sections)
                              .$promise.then(
@@ -109,44 +197,7 @@ angular.module('DomoHome')
                     };
 
 
-                    var numInnerCall = 1;
                     delete $scope.sections._id;
-
-                    /*
-                    var eliminaKeys = function myself (subSection,path, parentType) {
-
-                        for (var key in subSection) {
-
-                            if(typeof(subSection[key]) == 'object') {
-                                numInnerCall +=1;
-                                var thisType;
-                                if(generalHelperLibFactory.isArray(subSection[key]))
-                                    thisType="Array";
-                                else
-                                    thisType="Obj";
-
-                                if (parentType=="Array")
-                                    myself(subSection[key],path+"["+key+"]",thisType);
-                                else
-                                    myself(subSection[key],path+"."+key,thisType);
-                            }
-                            else{
-                                if(key == '_id') {
-                                    
-                                    var cmd ="delete $scope.sections"+path+"._id";
-
-                                    eval(cmd);
-                                }
-                            }
-
-                        }
-                        numInnerCall --;
-
-                        if(numInnerCall == 0)
-                            InsertNewConfig();
-                    };
-                    */
-
                     generalHelperLibFactory.DFSTraverse($scope.sections,
                                                         "$scope.sections",
                                                         "Obj", 
@@ -180,8 +231,6 @@ angular.module('DomoHome')
                 
 
 		        delete $scope.sections['_id'];
-		    //    delete $scope.sections['Tag'];
-		    //    delete $scope.sections['version'];
                 delete $scope.sections['updatedAt'];
 		        save = JSON.parse(JSON.stringify($scope.sections)); 
 

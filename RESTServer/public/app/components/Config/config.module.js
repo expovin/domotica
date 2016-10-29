@@ -62,6 +62,10 @@ angular.module('DomoHome.Config', [
                     'SettingsMainCanvas@app.Config.Settings': {
                         templateUrl : 'components/Config/Settings/saveConfigAs.html',
                         controller : 'saveConfigSettingsControllers'
+                    },
+                    'SettingsListSavedConfig@app.Config.Settings' : {
+                        templateUrl : 'components/Config/ListRows.html',
+                        controller : 'ListaConfigurazioni'
                     }
                 }
             })
