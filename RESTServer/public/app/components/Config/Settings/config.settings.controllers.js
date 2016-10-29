@@ -3,18 +3,10 @@
 
 angular.module('DomoHome') 
 
-    .controller('SettingsControllers', ['$scope','configFactory', '$location',
-        function($scope,configFactory,$location) {
+    .controller('SettingsControllers', ['$scope','configFactory', '$location','generalHelperLibFactory',
+        function($scope,configFactory,$location,generalHelperLibFactory) {
 
 
-            function isObject ( obj ) {
-               return obj && (typeof obj  === "object");
-            }
-
-            function isArray ( obj ) { 
-              return isObject(obj) && (obj instanceof Array);
-            }
-            
         var config = {};
         $scope.sections = {};
         var save = {};
@@ -120,6 +112,7 @@ angular.module('DomoHome')
                     var numInnerCall = 1;
                     delete $scope.sections._id;
 
+                    /*
                     var eliminaKeys = function myself (subSection,path, parentType) {
 
                         for (var key in subSection) {
@@ -127,7 +120,7 @@ angular.module('DomoHome')
                             if(typeof(subSection[key]) == 'object') {
                                 numInnerCall +=1;
                                 var thisType;
-                                if(isArray(subSection[key]))
+                                if(generalHelperLibFactory.isArray(subSection[key]))
                                     thisType="Array";
                                 else
                                     thisType="Obj";
@@ -152,8 +145,23 @@ angular.module('DomoHome')
                         if(numInnerCall == 0)
                             InsertNewConfig();
                     };
+                    */
 
-                    eliminaKeys($scope.sections,"","Obj");
+                    generalHelperLibFactory.DFSTraverse($scope.sections,
+                                                        "$scope.sections",
+                                                        "Obj", 
+                    function(Leaf){
+                        var arr = Leaf.split(".");
+                        var key = arr[arr.length-1];
+
+                        if(key == "_id")
+                            eval("delete "+Leaf);
+                        
+
+                    }, 
+                    function(){
+                        InsertNewConfig();
+                    });
 
 
                  }
