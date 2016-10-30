@@ -129,4 +129,54 @@ router.route('/saved')
 
 });
 
+
+/* GET all config parameters */
+router.route('/saved/:cid')
+/*
+	GET
+	Il metodo get ritorna il documento cnn ID=cid
+*/
+.get(function(req, res, next){
+
+    MyConf.find({"_id":req.params.cid}, function(err, conf){
+    	if (err) 
+    		{ res.json(RC(100,"GET /config",err)); }
+    	else
+    		res.json(conf);
+    });
+})
+
+/* PUT
+   Il metodo put sostituisce l'intero documento con il nuovo presente
+   nel corpo della richiesta. Viene chiamato a ogni conferma di modifica 
+   configurazione.
+*/
+.put(function(req, res, next){   	
+        // Put the reference in the user detail
+	MyConf.findOneAndUpdate({"_id":req.params.cid}, req.body, {upsert:true}, 
+		function(err, conf) {
+    	if (err) 
+    		{ res.json(RC(300,"PUT /config",err)); }
+    	else
+			res.json(RC(200,"PUT /config"));
+	    
+	 });
+})
+
+// Il metodo delete cancella la configurazione selezionata
+.delete(function(req, res, next){
+	var Query = {"_id":req.params.cid};
+	MyConf.find(Query).remove(function(err,deleted){
+		if (err) {
+			res.json(RC(500,"DELETE /config/"+req.params.cid,err));
+		}
+		else
+	    	res.json(RC(200,"DELETE /config/"+req.params.cid));
+	});
+});
+
+
+
+
+
 module.exports = router;
