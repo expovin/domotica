@@ -59,13 +59,25 @@ angular.module('DomoHome.Config', [
             .state('app.Config.Settings.CFG.saveConfig', {
                 url: '/saveConfig',
                 views: {
+                    /*
                     'SettingsMainCanvas@app.Config.Settings': {
                         templateUrl : 'components/Config/Settings/saveConfigAs.html',
                         controller : 'saveConfigSettingsControllers'
                     },
+                    */
                     'SettingsListSavedConfig@app.Config.Settings' : {
                         templateUrl : 'components/Config/ListRows.html',
                         controller : 'ListaConfigurazioni'
+                    }
+                }
+            })
+
+            .state('app.Config.Settings.CFG.saveConfig.addNew', {
+                url: '/addNew',
+                views: {
+                    'SettingsMainCanvas@app.Config.Settings': {
+                        templateUrl : 'components/Config/Settings/saveConfigAs.html',
+                        controller : 'saveConfigSettingsControllers'
                     }
                 }
             })

@@ -16,12 +16,26 @@
                           <span class="glyphicon glyphicon-info-sign"></span>
                         </a>
                       </td>
-                      <td class="myTagCrossDelete"><button class="btn btn-danger btn-xs" 
-                                  data-toggle="confirmation" 
-                                  data-placement="right" 
-                                  title="Cancellare?" 
-                                  id={{riga[_id]}}
-                                  ng-click="eliminaRiga()">Elimina</button>
+                      <td class="myTagCrossDelete">
+
+                        <button class="btn btn-danger btn-xs" 
+                                    data-toggle="confirmation" 
+                                    data-placement="right" 
+                                    title="Cancellare?" 
+                                    id={{riga[_id]}}
+                                    ng-click="eliminaRiga()"
+                                    ng-show="ripristina==0">Elimina
+                        </button>
+
+                        <button class="btn btn-warning btn-xs" 
+                                    data-toggle="confirmation" 
+                                    data-placement="right" 
+                                    title="Ripristinare?" 
+                                    id={{riga[_id]}}
+                                    ng-click="ripristinaConfig()"
+                                    ng-show="ripristina==1">Ripristina
+                        </button>
+
                       </td>
 
                       <td ng-repeat="(Lable, Row) in Fields" ng-if="Row == 1">{{riga[Lable]}}</td>
@@ -38,7 +52,9 @@
 
             <div class="btn-group" role="group">
               <button type="button" class="btn btn-danger myTagButtonRegular" ng-click="changeStatus(0)">Cancella</button>
-              <a ui-sref=".NewRow"><button type="button" class="btn btn-primary myTagButtonRegular">Aggiungi</button></a>
+              <button type="button" class="btn btn-warning myTagButtonRegular" ng-click="changeStatus(2)" ng-show="Titolo=='config'">Ripristina</button>
+              <a ui-sref=".NewRow"><button type="button" class="btn btn-primary myTagButtonRegular" ng-hide="Titolo=='config'">Aggiungi</button></a>
+              <a ui-sref=".addNew"><button type="button" class="btn btn-primary myTagButtonRegular" ng-show="Titolo=='config'">Salva</button></a>
             </div>
 
             <button type="button" class="btn btn-warning myTagButtonDelete" ng-click="changeStatus(1)">Fatto</button>

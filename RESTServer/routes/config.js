@@ -56,9 +56,10 @@ router.route('/')
     	    res.json(RC(200,"POST /config"));
     });
 
-})
+});
 
 
+router.route('/:cid')
 /*
 	DELETE
 	Il Metodo delete viene utilizzato per ripristinare a "Current" una versione 
@@ -66,18 +67,18 @@ router.route('/')
 	browser dovra' chiedere conferma prima di eseguire questa chiamata
 */
 .delete(function(req, res, next){
-	var Query = {"Tag":"Current"};
-	var Update = { $set: { "Tag": "markForDelete" } };
+	var Query = {"General.Tag":"Current"};
+	var Update = { $set: { "General.Tag": "markForDelete" } };
 	var Params = {upsert:true};
 
-    MyConf.findOneAndUpdate(Query , Update , Params , function(err, conf){
+    MyConf.findOneAndUpdate(Query , Update , {Params} , function(err, conf){
     	if (err) {
     		res.json(RC(300,"DELETE /config - Primo update",err));
     	}
     	else {
-			var Query = {"Tag":req.body.Tag};
+			var Query = {"_id":req.params.cid};
 			console.log(Query);
-			var Update = { $set: { "Tag": "Current" } };
+			var Update = { $set: { "General.Tag": "Current" } };
 			var Params = {upsert:true};
 
 		    MyConf.findOneAndUpdate(Query , Update , Params , function(err, conf){
@@ -85,7 +86,7 @@ router.route('/')
 		    		res.json(RC(300,"DELETE /config - Secondo update",err));
 		    	}
 		    	else {
-			    	MyConf.find({"Tag":"markForDelete"}).remove(function(err,deleted){
+			    	MyConf.find({"General.Tag":"markForDelete"}).remove(function(err,deleted){
 				    	if (err) {
 				    		res.json(RC(500,"DELETE /config",err));
 				    	}

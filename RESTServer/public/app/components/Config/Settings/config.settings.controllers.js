@@ -9,14 +9,14 @@ angular.module('DomoHome')
     .controller('ListaConfigurazioni', ['$scope','configFactory', 'ListRowsFactory',
         function($scope,configFactory,ListRowsFactory) {
 
-        console.log("ListaConfigurazioni fired!");
         $scope.Titolo = "config";
+        $scope.ripristina=0;
 
         /*  Di seguito sono elencati i soli campi della Collection che si vogliono elencare
             La chiave rappresenta l'etichetta del campo mentra il valore è il nome tecnico.
         */
          $scope.Fields = { 
-                            //    '_id' : 0,
+                                '_id' : 2,
                                 'General.Tag' : 1,
                                 'General.Comment' : 1, 
                                 'updatedAt':1
@@ -31,6 +31,7 @@ angular.module('DomoHome')
 
                 if(configs[key].General != undefined){
                         var config = {
+                        '_id' : configs[key]['_id'],
                         'updatedAt' : configs[key]['updatedAt'],
                         'Tag' : configs[key]['General']['Tag'],
                         'Comment' : configs[key]['General']['Comment']
@@ -40,26 +41,30 @@ angular.module('DomoHome')
             }
 
          $scope.Fields = { 
-                            //    '_id' : 0,
+                                '_id' : 2,
                                 'Tag' : 1,
                                 'Comment' : 1, 
                                 'updatedAt':1
                                 
                             };
-
-            console.log($scope.sensori);     
+    
             
         });
 
 
 
-//$scope.sensori
-
         /*  La funzione cambia stato permette di passare dallo stato consultazione allo stato
             cancellazione. Viene richimata la factory perchè condivisa con le altre funzioni
         */
         $scope.changeStatus = function(status) {
+            if(status==2){
+                $scope.ripristina=1;
+                status=0;
+            }
+
             ListRowsFactory.setStatus(status);
+            if(status==1)
+                $scope.ripristina=0;
         }
         
 
@@ -70,12 +75,11 @@ angular.module('DomoHome')
 
 
         $scope.eliminaRiga = function() {
-
-            $scope.result = configFactory.Config().delete({ids:this.riga._id})
+            $scope.result = configFactory.SavedCid().delete({cid:this.riga._id})
                  .$promise.then(
                     //success
                     function( value ){
-                        var start = value['long Message'].indexOf("attuatori/")+10;
+                        var start = value['long Message'].indexOf("config/")+7;
                         var end = value['long Message'].indexOf("eseguita")-1;
                         var sensorId=value['long Message'].substring(start,end);
                         console.log(sensorId);
@@ -92,6 +96,35 @@ angular.module('DomoHome')
                      }
                   )
         }
+
+        $scope.ripristinaConfig = function() {
+            var row_id = this.riga._id;
+            $scope.result = configFactory.ConfigCid().delete({cid:this.riga._id})
+                 .$promise.then(
+                    //success
+                    function( value ){
+                        /*
+                        var start = value['long Message'].indexOf("config/")+7;
+                        var end = value['long Message'].indexOf("eseguita")-1;
+                        var sensorId=value['long Message'].substring(start,end);
+                        */
+                        console.log(value);
+                        console.log(row_id);
+                        var sensorId=row_id;
+
+                        for (var s in $scope.sensori) {
+                            if($scope.sensori[s]['_id'] == sensorId)
+                                $scope.sensori.splice(s,1);          
+                        }
+                     
+                    },
+                    //error
+                    function( error ){
+                        console.log(error);
+                     }
+                  )
+        }
+
 
     }])
 
@@ -175,7 +208,18 @@ angular.module('DomoHome')
                                         "longMsg" : "Configurazione salvata correttamente"
 
                                     }
+
                                     $scope.showAlert(msg);
+
+                                    // Aggiorno lo scope con il nuovo record aggiunto
+                                    var config = {
+                                        '_id' : $scope.sections['_id'],
+                                        'updatedAt' : $scope.sections['updatedAt'],
+                                        'Tag' : $scope.sections.General.Tag,
+                                        'Comment' : $scope.sections.General.Comment
+                                    }
+                                    $scope.sensori.push(config);                                    
+
 
                                     
                                 },
