@@ -1,0 +1,44 @@
+<div class="container">
+    <div id="AcquarioSettingsTitle" class="row row-content settingsSectionTitle">
+        <h2>
+            <span class="col-md-11">Save this configuration</span>
+            <span class="col-md-1 glyphicon glyphicon-upload" aria-hidden="true"></span> 
+        </h2>
+
+    </div>
+
+    <div class="alert alert-{{alertMessage.type}} alert-dismissible fade in" role="alert" ng-show="alertMessage.show" id="settingsAlerts">
+      <span class="glyphicon {{alertMessage.glyphicon}}" aria-hidden="true"></span>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="closeAlert()"><span aria-hidden="true">&times;</span></button>
+      <strong>{{alertMessage.shortMsg}}</strong> {{alertMessage.longMsg}}.
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group" ng-class="{ 'has-error' : sections.General.Tag.$error.required && !sections.General.Tag.$pristine }">
+                <label for="configName" class="col-sm-4 control-label">Config TAG</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="configName" name="configName"
+                           ng-model="sections.General.Tag" required>
+                    <p class="form-text text-muted helpMessage">
+                        Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group" ng-class="{ 'has-error' : sections.General.Comment.$error.required && !sections.General.Comment.$pristine }">
+                <label for="Comment" class="col-sm-4 control-label">Description</label>
+                <div class="col-sm-8">
+                    <textarea class="form-control" rows="5" id="comment" name="Comment" ng-model="sections.General.Comment"></textarea>
+                    <p class="form-text text-muted helpMessage">
+                        Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                    </p>
+                </div>
+            </div>
+        </div>
+      
+    </div>

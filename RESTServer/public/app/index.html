@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="DomoHome">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head 
+         content must come *after* these tags -->
+    
+    <title>DomoHome</title>    
+        <!-- Bootstrap -->
+<!-- build:css styles/main.css -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="styles/bootstrap-social.css" rel="stylesheet">
+    <link href="styles/bootstrap-switch.min.css" rel="stylesheet">
+    <link href="styles/mystyles.css" rel="stylesheet"> 
+    <link href="styles/leftPane.css" rel="stylesheet"> 
+
+</head>
+<body>
+   
+    <div ui-view="content"></div>
+
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>   
+    <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
+
+    <script src="../bower_components/angular-ui-bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
+
+     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+     <script src="../bower_components/bootstrap/dist/js/bootstrap-switch.min.js"></script>
+
+
+    <script src="components/Config/Settings/config.settings.module.js"></script> 
+    <script src="components/Config/Sensors/config.sensors.module.js"></script>
+    <script src="components/Config/Attuators/config.attuators.module.js"></script> 
+    <script src="components/Config/config.module.js"></script> 
+    <script src="scripts/app.js"></script>
+
+    <script src="components/Config/Sensors/config.sensors.controllers.js"></script> 
+    <script src="components/Config/Attuators/config.attuators.controllers.js"></script> 
+    <script src="components/Config/Settings/config.settings.controllers.js"></script> 
+    <script src="components/Config/config.controllers.js"></script> 
+    <script src="scripts/controllers.js"></script>
+    
+    <script src="components/Config/Sensors/config.sensors.services.js"></script> 
+    <script src="components/Config/Attuators/config.attuators.services.js"></script> 
+    <script src="components/Config/Settings/config.settings.services.js"></script> 
+    <script src="components/Config/config.services.js"></script> 
+    <script src="scripts/services.js"></script>
+<!-- endbuild -->
+
+</body>
+
+</html>

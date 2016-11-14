@@ -1,0 +1,92 @@
+
+<div class="container">
+    <div id="WeatherInfoSettingsTitle" class="row row-content settingsSectionTitle">
+        <h2>
+            <span class="col-md-11">Informazioni Meteo</span>
+            <span class="col-md-1 glyphicon {{sections.WeatherInfo.glyphicon}} {{sections.WeatherInfo['glyphicon-color']}}" aria-hidden="true"></span> 
+        </h2>
+
+    </div>
+
+    <div class="alert alert-{{alertMessage.type}} alert-dismissible fade in" role="alert" ng-show="alertMessage.show" id="settingsAlerts">
+      <span class="glyphicon {{alertMessage.glyphicon}}" aria-hidden="true"></span>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="closeAlert()"><span aria-hidden="true">&times;</span></button>
+      <strong>{{alertMessage.shortMsg}}</strong> {{alertMessage.longMsg}}.
+    </div>
+
+
+</div>
+
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group" ng-class="{ 'has-error' : sections.WeatherInfo['Module Name'].$error.required && !sections.WeatherInfo['Module Name'].$pristine }">
+                <label for="Nome Modulo" class="col-sm-4 control-label">Nome Modulo</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="Module Name" name="Module Name"
+                           ng-model="sections.WeatherInfo['Module Name']" required>
+                    <p class="form-text text-muted helpMessage">
+                        Inserire il nome del modulo
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group" 
+            ng-class="{ 'has-error' : sections.WeatherInfo['OWM KEY'].$error.required && !sections.WeatherInfo['OWM KEY'].$pristine }">
+                <label for="OWM KEY" class="col-sm-4 control-label">OWM KEY</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="OWM KEY" name="OWM KEY"
+                           ng-model="sections.WeatherInfo['OWM KEY']" required>
+                    <p class="form-text text-muted helpMessage">
+                        Per evitare errori di lettura del sensore e rimuovere valori in cash, ogni valore memorizzato è ottenuto facendo la media di 
+                        <n> "letture consecutive", dopo aver rimosso i valori outlayer. Questo campo specifica il tempo in secondi tra le letture consecutive
+                    </p>
+                </div>
+            </div>
+        </div>
+            
+        <div class="col-md-6">
+            <div class="form-group" 
+            ng-class="{ 'has-error' : sections.WeatherInfo.Place.$error.required && !sections.WeatherInfo.Place.$pristine }">
+                <label for="Place" class="col-sm-4 control-label">Place</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="Place" name="Place"
+                           ng-model="sections.WeatherInfo.Place" required>
+                    <p class="form-text text-muted helpMessage">
+                        Letture consecutive su cui verranno rimossi gli outlayer e fatta una media ponderata (memorizzata) sulla quale verranno eventualmente prese
+                        azioni correttive. Un numero alto garantice errori piccoli
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group" 
+            ng-class="{ 'has-error' : sections.WeatherInfo['Interval Query'].$error.required && !sections.WeatherInfo['Interval Query'].$pristine }">
+                <label for="Interval Query" class="col-sm-4 control-label">Interval Query</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" id="Interval Query" name="Interval Query"
+                           ng-model="sections.WeatherInfo['Interval Query']" required>
+                    <p class="form-text text-muted helpMessage">
+                        Valore espresso in frazioni di gradi centigradi °C entro il quale la variazione di temperatura non e' considerata apprezzabile per essere
+                        storicizzata. Variazioni al di sopra di questa soglia sono invece registrate come effettive variazioni di temperatura e registrate nel DB.
+                    </p>
+                </div>
+            </div>
+        </div>
+            
+        <div class="col-md-6">
+
+        </div>
+    </div>

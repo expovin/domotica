@@ -1,0 +1,89 @@
+ <div class="container">
+        <div class="row row-content" id="ModificaSensore">  
+        <div class="col-md-11">
+          <h2>Modifica sensore {{sensore.Modello}} <small>{{sensore._id}}</small></h2> 
+        </div>
+        <div class="col-md-1" id="rowAreaIconBar">
+          <a ui-sref="app.Config.Sensors.List"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>          
+
+          <div class="col-md-6">
+              <form class="form-horizontal" name="modificaSensore" ng-submit="applyModSensore()" novalidate>
+
+                  <div class="form-group" ng-class="{ 'has-error' : sensore.Modello.$error.required && !sensore.Modello.$pristine }">
+                    <label for="Modello" class="col-sm-2 control-label">Modello</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="Modello" name="Modello"
+                               ng-model="sensore.Modello" required>
+                      </div>
+                  </div>
+
+                  <div class="form-group" ng-class="{ 'has-error' : sensore.Sito.$error.required && !sensore.Sito.$pristine }">
+                    <label for="Sito" class="col-sm-2 control-label">Sito</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="Sito" name="Sito" ng-model="sensore.Sito" required>
+                      </div>
+                  </div>
+
+                  <div class="form-group" ng-class="{ 'has-error' : sensore.Tipo.$error.required && !sensore.Tipo.$pristine }">
+                    <label for="Tipo" class="col-sm-2 control-label">Tipo</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="Tipo" name="Tipo" ng-model="sensore.Tipo" required>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="Datasheet" class="col-sm-2 control-label">Datasheet</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="Datasheet" name="Datasheet" ng-model="sensore.Datasheet" required>
+                      </div>
+                  </div>
+                
+                  <div class="form-group">
+                    <label for="Image" class="col-sm-2 control-label">Image</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="Image" name="Image" ng-model="sensore.Image" required>
+                      </div>
+                  </div>
+
+                
+
+                <div class="form-group row">
+
+                    <label for="TracciaStoria" class="col-sm-2 control-label">Tracciatura</label>
+                      <div class="col-md-3" ng-if="sensore.TracciaStoria">
+                          <input type="checkbox" class="form-control" id="TracciaStoria" 
+                          name="TracciaStoria" ng-model="sensore.TracciaStoria" 
+                          checked bootstrap-switch>
+                      </div>
+
+                      <div class="col-md-3" ng-if="!sensore.TracciaStoria">
+                          <input type="checkbox" class="form-control" id="TracciaStoria" 
+                          name="TracciaStoria" ng-model="sensore.TracciaStoria" 
+                          bootstrap-switch>
+                      </div>
+
+
+                    <label for="DeltaVariazioneTraccia" class="col-sm-2 control-label">Delta</label>
+                      <div class="col-md-5">
+                          <input type="number" 
+                                 class="form-control" 
+                                 ng-model="sensore.DeltaVariazioneTraccia" 
+                                 ng-disabled="!sensore.TracciaStoria">
+                      </div>
+                </div>
+
+                  
+                   <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary" ng-disabled="nuovoSensore.$invalid">Applica</button>
+                            <button type="button"  class="btn btn-warning"  ng-click="resetCampi()">Reset</button>
+                        </div>
+                    </div>
+
+
+                  </div>
+              </form>
+          </div>
+        </div>
+  </div>

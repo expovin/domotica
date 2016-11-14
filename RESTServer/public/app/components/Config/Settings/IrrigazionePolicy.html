@@ -1,0 +1,174 @@
+<div class="tab-pane fade active in" id="GenTab">
+
+        <div class="row headerTabRow"> <h4>Settings Policy</h4></div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione.PolicyIrrigazione.GiorniCalcoloTotaleAcqua.$error.required && !sections.IrrigazionePolicyIrrigazione.GiorniCalcoloTotaleAcqua.$pristine }">
+                    <label for="GiorniCalcoloTotaleAcqua" class="col-sm-4 control-label">Giorni Calcolo Totale Acqua</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="GiorniCalcoloTotaleAcqua" name="GiorniCalcoloTotaleAcqua"
+                               ng-model="sections.Irrigazione.PolicyIrrigazione.GiorniCalcoloTotaleAcqua" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione.PolicyIrrigazione.GiorniCalcoloMediaVento.$error.required && !sections.IrrigazionePolicyIrrigazione.GiorniCalcoloMediaVento.$pristine }">
+                    <label for="GiorniCalcoloMediaVento" class="col-sm-4 control-label">Giorni Calcolo Media Vento</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="GiorniCalcoloMediaVento" name="GiorniCalcoloMediaVento"
+                               ng-model="sections.Irrigazione.PolicyIrrigazione.GiorniCalcoloMediaVento" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione.PolicyIrrigazione.GiorniCalcoloMediaTemperatura.$error.required && !sections.IrrigazionePolicyIrrigazione.GiorniCalcoloMediaTemperatura.$pristine }">
+                    <label for="GiorniCalcoloMediaTemperatura" class="col-sm-4 control-label">Giorni Calcolo Media Temperatura</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="GiorniCalcoloMediaTemperatura" name="GiorniCalcoloMediaTemperatura"
+                               ng-model="sections.Irrigazione.PolicyIrrigazione.GiorniCalcoloMediaTemperatura" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione.PolicyIrrigazione.AcquaOffsetVentoMq.$error.required && !sections.IrrigazionePolicyIrrigazione.AcquaOffsetVentoMq.$pristine }">
+                    <label for="AcquaOffsetVentoMq" class="col-sm-4 control-label">AcquaOffset Vento Mq</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="AcquaOffsetVentoMq" name="AcquaOffsetVentoMq"
+                               ng-model="sections.Irrigazione.PolicyIrrigazione.AcquaOffsetVentoMq" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione.PolicyIrrigazione.VentoMax.$error.required && !sections.IrrigazionePolicyIrrigazione.VentoMax.$pristine }">
+                    <label for="VentoMax" class="col-sm-4 control-label">Vento Max</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="VentoMax" name="VentoMax"
+                               ng-model="sections.Irrigazione.PolicyIrrigazione.VentoMax" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+                
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione.PolicyIrrigazione.TempMin.$error.required && !sections.IrrigazionePolicyIrrigazione.TempMin.$pristine }">
+                    <label for="TempMin" class="col-sm-4 control-label">Temp Min</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="TempMin" name="TempMin"
+                               ng-model="sections.Irrigazione.PolicyIrrigazione.TempMin" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione.PolicyIrrigazione.TempMax.$error.required && !sections.IrrigazionePolicyIrrigazione.TempMax.$pristine }">
+                    <label for="TempMax" class="col-sm-4 control-label">Temp Max</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="TempMax" name="TempMax"
+                               ng-model="sections.Irrigazione.PolicyIrrigazione.TempMax" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione.PolicyIrrigazione.AcquaMinMq.$error.required && !sections.IrrigazionePolicyIrrigazione.AcquaMinMq.$pristine }">
+                    <label for="AcquaMinMq" class="col-sm-4 control-label">Acqua Min Mq</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="AcquaMinMq" name="AcquaMinMq"
+                               ng-model="sections.Irrigazione.PolicyIrrigazione.AcquaMinMq" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione.PolicyIrrigazione.AcquaMaxMq.$error.required && !sections.IrrigazionePolicyIrrigazione.AcquaMaxMq.$pristine }">
+                    <label for="AcquaMaxMq" class="col-sm-4 control-label">Acqua Max Mq</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="AcquaMaxMq" name="AcquaMaxMq"
+                               ng-model="sections.Irrigazione.PolicyIrrigazione.AcquaMaxMq" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione.PolicyIrrigazione.OffsetTramontoOre.$error.required && !sections.IrrigazionePolicyIrrigazione.OffsetTramontoOre.$pristine }">
+                    <label for="OffsetTramontoOre" class="col-sm-4 control-label">Offset Tramonto Ore</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="OffsetTramontoOre" name="OffsetTramontoOre"
+                               ng-model="sections.Irrigazione.PolicyIrrigazione.OffsetTramontoOre" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione.PolicyIrrigazione.OffsetAlbaOre.$error.required && !sections.IrrigazionePolicyIrrigazione.OffsetAlbaOre.$pristine }">
+                    <label for="OffsetAlbaOre" class="col-sm-4 control-label">Offset Alba Ore</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="OffsetAlbaOre" name="OffsetAlbaOre"
+                               ng-model="sections.Irrigazione.PolicyIrrigazione.OffsetAlbaOre" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+</div>

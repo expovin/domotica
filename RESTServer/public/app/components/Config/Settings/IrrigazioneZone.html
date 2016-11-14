@@ -1,0 +1,100 @@
+<div class="tab-pane fade in active" id="GenTab">
+
+    <div class="row headerTabRow"> <h4>Settings Zone</h4></div>
+
+    <div class="row row-content">
+	    <div class="col-md-2">
+	    	<button type="button" class="btn btn-primary" ng-click="goUp()" ng-disabled="numZona>3">
+	    		<h4><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></h4>
+	    	</button>
+	    	<h2>{{numZona+1}}</h2>
+	    	<button type="button" class="btn btn-primary" ng-click="goDown()" ng-disabled="numZona<1">
+	    		<h4><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></h4>
+	    	</button>
+		</div>
+		<div class="col-md-10">
+
+        <div class="row row-content">
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione.PolicyIrrigazione.Selected.$error.required && !sections.IrrigazionePolicyIrrigazione.Selected.$pristine }">
+                    <label for="Selected" class="col-sm-4 control-label">Selected</label>
+                    <div class="col-sm-8">
+
+                      <select class="form-control" id="Selected" ng-model="sections.Irrigazione.PolicyIrrigazione.Selected" required>
+                        <option value="1" ng-selected="sections.Irrigazione.PolicyIrrigazione.Selected == 1">Irrigazione a tempo</option>
+                        <option value="2" ng-selected="sections.Irrigazione.PolicyIrrigazione.Selected == 2">Irrigazione a litri</option>
+                        <option value="3" ng-selected="sections.Irrigazione.PolicyIrrigazione.Selected == 3">Irrigazione a smart</option>
+                      </select>
+
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6" ng-show="sections.Irrigazione.PolicyIrrigazione.Selected == 2">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione.PolicyIrrigazione.Zone[numZona].Litri.$error.required && !sections.IrrigazionePolicyIrrigazione.Zone[numZona].Litri.$pristine }">
+                    <label for="Litri" class="col-sm-4 control-label">Litri</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="Litri" name="Litri"
+                               ng-model="sections.Irrigazione.PolicyIrrigazione.Zone[numZona].Litri" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col-md-6" ng-show="sections.Irrigazione.PolicyIrrigazione.Selected == 1">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione.PolicyIrrigazione.Zone[numZona].Litri.$error.required && !sections.IrrigazionePolicyIrrigazione.Zone[numZona].Litri.$pristine }">
+                    <label for="Timing" class="col-sm-4 control-label">Timing</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="Timing" name="Timing"
+                               ng-model="sections.Irrigazione.PolicyIrrigazione.Zone[numZona].Litri" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" ng-show="sections.Irrigazione.PolicyIrrigazione.Selected == 3">
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione.PolicyIrrigazione.Zone[numZona].Portata_lsec.$error.required && !sections.IrrigazionePolicyIrrigazione.Zone[numZona].Portata_lsec.$pristine }">
+                    <label for="Portata_lsec" class="col-sm-4 control-label">Portata</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="Portata_lsec" name="Portata_lsec"
+                               ng-model="sections.Irrigazione.PolicyIrrigazione.Zone[numZona].Portata_lsec" step="0.01" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col-md-6">
+                <div class="form-group" 
+                ng-class="{ 'has-error' : sections.Irrigazione.PolicyIrrigazione.Zone[numZona].Mq.$error.required && !sections.IrrigazionePolicyIrrigazione.Zone[numZona].Mq.$pristine }">
+                    <label for="Mq" class="col-sm-4 control-label">Estensione</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="Mq" name="Mq"
+                               ng-model="sections.Irrigazione.PolicyIrrigazione.Zone[numZona].Mq" required>
+                        <p class="form-text text-muted helpMessage">
+                            Inserire il nome del server smtp da utilizzare (ad esempio smtp.gmail.com)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		</div>
+	</div>
+</div>

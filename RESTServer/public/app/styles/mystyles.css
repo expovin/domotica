@@ -1,0 +1,106 @@
+.myTagCrossDelete, .myTagButtonDelete {
+	display:none;
+}
+
+.myTagCrossDelete > .glyphicon {
+	color : #999;
+}
+
+.myTagCrossDelete > .glyphicon:hover {
+    color: red;
+}
+
+/*
+#inserimentoNuovoSensore, #dettaglioSelezionato, #dettaglioLettureSensore {
+	display:none;
+}
+*/
+
+#dettaglioSelezionato > .row > .col-md-5 > .row > i {
+	color: red;
+}
+
+.ultimaLettura {
+	color: green;
+}
+
+#ExternalWindiows {
+	margin-top: 15px;
+	background-color: #EEEEEE;
+}
+
+#inserimentoNuovoSensore, #ModificaSensore, #dettaglioSelezionato {
+	margin-left: 15px;
+}
+
+#rowAreaIconBar a:hover {
+	/*margin-top: 5px;*/
+	color: red;
+}
+
+.green {
+	color: green;
+}
+
+.yellow {
+	color: #D1D121;	
+}
+
+.red {
+	color: #D10D2D;	
+}
+
+.blue {
+	color: #3D11B6
+}
+
+.helpMessage{
+	margin-top: 4px;
+	margin-bottom: 4px;
+	background: #F3F6C3;
+}
+
+.settingsSectionTitle  {
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	border-bottom-color: #999;
+
+	margin-bottom: 25px;
+	margin-left: 20px;
+	margin-right: 40px;
+}
+
+
+
+.nav-tabs {
+    margin: 0;
+    padding: 0;
+    border: 0;    
+}
+.nav-tabs > li > a {
+    background: #DADADA;
+    border-radius: 0;
+    box-shadow: inset 0 -8px 7px -9px rgba(0,0,0,.4),-2px -2px 5px -2px rgba(0,0,0,.4);
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover {
+    background: #F5F5F5;
+    box-shadow: inset 0 0 0 0 rgba(0,0,0,.4),-2px -3px 5px -2px rgba(0,0,0,.4);
+}
+
+
+.tab-pane {
+    background: #F5F5F5;
+    box-shadow: 0 0 4px rgba(0,0,0,.4);
+    border-radius: 0;
+    text-align: center;
+    padding: 10px;
+}
+
+.tab-content {
+	margin-bottom: 30px;
+}
+
+.headerTabRow{
+	margin-bottom: 30px;
+}

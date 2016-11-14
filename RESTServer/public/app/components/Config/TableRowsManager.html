@@ -1,0 +1,51 @@
+   <!-- Sezione lista Sensori -->
+    <div class="container">
+        <div class="row row-content">       
+            <h1> Configurazione Sensori <small> <a href="#dettaglioRecord">Lista sensori censiti</a></small></h1>
+            <table class="table table-condensed table-hover">
+                <thead>
+                    <th class="myTagCrossDelete"></th>
+                    <th>Modello</th>
+                    <th>Sito</th>
+                    <th>Tipo</th>
+                    <th>Tracciatura</th>
+                    <th>Ultima Lettura</th>
+                    <th>Ultimo Aggiornamento</th>
+                 
+                </thead>
+                <tbody>
+                    <tr ng-repeat="sensore in sensori" ng-click="selectSensor()">
+         <!--             <td class="myTagCrossDelete" id={{sensore._id}} ><span class="glyphicon glyphicon-remove" aria-hidden="true"  ng-click="cancellaSensore()"></span></td> -->
+                      <td class="myTagCrossDelete"><button class="btn btn-danger btn-xs" 
+                                  data-toggle="confirmation" 
+                                  data-placement="right" 
+                                  title="Cancellare?" 
+                                  id={{sensore._id}}
+                                  ng-click="cancellaSensore()">Elimina</button>
+                      </td>
+                      <td>{{sensore.Modello}}</td>
+                      <td>{{sensore.Sito}}</td>
+                      <td>{{sensore.Tipo}}</td>
+                      <td>{{sensore.TracciaStoria}}</td>
+                      <td>{{sensore.ultimaLettura}}</td>
+                      <td>{{sensore.dataUltimoAggiornamento}}</td>
+                      
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <!-- Sezione pulsanti di controllo -->
+        <div class="row row-content">
+          <div class="text-right">
+
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-danger myTagButtonRegular" ng-click="showCross()">Cancella</button>
+              <button type="button" class="btn btn-primary myTagButtonRegular" ng-click="aggiungiNuovoSensore()">Aggiungi</button>
+            </div>
+
+            <button type="button" class="btn btn-warning myTagButtonDelete" ng-click="fatto()">Fatto</button>
+          </div>
+        </div>

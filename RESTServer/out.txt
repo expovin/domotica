@@ -1,0 +1,4 @@
+
+> SenseLogManagerAgent@0.0.0 start E:\$user\400_Sviluppo\NodeJs\SenseLogManager\SenseLogManagerAgent
+> node ./bin/www
+

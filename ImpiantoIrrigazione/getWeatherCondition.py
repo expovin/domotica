@@ -96,7 +96,7 @@ while True:
         Periodo[month_year] = giorno
         path = month_year+"."+local_day 
 
-        result = db.find({},{"Jul 2016":1})    
+        result = db.find({},{path:1})    
         if(result.count() == 0):
             db.insert(Periodo)
             logOut(2,FILE_NAME,"Periodo non presente in DB, lo creo")

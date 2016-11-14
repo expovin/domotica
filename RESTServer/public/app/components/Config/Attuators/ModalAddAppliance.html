@@ -1,0 +1,77 @@
+<div modal="showModal" close="cancel()">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Aggiunta nuovo dispositivo</h4>
+      </div>
+
+      <div class="modal-body">
+		<div class="row row-content">
+
+			<form class="form-horizontal" name="Appliance" ng-submit="AddAppliance()" novalidate>
+
+			    <div class="form-group" ng-class="{ 'has-error' : newAppliance.NumeroPorta.$error.required && !newAppliance.NumeroPorta.$pristine }">
+			        <label for="NumeroPorta" class="col-sm-2 control-label">NumeroPorta</label>
+			            <div class="col-sm-6">
+			                <input type="text" class="form-control" id="NumeroPorta" name="NumeroPorta" placeholder="Numero Porta" ng-model="newAppliance.NumeroPorta" required>
+			            </div>
+			    </div>
+
+			    <div class="form-group">
+			        <label for="GPIO" class="col-sm-2 control-label">GPIO</label>
+			            <div class="col-sm-6">
+			                <input type="text" class="form-control" id="GPIO" name="GPIO" placeholder="Porta GPIO" ng-model="newAppliance.GPIO">
+			            </div>
+			    </div>
+
+			    <div class="form-group" ng-class="{ 'has-error' : newAppliance.$error.required && !newAppliance.$pristine }">
+			        <label for="Appliance" class="col-sm-2 control-label">Appliance</label>
+			            <div class="col-sm-6">
+			                <input type="text" class="form-control" id="Appliance" name="Appliance" placeholder="Nome Dispositivo collegato" ng-model="newAppliance.Dispositivo" required>
+			            </div>
+			    </div>
+
+			    <div class="form-group">
+			        <div class="col-sm-offset-2 col-sm-6">
+			            <button type="submit" class="btn btn-primary" ng-disabled="newAppliance.$invalid">Aggiungi</button>
+			            <button type="button"  class="btn btn-warning"  ng-click="pulisciCampi()">Pulisci</button>
+			        </div>
+			    </div>
+
+			</form>
+
+		</div>
+
+		<div class="row row-content">
+              <table class="table table-condensed">
+                  <thead>
+                      <th>Azione</th>
+                      <th>Posizione</th>
+                      <th>GPIO</th>
+                      <th>Dispositivo connesso</th>
+                  </thead>
+                  <tbody>
+                      <tr ng-repeat="device in devices">
+	                     <td><button class="btn btn-danger btn-xs" 
+	                                  data-toggle="confirmation" 
+	                                  data-placement="right" 
+	                                  title="Cancellare?" 
+	                                  id={{riga[_id]}}
+	                                  ng-click="eliminaAppliance()">Elimina</button>
+	                      </td>
+
+                        <td>{{device.NumeroPorta}}</td>
+                        <td>{{device.GPIO}}</td>
+                        <td>{{device.Dispositivo}}</td>
+                      </tr>
+                  </tbody>
+              </table>
+		</div>
+
+
+      </div>
+      <div class="modal-footer">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->

@@ -1,0 +1,38 @@
+
+<div class="container">
+    <div id="IrrigazioneSettingsTitle" class="row row-content settingsSectionTitle">
+        <h2>
+            <span class="col-md-11">Irrigazione</span>
+            <span class="col-md-1 glyphicon {{sections.Irrigazione.glyphicon}} {{sections.Irrigazione['glyphicon-color']}}" aria-hidden="true"></span> 
+        </h2>
+
+    </div>
+
+    <div class="alert alert-{{alertMessage.type}} alert-dismissible fade in" role="alert" ng-show="alertMessage.show" id="settingsAlerts">
+      <span class="glyphicon {{alertMessage.glyphicon}}" aria-hidden="true"></span>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="closeAlert()"><span aria-hidden="true">&times;</span></button>
+      <strong>{{alertMessage.shortMsg}}</strong> {{alertMessage.longMsg}}.
+    </div>
+
+	<ul class="nav nav-tabs">
+	  <li ng-class="{ active: isActive('Config/settings/general/Irrigazione/gen')}" role="presentation">
+	  		<a ui-sref="app.Config.Settings.CFG.Irrigazione.Gen">General</a>	
+	  </li>
+
+	  <li ng-class="{ active: isActive('Config/settings/general/Irrigazione/relay')}" role="presentation">
+	  		<a ui-sref="app.Config.Settings.CFG.Irrigazione.Relay">Relay</a>
+	  </li>
+
+	  <li ng-class="{ active: isActive('Config/settings/general/Irrigazione/zone')}" role="presentation">
+	  		<a ui-sref="app.Config.Settings.CFG.Irrigazione.Zone">Zone</a>
+	  </li>
+
+	  <li 	ng-class="{ active: isActive('Config/settings/general/Irrigazione/policy')}" 
+	  		role="presentation"
+	  		ng-show="sections.Irrigazione.PolicyIrrigazione.Selected == 3" >
+	  		<a ui-sref="app.Config.Settings.CFG.Irrigazione.Policy">Policy</a>
+	  </li>
+
+	</ul>
+
+	<div ui-view="TabContent" class="tab-content"></div>

@@ -1,0 +1,28 @@
+
+
+<div ui-view="SettingsLeftPane"></div>
+<div class="col-lg-2"></div>
+<div class="col-lg-10">
+	<h1 class="text-center">CURRENT CONFIGURATION</h1>
+    <div class="container">
+        <div class="row row-content">
+            <div ui-view="SettingsListSavedConfig"></div>
+        </div>
+    </div>
+
+	<form class="form-horizontal" name="newSettings" ng-submit="applyNewSettings()" id="newSettingsForm" novalidate>
+    	<div ui-view="SettingsMainCanvas"></div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary" ng-disabled="newSettings.$invalid">Applica</button>
+                <button type="button"  class="btn btn-warning"  ng-click="resetCampi()">Reset</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+
+

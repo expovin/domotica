@@ -1,0 +1,147 @@
+
+<div class="container">
+    <div id="AcquarioSettingsTitle" class="row row-content settingsSectionTitle">
+        <h2>
+            <span class="col-md-11">Acquario Settings</span>
+            <span class="col-md-1 glyphicon {{sections.Acquario.glyphicon}} {{sections.Acquario['glyphicon-color']}}" aria-hidden="true"></span> 
+        </h2>
+
+    </div>
+
+    <div class="alert alert-{{alertMessage.type}} alert-dismissible fade in" role="alert" ng-show="alertMessage.show" id="settingsAlerts">
+      <span class="glyphicon {{alertMessage.glyphicon}}" aria-hidden="true"></span>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="closeAlert()"><span aria-hidden="true">&times;</span></button>
+      <strong>{{alertMessage.shortMsg}}</strong> {{alertMessage.longMsg}}.
+    </div>
+
+
+</div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group" 
+            ng-class="{ 'has-error' : sections.Acquario.getTemp['Interval between Reading'].$error.required && !sections.Acquario.getTemp['Interval between Reading'].$pristine }">
+                <label for="Interval between Reading" class="col-sm-4 control-label">Intervallo campionamento</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" id="Interval between Reading" name="Interval between Reading"
+                           ng-model="sections.Acquario.getTemp['Interval between Reading']" required>
+                    <p class="form-text text-muted helpMessage">
+                        Tempo espresso in secondi tra una lettura e la consecutiva del sensore di temperatura.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group" ng-class="{ 'has-error' : sections.Acquario.getTemp['Module Name'].$error.required && !sections.Acquario.getTemp['Module Name'].$pristine }">
+                <label for="Nome Modulo" class="col-sm-4 control-label">Nome Modulo</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="Module Name" name="Module Name"
+                           ng-model="sections.Acquario.getTemp['Module Name']" required>
+                    <p class="form-text text-muted helpMessage">
+                        Inserire il nome del modulo
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group" 
+            ng-class="{ 'has-error' : sections.Acquario.getTemp['Time between Consecutive Reading'].$error.required && !sections.Acquario.getTemp['Time between Consecutive Reading'].$pristine }">
+                <label for="Time between Consecutive Reading" class="col-sm-4 control-label">Tempo tra letture consecutive</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" id="Time between Consecutive Reading" name="Time between Consecutive Reading"
+                           ng-model="sections.Acquario.getTemp['Time between Consecutive Reading']" required>
+                    <p class="form-text text-muted helpMessage">
+                        Per evitare errori di lettura del sensore e rimuovere valori in cash, ogni valore memorizzato è ottenuto facendo la media di 
+                        <n> "letture consecutive", dopo aver rimosso i valori outlayer. Questo campo specifica il tempo in secondi tra le letture consecutive
+                    </p>
+                </div>
+            </div>
+        </div>
+            
+        <div class="col-md-6">
+            <div class="form-group" 
+            ng-class="{ 'has-error' : sections.Acquario.getTemp['Number of Consecutive Reading'].$error.required && !sections.Acquario.getTemp['Number of Consecutive Reading'].$pristine }">
+                <label for="consecutiveReadings" class="col-sm-4 control-label">Letture consecutive</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" id="consecutiveReadings" name="consecutiveReadings"
+                           ng-model="sections.Acquario.getTemp['Number of Consecutive Reading']" required>
+                    <p class="form-text text-muted helpMessage">
+                        Letture consecutive su cui verranno rimossi gli outlayer e fatta una media ponderata (memorizzata) sulla quale verranno eventualmente prese
+                        azioni correttive. Un numero alto garantice errori piccoli
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group" 
+            ng-class="{ 'has-error' : sections.Acquario.getTemp.Temp['Delta Trace'].$error.required && !sections.Acquario.getTemp.Temp['Delta Trace'].$pristine }">
+                <label for="Delta Trace" class="col-sm-4 control-label">Delta Trace</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" id="Delta Trace" name="Delta Trace"
+                           ng-model="sections.Acquario.getTemp.Temp['Delta Trace']" step="0.1" required>
+                    <p class="form-text text-muted helpMessage">
+                        Valore espresso in frazioni di gradi centigradi °C entro il quale la variazione di temperatura non e' considerata apprezzabile per essere
+                        storicizzata. Variazioni al di sopra di questa soglia sono invece registrate come effettive variazioni di temperatura e registrate nel DB.
+                    </p>
+                </div>
+            </div>
+        </div>
+            
+        <div class="col-md-6">
+            <div class="form-group" 
+            ng-class="{ 'has-error' : sections.Acquario.getTemp.Temp['Delta Trigger'].$error.required && !sections.Acquario.getTemp.Temp['Delta Trigger'].$pristine }">
+                <label for="Delta Trigger" class="col-sm-4 control-label">Delta Trigger</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" id="Delta Trigger" name="Delta Trigger"
+                           ng-model="sections.Acquario.getTemp.Temp['Delta Trigger']" step="0.1" required>
+                    <p class="form-text text-muted helpMessage">
+                        Soglia applicata alla temperatura minima e massima per far scattare eventuali azzioni correttive. Es. con Delta Trigger 0.5 e temp min 24, il  
+                        riscaldatore dell'acqua si accenderà a 23.5 e si spegnerà a 24.5. Questo evita accensioni e spegnimenti frequenti nei dintorni della temperatura
+                        soglia.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group" 
+            ng-class="{ 'has-error' : sections.Acquario.getTemp.Temp.Max.$error.required && !sections.Acquario.getTemp.Temp.Max.$pristine }">
+                <label for="Max Temp" class="col-sm-4 control-label">Max Temp</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" id="MaxTemp" name="MaxTemp"
+                           ng-model="sections.Acquario.getTemp.Temp.Max" required>
+                    <p class="form-text text-muted helpMessage">
+                        Temperatura massima, al di sopra della quale (+ Delta Trigger) scattano azioni correttive (Es. Messaggio di allarme o apertura automatica coperchio)
+                    </p>
+                </div>
+            </div>
+        </div>
+            
+        <div class="col-md-6">
+            <div class="form-group" 
+            ng-class="{ 'has-error' : sections.Acquario.getTemp.Temp.Min.$error.required && !sections.Acquario.getTemp.Temp.Min.$pristine }">
+                <label for="Min Temp" class="col-sm-4 control-label">Min Temp</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" id="Min Temp" name="Min Temp"
+                           ng-model="sections.Acquario.getTemp.Temp.Min" required>
+                    <p class="form-text text-muted helpMessage">
+                        Temperatura minima, al di sotto della quale (- Delta Trigger) scattano azioni correttive (Es. accensione del riscaldatore acqua)
+                        
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
