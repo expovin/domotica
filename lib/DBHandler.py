@@ -148,7 +148,7 @@ def recordLettura(lettura,IDSensore):
 
     db = connection.domotica.Sensori
 
-    logOut(3,FILE_NAME,"Aggiornamento lettura per sensore "+IDSensore+" a : "+str(lettura))
+    logOut(3,FILE_NAME,"Aggiornamento lettura per sensore "+str(IDSensore)+" a : "+str(lettura))
 
 
     db.update({
@@ -162,7 +162,7 @@ def recordLettura(lettura,IDSensore):
 
     result = db.find_one({'_id' : ObjectId(IDSensore)})
     if(result['TracciaStoria']):
-        logOut(3,FILE_NAME,"Abilitata tracciatura per il sensore "+IDSensore+" registro : "+str(lettura))
+        logOut(3,FILE_NAME,"Abilitata tracciatura per il sensore "+str(IDSensore)+" registro : "+str(lettura))
         tracciaLettura(lettura,IDSensore)
 
 

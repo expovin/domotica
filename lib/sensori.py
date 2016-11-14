@@ -29,11 +29,11 @@ adc = Adafruit_ADS1x15.ADS1115()
 def getTemp_TMP36(ch):
     temp_c = [0] * NUM_LETTURE_CONSECUTIVE
     _id= [0] * 4
-    _id[0] = '57cc7e42a712bbee2150133e'  # Sensore interno
+    _id[0] = '57e83e8d7ef0c9da0d920a19'  # Sensore interno
     _id[3] = '57cc7e1fa712bbee2150133d'  # Sensore esterno
 
     for i in range(NUM_LETTURE_CONSECUTIVE):
-         #value = adc.read_adc(int(ch), gain=4)
+         value = adc.read_adc(int(ch), gain=4)
          milliv = value * ( 33 / 1024.0 )
          temp_c[i]=((milliv - 500.0) /10)
          time.sleep(0.2)
@@ -175,3 +175,9 @@ def media(array):
         sum +=ele
     return round(sum/len(array), 2)
 
+
+
+if __name__ == "__main__":
+    #Loop lettura sensori
+    getTempDS18B20()
+    getTemp_TMP36(0)

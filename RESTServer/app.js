@@ -16,13 +16,14 @@ db.once('open', function () {
 });
 
 
-
+GPIOTemplate
 var routes = require('./routes/index');
 var users = require('./routes/save');
 var config = require('./routes/config');
 var sensori = require('./routes/sensori');
 var attuatori = require('./routes/attuatori');
 var dispositivi = require('./routes/dispositivi');
+var GPIOTemplate = require('./routes/GPIOTemplate');
 
 var app = express();
 
@@ -43,6 +44,7 @@ app.use('/config', config);
 app.use('/sensori', sensori);
 app.use('/attuatori',attuatori);
 app.use('/dispositivi',dispositivi);
+app.use('/GPIOTemplate',GPIOTemplate);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

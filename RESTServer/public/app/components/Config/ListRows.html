@@ -38,7 +38,11 @@
 
                       </td>
 
-                      <td ng-repeat="(Lable, Row) in Fields" ng-if="Row == 1">{{riga[Lable]}}</td>
+                      <td ng-repeat="(Lable, Row) in Fields" ng-if="(Row == 1) && !(Lable == 'dataUltimoAggiornamento')">{{riga[Lable]}}</td>
+                      <td ng-repeat="(Lable, Row) in Fields" ng-if="(Row == 1) && (Lable == 'dataUltimoAggiornamento')">
+                        {{riga[Lable] | date:"MM/dd/yyyy 'at' H:mm"}}
+                      </td>
+
                     </tr>
 
                 </tbody>

@@ -2,7 +2,7 @@
 
 angular.module('DomoHome')
         .constant("port","3000")
-        .constant("baseURL","http://192.168.0.102:3000/")
+        .constant("baseURL","http://192.168.0.31:3000/")
 
 
         .factory('attuatorFactory',['$resource', 'baseURL','port', function($resource,baseURL,port) {          

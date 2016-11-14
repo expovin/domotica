@@ -8,7 +8,7 @@
 import RPi.GPIO as GPIO
 import pymongo
 from bson.objectid import ObjectId
-#import bt004 as BT
+import bt004 as BT
 import logAction as LG
 import sys
 from DBHandler import logEvent
