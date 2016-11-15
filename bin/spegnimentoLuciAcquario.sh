@@ -1,0 +1,1 @@
+/usr/bin/python /home/pi/domotica/lib/attuatori.py setStato 5807d8cbbbeac2bf1fce7c4d --stato 0

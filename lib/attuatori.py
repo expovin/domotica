@@ -8,7 +8,7 @@
 import RPi.GPIO as GPIO
 import pymongo
 from bson.objectid import ObjectId
-import bt004 as BT
+import bt004
 import logAction as LG
 import sys
 from DBHandler import logEvent
@@ -33,16 +33,47 @@ def PN(appli, stato):
     LG.logOut(5,FILE_NAME,"Pin da modificare "+str(PinOut))
 
     GPIO.setup(PinOut,GPIO.OUT)         # Setto il pin in uscita WARNING
-    GPIO.output(PinOut,stato)			# Imposto il Pin allo stato richiesto
+    GPIO.output(PinOut,stato)           # Imposto il Pin allo stato richiesto
+
+    if(stato==1):
+        currStatus=True
+    else:
+        currStatus=False
+    #Update stato DB
+    print(appli)
+    LG.logOut(4,FILE_NAME,"Aggiorno lo stato del database, _id: "+str(appli['_id'])+" Stato :"+str(currStatus) )
+    db.update({
+        "_id" : appli['_id'],  
+    },{
+        '$set' : {
+            'Stato' : currStatus
+        }
+    },upsert=False)
+
+
 
 def BT(appli, stato):
-	Port=appli['Porta']					# Recupero il numero di porta
-	LG.logOut(5,FILE_NAME,"Porta da modificare "+str(Port))
 
-	if (stato==1):						# Verifico se attivarla o disattivarla
-		BT.ActivePort(str(Port),"0")	# Lo 0 indica il tempo (infinito) per
-	else:								# lo switch
-	    BT.InactivePort(str(Port),"0")
+    Port=appli['NumeroPorta']                 # Recupero il numero di porta
+    LG.logOut(5,FILE_NAME,"Porta da modificare "+str(Port))
+
+    if (stato==1):                      # Verifico se attivarla o disattivarla
+        bt004.ActivePort(str(Port),"0")    # Lo 0 indica il tempo (infinito) per
+                                        # lo switch
+        currStatus=True                              
+    else:                               
+        bt004.InactivePort(str(Port),"0")
+        currStatus=False
+
+    #Update stato DB
+    LG.logOut(5,FILE_NAME,"Aggiorno lo stato del database")
+    db.update({
+        "_id" : appli['_id'],  
+    },{
+        '$set' : {
+            'Stato' : currStatus
+        }
+    },upsert=False)
 
 
 # La funzione setStato reperisce dal catalogo degli attuatori tutti i dettagli
@@ -50,18 +81,18 @@ def BT(appli, stato):
 # richiama la funzione di gestione (Stesso nome del tipo attuatore)
 def setStato(appliance,stato):
     LG.logOut(4,FILE_NAME,"Richiesta di cambio stato per appliance : "+appliance\
-		+" nuovo stato :"+str(stato))
+        +" nuovo stato :"+str(stato))
     appli = db.find_one({'_id':ObjectId(appliance)})
     stato=int(stato)
 
     LG.logOut(4,FILE_NAME,"Recuperato Appliance : "+appli['Dispositivo'])
 
-    Attuatore=db1.find_one({'_id':ObjectId(appli['AttuatoreId'])})				# Recupero il tipo attuatore
+    Attuatore=db1.find_one({'_id':ObjectId(appli['AttuatoreId'])})              # Recupero il tipo attuatore
     Tipo=Attuatore['Prefix']
     LG.logOut(5,FILE_NAME,"Trovato tipo appliance "+Tipo)
     
 
-    globals()[Tipo](appli,stato)		# Richiamo della funzione di gestione
+    globals()[Tipo](appli,stato)        # Richiamo della funzione di gestione
 
     if(Attuatore['TracciaStoria'] == 1):
         logEvent('INFO', appliance, stato, "Cambio stato ")
@@ -71,7 +102,7 @@ def PNGet(appli):
     PinOut=int(appli['GPIO'])
     GPIO.setup(PinOut,GPIO.OUT)
     stato=GPIO.input(PinOut)
-    LG.logOut(5,FILE_NAME,"Lo stato PIN "+str(PinOut)+" e': "+str(stato))	
+    LG.logOut(5,FILE_NAME,"Lo stato PIN "+str(PinOut)+" e': "+str(stato))   
     return (stato)
 
 

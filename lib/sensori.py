@@ -30,7 +30,7 @@ def getTemp_TMP36(ch):
     temp_c = [0] * NUM_LETTURE_CONSECUTIVE
     _id= [0] * 4
     _id[0] = '57e83e8d7ef0c9da0d920a19'  # Sensore interno
-    _id[3] = '57cc7e1fa712bbee2150133d'  # Sensore esterno
+    _id[1] = '57cc7e1fa712bbee2150133d'  # Sensore esterno
 
     for i in range(NUM_LETTURE_CONSECUTIVE):
          value = adc.read_adc(int(ch), gain=4)
@@ -47,12 +47,31 @@ def getTemp_TMP36(ch):
 
 # Lettura dei valori dell'umidita terra
 def getMoisture():
-    _id='57cc7eaca712bbee21501340'
+    _id='57e83e157ef0c9da0d920a18'
 
     value = [0] * NUM_LETTURE_CONSECUTIVE
 
     for i in range (NUM_LETTURE_CONSECUTIVE):
-        value[i] = adc.read_adc(1, gain=2)
+        value[i] = adc.read_adc(2, gain=2)
+        #time.sleep(2)
+        #milliv[i] = value * ( 33 / 1024.0 )
+
+    valueAvg = removeOutlayers(value)
+    perc = valueAvg * 100.0 / 32768.0
+    perc = float("{0:.1f}".format(perc))
+
+    recordLettura(perc,_id)
+    return perc
+
+
+# Lettura dei valori dell'umidita terra
+def getLumex():
+    _id='5800c2dfd54496a5053d38ef'
+
+    value = [0] * NUM_LETTURE_CONSECUTIVE
+
+    for i in range (NUM_LETTURE_CONSECUTIVE):
+        value[i] = adc.read_adc(3, gain=2)
         #time.sleep(2)
         #milliv[i] = value * ( 33 / 1024.0 )
 
@@ -65,7 +84,7 @@ def getMoisture():
 
 
 def getHumidity_DHT11():
-    _id='57cc7e7ca712bbee2150133f'
+    _id='57e83b4c7ef0c9da0d920a17'
     instance = dht11.DHT11(pin=DHT11_PIN)
     H = [0] * NUM_LETTURE_CONSECUTIVE
 
@@ -181,3 +200,7 @@ if __name__ == "__main__":
     #Loop lettura sensori
     getTempDS18B20()
     getTemp_TMP36(0)
+    getTemp_TMP36(1)
+    getMoisture()
+    getHumidity_DHT11()
+    getLumex()
