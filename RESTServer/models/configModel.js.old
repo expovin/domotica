@@ -94,18 +94,6 @@ var Irrigazione = new Schema ({
       type : String,
       require : true
     },    
-    // Numero di tentativi massimi per contattare la scheda relay
-    "Max Tentative" : {
-      type : Number,
-      require : true,
-      default : 5
-    }, 
-    // Porta comune a tutte le elettrovalvole
-    "Common Gate" : {
-      type : Number,
-      require : true,
-      default : 8
-    },
     // Array di numeri. Ciascun numero rappresenta i minuti da attendere prima
     // di riprovare la riconnessione alla scheda Relay nel caso questa non
     // rispondesse
