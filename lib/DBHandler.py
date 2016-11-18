@@ -59,11 +59,13 @@ def tracciaLettura(lettura,IDSensore):
     # Documento da memorizzare
     acq_temp = {
             "lettura":float(lettura),
-            "DataPrimoInserimento":time.strftime("%d/%m/%Y")+" " \
-                 +time.strftime("%X"),
-            "DataUltimoAggiornamento":time.strftime("%d/%m/%Y")+" " \
-                 +time.strftime("%X"),
-			"idSensore" : IDSensore
+#            "DataPrimoInserimento":time.strftime("%d/%m/%Y")+" " \
+#                 +time.strftime("%X"),
+#            "DataUltimoAggiornamento":time.strftime("%d/%m/%Y")+" " \
+#                 +time.strftime("%X"),
+             "DataPrimoInserimento":datetime.utcnow(),
+             "DataUltimoAggiornamento":datetime.utcnow(),
+             "idSensore" : IDSensore
     };
     logOut(4,FILE_NAME,"Documento da memorizzare "+str(acq_temp))
     
@@ -138,7 +140,7 @@ def tracciaLettura(lettura,IDSensore):
               "_id" : _id,'Letture.DataUltimoAggiornamento': lastModDate
             },{
               '$set' : {
-                'Letture.$.DataUltimoAggiornamento' : acq_temp['DataUltimoAggiornamento']
+                'Letture.$.DataUltimoAggiornamento' : datetime.utcnow() 
               }
             })
 
@@ -147,6 +149,7 @@ def tracciaLettura(lettura,IDSensore):
 def recordLettura(lettura,IDSensore):
 
     db = connection.domotica.Sensori
+    ts = time.time()
 
     logOut(3,FILE_NAME,"Aggiornamento lettura per sensore "+str(IDSensore)+" a : "+str(lettura))
 
@@ -155,8 +158,8 @@ def recordLettura(lettura,IDSensore):
         "_id" : ObjectId(IDSensore)
         },{
           '$set' : {
-              'ultimaLettura' : lettura,
-              "dataUltimoAggiornamento": datetime.utcnow()
+            'ultimaLettura' : lettura,
+            "dataUltimoAggiornamento": datetime.utcnow()
           }
     },upsert=True)
 

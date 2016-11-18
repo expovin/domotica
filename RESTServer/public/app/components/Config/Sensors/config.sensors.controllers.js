@@ -193,8 +193,10 @@ angular.module('DomoHome')
     }])
 
 
-    .controller('ReadingsSensorsController', ['$scope','$modalInstance','param','sensorFactory', 
-        function($scope,$modalInstance,param,sensorFactory) {
+
+
+    .controller('ReadingsSensorsController', ['$scope','$modalInstance','param','sensorFactory', 'chartLibFactory',
+        function($scope,$modalInstance,param,sensorFactory,chartLibFactory) {
 
         var id = param;
         console.log("id : "+id);
@@ -206,23 +208,63 @@ angular.module('DomoHome')
         var yyyy = today.getFullYear();
         var periodo = yyyy+mm;
 
-        console.log("Periodo :"+periodo);
+        console.log("Periodo :"+Date.UTC(2013,5,2));
 
+        $scope.MostraValori = function(){
+            $('.sensorsReadingValueStatus').css("display","block");
+            $('.sensorsReadingChartStatus').css("display","none");
+        }
 
-        $scope.letture =  sensorFactory.Letture().query({ids:id,Periodo:periodo},
+        $scope.MostraGrafico = function(){
+            $('.sensorsReadingValueStatus').css("display","none");
+            $('.sensorsReadingChartStatus').css("display","block");
+        }
+
+        $scope.letture =  sensorFactory.LettureSort().query({ids:id,Periodo:periodo},
             function(response) {
-                console.log('Recuperate letture');        
+               var data=[];
+               
+               for(var ele in response){
+                    var point=[];
+                    if(response[ele].hasOwnProperty('Letture')){
+                        var now = new Date(response[ele].Letture.DataPrimoInserimento);
+
+                        var now_utc = Date.UTC( now.getUTCFullYear(), 
+                                                now.getUTCMonth(), 
+                                                now.getUTCDate(),  
+                                                now.getUTCHours(), 
+                                                now.getUTCMinutes(), 
+                                                now.getUTCSeconds());
+
+                        point.push(now_utc);
+
+                        point.push(response[ele].Letture.lettura)
+                        data.push(point);
+                    }
+               }
+
+               var cfg={
+                    title: {
+                        text: 'Temperature rilevate nel periodo'
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Temparatura'
+                        }
+                    }
+               };
+
+               chartLibFactory.timeSeriesZoomable(data,cfg);      
             },
             function(response){
                 console.log('Errore')
             }
-        );
+        )
 
         $scope.cancel = function () {
             console.log("Cancel");
             $modalInstance.dismiss('cancel');
         }
-        
 
     }])
     ;

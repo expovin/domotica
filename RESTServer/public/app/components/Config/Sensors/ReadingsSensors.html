@@ -6,7 +6,10 @@
 
       <div class="modal-body">
 
-        <div id="dettaglioLettureSensore">
+
+        <div class="sensorsReadingChartStatus" id="ChartContainer" style="min-width:410px; height:400px; margin:0 auto"></div>
+
+        <div class="sensorsReadingValueStatus" class=id="dettaglioLettureSensore">
 
               <table class="table table-condensed">
                   <thead>
@@ -27,7 +30,12 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Close</button>
+        <div class="btn-group">
+          
+          <button type="button" class="btn btn-info sensorsReadingChartStatus" ng-click="MostraValori()">Mostra Valori</button>
+          <button type="button" class="btn btn-primary sensorsReadingValueStatus" ng-click="MostraGrafico()">Mostra Grafico</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Close</button>
+        </div>
       </div>
     </div><!-- /.modal-content -->
 

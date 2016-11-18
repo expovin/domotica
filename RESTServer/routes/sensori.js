@@ -101,6 +101,27 @@ router.route('/:sid/:periodo')
           {$unwind : "$Letture"},
           {$match : {'Letture.idSensore':req.params.sid }},
           {$sort : {'Letture.DataUltimoAggiornamento' : -1}}
+          
+
+        ]
+        , function(err, sensors){
+        if (err) 
+            { res.json(RC(100,"GET /sensori/"+req.params.uid,err)); }
+        else
+            res.json(sensors);
+    });
+});
+
+router.route('/:sid/:periodo/sort')
+.get(function(req, res, next){
+    console.log('Periodo : '+req.params.periodo+' idSensore : '+req.params.sid);
+    LettureSensori.aggregate([
+          {$match : {'Periodo' : req.params.periodo}},
+          {$unwind : "$Letture"},
+          {$match : {'Letture.idSensore':req.params.sid }},
+          {$sort : {'Letture.DataPrimoInserimento' : 1}}
+          
+          
 
         ]
         , function(err, sensors){

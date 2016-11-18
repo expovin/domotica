@@ -20,10 +20,12 @@ angular.module('DomoHome')
                 }
 
                 sensfac.Letture = function() {
-                    return $resource(baseURL+'sensori/:ids/:Periodo');
+                    return $resource(baseURL+'sensori/:ids/:Periodo', null, {'update' : {method : 'PUT', isArray:true} });
                 }
 
-
+                sensfac.LettureSort = function() {
+                    return $resource(baseURL+'sensori/:ids/:Periodo/sort', null, {'update' : {method : 'PUT', isArray:true} });
+                }
                 return sensfac;
 
         }])     
