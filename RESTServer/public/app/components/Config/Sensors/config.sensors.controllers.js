@@ -199,7 +199,7 @@ angular.module('DomoHome')
         function($scope,$modalInstance,param,sensorFactory,chartLibFactory) {
 
         var id = param;
-        console.log("id : "+id);
+
 
         var today = new Date();
         var mm = today.getMonth()+1
@@ -208,7 +208,8 @@ angular.module('DomoHome')
         var yyyy = today.getFullYear();
         var periodo = yyyy+mm;
 
-        console.log("Periodo :"+Date.UTC(2013,5,2));
+        $scope.idSensore = id;
+        $scope.Periodo = periodo;
 
         $scope.MostraValori = function(){
             $('.sensorsReadingValueStatus').css("display","block");
@@ -220,32 +221,35 @@ angular.module('DomoHome')
             $('.sensorsReadingChartStatus').css("display","block");
         }
 
-        $scope.letture =  sensorFactory.LettureSort().query({ids:id,Periodo:periodo},
+        sensorFactory.LettureSort().query({ids:id,Periodo:periodo},
             function(response) {
                var data=[];
+               $scope.letture =  response;
                
                for(var ele in response){
                     var point=[];
                     if(response[ele].hasOwnProperty('Letture')){
                         var now = new Date(response[ele].Letture.DataPrimoInserimento);
 
-                        var now_utc = Date.UTC( now.getUTCFullYear(), 
-                                                now.getUTCMonth(), 
-                                                now.getUTCDate(),  
-                                                now.getUTCHours(), 
-                                                now.getUTCMinutes(), 
-                                                now.getUTCSeconds());
+                        var now_utc = Date.UTC( now.getFullYear(), 
+                                                now.getMonth(), 
+                                                now.getDate(),  
+                                                now.getHours(), 
+                                                now.getMinutes(), 
+                                                now.getSeconds());
 
                         point.push(now_utc);
-
                         point.push(response[ele].Letture.lettura)
+
+                        console.log(point);
                         data.push(point);
                     }
                }
+               console.log(data);
 
                var cfg={
                     title: {
-                        text: 'Temperature rilevate nel periodo'
+                        text: 'Temperature rilevate nel periodo '+$scope.Periodo
                     },
                     yAxis: {
                         title: {

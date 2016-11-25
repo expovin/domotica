@@ -1,7 +1,7 @@
 <div modal="showModal" close="cancel()">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Letture Sensore</h4>
+        <h4 class="modal-title">Letture Sensore <small>{{idSensore}}</small></h4>
       </div>
 
       <div class="modal-body">
@@ -20,7 +20,7 @@
                   <tbody>
                       <tr ng-repeat="lettura in letture">
                         <td>{{lettura.Letture.DataPrimoInserimento | date :  "dd.MM.y HH:MM:ss"}}</td>
-                        <td>{{lettura.Letture.DataUltimoAggiornamento | date :  "dd.MM.y HH:MM:ss"}}</td>
+                        <td>{{lettura.Letture.DataUltimoAggiornamento  | date:'dd.MM.y HH:MM:ss' : '+0100' }}</td>
                         <td>{{lettura.Letture.lettura}}</td>
                       </tr>
                   </tbody>

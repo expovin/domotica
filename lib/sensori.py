@@ -1,7 +1,8 @@
 import RPi.GPIO as GPIO
 import dht11
 import sys
-import Adafruit_ADS1x15
+#import Adafruit_ADS1x15
+import ADS1x15 as Adafruit_ADS1x15
 import os
 import subprocess
 import glob
@@ -202,5 +203,5 @@ if __name__ == "__main__":
     getTemp_TMP36(0)
     getTemp_TMP36(1)
     getMoisture()
-    getHumidity_DHT11()
+    #getHumidity_DHT11()
     getLumex()
