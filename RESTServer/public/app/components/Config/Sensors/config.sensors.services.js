@@ -1,30 +1,27 @@
 'use strict';
 
 angular.module('DomoHome')
-        .constant("port","3000")
-        .constant("baseURL","http://192.168.0.31:3000/")
 
-
-        .factory('sensorFactory',['$resource', 'baseURL','port', function($resource,baseURL,port) {          
+        .factory('sensorFactory',['$resource', 'CONFIG', function($resource,CONFIG) {          
 
             var sensfac = {};
             var Sensori = {};
             var Sensore = {};
 
                 sensfac.Sensori = function(){
-                    return $resource(baseURL+"sensori", null, {'update' : {method : 'PUT', isArray:true} });
+                    return $resource(CONFIG.BASE_REST_URL+"/sensori", null, {'update' : {method : 'PUT', isArray:true} });
                 };    
 
                 sensfac.Sensore = function() {
-                    return $resource(baseURL+'sensori/:ids', null, {'update' : {method : 'PUT'} });
+                    return $resource(CONFIG.BASE_REST_URL+'/sensori/:ids', null, {'update' : {method : 'PUT'} });
                 }
 
                 sensfac.Letture = function() {
-                    return $resource(baseURL+'sensori/:ids/:Periodo', null, {'update' : {method : 'PUT', isArray:true} });
+                    return $resource(CONFIG.BASE_REST_URL+'/sensori/:ids/:Periodo', null, {'update' : {method : 'PUT', isArray:true} });
                 }
 
                 sensfac.LettureSort = function() {
-                    return $resource(baseURL+'sensori/:ids/:Periodo/sort', null, {'update' : {method : 'PUT', isArray:true} });
+                    return $resource(CONFIG.BASE_REST_URL+'/sensori/:ids/:Periodo/sort', null, {'update' : {method : 'PUT', isArray:true} });
                 }
                 return sensfac;
 

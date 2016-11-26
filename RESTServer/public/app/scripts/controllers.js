@@ -1,6 +1,10 @@
 'use strict';
 angular.module('DomoHome')
 
+.constant('CONFIG',{
+        BASE_REST_URL :'http://raspytest:3000'
+})
+
     .directive('bootstrapSwitch', function() {
       return {
         restrict: 'A',

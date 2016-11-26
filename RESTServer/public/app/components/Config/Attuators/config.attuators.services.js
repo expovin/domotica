@@ -1,38 +1,35 @@
 'use strict';
 
 angular.module('DomoHome')
-        .constant("port","3000")
-        .constant("baseURL","http://192.168.0.31:3000/")
 
-
-        .factory('attuatorFactory',['$resource', 'baseURL','port', function($resource,baseURL,port) {          
+        .factory('attuatorFactory',['$resource', 'CONFIG', function($resource,CONFIG) {          
 
             var sensfac = {};
             var Sensori = {};
             var Sensore = {};
 
                 sensfac.Attuatori = function(){
-                    return $resource(baseURL+"attuatori", null, {'update' : {method : 'PUT', isArray:true} });
+                    return $resource(CONFIG.BASE_REST_URL+"/attuatori", null, {'update' : {method : 'PUT', isArray:true} });
                 }   
 
                 sensfac.Attuatore = function() {
-                    return $resource(baseURL+'attuatori/:ids', null, {'update' : {method : 'PUT'} });
+                    return $resource(CONFIG.BASE_REST_URL+'/attuatori/:ids', null, {'update' : {method : 'PUT'} });
                 }
 
                 sensfac.setStato = function() {
-                    return $resource(baseURL+'attuatori/:ids/setStato', null, {'update' : {method : 'PUT'} });
+                    return $resource(CONFIG.BASE_REST_URL+'/attuatori/:ids/setStato', null, {'update' : {method : 'PUT'} });
                 }
 
                 sensfac.getStato = function() {
-                    return $resource(baseURL+'attuatori/:ids/getStato', null, {'update' : {method : 'PUT'} });
+                    return $resource(CONFIG.BASE_REST_URL+'/attuatori/:ids/getStato', null, {'update' : {method : 'PUT'} });
                 }
 
                 sensfac.Dispositivi = function() {
-                    return $resource(baseURL+'dispositivi/attuatore/:ids', null, {'update' : {method : 'PUT'} });
+                    return $resource(CONFIG.BASE_REST_URL+'/dispositivi/attuatore/:ids', null, {'update' : {method : 'PUT'} });
                 }
 
                 sensfac.Dispositivo = function() {
-                    return $resource(baseURL+'dispositivi/:ids', null, {'update' : {method : 'PUT'} });
+                    return $resource(CONFIG.BASE_REST_URL+'/dispositivi/:ids', null, {'update' : {method : 'PUT'} });
                 }
 
                 return sensfac;
