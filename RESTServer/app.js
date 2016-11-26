@@ -16,7 +16,7 @@ db.once('open', function () {
 });
 
 
-GPIOTemplate
+//GPIOTemplate
 var routes = require('./routes/index');
 var users = require('./routes/save');
 var config = require('./routes/config');
@@ -27,9 +27,18 @@ var GPIOTemplate = require('./routes/GPIOTemplate');
 
 var app = express();
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+// Gestione CORS
+app.use(function(req,res,next){
+  res.header("Access-Control-Allow-Origin","*");
+  res.header("Access-Control-Allow-Headers","X-Requested-With, content-type");
+  res.header("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS");
+  next();
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
