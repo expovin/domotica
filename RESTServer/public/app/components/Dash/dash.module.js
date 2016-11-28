@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('DomoHome.Dash', [
+                            'DomoHome.Dash.home',
                             'ui.router',
                             'ngResource',
                             'ui.bootstrap'])
