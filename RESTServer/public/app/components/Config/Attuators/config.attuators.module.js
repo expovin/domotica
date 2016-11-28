@@ -3,7 +3,8 @@
 angular.module('DomoHome.Config.attuators', [
                             'ui.router',
                             'ngResource',
-                            'ui.bootstrap'])
+                            'ui.bootstrap',
+                            'angularSpinner'])
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
 

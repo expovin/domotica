@@ -284,8 +284,8 @@ angular.module('DomoHome')
     }])
 
 
-    .controller('ModalDispositiviController', ['$scope','$modalInstance','param','attuatorFactory', 
-        function($scope,$modalInstance,param,attuatorFactory) {
+    .controller('ModalDispositiviController', ['$scope','$modalInstance','param','attuatorFactory', 'usSpinnerService',
+        function($scope,$modalInstance,param,attuatorFactory,usSpinnerService) {
 
         var id = param;
         console.log("id : "+id);
@@ -310,6 +310,7 @@ angular.module('DomoHome')
             var id=$scope.devices[posizione]['_id'];
             delete $scope.devices[posizione]['_id'];
             delete $scope.devices[posizione]['__v'];
+
             attuatorFactory.Dispositivo().update({ids:id},$scope.devices[posizione])
                  .$promise.then(
                     //success
@@ -324,6 +325,8 @@ angular.module('DomoHome')
                         var body={'Appliance':id, 'stato':stato}
 
                         attuatorFactory.setStato().update({ids:id},body);
+                        usSpinnerService.stop('spinner-1');
+
 
                     },
                     //error
@@ -332,9 +335,23 @@ angular.module('DomoHome')
                      }
                   )
 
+            usSpinnerService.spin('spinner-1');
+
+
 
         }
 
     }])
+
+
+.controller('MyController', ['$scope', 'usSpinnerService', function($scope, usSpinnerService){
+    $scope.startSpin = function(){
+        usSpinnerService.spin('spinner-1');
+    }
+    $scope.stopSpin = function(){
+        usSpinnerService.stop('spinner-1');
+    }
+}])
+
 
     ;
