@@ -78,4 +78,9 @@ angular.module('DomoHome')
 
     }])
 
+    .controller('DashController', ['$scope', function($scope) {
+
+
+    }])
+
 ;

@@ -1,0 +1,34 @@
+
+   html,body, #DashBoardNavigationSectionWrapper {
+		background: #000;
+		color : white;
+        height:100%;
+        margin:0;
+        padding:0;
+    }
+    #DashBoardNavigationSectionWrapper {
+        position:relative;
+    }
+
+    #iconWarningBarSectionWrapper, #HomeSectionWrapper {
+        position:absolute;
+    }
+
+    #iconWarningBarSectionWrapper {
+        height:30px;
+        width:100%;
+        background:grey; 
+    }
+    #HomeSectionWrapper {
+        top:30px;
+        bottom:50px;
+        width:100%;
+        background:black;
+    }
+    #navigationSectionWrapper {
+        position: fixed;
+        bottom : 0px;
+        height:50px;
+        width:100%;
+        background:grey; 
+    }

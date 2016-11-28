@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('DomoHome', ['DomoHome.Config'])
+angular.module('DomoHome', ['DomoHome.Config','DomoHome.Dash'])
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
         
@@ -16,10 +16,22 @@ angular.module('DomoHome', ['DomoHome.Config'])
                 }                
             })
         
-        
+ 
+             // La sezione Dashboard contiene l'interfaccia utente
+            .state('app.Dash', {
+                abstract : true,
+                url : 'Dash',
+                views : {
+                    'content@' : {
+                        templateUrl : 'components/Dash/IndexDash.html',
+                        controller  : 'DashController'
+                    }
+                }
+                
+            })       
 
-            // route for the menu page
 
+            // La sezione config contiene tutte le configurazioni
             .state('app.Config', {
                 abstract : true,
                 url : 'Config',

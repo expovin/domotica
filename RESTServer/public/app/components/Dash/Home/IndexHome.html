@@ -1,0 +1,39 @@
+<div id="indexHomeSectionWrapper">
+
+	<!-- Prima Riga -->
+	<div id="MainPageFirstRowContainer" class="row">
+		<div class="row-content">
+
+		<!-- Spazio dedicato al datario e orologio -->
+			<div id="datarioOrologioWrapper" class="col-md-5">
+				<div ui-view="datarioOrologioWrapperPage"></div>
+			</div>
+
+		<!-- Spazio dedicato al meteo attuale -->
+			<div id="meteoWrapper" class="col-md-2">
+				<div ui-view="meteoWrapperPage"></div>
+			</div>
+
+		<!-- Spazio dedicato al controllo temperatura interna casa -->
+			<div id="temperaturaP0Wrapper" class="col-md-5">
+				<div ui-view="temperaturaP0WrapperPage"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Seconda Riga -->
+	<div id="MainPageSecondRowContainer" class="row">
+		<div class="row-content">
+
+		<!-- Spazio dedicato alla connessione al calendario di google -->
+			<div id="googleCalendarWrapper" class="col-md-9">
+				<div ui-view="googleCalendarWrapperPage"></div>
+			</div>
+
+		<!-- Spazio dedicato al controllo temperatura acquario -->
+			<div id="temperaturaAcquarioWrapper" class="col-md-3">
+				<div ui-view="temperaturaAcquarioWrapperPage"></div>
+			</div>
+		</div>
+	</div>
+</div>
