@@ -1,0 +1,17 @@
+<!--
+<table class="table table-condensed">
+	<tbody>
+		<tr ng-repeat="evento in nextEvents">
+			<td class="oraProssimoAppuntamento">{{evento.start.dateTime}}</td>
+			<td class="dettaglioEvento">{{evento.summary}}</td>
+		</tr>
+	</tbody>
+</table>
+-->
+
+ <dl class="dl-horizontal">
+  <div ng-repeat="evento in nextEvents">
+  <dt><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{evento.start.dateTime | date : "d MMMM 'alle' H:MM"}}</dt>
+  <dd>{{evento.summary}}</dd>
+  </div>
+</dl> 

@@ -6,16 +6,7 @@ angular.module('DomoHome')
 	*/
     .controller('datarioControllers', ['$scope','$timeout', function($scope,$timeout) {
 
-            $scope.clock = "loading clock..."; // initialise the time variable
-            $scope.tickInterval = 1000 //ms
-
-            var tick = function() {
-                $scope.clock = Date.now() // get the current time
-                $timeout(tick, $scope.tickInterval); // reset the timer
-            }
-
-            // Start the timer
-            $timeout(tick, $scope.tickInterval);
+        $scope.theme = 'dark';
 
 
     }])
@@ -34,13 +25,35 @@ angular.module('DomoHome')
     */
     .controller('temperaturaControllers', ['$scope','sensorFactory', function($scope,sensorFactory) {
 
+             sensorFactory.Sensore().get({ids:'57cc7e1fa712bbee2150133d'})
+                 .$promise.then(
+                    //success
+                    function( value ){
+                        console.log(value);
+                        $scope.result  = value;
+
+                     
+                    },
+                    //error
+                    function( error ){
+                        console.log(error);
+                     }
+                  )
 
     }])
 
 
 
-    .controller('googleCalendarControllers', ['$scope','sensorFactory', function($scope,sensorFactory) {
+    .controller('googleCalendarControllers', ['$scope','eventsCalendarFactory', function($scope,eventsCalendarFactory) {
 
+        $scope.nextEvents =  eventsCalendarFactory.EventCalendar().query({},
+            function(response) {
+                console.log('Recuperate Eventi');        
+            },
+            function(response){
+                console.log('Errore')
+            }
+        );
 
     }])
 

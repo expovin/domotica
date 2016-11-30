@@ -3,7 +3,8 @@
 angular.module('DomoHome.Dash.home', [
                             'ui.router',
                             'ngResource',
-                            'ui.bootstrap'])
+                            'ui.bootstrap',
+                            'ds.clock'])
 
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
