@@ -24,7 +24,14 @@ angular.module('DomoHome')
     	"Collection" arbitraria
     */
     .controller('temperaturaControllers', ['$scope','sensorFactory', function($scope,sensorFactory) {
-
+		
+			$scope.changeTemp=false;
+			console.log(angular.version);
+			$scope.toggleTempSwitch =  function(){
+				$scope.changeTemp=!$scope.changeTemp;
+			}
+			
+			
              sensorFactory.Sensore().get({ids:'57cc7e1fa712bbee2150133d'})
                  .$promise.then(
                     //success

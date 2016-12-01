@@ -40,3 +40,10 @@
     #googleCalendarWrapper {
         margin-top: 50px;
     }
+	
+.sample-show-hide {
+  transition: all linear 1s;
+}
+.sample-show-hide.ng-hide {
+  opacity: 0;
+}

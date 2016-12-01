@@ -4,7 +4,8 @@ angular.module('DomoHome.Dash.home', [
                             'ui.router',
                             'ngResource',
                             'ui.bootstrap',
-                            'ds.clock'])
+                            'ds.clock',
+							'ngAnimate'])
 
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
