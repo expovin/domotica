@@ -40,10 +40,25 @@
     #googleCalendarWrapper {
         margin-top: 50px;
     }
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+    /*border: 3px solid green;*/
+}
+
+#tempInternaChartHome {
+    margin-top: 30px;
+}
 	
-.sample-show-hide {
+.arrowsTemp {
   transition: all linear 1s;
 }
-.sample-show-hide.ng-hide {
+.arrowsTemp.ng-hide{
   opacity: 0;
+}
+
+.arrowChangeTemp, .temperatura {
+    height: 25px;
 }

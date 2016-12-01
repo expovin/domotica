@@ -28,7 +28,8 @@
     "angular-ui-router": "^0.2.18",
     "angular-resource": "^1.5.3",
     "angular-local-storage": "^0.2.7",
-    "angular-ui-clock": "^0.5.1"
+    "angular-ui-clock": "^0.5.1",
+    "highcharts": "^5.0.5"
   },
   "resolutions": {
     "angular": "~1.4.7"

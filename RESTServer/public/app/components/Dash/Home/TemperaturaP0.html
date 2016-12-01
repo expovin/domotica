@@ -1,3 +1,39 @@
-<h1><span class="glyphicon glyphicon-triangle-top sample-show-hide" ng-show="changeTemp"></span> 	</h1>
-<h1 ng-click="toggleTempSwitch()">{{result.ultimaLettura}}</h1>
-<h1><span class="glyphicon glyphicon-triangle-bottom sample-show-hide" ng-show="changeTemp"></span> </h1>
+<div class="row">
+	<div class="col-md-8">
+
+	</div>
+	<div class="col-md-4">
+		<div class="row">
+			<div class="col-md-10">
+				<div class="arrowChangeTemp">
+					<h1><span class="glyphicon glyphicon-triangle-top arrowsTemp center" ng-show="changeTemp"></span></h1>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-md-10">
+				<div class="temperatura">
+					<h1 ng-click="toggleTempSwitch()">{{result.ultimaLettura}}</h1>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-10">
+				<div class="arrowChangeTemp">
+					<h1><span class="glyphicon glyphicon-triangle-bottom arrowsTemp center" ng-show="changeTemp"></span> </h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="row">
+	<div id="tempInternaChartHome">
+		<div class="sensorsReadingChartStatus" id="ChartContainer" style="min-width:300px; height:200px; margin:0 auto"></div>
+	</div>
+</div>
