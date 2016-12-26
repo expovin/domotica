@@ -26,20 +26,14 @@
 		<div class="row-content">
 
 		<!-- Spazio dedicato alla connessione al calendario di google -->
-			<div id="googleCalendarWrapper" class="col-md-7">
+			<div id="googleCalendarWrapper" class="col-md-6">
 				<div ui-view="googleCalendarWrapperPage"></div>
 			</div>
 
 		<!-- Spazio dedicato al controllo temperatura acquario -->
-			<div id="temperaturaAcquarioWrapper" class="col-md-4">
+			<div id="temperaturaAcquarioWrapper" class="col-md-6">
 				<div ui-view="temperaturaAcquarioWrapperPage"></div>
-				<div class="row" id="tempInternaChartHome">
-					<div class="sensorsReadingChartStatus" id="ChartContainer" style="min-width:100px; height:200px; margin:20 auto"></div>
-				</div>
 			</div>
-
 		</div>
 	</div>
-
-
 </div>

@@ -1,17 +1,34 @@
-<!--
-<table class="table table-condensed">
-	<tbody>
-		<tr ng-repeat="evento in nextEvents">
-			<td class="oraProssimoAppuntamento">{{evento.start.dateTime}}</td>
-			<td class="dettaglioEvento">{{evento.summary}}</td>
-		</tr>
-	</tbody>
-</table>
--->
 
- <dl class="dl-horizontal">
-  <div ng-repeat="evento in nextEvents">
-  <dt><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{evento.start.dateTime | date : "d MMMM 'alle' H:MM"}}</dt>
-  <dd>{{evento.summary}}</dd>
-  </div>
-</dl> 
+ <h2 ng-if="NumEventi[0] == '0'">Non ci sono Eventi per oggi</h2>
+ <h2 ng-if="NumEventi[0] != '0'">Eventi per Oggi : {{NumEventi[0]}}</h2>
+ <blockquote>
+   <div ng-repeat="evento in Eventi.Oggi">
+        <bold>{{evento.start.dateTime | date  : 'hh:mm'}}</bold> {{evento.summary}}
+   </div>
+ </blockquote>
+
+ <h2 ng-if="NumEventi[1] == '0'">Non ci sono Eventi per domani</h2>
+ <h2 ng-if="NumEventi[1] != '0'">Eventi per Domani : {{NumEventi[1]}}</h2>
+ <blockquote>
+   <div ng-repeat="evento in Eventi.Domani">
+        <bold>{{evento.start.dateTime | date : 'hh:mm'}}</bold> {{evento.summary}}
+   </div>
+ </blockquote>
+
+<h2 ng-if="NumEventi[2] == '0'">Non ci sono Eventi futuri</h2>
+<h2 ng-if="NumEventi[2] != '0'">Eventi Futuri : {{NumEventi[2]}}</h2>
+ <blockquote>
+   <div ng-repeat="evento in Eventi.Futuri">
+      <div class="row row-content">
+      <div class="col-sm-4">
+          <bold class="text-warning">{{evento.start.dateTime | date : format : 'hh:mm'}}</bold> 
+          <bold class="text-warning">{{evento.start.date | date : format : 'hh:mm'}}</bold>          
+      </div>
+      <div class="col-sm-8">
+        <p class="text-muted" >{{evento.summary}} </p>
+      </div>
+      </div>
+
+        
+   </div>
+ </blockquote>

@@ -20,11 +20,12 @@
         width:100%;
         background:grey; 
     }
-    #HomeSectionWrapper {
+    #indexHomeSectionWrapper {
         top:30px;
         bottom:50px;
         width:100%;
-        background:black;
+        margin-right: 20px;
+        background:#000;
     }
     #navigationSectionWrapper {
         position: fixed;
@@ -40,6 +41,9 @@
     #googleCalendarWrapper {
         margin-top: 50px;
     }
+	#tempInternaChartHome {
+        margin-right: 25px;
+    }
 
 .center {
     margin: auto;
@@ -48,8 +52,12 @@
     /*border: 3px solid green;*/
 }
 
+
 #tempInternaChartHome {
     margin-top: 30px;
+}
+#googleCalendarWrapper{
+    margin-left: 30px;
 }
 	
 .arrowsTemp {
@@ -59,6 +67,24 @@
   opacity: 0;
 }
 
+
+.digitalText {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 48px;
+
+}
 .arrowChangeTemp, .temperatura {
     height: 25px;
 }
+
+.arrowChangeTemp {
+    margin-left: 15px;
+}
+.temperatura {
+    margin-top: 30px;
+}
+/*
+      body {
+        font-family: 'Amatic SC', cursive;
+      }
+ */     

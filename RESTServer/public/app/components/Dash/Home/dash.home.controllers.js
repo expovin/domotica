@@ -66,13 +66,10 @@ angular.module('DomoHome')
                                                         now.getSeconds());
 
                                 point.push(now_utc);
-                                point.push(response[ele].Letture.lettura)
-
-                                console.log(point);
+                                point.push(response[ele].Letture.lettura);
                                 data.push(point);
                             }
                        }
-                       console.log(data);
 
                        var cfg={
                             title: {
@@ -95,9 +92,51 @@ angular.module('DomoHome')
 
     .controller('googleCalendarControllers', ['$scope','eventsCalendarFactory', function($scope,eventsCalendarFactory) {
 
+        var today = new Date();
+        today.setHours(0,0,0,0);
+        var tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+        tomorrow.setHours(0,0,0,0);
+        var afterTomorrow = new Date(new Date().getTime() + 48 * 60 * 60 * 1000);
+        afterTomorrow.setHours(0,0,0,0);
+
+        console.log(today);
+        console.log(tomorrow);
+        console.log(afterTomorrow);
+
+        var oggi = [];
+        var domani = [];
+        var futuri = [];
+
         $scope.nextEvents =  eventsCalendarFactory.EventCalendar().query({},
             function(response) {
-                console.log('Recuperate Eventi');        
+                for(var event in response){
+
+                    if(response[event].hasOwnProperty('start')){
+
+                        if(response[event].start.hasOwnProperty('date')){
+                            var dataEvento = new Date(response[event].start.date);
+                        } 
+                        else if (response[event].start.hasOwnProperty('dateTime'))
+                            var dataEvento = new Date(response[event].start.dateTime);
+
+                        if ((dataEvento>today) && (dataEvento<tomorrow)) {
+                            console.log("Evento in data Odierna : "+dataEvento);
+                            oggi.push(response[event]);
+
+                        } else if ((dataEvento>tomorrow) && (dataEvento<afterTomorrow)) {
+                            console.log("Evento schedulato per domani : "+dataEvento);
+                            domani.push(response[event]);
+                        } else if (dataEvento>afterTomorrow) {
+                          console.log("Evento Futuro : "+dataEvento);
+                          futuri.push(response[event])
+                        }
+                    }
+
+                }
+                $scope.Eventi={'Oggi':oggi, 'Domani':domani, 'Futuri':futuri};
+                console.log($scope.Eventi);
+                $scope.NumEventi = [$scope.Eventi.Oggi.length, $scope.Eventi.Domani.length, $scope.Eventi.Futuri.length];
+                console.log($scope.NumEventi);
             },
             function(response){
                 console.log('Errore')

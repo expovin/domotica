@@ -332,6 +332,7 @@ angular.module('DomoHome')
                     //error
                     function( error ){
                         console.log(error);
+                        usSpinnerService.stop('spinner-1');
                      }
                   )
 
