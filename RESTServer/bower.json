@@ -1,0 +1,21 @@
+{
+  "name": "Domotica",
+  "description": "Progetto domotizzazione domestica",
+  "main": "index.html",
+  "authors": [
+    "expovin <expovin@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/expovin/domotica",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "^1.3.2",
+    "angular-local-storage": "^0.2.7"
+  }
+}
