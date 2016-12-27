@@ -1,8 +1,10 @@
 #OS junk files
 [Tt]humbs.db
 *.DS_Store
+._.DS_Store
+.*
 
 #Dependency folder
 RESTServer/node_modules/
 RESTServer/bower_components/
-
+RESTServer/public/bower_components/
