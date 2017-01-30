@@ -15,6 +15,6 @@
     "commit": "d203a7dae4943f2ef39693b5e4b456be6369ec53"
   },
   "_source": "https://github.com/angular/bower-angular-resource.git",
-  "_target": "^1.5.3",
+  "_target": "^1.6.1",
   "_originalSource": "angular-resource"
 }
