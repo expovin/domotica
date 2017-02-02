@@ -5,7 +5,7 @@ angular.module('DomoHome.Dash.home', [
                             ,'ngResource'
                             ,'ui.bootstrap'
                             ,'ds.clock'
-						//	,'ngAnimate'
+							,'ngAnimate'
                         ])
 
 .config(function($stateProvider, $urlRouterProvider) {
