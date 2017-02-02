@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('DomoHome.Dash', [
-                            'DomoHome.Dash.home',
-                            'ui.router',
-                            'ngResource',
-                            'ui.bootstrap'])
+                            'DomoHome.Dash.home'
+                            ,'ui.router'
+                            ,'ngResource'
+                            ,'ui.bootstrap'])
 
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider

@@ -2,7 +2,7 @@
 
 angular.module('DomoHome', [
                                 'DomoHome.Config'
-                        //        ,'DomoHome.Dash'
+                                ,'DomoHome.Dash'
                             ]
                 )
 .config(function($stateProvider, $urlRouterProvider) {
