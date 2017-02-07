@@ -22,15 +22,15 @@
   "dependencies": {
     "bootstrap": "~3.3.5",
     "font-awesome": "~4.7.0",
-    "angular": "~1.4",
-    "angular-ui-router": "0.4.2",
-    "angular-resource": "1.4",
+    "angular": "~1.6",
+    "angular-ui-router": "~0.4.2",
+    "angular-resource": "^1.6",
     "angular-local-storage": "~0.5.2",
     "angular-ui-clock": "^0.5.1",
     "highcharts": "^5.0.5",
     "spin.js": "^2.3.2",
     "angular-spinner": "~1.0.1",
-    "angular-animate": "1.4",
+    "angular-animate": "^1.6",
     "angular-bootstrap": "^2.5.0",
     "angular-ui-bootstrap": "^2.5.0"
   }

@@ -32,6 +32,7 @@ angular.module('DomoHome')
 
         /* Recupero la lista di Sensori censita a sistema*/
         $scope.sensori =  attuatorFactory.Attuatori().update($scope.Fields);
+        console.log($scope.sensori);
 
 
         /*  La funzione cambia stato permette di passare dallo stato consultazione allo stato
