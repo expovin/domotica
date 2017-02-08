@@ -1,6 +1,10 @@
 'use strict';
 
-angular.module('DomoHome', ['DomoHome.Config','DomoHome.Dash'])
+angular.module('DomoHome', [
+                                'DomoHome.Config'
+                                ,'DomoHome.Dash'
+                            ]
+                )
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
         

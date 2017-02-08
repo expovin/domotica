@@ -11,6 +11,8 @@ angular.module('DomoHome')
 
         $scope.Titolo = "Sensori";
 
+        console.log(sensorFactory);
+
         /*  Di seguito sono elencati i soli campi della Collection che si vogliono elencare
             La chiave rappresenta l'etichetta del campo mentra il valore è il nome tecnico.
         */
@@ -28,7 +30,7 @@ angular.module('DomoHome')
                                 
                             };
         
-
+        console.log(sensorFactory.Sensori().update);
         /* Recupero la lista di Sensori censita a sistema*/
         $scope.sensori =  sensorFactory.Sensori().update($scope.Fields);
 
@@ -40,6 +42,7 @@ angular.module('DomoHome')
         */
         $scope.changeStatus = function(status) {
             ListRowsFactory.setStatus(status);
+            $scope.ripristina=0;
         }
         
 
@@ -51,7 +54,11 @@ angular.module('DomoHome')
 
         $scope.eliminaRiga = function() {
 
-            $scope.result = sensorFactory.Sensore().delete({ids:this.riga._id})
+            console.log("Vado ad eliminare il sensore id: "+this.riga._id);
+            console.log(sensorFactory.Sensore);
+
+            
+            $scope.result = sensorFactory.Sensore1().delete({ids:this.riga._id})
                  .$promise.then(
                     //success
                     function( value ){
@@ -70,6 +77,7 @@ angular.module('DomoHome')
                         console.log(error);
                      }
                   )
+                 
         }
 
     }])
@@ -200,11 +208,12 @@ angular.module('DomoHome')
 
         var id = param;
 
+        //console.log("Atterrato in ReadingsSensorsController con parametro "+id);
 
         var today = new Date();
-        var mm = today.getMonth()+1
-        var pad= "00"
-        var mm = pad.substring(0,pad.length - mm.length) + mm;
+        var mm =  today.getMonth()+1;
+        mm = "00" + mm;
+        mm = mm.substring(mm.length-2);
         var yyyy = today.getFullYear();
         var periodo = yyyy+mm;
 
@@ -221,7 +230,12 @@ angular.module('DomoHome')
             $('.sensorsReadingChartStatus').css("display","block");
         }
 
-        sensorFactory.LettureSort().query({ids:id,Periodo:periodo},
+        //console.log("Anno : "+yyyy+" Mese :"+mm)
+        //console.log("Richiamo delle letture con parametro ",periodo);
+
+        console.log(sensorFactory.Letture().query);
+
+        sensorFactory.Letture().query({ids:id,Periodo:periodo},
             function(response) {
                var data=[];
                $scope.letture =  response;
@@ -267,7 +281,8 @@ angular.module('DomoHome')
 
         $scope.cancel = function () {
             console.log("Cancel");
-            $modalInstance.dismiss('cancel');
+            //$modalInstance.dismiss('cancel');
+            $modalInstance.close();
         }
 
     }])
