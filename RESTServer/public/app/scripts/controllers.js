@@ -33,6 +33,23 @@ angular.module('DomoHome')
             BASE_REST_URL :'http://raspytest:3000'
     })
 
+/*global angular 
+
+.directive('removeModal', ['$document', function ($document) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            element.bind('click', function () {
+                $document[0].body.classList.remove('modal-open');
+                    angular.element($document[0].getElementsByClassName('modal-backdrop')).remove();
+                    angular.element($document[0].getElementsByClassName('modal')).remove();
+                });
+            }
+        };
+    }])
+*/
+
+
     .directive('bootstrapSwitch', function() {
       return {
         restrict: 'A',

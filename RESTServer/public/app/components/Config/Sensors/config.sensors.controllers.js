@@ -281,7 +281,8 @@ angular.module('DomoHome')
 
         $scope.cancel = function () {
             console.log("Cancel");
-            $modalInstance.dismiss('cancel');
+            //$modalInstance.dismiss('cancel');
+            $modalInstance.close();
         }
 
     }])
