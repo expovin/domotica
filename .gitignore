@@ -3,6 +3,7 @@
 *.DS_Store
 ._.DS_Store
 .*
+*.pyc
 
 #Dependency folder
 RESTServer/node_modules/
