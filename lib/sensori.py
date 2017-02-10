@@ -127,10 +127,11 @@ def getTempDS18B20():
         equals_pos = lines[1].find('t=')
         if(equals_pos != 1):
             temp_string = lines[1][equals_pos+2:]
-        temp_c = float(temp_string)/1000.0
+            
+    temp_c = float(temp_string)/1000.0
 
-        recordLettura(temp_c,_id)
-        return temp_c
+    recordLettura(temp_c,_id)
+    return temp_c
 ################################################################################
 
 

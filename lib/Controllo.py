@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 from logAction import *
 from os import path
-from attuatori import getStato
+from attuatori import getStato,setStato
 import sys
 
 FILE_NAME=path.basename(__file__)
@@ -33,11 +33,20 @@ GPIO_COOLER = 18;			# Porta GPIO Cooler
 #   - Accensione Raffreddatore  --> COOLER _ON = tmax + SI
 #   - Spegnimento Raffreddatore --> COOLER_OFF = tmax - SI
 
-def TemperaturaRange(	tmp, 	# Temperatura realmente misurata
-						tmin, 	# Temperatura minima accettata (-SI)
-						tmax, 	# Temperatura massima accettata (+SI)
-						SI,):	# Soglia di isteresi
+def TemperaturaRange(	tmp, 			# Temperatura realmente misurata
+						tmin, 			# Temperatura minima accettata (-SI)
+						tmax, 			# Temperatura massima accettata (+SI)
+						SI,  			# Soglia di isteresi
+						HEATER_DEVICE,	# ID Device per aumentare temperatura
+						COOLER_DEVICE): # ID Device per diminuire temperatura
 
+#    HEATER_DEVICE = '5806408844a90f4f5500dafe';
+#    COOLER_DEVICE = '58064b9044a90f4f5500daff';
+    # Controllo lo stato attuale dei dispositivi (Device)
+    HEATER = getStato(HEATER_DEVICE); 	# Stato Heater
+    COOLER = getStato(COOLER_DEVICE); 	# Stato Cooler
+    ON=1;
+    OFF=0;
 
     logOut(3,FILE_NAME,"Modulo Controllo Temperatura in Range");
     logOut(3,FILE_NAME,"Temperatura Letta : "+str(tmp));
@@ -57,24 +66,44 @@ def TemperaturaRange(	tmp, 	# Temperatura realmente misurata
     logOut(4,FILE_NAME,"COOLER_OFF : "+str(COOLER_OFF));
 
 
-    # Controllo lo stato attuale dei dispositivi (Device)
-    HEATER = getStato('58064b9044a90f4f5500daff'); 	# Stato Heater
-    COOLER = getStato('5806408844a90f4f5500dafe'); 	# Stato Cooler
-
     # Controllo zone
     if(tmp < HEATER_ON): # ZONA 1
         logOut(3,FILE_NAME,"ZONA 1 accensione riscaldatore ");
+        setStato(HEATER_DEVICE,ON);
+        setStato(COOLER_DEVICE,OFF);
+
     elif ((tmp >= HEATER_ON) and (tmp < HEATER_OFF)):
-    	logOut(3,FILE_NAME,"ZONA 2 controllo stato dispositivi");
+    	logOut(4,FILE_NAME,"ZONA 2 controllo stato dispositivi, HEATER : "+
+    		str(HEATER)+" COOLER : "+str(COOLER));
+
+    	if(COOLER == ON):
+    		logOut(3,FILE_NAME,"COOLER attivo. Spengo tutto");
+    		setStato(HEATER_DEVICE,OFF);
+    		setStato(COOLER_DEVICE,OFF);
+
     elif((tmp >= HEATER_OFF) and (tmp < COOLER_OFF)):
-        logOut(3,FILE_NAME,"ZONA 3 tutti i dispositivi vengono spenti");
+        logOut(4,FILE_NAME,"ZONA 3 tutti i dispositivi vengono spenti");
+
+        setStato(HEATER_DEVICE,OFF);
+        setStato(COOLER_DEVICE,OFF);
+
     elif((tmp >= COOLER_OFF) and (tmp < COOLER_ON)):
-    	logOut(3,FILE_NAME,"ZONA 4 controllo stato dispositivi");
+    	logOut(4,FILE_NAME,"ZONA 4 controllo stato dispositivi, HEATER : "+
+    		str(HEATER)+" COOLER : "+str(COOLER));
+
+    	if(HEATER == ON):
+    		logOut(3,FILE_NAME,"HEATER attivo. Spengo tutto");
+    		setStato(HEATER_DEVICE,OFF);
+    		setStato(COOLER_DEVICE,OFF);
+
     elif(tmp >= COOLER_ON):
-        logOut(3,FILE_NAME,"ZONA 5 accendo raffreddatore");
+        logOut(4,FILE_NAME,"ZONA 5 accendo raffreddatore");
+        setStato(HEATER_DEVICE,OFF);
+        setStato(COOLER_DEVICE,ON);
 
 
 
 if __name__ == "__main__":
     TemperaturaRange(float(sys.argv[1]), float(sys.argv[2]), 
-    				float(sys.argv[3]), float(sys.argv[4]));
+    				float(sys.argv[3]), float(sys.argv[4]),
+    				sys.argv[5], sys.argv[6]);

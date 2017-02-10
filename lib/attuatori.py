@@ -223,7 +223,7 @@ def BT(appli, stato):
 # cercando l'attuatore per appliance collegato. Verifica il tipo di attuatore e
 # richiama la funzione di gestione (Stesso nome del tipo attuatore)
 def setStato(appliance,stato):
-    LG.logOut(4,FILE_NAME,"Richiesta di cambio stato per appliance : "+appliance\
+    LG.logOut(4,FILE_NAME,"Richiesta di cambio stato per appliance : "+str(appliance)\
         +" nuovo stato :"+str(stato))
     appli = db.find_one({'_id':ObjectId(appliance)})
     stato=int(stato)
