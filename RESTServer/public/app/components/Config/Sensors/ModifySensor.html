@@ -73,6 +73,55 @@
                       </div>
                 </div>
 
+                 <div class="form-group row" >
+                   <div ng-repeat="azioni in AzioniControllo">
+
+
+                      <label for="FunzioneControllo" class="col-sm-2 control-label">Funzione Controllo</label>
+
+                      <div class="col-sm-10">
+                        <select class="form-control" ng-model="azioni.FunzioneControllo" ng-change="changeFC(azioni.FunzioneControllo)"  required>
+                          <option ng-repeat="azione in azioni.Controller"
+                              value="{{azione._id}}">{{azione.NomeProcedura}}</option>
+                        </select>
+                        <p class="form-text text-muted helpMessage">{{selectedController.Descrizione}}</p>
+
+                        <div class="row" ng-repeat="(ParamK,ParamV) in selectedController.Parametri">
+                          <label for="Param" class="col-sm-2 control-label">{{ParamK}}</label>
+
+                          <div class="col-sm-5">
+                            <input type="{{ParamV.Tipo}}" min="{{ParamV.Min}}" max="{{ParamV.Max}}" class="form-control" name="{{ParamK}}" required="{{ParamV.Mandatorio}}" value="{{ParamV.Default}}">
+
+                          </div>
+                          <div class="col-sm-5">
+                            <p class="form-text text-muted helpMessage">{{ParamV.Descrizione}}</p>
+                          </div>
+
+
+                        </div>
+                      </div>
+                      
+
+                    
+
+                      <button ng-repeat="button in azione.Button" type="button" class="btn {{button}}" ng-click="RimuoviAzioneControllo(azione.idAzione)">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                      </button>
+
+
+                   </div>
+                 </div>
+
+                <!--   Aggiunta azione di controllo -->
+                <div class="form-group row">
+                  <label for="AzioneControllo" class="col-sm-2 control-label">Aggiungi Controllo</label>
+                  <div class="col-md-3">
+                    <button type="button" class="btn btn-success" ng-click="AggiungiAzioneControllo()">
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </div>
+
                   
                    <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">

@@ -23,9 +23,12 @@ var config = require('./routes/config');
 var sensori = require('./routes/sensori');
 var attuatori = require('./routes/attuatori');
 var dispositivi = require('./routes/dispositivi');
+var controllori = require('./routes/controllers');
 var GPIOTemplate = require('./routes/GPIOTemplate');
 var EventiCalendario = require('./routes/EventiCalendario');
 var AuthGoogleCalendar = require('./routes/AuthGoogleCalendar');
+var Allarme = require('./routes/allarme');
+var WebAccount = require('./routes/WebAccount');
 
 var app = express();
 
@@ -55,9 +58,12 @@ app.use('/config', config);
 app.use('/sensori', sensori);
 app.use('/attuatori',attuatori);
 app.use('/dispositivi',dispositivi);
+app.use('/controllori',controllori);
 app.use('/GPIOTemplate',GPIOTemplate);
 app.use('/EventiCalendario',EventiCalendario);
 app.use('/AuthGoogleCalendar',AuthGoogleCalendar);
+app.use('/Allarme',Allarme);
+app.use('/WebAccount',WebAccount);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

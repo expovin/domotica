@@ -1,0 +1,133 @@
+import RPi.GPIO as GPIO
+from logAction import *
+from os import path
+from attuatori import getStato,setStato
+import sys
+
+FILE_NAME=path.basename(__file__)
+
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+
+GPIO_HEATER = 17;			# Porta GPIO Heater
+GPIO_COOLER = 18;			# Porta GPIO Cooler
+
+# CONTROLLO TEMPERATURA IN RANGE
+# Questa funzione attiva tiene sotto controllo una temperatura tra il suo valore
+# minimo e massimo attivando o disattivando una porta del GPIO (dove dovra essere
+# connesso un attuatore riscaldatore).
+# Per evitare repentine accensioni e spegnimenti dell'attuatore quando prossimo
+# alla soglia, viene fornito anche la soglia di isteresi (SI) che e' il valore 
+# entro il quale l'attuatore non viene azionato/spento.
+# Es. Temperaatura minima da controllare 22 C con SI=1 C.
+#   - Nel caso in cui la temperatura diminuisca partendo da un valore di 23 
+#     gradi, l'attuatore viene acceso solo a 21 C (22 - 1).
+#   - L'attuatore rimarra acceso fino al raggiungimento dei 23 C (22 + 1)
+# Vengono a crearsi quindi 4 diverse soglie, che dividono 5 zone, a cui 
+# corrispondono 4 azioni su due attuatori.  I due attuatori sono:
+#	- Riscaldatore (HEATER)
+#	- Raffreddatore (COOLER)
+# Le 4 soglie/azioni sono:
+#   - Accensione Riscaldatore   --> HEATER_ON = tmin - SI
+#   - Spegnimento Riscaldatore  --> HEATER_OFF = tmin + SI
+#   - Accensione Raffreddatore  --> COOLER _ON = tmax + SI
+#   - Spegnimento Raffreddatore --> COOLER_OFF = tmax - SI
+
+def ControlloSogliaLineare(	tmp, 			# Grandezza realmente misurata
+						tmin, 			# Grandezza minima accettata (-SI)
+						tmax, 			# Grandezza massima accettata (+SI)
+						SI,  			# Soglia di isteresi
+                        flgMin,         # Flag controllo grandezza minima 
+                                        #   0 : No controllo minimo
+                                        #   1 : Si controllo minimo
+                        azzMin,         # Azzione da attuare alla soglia minima
+                                        #   0 : Disattivazione device
+                                        #   1 : Attivazione device 
+						HEATER_DEVICE,	# ID Device su grandezza minima
+                        flgMax,         # Flag controllo grandezza massima
+                                        #   0 : No controllo massimo
+                                        #   1 : Si controllo massimo
+                        azzMax,         # Azione da attuare su soglia massima
+                                        #   0 : Disattivazione Device
+                                        #   1 : Attivazione Device
+						COOLER_DEVICE): # ID Device per diminuire temperatura
+
+#    HEATER_DEVICE = '5806408844a90f4f5500dafe';
+#    COOLER_DEVICE = '58064b9044a90f4f5500daff';
+    # Controllo lo stato attuale dei dispositivi (Device)
+    HEATER = getStato(HEATER_DEVICE); 	# Stato Heater
+    COOLER = getStato(COOLER_DEVICE); 	# Stato Cooler
+    ON=1;
+    OFF=0;
+
+    logOut(3,FILE_NAME,"Modulo Controllo Soglia Lineare");
+    logOut(3,FILE_NAME,"Grandezza Letta : "+str(tmp));
+    if(flgMin == True):
+        logOut(4,FILE_NAME,"Controllo grandezza minima : "+str(tmin));
+        logOut(4,FILE_NAME,"Device da azionare : "+str(HEATER_DEVICE));
+        logOut(4,FILE_NAME,"Azione impostata : "+str(azzMin));
+
+    if(flgMax == True):
+        logOut(4,FILE_NAME,"Controllo grandezza massima : "+str(tmax));
+        logOut(4,FILE_NAME,"Device da azionare : "+str(COOLER_DEVICE));
+        logOut(4,FILE_NAME,"Azione impostata : "+str(azzMax));
+
+    logOut(4,FILE_NAME,"Soglia Isteresi : "+str(SI));
+
+    #Calcolo le 4 soglie
+    HEATER_ON  = tmin - SI;
+    HEATER_OFF = tmin + SI;
+    COOLER_ON  = tmax + SI;
+    COOLER_OFF = tmax - SI;
+
+    logOut(3,FILE_NAME,"HEATER_ON  : "+str(HEATER_ON));
+    logOut(4,FILE_NAME,"HEATER_OFF : "+str(HEATER_OFF));
+    logOut(4,FILE_NAME,"COOLER_ON  : "+str(COOLER_ON));
+    logOut(4,FILE_NAME,"COOLER_OFF : "+str(COOLER_OFF));
+
+
+    # Controllo zone
+    if((tmp < HEATER_ON) and (flgMin == True)): # ZONA 1
+        logOut(3,FILE_NAME,"ZONA 1 accensione device controllo minimo");
+        setStato(HEATER_DEVICE,azzMin);
+        setStato(COOLER_DEVICE,not(azzMax));
+
+    elif ((tmp >= HEATER_ON) and (tmp < HEATER_OFF)):
+    	logOut(4,FILE_NAME,"ZONA 2 controllo stato dispositivi, HEATER : "+
+    		str(HEATER)+" COOLER : "+str(COOLER));
+
+    	if(COOLER == azzMax):
+    		logOut(3,FILE_NAME,"COOLER attivo. Spengo tutto");
+    		setStato(HEATER_DEVICE,not(azzMin));
+    		setStato(COOLER_DEVICE,not(azzMax));
+
+    elif((tmp >= HEATER_OFF) and (tmp < COOLER_OFF)):
+        logOut(4,FILE_NAME,"ZONA 3 tutti i dispositivi vengono spenti");
+
+        setStato(HEATER_DEVICE,not(azzMin));
+        setStato(COOLER_DEVICE,not(azzMax));
+
+    elif((tmp >= COOLER_OFF) and (tmp < COOLER_ON)):
+    	logOut(4,FILE_NAME,"ZONA 4 controllo stato dispositivi, HEATER : "+
+    		str(HEATER)+" COOLER : "+str(COOLER));
+
+    	if(HEATER == azzMin):
+    		logOut(3,FILE_NAME,"HEATER attivo. Spengo tutto");
+    		setStato(HEATER_DEVICE,not(azzMin));
+    		setStato(COOLER_DEVICE,not(azzMax));
+
+    elif((tmp >= COOLER_ON) and (flgMax == True)):
+        logOut(4,FILE_NAME,"ZONA 5 accendo raffreddatore");
+        setStato(HEATER_DEVICE,not(azzMin));
+        setStato(COOLER_DEVICE,azzMax);
+
+
+
+if __name__ == "__main__":
+    ControlloSogliaLineare(float(sys.argv[1]), float(sys.argv[2]), 
+    				float(sys.argv[3]), float(sys.argv[4]),
+    				bool(sys.argv[5]), bool(sys.argv[6]),sys.argv[7], 
+                    bool(sys.argv[8]), bool(sys.argv[9]),sys.argv[10], 
+
+                    );
+

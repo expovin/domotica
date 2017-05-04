@@ -24,6 +24,21 @@ angular.module('DomoHome')
 
                 return sensfac;
 
-        }])     
+        }])
+
+        .factory('controllerFactory',['$resource', 'CONFIG', function($resource,CONFIG) {    
+
+            var ctrlFac = {};
+
+            ctrlFac.getControllers = function(){
+                return $resource(CONFIG.BASE_REST_URL+"/controllori", null, {'update' : {method : 'PUT', isArray:true} });
+            };
+
+            ctrlFac.getSelectedController = function(){
+                return $resource(CONFIG.BASE_REST_URL+"/controllori/:contId", null, {'update' : {method : 'PUT', isArray:true} });
+            };
+
+            return ctrlFac;
+        }])
    
 ;

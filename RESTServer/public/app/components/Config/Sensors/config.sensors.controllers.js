@@ -11,8 +11,6 @@ angular.module('DomoHome')
 
         $scope.Titolo = "Sensori";
 
-        console.log(sensorFactory);
-
         /*  Di seguito sono elencati i soli campi della Collection che si vogliono elencare
             La chiave rappresenta l'etichetta del campo mentra il valore è il nome tecnico.
         */
@@ -30,7 +28,7 @@ angular.module('DomoHome')
                                 
                             };
         
-        console.log(sensorFactory.Sensori().update);
+
         /* Recupero la lista di Sensori censita a sistema*/
         $scope.sensori =  sensorFactory.Sensori().update($scope.Fields);
 
@@ -114,16 +112,29 @@ angular.module('DomoHome')
 
     }])
 
-    .controller('ModifySensorsController', ['$scope','$stateParams','sensorFactory', 
-        function($scope,$stateParams,sensorFactory) {
+    .controller('ModifySensorsController', ['$scope','$stateParams','sensorFactory', 'controllerFactory',
+        function($scope,$stateParams,sensorFactory,controllerFactory) {
 
         var save={};
+
+        $scope.sensore={};
+        $scope.AzioniControllo = [];
+        $scope.progAzioneControllo = 0;
         var pos;
 
         var queryString = window.location.href;
         var start = queryString.indexOf("/details")+8;
         var end = queryString.length;
         var sensoreId=queryString.substring(start,end);
+
+
+        controllerFactory.getControllers().query(
+            function(response){
+                $scope.controller=response;
+            },
+            function(response){
+                console.log(response);
+        });
 
         for(var s in $scope.sensori) {
             if($scope.sensori[s]['_id'] == sensoreId){
@@ -133,9 +144,44 @@ angular.module('DomoHome')
             }
         }
 
+        $scope.changeFC = function(id){
+            console.log($scope.sensore.FunzioneControllo);
+            console.log("Azione con id: "+id)
+                controllerFactory.getSelectedController().query({contId:id},
+                    function(response){
+                        $scope.selectedController=response[0];
+                        console.log($scope.selectedController);
+                    },
+                    function(response){
+                        console.log(response);
+                });
+                
+        }
+        
+
         $scope.resetCampi = function(){
             console.log("resetCampi");
             $scope.sensore = JSON.parse(JSON.stringify(save));
+        }
+
+        $scope.AggiungiAzioneControllo = function(){
+            console.log("Aggiungo un azione di controllo!");
+            //var controller = {};
+
+
+            $scope.AzioniControllo.push({   "idAzione" : $scope.progAzioneControllo+=1 ,
+                                            "Azione" : "Dettaglio",
+                                            "Button" : ["btn-danger"],
+                                            "Controller" : $scope.controller
+                                        });
+        }
+
+        $scope.RimuoviAzioneControllo = function(MyId){
+            console.log("Rimuovo azione di controllo numero "+MyId);
+            for(var i=$scope.AzioniControllo.length; i--;){
+                if($scope.AzioniControllo[i].idAzione == MyId)
+                    $scope.AzioniControllo.splice(i,1);
+            }
         }
 
         $scope.applyModSensore = function() {
@@ -230,10 +276,6 @@ angular.module('DomoHome')
             $('.sensorsReadingChartStatus').css("display","block");
         }
 
-        //console.log("Anno : "+yyyy+" Mese :"+mm)
-        //console.log("Richiamo delle letture con parametro ",periodo);
-
-        console.log(sensorFactory.Letture().query);
 
         sensorFactory.Letture().query({ids:id,Periodo:periodo},
             function(response) {
