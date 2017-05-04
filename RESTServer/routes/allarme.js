@@ -69,10 +69,9 @@ router.route('/logoff/:sessionId')
 
 		request.get({
 		    headers: {
-		      'Referer': 'http://192.168.0.160:443/login.htm?action=login&language=253'
+		      'Referer': 'http://192.168.0.160:443/secure.htm?session='+req.params.sessionId+'&page=system_summary&action=update'
 		    },
 		  url: 'http://192.168.0.160:443/secure.htm?session='+req.params.sessionId+'&action=logoff',
-		  form: form
 		}, function (err, httpResponse, body) { 
 			if(err)
 				console.log("Errore: "+err);
@@ -100,7 +99,52 @@ router.route('/Ingressi/:sessionId')
 			    	res.json({'INGRESSI':statoIngressi});
 			});
 		})
-});
+})
+
+.post(function(req, res, next){
+
+		var reqBody = {
+			  area_1_expanded : "0",
+			  area_2_expanded : "0",
+			  area_3_expanded : "0",
+			  area_4_expanded : "0",
+		};
+
+		
+		console.log(formData);
+		console.log(req.body.SettingArea);
+		var area=0;
+
+		if(req.body.Stato == "ON")
+			reqBody['fullset_area'+parseInt(req.body.Area)]="Inserimento+Totale";
+
+		if(req.body.Stato == "OFF")
+			reqBody['unset_area'+parseInt(req.body.Area)]="Disinserito";	
+
+
+
+		console.log(reqBody);
+		var formData = querystring.stringify(reqBody);
+		
+		request.post({
+		    headers: {
+		      'Referer': 'http://192.168.0.160:443/secure.htm?session='+req.params.sessionId+'&page=controller_status',
+		      'Content-Type' : 'content-type : application/x-www-form-urlencoded',
+		      'Content-Length': Buffer.byteLength(formData)
+		    },
+		  	url: 'http://192.168.0.160:443/secure.htm?session='+req.params.sessionId+'&page=system_summary&action=update',
+		  	form: reqBody
+		}, function (err, httpResponse, body) { 
+			if(err)
+				console.log("Errore: "+err);
+
+			    AllarmeUtil.getStatoAree(body, function(statoAree){
+			    	res.json({"HEADERS" : httpResponse, "STATO AREE":statoAree});
+			    });
+		})
+
+})
+;
 
 router.route('/Alert/:sessionId')
 .get(function(req, res, next){
@@ -121,15 +165,15 @@ router.route('/Alert/:sessionId')
 		})
 });
 
-router.route('/Log/:sessionId')
+router.route('/Log/:sessionId/:type')
 .get(function(req, res, next){
 
 		request.post({
 		    headers: {
-		      'Referer': 'http://192.168.0.160:443/secure.htm?session='+req.params.sessionId+'&page=log',
+		      'Referer': 'http://192.168.0.160:443/secure.htm?session='+req.params.sessionId+'&page='+req.params.type,
 		      'Content-Type': 'application/x-www-form-urlencoded'
 		    },
-		  url: 'http://192.168.0.160:443/secure.htm?session='+req.params.sessionId+'&page=log&max=999999',
+		  url: 'http://192.168.0.160:443/secure.htm?session='+req.params.sessionId+'&page='+req.params.type+'&max=999999',
 		  form: form
 		}, function (err, httpResponse, body) { 
 			if(err)
@@ -142,6 +186,7 @@ router.route('/Log/:sessionId')
 			});
 		})
 });
+
 
 router.route('/test')
 
