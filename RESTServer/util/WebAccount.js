@@ -26,7 +26,26 @@ utils = {
 		callback({'Saldo':Saldo, 'Refezione':Refezione});
 
 
+	},
+
+	coockyfy : function (cookieArray) {
+		var strCookie='';
+		console.log(cookieArray);
+		for(i in cookieArray){
+			strCookie+=cookieArray[i]+";"
+		}
+		return(strCookie);
+	},
+
+	endLoop : 	function() {
+		console.log("Fine loop");
+		return false;
+	},
+
+	onlyUnique : function(value, index, self) { 
+    	return self.indexOf(value) === index;
 	}
+
 }
 
 module.exports = utils;

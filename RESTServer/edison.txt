@@ -1,0 +1,1847 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
+
+<script>
+dataLayer = [{
+	'pageName':'web:myedison:bollette',
+	'pageCategory':'myedison:bollette',
+	'parentCategory':'',
+	'vPath': '',
+	'commodity':'',
+	'tipologia':'',
+	'olg_settore':'',
+	'olg_prod':'',
+	'userID':'1050610233',
+	'segmento':'Residenziale',
+	'prospect':'false',
+	'pod':'',
+	'pdr':''
+  }];
+</script><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6T3Z');</script>
+<!-- End Google Tag Manager -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1, user-scalable=no"/>
+
+<!-- rel=dynamic-content indicates an element that is replaced with the contents produced by the specified href. 
+	 dyn-cs:* URIs are resolved using the values within the 'wp_dynamicContentSpots_85' theme module. -->
+<link rel="stylesheet" href="/contenthandler/!ut/p/digest!3Aq1p3toUnee8aZwRbCU4A/sp/mashup:ra:collection?soffset=0&amp;eoffset=16&amp;themeID=ZJ_OQD81A42LOUSB0AT36LT9N3000&amp;locale=en&amp;mime-type=text%2Fcss&amp;lm=1476462141000&amp;entry=wp_toolbar_common__0.0%3Ahead_css&amp;entry=wp_dialog_css__0.0%3Ahead_css&amp;entry=wp_toolbar_logo__0.0%3Ahead_css&amp;entry=wp_theme_portal_edit_85__0.0%3Ahead_css&amp;entry=wp_theme_portal_85__0.0%3Ahead_css&amp;entry=wp_portlet_css__0.0%3Ahead_css&amp;entry=wp_toolbar_common_actionbar__0.0%3Ahead_css&amp;entry=wp_simple_contextmenu_css__0.0%3Ahead_css&amp;entry=wp_toolbar_actionbar__0.0%3Ahead_css&amp;entry=wp_ic4_wai_resources__0.0%3Ahead_css&amp;entry=wp_toolbar_sitepreview__0.0%3Ahead_css&amp;entry=wp_toolbar_moremenu__0.0%3Ahead_css&amp;entry=wp_status_bar__0.0%3Ahead_css&amp;entry=wp_toolbar_projectmenu__0.0%3Ahead_css&amp;entry=wp_oob_sample_styles__0.0%3Ahead_css" type="text/css"/><link rel="alternate" id="head_css_deferred" href="/contenthandler/!ut/p/digest!3Aq1p3toUnee8aZwRbCU4A/sp/mashup:ra:collection?soffset=0&amp;eoffset=6&amp;themeID=ZJ_OQD81A42LOUSB0AT36LT9N3000&amp;locale=en&amp;mime-type=text%2Fcss&amp;lm=1472756016000&amp;entry=wp_contextmenu_css__0.0%3Ahead_css&amp;entry=wp_federated_documents_picker__0.0%3Ahead_css&amp;entry=wp_dnd_css__0.0%3Ahead_css&amp;entry=wcm_inplaceEdit__0.0%3Ahead_css&amp;entry=wp_content_targeting_cam__0.0%3Ahead_css&amp;deferred=true"/><script type="text/javascript">var djConfig={"baseUrl":"/portal_dojo/v1.9/dojo/","locale":"en","isDebug":false,"debugAtAllCosts":false,"parseOnLoad":false,"afterOnLoad":false,"has":{"dojo-bidi":true},"modulePaths":{"com":"/themeModules/js/com","ibm":"/themeModules/js/ibm","pagebuilder":"/themeModules/modules/pagebuilder/js","portalclient":"/themeModules/modules/portalclient/js","asa":"/themeModules/modules/asa/js","contentmapping":"/themeModules/modules/contentmapping/js","federation":"/themeModules/modules/federation/js"}};djConfig.locale=djConfig.locale.replace(/_/g, "-").replace(/iw/, "he").toLowerCase();(function(){if (typeof(wpModules) == 'undefined') wpModules = {}; if (typeof(wpModules.state) == 'undefined') wpModules.state = {}; if (typeof(wpModules.state.page) == 'undefined') wpModules.state.page = {};wpModules.state.page._initial=[{"nsuri":"http://www.ibm.com/xmlns/prod/websphere/portal/publicparams","name":"selection","value":["Z6_OQD81A42L07DD0ATT5DF883003"]},{"nsuri":"http://www.ibm.com/xmlns/prod/websphere/portal/publicparams","name":"labelMappings","value":["Z6_OQD81A42LGO710ATA2UVIS00K2","Z6_OQD81A42L07DD0ATT5DF883003","Z6_000000000000000000000000A0","Z6_OQD81A42L07DD0ATT5DF883003","Z6_OQD81A42L07DD0ATT5DF883003","Z6_000000000000000000000000A0"]},{"nsuri":"http://www.ibm.com/xmlns/prod/websphere/portal/publicparams","name":"expansions","value":["Z6_000000000000000000000000A0","Z6_OQD81A42LGO710ATA2UVIS00K2"]}];wpModules.state.page.selectionPath=['Z6_000000000000000000000000A0','Z6_OQD81A42LGO710ATA2UVIS00K2','Z6_OQD81A42L07DD0ATT5DF883003'];wpModules.state.page.supportsEditMode=true;wpModules.state.page.supportsToolbar=true;wpModules.state.page.path='/myportal';wpModules.state.page.protectedPath='/myportal';wpModules.state.page.publicPath='';})();djConfig.modulePaths["edisonwidgets"] = '/edison/widgets/widgets';</script><script type="text/javascript" src="/contenthandler/!ut/p/digest!3Aq1p3toUnee8aZwRbCU4A/mashup/ra:collection?themeID=ZJ_OQD81A42LOUSB0AT36LT9N3000&amp;locale=en&amp;mime-type=text%2Fjavascript&amp;lm=1492798600000&amp;entry=dojo_19__0.0%3Ahead_js&amp;entry=wp_client_main__0.0%3Ahead_js&amp;entry=wp_client_ext__0.0%3Ahead_js&amp;entry=wp_client_logging__0.0%3Ahead_js&amp;entry=wp_client_tracing__0.0%3Ahead_js&amp;entry=wp_modules__0.0%3Ahead_js&amp;entry=wp_photon_dom__0.0%3Ahead_js&amp;entry=wp_toolbar_common__0.0%3Ahead_js&amp;entry=wp_dialog_util__0.0%3Ahead_js&amp;entry=wp_dialog_draggable__0.0%3Ahead_js&amp;entry=wp_dialog_main__0.0%3Ahead_js&amp;entry=wp_a11y__0.0%3Ahead_js&amp;entry=wp_state_page__0.0%3Ahead_js&amp;entry=edison_widgets_private__0.0%3Ahead_js&amp;entry=wp_theme_portal_85__0.0%3Ahead_js&amp;entry=wp_theme_utils__0.0%3Ahead_js&amp;entry=wp_toolbar_viewframe_validator__0.0%3Ahead_js&amp;entry=wp_analytics_aggregator__0.0%3Ahead_js"></script><link rel="alternate" id="head_js_deferred" href="/contenthandler/!ut/p/digest!dbZHTbivT8o7t3exJ39EyA/mashup/ra:collection?themeID=ZJ_OQD81A42LOUSB0AT36LT9N3000&amp;locale=en&amp;mime-type=text%2Fjavascript&amp;lm=1472756022000&amp;entry=dojo_app_19__0.0%3Ahead_js&amp;entry=dojo_fx_19__0.0%3Ahead_js&amp;entry=dojo_dom_19__0.0%3Ahead_js&amp;entry=dojo_dnd_basic_19__0.0%3Ahead_js&amp;entry=dojo_data_19__0.0%3Ahead_js&amp;entry=dojo_selector_lite_19__0.0%3Ahead_js&amp;entry=dijit_19__0.0%3Ahead_js&amp;entry=dojo_dnd_ext_19__0.0%3Ahead_js&amp;entry=dijit_layout_basic_19__0.0%3Ahead_js&amp;entry=dojox_layout_basic_19__0.0%3Ahead_js&amp;entry=dijit_menu_19__0.0%3Ahead_js&amp;entry=dojo_fmt_19__0.0%3Ahead_js&amp;entry=dijit_tree_19__0.0%3Ahead_js&amp;entry=wp_dnd_namespace__0.0%3Ahead_js&amp;entry=wp_dnd_source__0.0%3Ahead_js&amp;entry=dijit_layout_ext_19__0.0%3Ahead_js&amp;entry=dijit_form_19__0.0%3Ahead_js&amp;entry=wp_client_selector__0.0%3Ahead_js&amp;entry=wp_client_dnd__0.0%3Ahead_js&amp;entry=wp_contextmenu_js__0.0%3Ahead_js&amp;entry=wp_dnd_target__0.0%3Ahead_js&amp;entry=wp_dnd_util__0.0%3Ahead_js&amp;entry=wcm_inplaceEdit__0.0%3Ahead_js&amp;deferred=true"/><link id="g0EHUetFwo2" rel="alternate" href="/myportal/myedison/bollette-e-pagamenti/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zi_QNdLAwdTYx8DMxdXAwcQ0JMXdwsLIwNDIz1w1EVuPubGwIVOBqFhnkGGxh4G-lHEaPfAAdwNCBOPx4FUfiND9ePQrUCiw8ImVGQGxoaYZDpCAA8GpXd/"><script type="text/javascript">(function() {
+	var element = document.getElementById("g0EHUetFwo2");
+	if (element) {
+		wpModules.theme.WindowUtils.baseURL.resolve(element.href);
+	}
+}());</script><style id="layout-wstate-styles"></style>
+        <title>Bollette e Pagamenti</title>
+    
+<link id="com.ibm.lotus.NavStateUrl" rel="alternate" href="/myportal/myedison/bollette-e-pagamenti/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zi_QNdLAwdTYx8DMxdXAwcQ0JMXdwsLIwNDIz1w1EVuPubGwIVOBqFhnkGGxh4G-lHEaPfAAdwNCBOPx4FUfiND9ePQrUCiw8ImVGQGxoaYZDpCAA8GpXd/dz/d5/L2dJQSEvUUt3QS80TmxFL1o2X09RRDgxQTQyTDA3REQwQVRUNURGODgzMDAz/" />
+
+
+<link href="/contenthandler/!ut/p/digest!dbZHTbivT8o7t3exJ39EyA/war/EdisonB2CPrivateThemeStaticWAR/themes/EdisonB2CPrivate/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+<!-- Edison - edison.portali.release 2.0.3 -->
+<link rel='stylesheet' href='/EdisonB2CPrivateThemeDynamicWAR/themes/html/dynamicSpots/assets/css/app.css?v=2.0.3' type='text/css' />
+<link rel='stylesheet' href='/EdisonB2CPrivateThemeDynamicWAR/themes/html/dynamicSpots/assets/css/rewritingApp.css?v=2.0.3' type='text/css' />
+<link rel='stylesheet' href='/EdisonB2CPublicThemeDynamicWAR/themes/html/dynamicSpots/assets/css/dijit/themes/claro/claro.css?v=2.0.3' type='text/css' />
+
+
+
+<link rel='stylesheet' href='/EdisonB2CPrivateThemeDynamicWAR/themes/html/dynamicSpots/assets/css/myEdison.css?v=2.0.3' type='text/css' />
+</head>
+
+<body id="content" class="lotusui30dojo tundra claro locale_en">	
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6T3Z"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
+	<div class="wpthemeFrame">
+	
+	    <div class="off-canvas-wrapper">
+        <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+        
+       <!-- menu di sinistra solo per mobile -->
+          <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
+            <div class="ed_menuMobile" id="idMenuMobile">
+            
+            
+			
+			<div class="ed_sideMenu">
+        		<div class="ed_title">Casa</div>
+        	    <ul class="ed_listWrapper">
+        	       	
+							<li class="colorWhite">
+								<a href="/myportal/edison/casa/offerte-luce" title="" />
+									Offerte Luce
+								</a>
+								</li>
+						
+							<li class="colorWhite">
+								<a href="/myportal/edison/casa/offerte-gas" title="" />
+									Offerte Gas
+								</a>
+								</li>
+						
+							<li class="colorWhite">
+								<a href="/myportal/edison/casa/servizi" title="" />
+									Offerte Servizi
+								</a>
+								</li>
+						
+							<li class="colorWhite">
+								<a href="https://shop.edisonenergia.it" title="" />
+									Shop
+								</a>
+								</li>
+						
+        	        </ul>
+        		</div>
+            
+            	<div class="ed_moreLink">
+            		<ul class="ed_list">
+            			<li>
+            				
+	            				<a href="/myportal/edison/casa" title="">
+	            					<!-- <div class="ed_greenLine"> </div> -->
+	            					<div class="ed_icon edicon-house"> </div> 
+	            					<div class="ed_title"> Per la tua casa </div>  
+	            				</a>
+	            			
+            			</li>
+            			<li >
+            				<div class="ed_apriChiudi" id="offerteBusinessPhone"> 
+            					<div class="ed_icon edicon-suitecase"> </div> 
+            					<div class="ed_title"> Per il tuo business </div> 
+            					<span class="ed_iconArrow ed_icon edicon-down ed_iconGrey"> </span>
+            				</div>
+            				
+            				<div class="ed_business ed_openPopUp" id="offerteBusinessContainerPhone">
+            					
+            					
+	            					<a href="/myportal/edison/business/offerte-imprese" title="" class="ed_itemLink"> 
+	            						<div class="ed_icon edicon-suitecase" > </div> 
+	            						<div class="ed_title"> Offerte Professionisti e Imprese </div> 
+	            					</a>
+            					
+	            					<a href="/myportal/edison/business/offerte-condomini" title="" class="ed_itemLink"> 
+	            						<div class="ed_icon edicon-suitecase" > </div> 
+	            						<div class="ed_title"> Offerte condomini </div> 
+	            					</a>
+            					
+            				
+            				</div>
+            			</li>
+            			<!-- <li > 
+            				<div class="ed_apriChiudi" id="searchPhone"> 
+            					<div class="ed_icon edicon-magnifier"> </div> 
+            					<div class="ed_title"> Cerca </div>
+            					<span class="ed_iconArrow ed_icon edicon-down ed_iconGrey"></span>
+            				</div>
+            				<div class="ed_search ed_openPopUp" id="searchContainerPhone">
+            				
+            					<form action="#" method="">
+            						<input class="ed_searchInput" type="search" placeholder="Cerca nel sito" />
+            						<span class="ed_icon edicon-magnifier" > </span>
+            						<input type="submit" value="accedi" class="ed_submit" style="display: none" />
+            					</form>
+            					
+            					            		 
+            				</div>
+            			</li> -->
+            			<li>
+   	        				
+    	        				<a href="/myportal/edison/contatti" title="">
+    	        					<div class="ed_icon edicon-envelope"> </div> 
+    	        					<div class="ed_title"> Contatti </div>
+    	        				</a>
+   	        				
+   	        			</li>
+            		</ul>
+            	</div>	
+            
+            </div>
+
+                <div class="ed_buttonBlock">
+                
+                		<div class="ed_buttonMyEdison ed_mySite" id="id_showMenu"> 
+                
+                			<div class="ed_icon edicon-arrow-left">
+                			</div>
+                			<div class="ed_menuMyEdison">
+                				Vai al menu del sito  
+                			</div>
+                			
+                		</div>
+                
+                		<div class="ed_buttonMyEdison ed_myEdison" id="id_showMyEdison">
+                			<div class="ed_icon edicon-arrow-left">
+                			</div>
+                
+                			<div class="ed_menuSito"> 
+                				Torna al menu My Edison 
+                			</div>
+                		</div>
+                
+                	</div>
+                
+                
+                <div class="ed_bk024" id="ed_containerMyEdison">
+                
+        
+
+		<div data-dojo-type="widgets/Edison_privateHeaderProfile" 
+                        			id="area-privata-profile-mobile" 
+                        			data-dojo-props="link_gestisci_profilo : '/myportal/myedison/gestisci-profilo',
+                        			templateName: 'Edison_publicHeaderProfileMobile',
+                        			mostraCodiceCliente: 'true'">
+									
+								</div>
+                
+			<div class="ed_containerMyEdison" id="containerMyEsidon">
+                	
+                
+                <script src="/EdisonB2CPrivateThemeDynamicWAR/themes/html/dynamicSpots/assets/js/pushLinkMenu.js"></script>
+				
+							
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/myedison" title="" target="_self">
+  							
+						
+							
+			              			<div class="ed_icon edicon-home2"></div>
+			              		
+					
+							<div class="ed_text ">My Edison</div>
+							
+						</a>
+					
+							
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/autolettura" title="" target="_self">
+  							
+						
+							
+			              			<div class="ed_icon edicon-oven" id="menuMobile-autolettura"></div>
+			              		
+					
+							<div class="ed_text ">Autolettura</div>
+							
+						</a>
+					
+							
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/bollette-e-pagamenti" title="" target="_self">
+  							
+						
+							
+			              			<div class="ed_icon edicon-receipt" id="menuMobile-bollettePagamenti"></div>
+			              		
+					
+							<div class="ed_text ed_bold">Bollette e Pagamenti</div>
+							
+								<span id="id_greenBlock" class="ed_block"> </span>
+							
+						</a>
+					
+							
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/il-mio-contratto" title="" target="_self">
+  							
+						
+							
+									<div class="ed_icon edicon-signature" id="menuMobile-iMieiContratti"></div>
+			              		
+					
+							<div class="ed_text ">Il mio contratto</div>
+							
+						</a>
+					
+							
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="https://shop.edisonenergia.it/" title="" target="_self">
+  							
+						
+							
+									<div class="ed_icon edicon-cart" id="menuMobile-iMieiAcquisti"></div>
+			              		
+					
+							<div class="ed_text ">I miei acquisti</div>
+							
+						</a>
+					
+							
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/pensato-per-te" title="" target="_self">
+  							
+						
+							
+									<div class="ed_icon edicon-target" id="menuMobile-pensatoPerTe"></div>
+			              		
+					
+							<div class="ed_text ">Pensato per te</div>
+							
+						</a>
+					
+							
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/energy-control" title="" target="_self">
+  							
+						
+							
+									<div class="ed_icon edicon-energy_control" id="menuMobile-energyControl"></div>
+			              		
+					
+							<div class="ed_text ">Energy Control</div>
+							
+						</a>
+					
+							
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="http://noi.edison.it/login/autoLoginTests/loginpage.aspx" title="" target="_blank">
+  							
+						
+							
+									<div class="ed_icon edicon-noi_edison_area_privata" id="menuMobile-noiEdison"></div>
+			              		
+					
+							<div class="ed_text ">Noi Edison</div>
+							
+						</a>
+					
+			
+			</div>
+                </div>
+          </div>
+          
+          <div class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="right">
+            <div class="ed_loginMobile" >			
+            	<!-- Login Section --><!-- LOGIN BOX -->
+            	
+            	<div class="ed_bk020">
+            	
+            		<div class="ed_bannerWrapper"> 
+            			<div class="ed_iconProfile ed_icon edicon-profile"></div>
+            			<div class="ed_title"> Accedi a <span class="ed_bold">My Edison</span></div>
+            			<div class="ed_subtitle"> La tua area privata </div>
+            		</div>
+            		<div class="ed_bkWrapper">
+            			<form class="ed_form" action="#" method="">
+            				<div class="ed_inputWrapper">
+            					<label class="ed_label">Nome Utente</label>
+            					<input class="ed_input" type="text" />
+            					<label class="ed_label ed_reason">Il nome utente non e' corretto</label>
+            				</div>
+            				<div class="ed_inputWrapper">
+            					<label class="ed_label">Password</label>
+            					<input id="changeType" class="ed_input ed_pwd" type="password" />
+            					<i id="changeTypeEye" class="ed_icon edicon-eye"></i>
+            				</div>		
+            				<div class="ed_info"> 
+            					<a href="#" title="" id="idRecuperaDati"> Recupera i tuoi dati </a> 
+            				</div>
+            				<button class="ed_button">
+            					<i class="ed_icon edicon-right"></i>
+            					Accedi
+            				</button>
+            			</form>
+            			<div class="ed_text"> 
+            				Non sei registrato? 
+            				<a class="ed_link" href="template_authentication.html" title="">Crea il tuo profilo</a> 
+            			</div>
+            		</div>
+            	</div>
+            	<!-- Retrieves Data Section -->
+            	<div class="ed_bk022">
+            	
+            		<div class="ed_firstStep">
+            		 
+            			<div class="ed_headerRecuperaDati">			
+            				<div class="ed_iconProfile ed_icon edicon-profile"></div>
+            				<div class="ed_textHeader">
+            					Recupera i <span class="ed_bold"> tuoi dati </span>
+            				</div>
+            			</div>
+            	
+            			<div class="ed_containerForm">			
+            				<div class="ed_text">
+            					A conclusione del processo di recupero ti sar&agrave; inviata una mail contenente il tuo nome utente e la password
+            				</div>
+            	
+            				<div class="ed_paddingForm">
+            					<form action="" method="">
+            						<label class="ed_labelForm"> 
+            							Codice Fiscale <span class="ed_grey"> o </span> P.IVA
+            						</label>
+            						<input type="text" class="ed_inputCFPI" >
+            						<div class="ed_error" id="idErrorCF"> Codice fiscale / Partita iva non corretto </div>
+            	
+            						<div class="ed_containerButton">
+            	
+            							<button class="ed_button ed_annulla ed_buttonNew">
+            								<i class="ed_icon edicon-right"></i>
+            								Annulla
+            							</button>
+            	
+            							<button class="ed_button ed_avanti ed_buttonNew" disabled>
+            								<i class="ed_icon edicon-right"></i>
+            								Invia
+            							</button>
+            						</div>
+            					</form>
+            				</div>
+            	
+            			</div>
+            	
+            		</div>
+            	
+            		<div class="ed_secondStep">
+            			<div class="ed_headerRecuperaDati">			
+            				<div class="ed_iconProfile ed_icon edicon-profile"></div>
+            				<div class="ed_textHeader">
+            					Recupera i <span class="ed_bold"> tuoi dati </span>
+            				</div>
+            			</div>		
+            			<div class="ed_secondStepContent">
+            				<div class="ed_titleResult">Dati recuperati correttamente</div>
+            				<div class="ed_bold ed_titleOk">Grazie!</div>
+            				<div class="ed_icon edicon-check ed_iconCheck"></div>
+            				<div class="ed_textExplain">
+            					Il tuo <span class="ed_bold"> nome utente </span> e la tua <span class="ed_bold"> Password </span> sono stati inviati alla tua email 
+            					<span class="ed_orange ed_bold"> xxxxxxx@gmail.com </span>
+            				</div>
+            				<div class="ed_containerButton">
+            					<button class="ed_chiudi">Chiudi</button>
+            				</div>
+            			</div>
+            		</div>
+            	
+            	</div>
+            </div>
+          </div>
+          <div class="off-canvas-content" data-off-canvas-content id="idOffCanvass">
+		 <div class="ed_content">
+
+ 		 <!-- ------ HEADER ------ -->
+              <!-- Topbar HP -->
+
+              <!-- Topbar Other Page -->
+
+               <!-- ------ HEADER ------ --><!-- Topbar HP --><!-- Topbar Other Page -->
+
+<header class="ed_header" role="banner" tabindex="-1">
+<div class="ed_transparentDiv" id="transparentDivMyEdison" ></div><!-- site toolbar -->
+			   
+<div class="wpToolbarActionBar wpToolbarCommon">
+    
+    <ul class="wpToolbarLeft">        
+        
+        <li class="wpToolbarActionArea toolbarToggle">
+            
+
+<div id="wpToolbarToggle" class="wpToolbarToggleLink " role="toolbar" onclick="return !wpModules.theme.ActionBar.toggleToolbar(this, event);" onkeydown="return !wpModules.theme.ActionBar.toggleToolbar(this, event);" title="Open site toolbar">
+    <a id="wpToolbarToggleLink" class="wpToolbarFocusStart" role="button" aria-labelledby="wpToolbarToggleLabel" aria-describedby="wpToolbarToggleDesc" href="#" aria-pressed="false">
+        
+        <img alt="Open site toolbar" class="wpToolbarActionBarImages wpToolbarActionBarImages-Toolbar" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">    
+        <img alt="Close site toolbar" class="wpToolbarActionBarImages wpToolbarActionBarImages-ToolbarSelected" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        
+        <span class="wpToolbarImagesOff wpToolbarAltText on">Close</span>            
+        <span class="wpToolbarImagesOff wpToolbarAltText off">Open</span>            
+    </a>
+    <!-- accessibility -->
+    <div class="wpToolbarAltText">
+        
+        <span id="wpToolbarToggleLabel">Toolbar</span>
+        <span id="wpToolbarToggleDesc">The toolbar is closed. Click to open the toolbar.</span>
+        
+    </div>
+</div>
+
+        </li>
+    </ul>
+    
+    <ul class="wpToolbarLeft">
+        
+        <li class="wpToolbarActionArea modeToggle">
+            
+
+<div class="wpToolbarProjectModeContainer">
+    
+
+<div id="wpToolbarProjectInfoBox" class="wpToolbarProjectInfoBox wpToolbarCommon">
+    
+        <a href="#" id="wpToolbarProjectMenuLink" class="wpToolbarProjectMenuLink" title="Open the project menu">
+                            
+                    <span class="wpToolbarPublishedSiteLabel">Published Site</span>
+                                    
+            <img class="wpToolbarCommonImages wpToolbarCommonImages-DropDown" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        </a>
+    
+    <div id="wpToolbarProjectMenuDisabled">
+                        
+                <span class="wpToolbarPublishedSiteLabel">Published Site</span>
+                                
+    </div>
+</div>
+    <div class="wpPageModeToggleContainer" role="toolbar" title="Edit mode">
+        <div class="wpPageModeLabel">Edit Mode:</div>
+        <div onclick="return !wpModules.theme.ActionBar.toggleEditMode(this, true, event);" onkeydown="return !wpModules.theme.ActionBar.toggleEditMode(this, true, event);" role="button" id="wpPageModeToggle" class="wpPageModeToggle valueoff" aria-pressed="false" title="Edit mode is inactive. Click to activate it.">
+            <div class="off">
+                <span><span class="filler"></span>OFF</span>        
+            </div>
+            <div class="on animated">
+                <span>ON </span>
+            </div>    
+            <div class="knob">
+                <a id="wpPageModeToggleLink" href="#">
+                  <span style="visibility:hidden;">ON </span>
+                </a>
+            </div>
+            <div class="disabled" title="Edit mode is disabled for this page">
+                <span style="visibility:hidden;">Edit mode is disabled for this page</span>
+            </div>
+            <div class="wpToolbarAltText">
+                <span id="wpViewModeLabel">Edit mode</span>
+                <span id="wpViewModeDesc">Edit mode is inactive. Click to activate it.</span>
+                <span id="wpEditModeLabel">Edit mode</span>
+                <span id="wpEditModeDesc">Edit mode is active. Click to deactivate it.</span>
+            </div>
+        </div>
+    </div>
+</div>
+        </li>
+    </ul>
+    
+    <ul class="wpToolbarRight">
+        
+        <li class="wpToolbarActionArea contextMenus">
+            <div class="wpToolbarMenu wpToolbarSites wpToolbarToggleLink">
+    <a id="wpToolbarSitesNavMenu" class="wpthemeMenuFocus" onkeydown="return !wpModules.theme.ActionBar.openSitesMenu(this, event);" onclick="return !wpModules.theme.ActionBar.openSitesMenu(this, event);" title="Open site menu" role="button" aria-pressed="false" aria-haspopup="true" aria-label="Site menu" href="#">
+        
+        <img alt="" class="wpToolbarActionBarImages wpToolbarActionBarImages-Sites" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <img alt="" class="wpToolbarActionBarImages wpToolbarActionBarImages-SitesSelected" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        
+        <span class="wpToolbarImagesOff wpToolbarAltText">Sites</span>
+    </a>
+</div>
+
+<div class="wpToolbarMenu wpToolbarApplications wpToolbarToggleLink">
+    <a id="wpToolbarApplicationsNavMenu" class="wpthemeMenuFocus" onkeydown="return !wpModules.theme.ActionBar.openApplicationsMenu(this, event);" onclick="return !wpModules.theme.ActionBar.openApplicationsMenu(this, event);" title="Open applications menu" role="button" aria-pressed="false" aria-haspopup="true" aria-label="Applications menu" href="#">
+        
+        <img alt="" class="wpToolbarActionBarImages wpToolbarActionBarImages-Applications" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <img alt="" class="wpToolbarActionBarImages wpToolbarActionBarImages-ApplicationsSelected" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        
+        <span class="wpToolbarImagesOff wpToolbarAltText">Applications</span>
+    </a>
+</div>
+
+<div class="wpToolbarMenu wpToolbarPreviewMenu wpToolbarToggleLink">
+    
+<a id="wpToolbarPreviewMenu" class="wpthemeMenuFocus" onclick="if (typeof wpModules != 'undefined' && wpModules.toolbar && wpModules.toolbar.ContextMenu) return !wpModules.toolbar.ContextMenu.open(this, 'previewActions');" onkeydown="if (typeof wpModules != 'undefined' && wpModules.toolbar && wpModules.toolbar.ContextMenu) return !wpModules.toolbar.ContextMenu.open(this, 'previewActions', event);" href="javascript:;" role="button" aria-haspopup="true" aria-pressed="false" title="Open preview menu">
+    <span class="wpToolbarImagesOff wpToolbarAltText">Preview</span>
+    
+    <img class="wpToolbarActionBarImages wpToolbarActionBarImages-Preview" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+    <img class="wpToolbarActionBarImages wpToolbarActionBarImages-PreviewSelected" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">    
+    
+</a>
+
+</div>
+<div class="wpToolbarMenu wpToolbarMoreMenu wpToolbarToggleLink">
+    
+<a id="wpToolbarMoreMenu" class="wpthemeMenuFocus" onclick="if (typeof wpModules != 'undefined' && wpModules.toolbar && wpModules.toolbar.ContextMenu) return !wpModules.toolbar.ContextMenu.open(this, 'moreActions');" onkeydown="if (typeof wpModules != 'undefined' && wpModules.toolbar && wpModules.toolbar.ContextMenu) return !wpModules.toolbar.ContextMenu.open(this, 'moreActions', event);" href="javascript:;" role="button" aria-haspopup="true" aria-pressed="false" title="Open the more menu">
+    <span class="wpToolbarImagesOff wpToolbarAltText">More</span>
+    
+    <img class="wpToolbarActionBarImages wpToolbarActionBarImages-More" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">    
+    <img class="wpToolbarActionBarImages wpToolbarActionBarImages-MoreSelected" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+    
+</a>
+</div>
+
+        </li>
+        
+        <li class="wpToolbarActionArea logo">
+            <div class="wpToolbarLogo"><img class="wpToolbarCommonImages wpToolbarCommonImages-IBMLogoSmallBlack" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></div>
+        </li>
+        
+        <li class="wpToolbarActionArea infoModeToggle">
+            
+
+<div id="wpInfoModeToggle" class="wpToolbarToggleLink" role="toolbar" onclick="return !wpModules.theme.ActionBar.toggleInfoMode(this, event);" onkeydown="return !wpModules.theme.ActionBar.toggleInfoMode(this, event);" title="Information mode is inactive. Click to activate it.">
+    <a id="wpInfoModeToggleLink" role="button" href="#" aria-pressed="false" aria-labelledby="wpInfoModeOffLabel" aria-describedby="wpInfoModeOffDesc">
+        
+        <img class="wpToolbarActionBarImages wpToolbarActionBarImages-InfoMode" alt="Information mode is active. Click to deactivate it." src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">        
+        <img class="wpToolbarActionBarImages wpToolbarActionBarImages-InfoModeHover" alt="Information mode is inactive. Click to activate it." src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <img class="wpToolbarActionBarImages wpToolbarActionBarImages-InfoModeSelected" alt="Information mode is inactive. Click to activate it." src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        
+        <span class="wpToolbarImagesOff wpToolbarAltText on">Information Mode: ON</span>        
+        <span class="wpToolbarImagesOff wpToolbarAltText off">Information Mode: OFF</span>        
+    </a>
+    <!-- accessibility -->
+    <div class="wpToolbarAltText">
+        <span id="wpInfoModeOnLabel">Information mode</span>
+        <span id="wpInfoModeOnDesc">Information mode is active. Click to deactivate it.</span>
+        <span id="wpInfoModeOffLabel">Information mode</span>
+        <span id="wpInfoModeOffDesc">Information mode is inactive. Click to activate it.</span>
+    </div>
+</div>
+
+        </li>
+        
+    </ul>
+    
+    <div style="clear:both"></div>
+</div>
+
+    
+    <a style="display: none" id="logoutlinkCustom" 
+			href="/myportal/myedison/bollette-e-pagamenti/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zi_QNdLAwdTYx8DMxdXAwcQ0JMXdwsLIwNDIz1w1EVuPubGwIVOBqFhnkGGxh4G-lHEaPfAAdwNCBOPx4FUfiND9ePQrUCiw8ImVGQGxoaYZDpCAA8GpXd/dz/d5/L3dJVkNwQSEhL0lCakFBQXlBQkVRaUlBISEvNE5sRkNvWTRWSEZnSkEhIS9aNl9PUUQ4MUE0MkwwN0REMEFUVDVERjg4MzAwMy9mamE2YVU5cFRIS1Z6X3lNaTlPSVhvMW1XRzZkZ0FfdkVMOW1uMlBtVDI3UjF1SFdRLzc5MzA2L2xv/">
+		Log Out
+	</a>
+
+<!-- menu mobile e desktop -->
+                        <div class="ed_whiteMainNav ed_mainNavMyEdison">
+                        	<div class="ed_mainNav ">
+                        		
+                        		<!-- LOGO SECTION -->
+                        		<div class="ed_logoBanner">
+                        			<h1 class="ed_logo">
+                        					
+                        				<a href="/myportal/edison" title="">Edison</a>
+                        			</h1>
+                        			<div class="ed_menu" id="id_hamburgerWhite">
+                        				<i class="ed_icon edicon-hamburger"></i>
+                        				<span class="ed_title">MENU</span>
+                        			</div>
+                        		</div>
+                        		
+                        		<div class="ed_leftArea">		
+                        			
+                        			
+                        			<div data-dojo-type="widgets/Edison_privateHeaderProfile" 
+                        			id="area-privata-profile" 
+                        			data-dojo-props="link_gestisci_profilo : '/myportal/myedison/gestisci-profilo',
+                        			templateName: 'Edison_publicHeaderProfile',
+                        			link_my_edison: '/myportal/myedison',
+                        			mostraCodiceCliente: 'true'">
+                        			</div>
+                        			
+                        			
+                        			<div data-dojo-type="widgets/Edison_comunicazione" 
+                        			data-dojo-props="actions:{DCM:'/myportal/myedison/gestisci-profilo',
+                        			BSNP:'/myportal/myedison/bollette-e-pagamenti',
+                        			WAU:'/myportal/myedison/autolettura'}"
+                        			id="idNotificheDesktop" class="ed_notificationPrivata"></div>
+                        			
+                        	</div>
+                        </div>
+                
+                        <div class="ed_whiteMainNav">
+                        	<div class="title-bar ed_mainNavMobile ed_titleBarWhiteMyEdison">              
+                        		<div class="title-bar-left ed_tbLeft">
+                        			<button class="ed_icon edicon-hamburger" type="button" data-open="offCanvasLeft"></button>
+                        		</div>
+                        
+                        		<h1 class="ed_logoMobile">
+                        			<a href="/myportal/edison" title="">Edison</a>
+                        		</h1>
+                        
+
+                        	</div>
+                        </div>
+                		<div class="ed_maskMyEdison ed_maskMyEdisonLight" id="id_maskMyEdison"> </div>
+                        <div class="ed_onlyTablet" id="ed_onlyTablet">
+                	        <div class="ed_menuMobile" id="idMenuMobile">
+                	        
+                	        	<!--  <h1 class="ed_logo">
+									
+									<a href="/myportal/myedison/bollette-e-pagamenti" title="">Edison</a>  
+								</h1> -->
+                	        	
+                	        	
+								
+                	        	<div class="ed_sideMenu">
+                	        		<div class="ed_title">Casa</div>
+                	        		<ul class="ed_listWrapper">
+                	        			
+												<li class="colorWhite">
+														<a href="/myportal/edison/casa/offerte-luce" title="" />
+														Offerte Luce
+														</a>
+													</li>
+											
+												<li class="colorWhite">
+														<a href="/myportal/edison/casa/offerte-gas" title="" />
+														Offerte Gas
+														</a>
+													</li>
+											
+												<li class="colorWhite">
+														<a href="/myportal/edison/casa/servizi" title="" />
+														Offerte Servizi
+														</a>
+													</li>
+											
+												<li class="colorWhite">
+														<a href="https://shop.edisonenergia.it" title="" />
+														Shop
+														</a>
+													</li>
+											
+                	        		</ul>
+                	        	</div>
+                	        
+                	        	<div class="ed_moreLink">
+                	        		<ul class="ed_list">
+                	        			<li>
+                	        				
+					            				<a href="/myportal/edison/casa" title="">
+					            					<!-- <div class="ed_greenLine"> </div> -->
+					            					<div class="ed_icon edicon-house"> </div> 
+					            					<div class="ed_title"> Per la tua casa </div>  
+					            				</a>
+					            			
+                	        			</li>
+                	        			<li>
+                	        				<div class="ed_apriChiudi" id="offerteBusinessPhone"> 
+                	        					<!-- <div class="ed_greenLine"> </div> -->
+                	        					<div class="ed_icon edicon-suitecase"> </div> 
+                	        					<div class="ed_title"> Per il tuo business </div> 
+                	        					<span class="ed_iconArrow ed_icon edicon-down ed_iconGrey"> </span>
+                	        				</div>
+                	        				
+                	        				<div class="ed_business ed_openPopUp" id="offerteBusinessContainerPhone">
+                	        				
+                	        					
+					            					<a href="/myportal/edison/business/offerte-imprese" title="" class="ed_itemLink"> 
+					            						<div class="ed_icon edicon-suitecase" > </div> 
+					            						<div class="ed_title"> Offerte Professionisti e Imprese </div> 
+					            					</a>
+				            					
+					            					<a href="/myportal/edison/business/offerte-condomini" title="" class="ed_itemLink"> 
+					            						<div class="ed_icon edicon-suitecase" > </div> 
+					            						<div class="ed_title"> Offerte condomini </div> 
+					            					</a>
+				            					
+                	        				
+                	        				</div>
+                	        			</li>
+                	        			<!-- <li >
+                	        				<div class="ed_apriChiudi" id="searchPhone"> 
+                	        					<div class="ed_icon edicon-magnifier"> </div> 
+                	        					<div class="ed_title"> Cerca </div>
+                	        					<span class="ed_iconArrow ed_icon edicon-down ed_iconGrey"></span>
+                	        				</div>
+                	        				<div class="ed_search ed_openPopUp" id="searchContainerPhone">
+                	        				
+                	        					<form action="#" method="">
+                	        						<input class="ed_searchInput" type="search" placeholder="Cerca nel sito" />
+                	        						<span class="ed_icon edicon-magnifier" > </span>
+                	        						<input type="submit" value="accedi" class="ed_submit" style="display: none" />
+                	        					</form>
+                	        
+                	        	                	        				</div>
+                	        			</li> -->
+                	        			<li>
+                	        				
+	                	        				<a href="/myportal/edison/contatti" title="">
+	                	        					<div class="ed_icon edicon-envelope"> </div> 
+	                	        					<div class="ed_title"> Contatti </div>
+	                	        				</a>
+                	        				
+                	        			</li>
+                	        		</ul>
+                	        	</div>	
+                	        
+                	        </div>
+                
+                	        <div class="ed_buttonBlock">
+                	        
+                	        		<div class="ed_buttonMyEdison ed_mySite" id="id_showMenu"> 
+                	        
+                	        			<div class="ed_icon edicon-arrow-left">
+                	        			</div>
+                	        			<div class="ed_menuMyEdison">
+                	        				Vai al menu del sito  
+                	        			</div>
+                	        			
+                	        		</div>
+                	        
+                	        		<div class="ed_buttonMyEdison ed_myEdison" id="id_showMyEdison">
+                	        			<div class="ed_icon edicon-arrow-left">
+                	        			</div>
+                	        
+                	        			<div class="ed_menuSito"> 
+                	        				Torna al menu My Edison 
+                	        			</div>
+                	        		</div>
+                	        
+                	        	</div>
+                	        
+                	        
+                	        <div class="ed_bk024" id="ed_containerMyEdison">
+                	        
+
+             
+                                     			<div data-dojo-type="widgets/Edison_privateHeaderProfile" 
+                        			id="area-privata-profile-tablet" 
+                        			data-dojo-props="link_gestisci_profilo : '/myportal/myedison/gestisci-profilo',
+                        			templateName: 'Edison_privateTabletProfile', mostraCodiceCliente: 'true'">
+                        
+                        			</div>
+             
+			<div class="ed_containerMyEdison" id="containerMyEsidon">
+			
+				
+				<script src="/EdisonB2CPrivateThemeDynamicWAR/themes/html/dynamicSpots/assets/js/pushLinkMenu.js"></script>
+				
+						
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/myedison" title="" target="_self"">
+  								
+				
+							
+			              			<div class="ed_icon edicon-home2"></div>
+			              		
+					
+							<div class="ed_text ">My Edison</div>
+							
+						</a>
+					
+						
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/autolettura" title="" target="_self"">
+  								
+				
+							
+			              			<div class="ed_icon edicon-oven" id="menuTablet-autolettura"></div>
+			              		
+					
+							<div class="ed_text ">Autolettura</div>
+							
+						</a>
+					
+						
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/bollette-e-pagamenti" title="" target="_self"">
+  								
+				
+							
+			              			<div class="ed_icon edicon-receipt" id="menuTablet-bollettePagamenti"></div>
+			              		
+					
+							<div class="ed_text ed_bold">Bollette e Pagamenti</div>
+							
+								<span id="id_greenBlock" class="ed_block"> </span>
+							
+						</a>
+					
+						
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/il-mio-contratto" title="" target="_self"">
+  								
+				
+							
+									<div class="ed_icon edicon-signature" id="menuTablet-iMieiContratti"></div>
+			              		
+					
+							<div class="ed_text ">Il mio contratto</div>
+							
+						</a>
+					
+						
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="https://shop.edisonenergia.it/" title="" target="_self"">
+  								
+				
+							
+									<div class="ed_icon edicon-cart" id="menuTablet-iMieiAcquisti" ></div>
+			              		
+					
+							<div class="ed_text ">I miei acquisti</div>
+							
+						</a>
+					
+						
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/pensato-per-te" title="" target="_self"">
+  								
+				
+							
+									<div class="ed_icon edicon-target" id="menuTablet-pensatoPerTe" ></div>
+			              		
+					
+							<div class="ed_text ">Pensato per te</div>
+							
+						</a>
+					
+						
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/energy-control" title="" target="_self"">
+  								
+				
+							
+									<div class="ed_icon edicon-energy_control" id="menuTablet-energyControl"></div>
+			              		
+					
+							<div class="ed_text ">Energy Control</div>
+							
+						</a>
+					
+						
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="http://noi.edison.it/login/autoLoginTests/loginpage.aspx" title="" target="_blank"">
+  								
+				
+							
+									<div class="ed_icon edicon-noi_edison_area_privata" id="menuTablet-noiEdison"></div>
+			              		
+					
+							<div class="ed_text ">Noi Edison</div>
+							
+						</a>
+					
+			</div>
+                        </div>
+                
+              <!--           <div class="ed_bk027" id="idPopupNotifiche">
+                        	
+                        	<div class="ed_title"> Comunicazioni </div>
+                        	
+                        	<div class="ed_titleMobile"> 
+                        		
+                        		<div class="ed_containerTitle"> 
+                        			<span class="ed_icon edicon-arrow-left" id="idModificaIcone"> </span>   
+                        			<span class="ed_modifica" id="idModificaNotifiche">Modifica</span>
+                        			<span class="ed_modifica ed_annulla" id="idAnnullaNotifiche">Annulla</span>
+                        		</div>
+                        
+                        		Comunicazioni <span class="ed_number"> 3 </span>
+                        
+                        	</div>
+                        	
+                        	<hr class="ed_hr ed_firstHr">
+                        	
+                        	<div class="ed_containerNotify" id="step1">
+                        		
+                        		<div class="ed_elemNotify">
+                        			<div class="ed_icon edicon-X"> </div>
+                        
+                        			<div class="ed_textNotify">
+                        				Stiamo provando a contattarla per verificare i dati di pagamento. La contatteremo domani, la chiamata potrebbe arrivare da un numero sconosciuto
+                        			</div>
+                        
+                        		</div>
+                        
+                        		<hr class="ed_hr">
+                        
+                        		<a href="" title="" class="ed_elemNotify">
+                        			<div class="ed_icon edicon-X"> </div>
+                        
+                        			<div class="ed_textNotify">
+                        				Stiamo provando a contattarla per verificare i dati di pagamento. La contatteremo domani, la chiamata potrebbe arrivare da un numero sconosciuto
+                        			</div>
+                        
+                        			<div class="ed_icon edicon-right" >
+                        			</div>
+                        
+                        		</a>
+                        
+                        		<hr class="ed_hr">
+                        
+                        		<a href="" title="" class="ed_elemNotify">
+                        			<div class="ed_icon edicon-X"> </div>
+                        
+                        			<div class="ed_textNotify">
+                        				Stiamo provando a contattarla per verificare i dati di pagamento. La contatteremo domani, la chiamata potrebbe arrivare da un numero sconosciuto
+                        			</div>
+                        
+                        			<div class="ed_icon edicon-right" >
+                        			</div>
+                        
+                        		</a>
+                        
+                        		<hr class="ed_hr">
+                        
+                        	</div>
+                        
+                        	<div class="ed_containerNotify ed_secondStep" id="step2">
+                        		
+                        		<div class="ed_elemNotify">
+                        			<div class="ed_icon edicon-check_no_bordo"> </div>
+                        
+                        			<div class="ed_textNotify">
+                        				Stiamo provando a contattarla per verificare i dati di pagamento. La contatteremo domani, la chiamata potrebbe arrivare da un numero sconosciuto
+                        			</div>
+                        
+                        		</div>
+                        
+                        		<hr class="ed_hr">
+                        
+                        		<a href="" title="" class="ed_elemNotify">
+                        			<div class="ed_icon edicon-check_no_bordo"> </div>
+                        
+                        			<div class="ed_textNotify">
+                        				Stiamo provando a contattarla per verificare i dati di pagamento. La contatteremo domani, la chiamata potrebbe arrivare da un numero sconosciuto
+                        			</div>
+                        
+                        			<div class="ed_icon edicon-right" >
+                        			</div>
+                        
+                        		</a>
+                        
+                        		<hr class="ed_hr">
+                        
+                        		<a href="" title="" class="ed_elemNotify">
+                        			<div class="ed_icon edicon-check_no_bordo"> </div>
+                        
+                        			<div class="ed_textNotify">
+                        				Stiamo provando a contattarla per verificare i dati di pagamento. La contatteremo domani, la chiamata potrebbe arrivare da un numero sconosciuto
+                        			</div>
+                        
+                        			<div class="ed_icon edicon-right" >
+                        			</div>
+                        
+                        		</a>
+                        
+                        		<hr class="ed_hr">
+                        
+                        	</div>
+                        
+                        	<div class="ed_elimina" id="id_elimina">
+                        		Elimina
+                        	</div>
+                        
+                        </div> -->
+                    
+                </header><!-- Middle Part -->
+              
+<!--               <div class="ed_myEdison" id="ed_myEdison"> -->
+              
+              <!-- ------ HEADER ------ --><!-- Topbar HP --><!-- Topbar Other Page -->
+	<div class="ed_myEdison ed_myEdison_BillingPage" id="ed_myEdison">
+<!-- Top Green Bar -->
+              	<div class="ed_myEdisonBar">
+              	
+		<div class="ed_userWrapper">
+		<div class="ed_iconWrapper">
+			<i class="ed_icon ed_icon edicon-profile"></i>
+		</div>
+		<div class="ed_codeWrapper">
+			<div class="ed_title">IL TUO CODICE CLIENTE</div>
+			<div class="ed_bold ed_code">
+				<div data-dojo-type="widgets/Edison_codiceCliente" id="codice-cliente"></div>
+			</div>
+		</div>
+	</div>
+<div class="ed_bkWrapper">
+              		
+              		  	
+<div data-dojo-type="widgets/Edison_listaContratti" data-dojo-props="placeholder:'Cerca per indirizzo, POD, PDR ...'"
+        id="lista-contratti"></div>
+
+		<div class="ed_icon ed_iconShow ed_iconBilling edicon-receipt"></div>
+		<h6 class="ed_titleWrapperPageTitle ed_littleMargin">Bollette e Pagamenti</h6>
+	</div>
+              	</div>
+              
+              	<div class="ed_fluid-wrapper ed_myEdisonContentWrapper">
+              		<div class="ed_fluid-sticky-left"> 
+              		
+              		<!-- Submenu MyEdison -->
+<div class="ed_myEdisonSubmenu">
+	
+	<div class="ed_submenuLink">
+		<div class="ed_buttonBlock">
+
+			<div class="ed_buttonMyEdison ed_mySite" id="id_showMenu">
+
+				<div class="ed_icon edicon-arrow-left"></div>
+				<div class="ed_menuMyEdison">Vai al menu del sito</div>
+
+			</div>
+
+			<div class="ed_buttonMyEdison ed_myEdison" id="id_showMyEdison">
+				<div class="ed_icon edicon-arrow-left"></div>
+
+				<div class="ed_menuSito">Torna al menu My Edison</div>
+			</div>
+
+		</div>
+
+
+		<div class="ed_bk024" id="ed_containerMyEdison">
+					
+					
+
+					<div data-dojo-type="widgets/Edison_publicHeaderProfile" 
+                        			id="area-privata-profile-submenu" 
+                        			data-dojo-props="link_gestisci_profilo : '/myportal/myedison/gestisci-profilo',
+                        			templateName: 'Edison_publicHeaderProfileMobile'">
+									
+								</div>
+
+			<div class="ed_containerMyEdison" id="containerMyEsidon">
+				
+				
+				<script src="/EdisonB2CPrivateThemeDynamicWAR/themes/html/dynamicSpots/assets/js/pushLinkMenu.js"></script>
+				
+			              	
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/myedison" title="" target="_self">
+  								
+							
+			              			<div class="ed_icon edicon-home2"></div>
+			              		
+					
+							<div class="ed_text ">My Edison</div>
+							
+						</a>
+					
+			              	
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/autolettura" title="" target="_self">
+  								
+							
+			              			<div class="ed_icon edicon-oven" id="menu-autolettura"></div>
+			              		
+					
+							<div class="ed_text ">Autolettura</div>
+							
+						</a>
+					
+			              	
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/bollette-e-pagamenti" title="" target="_self">
+  								
+							
+			              			<div class="ed_icon edicon-receipt" id="menu-bollettePagamenti"></div>
+			              		
+					
+							<div class="ed_text ed_bold">Bollette e Pagamenti</div>
+							
+								<span id="id_greenBlock" class="ed_block"> </span>
+							
+						</a>
+					
+			              	
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/il-mio-contratto" title="" target="_self">
+  								
+							
+									<div class="ed_icon edicon-signature" id="menu-iMieiContratti"></div>
+			              		
+					
+							<div class="ed_text ">Il mio contratto</div>
+							
+						</a>
+					
+			              	
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="https://shop.edisonenergia.it/" title="" target="_self">
+  								
+							
+									<div class="ed_icon edicon-cart" id="menu-iMieiAcquisti"></div>
+			              		
+					
+							<div class="ed_text ">I miei acquisti</div>
+							
+						</a>
+					
+			              	
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/pensato-per-te" title="" target="_self">
+  								
+							
+									<div class="ed_icon edicon-target" id="menu-pensatoPerTe"></div>
+			              		
+					
+							<div class="ed_text ">Pensato per te</div>
+							
+						</a>
+					
+			              	
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="/myportal/myedison/energy-control" title="" target="_self">
+  								
+							
+									<div class="ed_icon edicon-energy_control" id="menu-energyControl"></div>
+			              		
+					
+							<div class="ed_text ">Energy Control</div>
+							
+						</a>
+					
+			              	
+							
+  							<a class="ed_linkPage" onClick="pushOutBoundLink(this);" href="http://noi.edison.it/login/autoLoginTests/loginpage.aspx" title="" target="_blank">
+  								
+							
+									<div class="ed_icon edicon-noi_edison_area_privata" id="menu-noiEdison"></div>
+			              		
+					
+							<div class="ed_text ">Noi Edison</div>
+							
+						</a>
+					
+			</div>
+			
+
+		</div>
+	</div>
+</div></div>
+              		<div class="ed_fluid-overflow"> 
+              			<!-- Content MyEdison-->
+             		<!-- ------ HEADER ------ --><!-- Topbar HP --><!-- Topbar Other Page -->
+	<div class="ed_myEdisonContent">
+<!--               		<a rel="dynamic-content" href="dyn-cs:id:edisonB2CPrivateTheme_contratti"></a> -->
+              		
+              		
+		<div class="row ed_titleWrapperPage ed_titleDesktop">
+			<div class="columns large-12">
+				<h6 class="ed_title">Bollette e Pagamenti</h6>
+			</div>
+		</div>
+	<div class="wpthemeMainContent" role="main" tabindex="-1" aria-label="IBM WebSphere Portal">
+			<div class="wpthemeInner">	
+				<!-- asa markup contributions for pages -->	
+				
+
+<div class="asa.page" id="asa.page" style="display:none;">
+	<span class="asa.page.id">Z6_OQD81A42L07DD0ATT5DF883003</span>
+
+	
+
+</div>
+
+<div class="wpthemeClear"></div>
+				
+<div class="wpthemeInner">
+	<div id="wpthemeStatusBarContainer" class="wpthemeStatusBarContainer">
+
+		
+		<noscript>
+			<div class="wpthemeMessage" role="alert" wairole="alert">
+				<img class="wpthemeMsgIcon wpthemeMsgIconError" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Error" />
+				<span class="wpthemeAltText">Error:</span>
+				<div class="wpthemeMessageBody">Javascript is disabled in this browser. This page requires Javascript. Modify your browser's settings to allow Javascript to execute. See your browser's documentation for specific instructions.</div>
+			</div>
+		</noscript>
+
+	</div>
+</div>
+</div>		
+			
+			<!-- required - do not remove -->
+			<div style="display:none" id="portletState">{}</div><div id="layoutContainers" class="wpthemeLayoutContainers wpthemeLayoutContainersHidden" >	
+				<div class="wpthemeInner">					
+					<div class="hiddenWidgetsDiv">
+	<!-- widgets in this container are hidden in the UI by default -->
+	<div class='component-container ibmDndRow wpthemeRow hiddenWidgetsContainer wpthemeFull id-Z7_Q157U1AV7PE9UDNNQLTD8K2PV4' name='ibmHiddenWidgets' ></div><div style="clear: both"></div>
+</div>
+
+
+<div class="row ed_rowSpacing" id="bollette-pagamenti-row">
+	<div class="columns large-12 xxlarge-12 ed_myL12">
+		<div class='component-container ed_bk028_BillingPage ibmDndRow wpthemeRow wpthemeHeadlineContainer wpthemeFull id-Z7_KMIS92HI96VFEFVU6DBNBESA11' name='bollettePagamenti' ><div class='component-control id-Z7_OQD81A42LGP7F0ATTL3AB700G1' ><span id="Z7_OQD81A42LGP7F0ATTL3AB700G1"></span><section class="ibmPortalControl wpthemeControl wpthemeHidden a11yRegionTarget" role="region">
+
+	
+	
+
+	<div class="asa.portlet" id="asa.portlet.Z7_OQD81A42LGP7F0ATTL3AB700G1" style="display:none;">
+		<span class="asa.portlet.id">Z7_OQD81A42LGP7F0ATTL3AB700G1</span>
+
+		
+
+	</div>
+	
+<!-- start header markup -->
+	<header class="wpthemeControlHeader" role="banner" aria-label="Skin header">
+		<div class="wpthemeInner">
+			<h2>
+				<img class="dndHandle" draggable="true" ondragstart="wpModules.dnd.util.portletDragStart(event, this, this.parentNode, 30, 0);"
+				ondragend="wpModules.dnd.util.portletDragEnd(event);" 
+				src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt=""/>
+				<!-- lm-dynamic-title node marks location for dynamic title support -->
+ 				<span class="lm-dynamic-title asa.portlet.title a11yRegionLabel"><span lang="en" dir="ltr">Web Content Viewer</span></span>
+			</h2>
+			<a aria-haspopup="true" aria-label="Display content menu" role="button" href="javascript:;" class="wpthemeIcon wpthemeMenuFocus contextMenuInSkinIcon" style="display:none" tabindex="0">
+				<span title="Display content menu"><img aria-label="Display content menu" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></span>
+				<span class="wpthemeAltText">Component Action Menu</span>
+				<!-- start CAM template -->
+				<span class="wpthemeMenu" data-positioning-handler="horizontallyCenteredBelow">
+					<div class="wpthemeMenuBorder">
+						<!-- define the menu item template inside the "ul" element.  only "css-class", "description", and "title" are handled by the theme's sample javascript. -->
+						<ul class="wpthemeMenuDropDown wpthemeTemplateMenu" role="menu">
+							<li class="${css-class}" role="menuitem" tabindex="-1"><span
+								class="wpthemeMenuText">${title}</span></li>
+						</ul>
+						<div class="verticalMenuPointer pointer"></div>
+					</div> <!-- Template for loading -->
+					<div class="wpthemeMenuLoading wpthemeTemplateLoading">${loading}</div>
+					<!-- Template for submenu -->
+					<div class="wpthemeAnchorSubmenu wpthemeTemplateSubmenu">
+						<div class="wpthemeMenuBorder wpthemeMenuSubmenu">
+							<ul id="${submenu-id}" class="wpthemeMenuDropDown"
+								role="menu">
+								<li role="menuitem" tabindex="-1"></li>
+							</ul>
+						</div>
+					</div>
+				</span>
+				<!-- end CAM template -->
+			</a>
+			<a aria-haspopup="true" aria-label="Display portlet menu" role="button" href="javascript:;" class="wpthemeIcon wpthemeMenuFocus" tabindex="0"
+                onclick="if (typeof wptheme != 'undefined') wptheme.contextMenu.init({ 'node': this, menuId: 'skinAction', jsonQuery: {'navID':ibmCfg.portalConfig.currentPageOID,'windowID':wptheme.getWindowIDFromSkin(this)}, params: {'alignment':'right'}});"
+				onkeydown="javascript:if (typeof i$ != 'undefined' &amp;&amp; typeof wptheme != 'undefined') {if (event.keyCode ==13 || event.keyCode ==32 || event.keyCode==38 || event.keyCode ==40) {wptheme.contextMenu.init(this, 'skinAction', {'navID':ibmCfg.portalConfig.currentPageOID,'windowID':wptheme.getWindowIDFromSkin(this)}); return false;}}">
+				<span title="Display portlet menu"><img aria-label="Display portlet menu" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></span>
+				<span class="wpthemeAltText">Actions</span>
+			</a>
+		</div>
+	</header>
+	
+	<div class="wpthemeControlBody wpthemeOverflowAuto wpthemeClear"> <!-- lm:control dynamic spot injects markup of layout control -->
+	<!-- asa.overlay marks the node that the AsaOverlayWidget will be placed in -->
+		<div style="position:relative; z-index: 1;">
+			<div class="analytics.overlay" ></div>
+		</div>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+    
+
+
+
+
+
+    
+    
+        
+            
+            <div data-dojo-type="widgets/Edison_bolletteEPagamenti"  data-dojo-props="topicName: 'edison_orchestrator',titleLabel:'Bollette e pagamenti',link:'/myportal/myedison/bollette-e-pagamenti'" id="bollette-pagamenti"></div>
+        
+        
+    
+
+    
+        
+
+
+
+
+
+        
+
+
+
+
+
+
+
+    
+<div class="wpthemeClear"></div>
+	</div>
+</section></div></div></div>
+</div>
+<div class="row ed_rowSpacing" id="lista-bollette-row">
+	<div class='component-container columns ibmDndRow wpthemeRow wpthemeHeadlineContainer ed_myL12 wpthemeFull xxlarge-12 large-12 id-Z7_SUE4AUU9R2GN6G6QAL9L0RSU66' name='bolletteLista' ><div class='component-control id-Z7_OQD81A42LGNPE0A303IE203007' ><span id="Z7_OQD81A42LGNPE0A303IE203007"></span><section class="ibmPortalControl wpthemeControl wpthemeHidden a11yRegionTarget" role="region">
+
+	
+	
+
+	<div class="asa.portlet" id="asa.portlet.Z7_OQD81A42LGNPE0A303IE203007" style="display:none;">
+		<span class="asa.portlet.id">Z7_OQD81A42LGNPE0A303IE203007</span>
+
+		
+
+	</div>
+	
+<!-- start header markup -->
+	<header class="wpthemeControlHeader" role="banner" aria-label="Skin header">
+		<div class="wpthemeInner">
+			<h2>
+				<img class="dndHandle" draggable="true" ondragstart="wpModules.dnd.util.portletDragStart(event, this, this.parentNode, 30, 0);"
+				ondragend="wpModules.dnd.util.portletDragEnd(event);" 
+				src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt=""/>
+				<!-- lm-dynamic-title node marks location for dynamic title support -->
+ 				<span class="lm-dynamic-title asa.portlet.title a11yRegionLabel"><span lang="en" dir="ltr">Web Content Viewer</span></span>
+			</h2>
+			<a aria-haspopup="true" aria-label="Display content menu" role="button" href="javascript:;" class="wpthemeIcon wpthemeMenuFocus contextMenuInSkinIcon" style="display:none" tabindex="0">
+				<span title="Display content menu"><img aria-label="Display content menu" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></span>
+				<span class="wpthemeAltText">Component Action Menu</span>
+				<!-- start CAM template -->
+				<span class="wpthemeMenu" data-positioning-handler="horizontallyCenteredBelow">
+					<div class="wpthemeMenuBorder">
+						<!-- define the menu item template inside the "ul" element.  only "css-class", "description", and "title" are handled by the theme's sample javascript. -->
+						<ul class="wpthemeMenuDropDown wpthemeTemplateMenu" role="menu">
+							<li class="${css-class}" role="menuitem" tabindex="-1"><span
+								class="wpthemeMenuText">${title}</span></li>
+						</ul>
+						<div class="verticalMenuPointer pointer"></div>
+					</div> <!-- Template for loading -->
+					<div class="wpthemeMenuLoading wpthemeTemplateLoading">${loading}</div>
+					<!-- Template for submenu -->
+					<div class="wpthemeAnchorSubmenu wpthemeTemplateSubmenu">
+						<div class="wpthemeMenuBorder wpthemeMenuSubmenu">
+							<ul id="${submenu-id}" class="wpthemeMenuDropDown"
+								role="menu">
+								<li role="menuitem" tabindex="-1"></li>
+							</ul>
+						</div>
+					</div>
+				</span>
+				<!-- end CAM template -->
+			</a>
+			<a aria-haspopup="true" aria-label="Display portlet menu" role="button" href="javascript:;" class="wpthemeIcon wpthemeMenuFocus" tabindex="0"
+                onclick="if (typeof wptheme != 'undefined') wptheme.contextMenu.init({ 'node': this, menuId: 'skinAction', jsonQuery: {'navID':ibmCfg.portalConfig.currentPageOID,'windowID':wptheme.getWindowIDFromSkin(this)}, params: {'alignment':'right'}});"
+				onkeydown="javascript:if (typeof i$ != 'undefined' &amp;&amp; typeof wptheme != 'undefined') {if (event.keyCode ==13 || event.keyCode ==32 || event.keyCode==38 || event.keyCode ==40) {wptheme.contextMenu.init(this, 'skinAction', {'navID':ibmCfg.portalConfig.currentPageOID,'windowID':wptheme.getWindowIDFromSkin(this)}); return false;}}">
+				<span title="Display portlet menu"><img aria-label="Display portlet menu" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></span>
+				<span class="wpthemeAltText">Actions</span>
+			</a>
+		</div>
+	</header>
+	
+	<div class="wpthemeControlBody wpthemeOverflowAuto wpthemeClear"> <!-- lm:control dynamic spot injects markup of layout control -->
+	<!-- asa.overlay marks the node that the AsaOverlayWidget will be placed in -->
+		<div style="position:relative; z-index: 1;">
+			<div class="analytics.overlay" ></div>
+		</div>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+    
+
+
+
+
+
+    
+    
+        
+            
+            <div data-dojo-type="widgets/Edison_bollette" data-dojo-props="bollette_label: 'Bollette',link_ricerca_avanzata:'/myportal/myedison/bollette-e-pagamenti/ricerca-avanzata',link_ricerca_meno_recenti:'/myportal/myedison/bollette-e-pagamenti/ricerca-avanzata?bolletteMenoRecenti', topicName:'edison_orchestrator', link_paga_ora_base_url: 'https://ecomm.sella.it/pagam/pagam.aspx'" id="listaBolletta"></div>
+        
+        
+    
+
+    
+        
+
+
+
+
+
+        
+
+
+
+
+
+
+
+    
+<div class="wpthemeClear"></div>
+	</div>
+</section></div></div></div>
+<div class="row ed_rowSpacing">
+	<div class='component-container columns ibmDndRow wpthemeRow wpthemeHeadlineContainer ed_myL12 wpthemeFull xxlarge-12 large-12 id-Z7_85SPVID52NMEVRFVF35R41F114' name='bollette' ><div class='component-control id-Z7_OQD81A42L0OAF0AT7JOUK13007' ><span id="Z7_OQD81A42L0OAF0AT7JOUK13007"></span><section class="ibmPortalControl wpthemeControl wpthemeHidden a11yRegionTarget" role="region">
+
+	
+	
+
+	<div class="asa.portlet" id="asa.portlet.Z7_OQD81A42L0OAF0AT7JOUK13007" style="display:none;">
+		<span class="asa.portlet.id">Z7_OQD81A42L0OAF0AT7JOUK13007</span>
+
+		
+
+	</div>
+	
+<!-- start header markup -->
+	<header class="wpthemeControlHeader" role="banner" aria-label="Skin header">
+		<div class="wpthemeInner">
+			<h2>
+				<img class="dndHandle" draggable="true" ondragstart="wpModules.dnd.util.portletDragStart(event, this, this.parentNode, 30, 0);"
+				ondragend="wpModules.dnd.util.portletDragEnd(event);" 
+				src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt=""/>
+				<!-- lm-dynamic-title node marks location for dynamic title support -->
+ 				<span class="lm-dynamic-title asa.portlet.title a11yRegionLabel"><span lang="en" dir="ltr">Web Content Viewer</span></span>
+			</h2>
+			<a aria-haspopup="true" aria-label="Display content menu" role="button" href="javascript:;" class="wpthemeIcon wpthemeMenuFocus contextMenuInSkinIcon" style="display:none" tabindex="0">
+				<span title="Display content menu"><img aria-label="Display content menu" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></span>
+				<span class="wpthemeAltText">Component Action Menu</span>
+				<!-- start CAM template -->
+				<span class="wpthemeMenu" data-positioning-handler="horizontallyCenteredBelow">
+					<div class="wpthemeMenuBorder">
+						<!-- define the menu item template inside the "ul" element.  only "css-class", "description", and "title" are handled by the theme's sample javascript. -->
+						<ul class="wpthemeMenuDropDown wpthemeTemplateMenu" role="menu">
+							<li class="${css-class}" role="menuitem" tabindex="-1"><span
+								class="wpthemeMenuText">${title}</span></li>
+						</ul>
+						<div class="verticalMenuPointer pointer"></div>
+					</div> <!-- Template for loading -->
+					<div class="wpthemeMenuLoading wpthemeTemplateLoading">${loading}</div>
+					<!-- Template for submenu -->
+					<div class="wpthemeAnchorSubmenu wpthemeTemplateSubmenu">
+						<div class="wpthemeMenuBorder wpthemeMenuSubmenu">
+							<ul id="${submenu-id}" class="wpthemeMenuDropDown"
+								role="menu">
+								<li role="menuitem" tabindex="-1"></li>
+							</ul>
+						</div>
+					</div>
+				</span>
+				<!-- end CAM template -->
+			</a>
+			<a aria-haspopup="true" aria-label="Display portlet menu" role="button" href="javascript:;" class="wpthemeIcon wpthemeMenuFocus" tabindex="0"
+                onclick="if (typeof wptheme != 'undefined') wptheme.contextMenu.init({ 'node': this, menuId: 'skinAction', jsonQuery: {'navID':ibmCfg.portalConfig.currentPageOID,'windowID':wptheme.getWindowIDFromSkin(this)}, params: {'alignment':'right'}});"
+				onkeydown="javascript:if (typeof i$ != 'undefined' &amp;&amp; typeof wptheme != 'undefined') {if (event.keyCode ==13 || event.keyCode ==32 || event.keyCode==38 || event.keyCode ==40) {wptheme.contextMenu.init(this, 'skinAction', {'navID':ibmCfg.portalConfig.currentPageOID,'windowID':wptheme.getWindowIDFromSkin(this)}); return false;}}">
+				<span title="Display portlet menu"><img aria-label="Display portlet menu" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"></span>
+				<span class="wpthemeAltText">Actions</span>
+			</a>
+		</div>
+	</header>
+	
+	<div class="wpthemeControlBody wpthemeOverflowAuto wpthemeClear"> <!-- lm:control dynamic spot injects markup of layout control -->
+	<!-- asa.overlay marks the node that the AsaOverlayWidget will be placed in -->
+		<div style="position:relative; z-index: 1;">
+			<div class="analytics.overlay" ></div>
+		</div>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+    
+
+
+
+
+
+    
+    
+        
+            
+            <div data-dojo-type="widgets/Edison_impostazioniBolletteEPagamenti" data-dojo-props="impostazioni_label:'Impostazioni',link_modifica_ricezioneNotifiche:'/myportal/myedison/bollette-e-pagamenti/modifica-ricezione-notifiche',link_modifica_tipo_pagamento:'/myportal/myedison/bollette-e-pagamenti/modalita-di-pagamento',link_modifica_tipo_bolletta: '/myportal/myedison/bollette-e-pagamenti/modifica-tipo-bolletta'" id="contratto-dati"></div>
+
+<div data-dojo-type="widgets/Edison_orchestrator"
+	data-dojo-props="bollettePagamentiID: 'bollette-pagamenti', bolletteID: 'listaBolletta',
+	trackingID:'tracking', pageName: 'bolletteEpagamenti'"></div>
+        
+        
+    
+
+    
+        
+
+
+
+
+
+        
+
+
+
+
+
+
+
+    
+<div class="wpthemeClear"></div>
+	</div>
+</section></div></div></div><div class="wpthemeClear"></div>
+				</div>
+			</div>
+		</div>
+		<!--end main content-->
+              
+
+              
+              			</div>
+              		</div>
+              	</div>
+              
+              </div>
+          </div>    
+ 
+			
+		<!-- SPAN FOR VIVOCHA -->
+				<span class="ed_chat" id="vvc_placeholder_58aee299b34c3ecf058b4587"></span>
+			<footer tabindex="-1" class="ed_mainFooter" role="contentinfo">
+			<div class="wpthemeInner">	
+				
+
+<div class="ed_topFooter">
+	<div class="row">
+
+		<div class="columns">
+			<div class="ed_logo"> <img class="ed_img" src="/EdisonB2CPrivateThemeDynamicWAR/themes/html/dynamicSpots/assets/img/logo_footer.png" alt="Edison" />
+			<a href="/myportal/edison/certificazione-iso-9001" title="" class="ed_iso">Certificazione di qualità ISO 9001:2015</a>
+			</div>
+		</div>
+
+		<div class="columns">
+			
+				<ul class="ed_footerLinks">
+					<li class="ed_item"><a href="/myportal/edison/casa">Casa</a></li>
+					<li class="ed_item"><a href="/myportal/edison/business/offerte-imprese">Business</a></li>
+					<li class="ed_item"><a href="/myportal/edison/contatti">Contatti</a></li>
+					<li class="ed_item"><a href="/myportal/edison/teaser-area-privata">Area Privata</a></li>
+					
+				</ul>
+			
+				<ul class="ed_footerLinks">
+					<li class="ed_item ed_smallItem"><a href="/myportal/edison/info-utili">Info utili</a></li>
+					<li class="ed_item ed_smallItem"><a href="/myportal/edison/servizi-sms">Servizi SMS</a></li>
+					<li class="ed_item ed_smallItem"><a href="/myportal/edison/informativa-privacy">Privacy</a></li>
+					<li class="ed_item ed_smallItem"><a href="/myportal/edison/note-legali">Note Legali</a></li>
+					<li class="ed_item ed_smallItem"><a href="/myportal/edison/cookie-policy">Cookies</a></li>
+					<li class="ed_item ed_smallItem"><a href="/myportal/edison/reclami-segnalazioni">Reclami</a></li>
+					<li class="ed_item ed_smallItem"><a href="mailto:diventapartner@edison.it?subject=Candidatura Partner&body=Compila i dati per poter proporre la candidatura:%0D%0A Nome:%0D%0A Cognome:%0D%0A Indirizzo:%0D%0A Telefono fisso e cellulare:%0D%0A Mail:%0D%0A Ragione sociale:%0D%0A P.IVA:%0D%0A Area territoriale:%0D%0A Numero di agenti:%0D%0A Altri mandati:">Diventa Partner</a></li>
+					
+				</ul>
+			
+		</div>
+	</div>
+</div>
+
+<div class="ed_bottomFooter">
+	<div class="row">
+		<div class="columns">
+			<div class="">
+				Edison Energia Spa - Foro Buonaparte 31, 20121 Milano - Partita IVA 08526440154 - Iscrizione al Registro delle Imprese di Milano 1229342 Società a socio unico soggetta all'attività di direzione e coordinamento di Edison Spa.
+			</div>
+		</div>
+	</div>
+</div>
+<div class="wpthemeClear"></div>
+			</div>
+		</footer><!-- page footer -->
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+	<!-- end frame -->
+		
+    <!-- This is responsible for bootstrapping the configuration for the javascript framework. 
+        This is located here instead of the head section to improve client performance. -->
+	<div class="wpthemeComplementaryContent" id="wpthemeComplementaryContent" role="region" tabindex="-1" aria-labelledby="wpthemeComplementaryContentText">
+		<span class="wpthemeAltText" id="wpthemeComplementaryContentText" >Complementary Content</span>
+		<script type="text/javascript" src="/contenthandler/!ut/p/digest!3ioXuRVaB9xl5hTwDf1jbA/mashup/ra:collection?themeID=ZJ_OQD81A42LOUSB0AT36LT9N3000&amp;locale=en&amp;mime-type=text%2Fjavascript&amp;lm=1493988953204&amp;entry=wp_portal__0.0%3Aconfig_config_static&amp;entry=wcm_config__0.0%3Aconfig_config_static&amp;entry=wcm_inplaceEdit__0.0%3Aconfig_config_static"></script><script type="text/javascript">i$.merge({"ibmCfg":{"themeConfig":{"themeUniqueName":"com.ibm.theme.edisonB2CPrivate","themeRootURI":"/mycontenthandler/!ut/p/digest!dbZHTbivT8o7t3exJ39EyA/war/EdisonB2CPrivateThemeStaticWAR/themes/EdisonB2CPrivate","themeWebAppBaseURI":"/EdisonB2CPrivateThemeDynamicWAR/themes/html/dynamicSpots","themeWebDAVBaseURI":"war:EdisonB2CPrivateThemeStaticWAR/themes/EdisonB2CPrivate/","modulesWebAppBaseURI":"/themeModules","commonResourcesRootURI":"/mycontenthandler/!ut/p/digest!3ioXuRVaB9xl5hTwDf1jbA/dav/fs-type1/common-resources","isRTL":false,"isPageRenderModeCSA":false,"portletOverridePageTitle":"Bollette e Pagamenti","currentContentNodeOID":"Z6_OQD81A42L07DD0ATT5DF883003","loadingImage":"css/images/loading.gif","dndSourceDefinitions":[{"id":"ibmDndColumn","object":"com.ibm.pb.dnd.layout.LayoutColumnSource","orientation":"vertical"},{"id":"ibmDndRow","object":"com.ibm.pb.dnd.layout.LayoutRowSource","orientation":"horizontal"}],"categorySources":[],"styleSources":[],"layoutSources":[]},"portalConfig":{"locale":"en","portalURI":"/myportal","contentHandlerURI":"/mycontenthandler/!ut/p/digest!IonzeGjudON8A4WxEUZcLw/","pocURI":"/myportal/!ut/p/z0/0wcA1NLTeQ!!/","isVirtualPortal":false,"canImpersonate":true,"themeRootURI":"/EdisonB2CPrivateThemeDynamicWAR/themes/html/dynamicSpots","parentPageID":"Z6_OQD81A42LGO710ATA2UVIS00K2","currentPageOID":"Z6_OQD81A42L07DD0ATT5DF883003","canAnonymousUserViewCurrentPage":false,"bootstrapState":"&lt;?xml version=&#034;1.0&#034; encoding=&#034;UTF-8&#034;?&gt;&lt;root xmlns=&#034;http://www.ibm.com/xmlns/prod/websphere/portal/v6.1/portal-state&#034;&gt;&lt;state type=&#034;navigational&#034;&gt;&lt;selection selection-node=&#034;Z6_OQD81A42L07DD0ATT5DF883003&#034;&gt;&lt;mapping src=&#034;Z6_OQD81A42LGO710ATA2UVIS00K2&#034; dst=&#034;Z6_OQD81A42L07DD0ATT5DF883003&#034;/&gt;&lt;mapping src=&#034;Z6_000000000000000000000000A0&#034; dst=&#034;Z6_OQD81A42L07DD0ATT5DF883003&#034;/&gt;&lt;mapping src=&#034;Z6_OQD81A42L07DD0ATT5DF883003&#034; dst=&#034;Z6_000000000000000000000000A0&#034;/&gt;&lt;/selection&gt;&lt;expansions&gt;&lt;node id=&#034;Z6_OQD81A42LGO710ATA2UVIS00K2&#034;/&gt;&lt;node id=&#034;Z6_000000000000000000000000A0&#034;/&gt;&lt;/expansions&gt;&lt;/state&gt;&lt;/root&gt;","isUserLoggedIn":true,"currentUser":"EXPOVIN","currentUserOID":"Z9eAe3BO2JOC6HPO0JM4CLHO2MM46GPCCJM47JHC4MMGC5JP2MGDCG1EIJIL6H1","aggregatedStyle":null,"isCurrentPageEditable":true,"wcmPageMetadata":{"contentRoot":null,"sharingScope":null},"projectUUID":null},"userName":"VINCENZO"},"com_ibm_theme_capabilities":{"wp_dynamicContentSpots_85":"0.0","wp_dialog_draggable":"0.0","getting_started_module":"0.0","wp_hiddenpages":"0.0","wp_simple_contextmenu_ext":"0.0","wp_simple_contextmenu_js":"0.0","wp_toolbar_sitepreview_menuactions":"0.0","wp_portlet_css":"0.0","wp_theme_utils":"0.0","wp_toolbar_menuactions":"0.0","wp_toolbar_host_view":"0.0","wp_hiddencontent":"0.0","wp_theme_skin_region":"0.0","wp_portal":"0.0","photon.dom":"1.0","wp_photon_dom":"0.0","wp_toolbar_sitepreview":"0.0","highContrast":"1.0","edison_widgets_private":"0.0","wp_status_bar":"0.0","wp_client_tracing":"0.0","edison_private_js":"1.0","modules":"0.1","hasBaseURL":"true","wp_state_page_modes":"0.0","wp_toolbar_common_actionbar":"0.0","wp_client_main":"0.0","wp_toolbar_viewframe_validator":"0.0","wp_high_contrast":"0.0","dojo":"1.9","wp_toolbar_actionbar":"0.0","simple-contextmenu":"1.1","wp_dialog_css":"0.0","wp_theme_menus":"0.0","wp_client_logging":"0.0","wp_state_page":"0.0","wp_toolbar_common":"0.0","wp_dynamicContentSpots_EdisonB2CPrivate":"0.0","wp_theme_portal_edit_85":"0.0","wp_toolbar_projectmenu":"0.0","wp_dialog_main":"0.0","dojo_19":"0.0","wp_ic4_wai_resources":"0.0","wp_simple_contextmenu_main":"0.0","wp_layout_windowstates":"0.0","wp_toolbar_moremenu":"0.0","wp_custom_page_style":"0.0","wp_toolbar_contextmenu":"0.0","wp_searchbar":"0.0","wp_client_ext":"0.0","wp_simple_contextmenu_css":"0.0","wp_toolbar85":"0.0","wp_modules":"0.0","wp_analytics_aggregator":"0.0","toolbar":"8.5","wp_dialog_util":"0.0","wp_oob_sample_styles":"0.0","wp_toolbar_utils":"0.0","a11y":"1.0","wp_a11y":"0.0","analytics_aggregator":"8.0","wp_theme_portal_85":"0.0","wp_simple_contextmenu_templates":"0.0","wp_toolbar_logo":"0.0"},"com_ibm_device_class":[]});ibmCfg.portalConfig.bootstrapState=(ibmCfg.portalConfig.bootstrapState||"").replace(/&lt;/gm, '<').replace(/&gt;/gm, '>').replace(/&amp;/gm, '&').replace(/&#039;/gm, "'").replace(/&#034;/gm, '"');i$.merge({"ibmCfg":{"portalConfig":{"asaConfig":{"canViewAsaReports":"false","canViewAsaSitePromotions":"false","canCreateAsaSitePromotions":"false","canDeleteAsaSitePromotions":"false","reportConfig":{"scopes":[]}}}}});i$.merge({"ibmCfg":{"portalConfig":{"isShowHiddenPages":false}}});</script><script type="text/javascript" src="/contenthandler/!ut/p/digest!3Aq1p3toUnee8aZwRbCU4A/mashup/ra:collection?themeID=ZJ_OQD81A42LOUSB0AT36LT9N3000&amp;locale=en&amp;mime-type=text%2Fjavascript&amp;lm=1492699478000&amp;entry=edison_private_js__1.0%3Aconfig_js&amp;entry=wp_dialog_main__0.0%3Aconfig_js&amp;entry=wp_high_contrast__0.0%3Aconfig_js&amp;entry=wp_state_page_modes__0.0%3Aconfig_js&amp;entry=wp_toolbar_utils__0.0%3Aconfig_js&amp;entry=wp_simple_contextmenu_ext__0.0%3Aconfig_js&amp;entry=wp_simple_contextmenu_js__0.0%3Aconfig_js&amp;entry=wp_toolbar_actionbar__0.0%3Aconfig_js&amp;entry=wp_toolbar_menuactions__0.0%3Aconfig_js&amp;entry=wp_toolbar_sitepreview_menuactions__0.0%3Aconfig_js&amp;entry=wp_ic4_wai_resources__0.0%3Aconfig_js&amp;entry=wp_theme_skin_region__0.0%3Aconfig_js&amp;entry=wp_status_bar__0.0%3Aconfig_js&amp;entry=wp_toolbar_projectmenu__0.0%3Aconfig_js&amp;entry=wp_toolbar_contextmenu__0.0%3Aconfig_js&amp;entry=wp_toolbar_sitepreview__0.0%3Aconfig_js"></script><a rel="alternate" id="config_js_deferred" href="/contenthandler/!ut/p/digest!dbZHTbivT8o7t3exJ39EyA/mashup/ra:collection?themeID=ZJ_OQD81A42LOUSB0AT36LT9N3000&amp;locale=en&amp;mime-type=text%2Fjavascript&amp;lm=1493988953000&amp;entry=wp_liveobject_framework_core__0.0%3Aconfig_js&amp;entry=wp_portal_ui_utils__0.0%3Aconfig_js&amp;entry=wp_contextmenu_js__0.0%3Aconfig_js&amp;entry=wp_skin_cam__0.0%3Aconfig_js&amp;entry=wp_contextmenu_config_lof__0.0%3Aconfig_js&amp;entry=wp_federated_documents_picker__0.0%3Aconfig_js&amp;entry=wp_dnd_main__0.0%3Aconfig_js&amp;entry=wp_movecontrols__0.0%3Aconfig_js&amp;entry=wp_toolbar_controlactions__0.0%3Aconfig_js&amp;entry=wp_content_targeting_cam__0.0%3Aconfig_js&amp;entry=wp_analytics_tags__0.0%3Aconfig_js&amp;deferred=true" style="display:none"></a><script language="javascript">
+	require(["dojo/parser","dojo/topic", "dojo/ready"], function(parser,topic, ready){
+             
+                 parser.parse().then(function(instances){
+                   topic.publish("parserCompleted",{});
+                 }); 
+               
+             });
+
+</script><span id="simpleMenuTemplate" class="wpthemeMenuLeft">
+    <div class="wpthemeMenuBorder">
+        <div class="wpthemeMenuNotchBorder"></div>
+        <!-- define the menu item template inside the "ul" element.  only "css-class", "description", and "title" are handled by the theme's sample javascript. -->
+        <ul class="wpthemeMenuDropDown wpthemeTemplateMenu" role="menu">
+            <li class="${css-class}" role="menuitem" tabindex="-1"><span class="wpthemeMenuText">${title}</span>${badge}</li>
+        </ul>
+    </div>
+    <!-- Template for loading -->
+    <div class="wpthemeMenuLoading wpthemeMenuLoadingText wpthemeTemplateLoading">${loading}</div>
+    <!-- Template for submenu -->
+    <div class="wpthemeAnchorSubmenu wpthemeTemplateSubmenu">
+        <div class="wpthemeMenuBorder wpthemeMenuSubmenu">
+            <ul id="${submenu-id}" class="wpthemeMenuDropDown" role="menu"><li role="menuitem" tabindex="-1"></li></ul>
+        </div>
+    </div>
+</span><a rel="alternate" id="config_markup_deferred" href="/mycontenthandler/!ut/p/digest!q5XwU3d3XU4ivVVcT8KDjg/mashup/ra:collection?themeID=ZJ_OQD81A42LOUSB0AT36LT9N3000&amp;locale=en&amp;mime-type=text%2Fplain&amp;entry=wp_contextmenu_templates__0.0%3Aconfig_markup&amp;entry=wp_skin_cam__0.0%3Aconfig_markup&amp;entry=wp_dnd_main__0.0%3Aconfig_markup&amp;deferred=true" style="display:none"></a></div>
+	<!-- Snippet javascript per inserimento Vivocha -->
+	<!-- SETTING DATA FOR VIVOCHA OPERATOR -->
+
+<input type="hidden" id="vivocha_customerCode" value="1050610233" />
+
+
+		<input type="hidden" id="vivocha_customerName" value="VINCENZO ESPOSITO" />
+	
+
+<input type="hidden" id="vivocha_firstName" value="VINCENZO" />
+<input type="hidden" id="vivocha_lastName" value="ESPOSITO" />
+
+<!-- SCRIPT FOR VIVOCHA INTEGRATION -->
+<script type="text/javascript">
+	(function() {
+		window.vvc_ready_handlers = [];
+		window.vivocha = {
+			ready : function(cb) {
+				window.vvc_ready_handlers.push(cb);
+			}
+		}
+		var t = document.createElement("script");
+		t.type = "text/javascript";
+		t.async = true;
+		t.src = "//www.vivocha.com/a/edisonenergia/api/vivocha.js";
+		var n = document.getElementsByTagName("script")[0];
+		n.parentNode.insertBefore(t, n);
+	})();
+
+    vivocha.ready(function() {
+        vivocha.api.setData({
+            name : "customer_data",
+            desc : "Customer Data",
+            data : [ {
+                "name" : "customer_code",
+                "desc" : "Codice Cliente",
+                "type" : "text",
+                "visible" : true,
+                "value" : vivocha.$("#vivocha_customerCode").val()
+            }, {
+                "name" : "customer_name",
+                "desc" : "Nome Cliente",
+                "type" : "nickname",
+                "visible" : true,
+                "value" : vivocha.$("#vivocha_customerName").val()
+            }, {
+                "name" : "first_name",
+                "desc" : "First Name",
+                "type" : "firstname",
+                "visible" : false,
+                "value" : vivocha.$("#vivocha_firstName").val()
+            }, {
+                "name" : "last_name",
+                "desc" : "Last Name",
+                "type" : "lastname",
+                "visible" : false,
+                "value" : vivocha.$("#vivocha_lastName").val()
+            }, ]
+        });
+        });
+</script></body>
+</html>

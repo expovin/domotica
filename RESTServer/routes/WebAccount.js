@@ -24,10 +24,15 @@ var form2 = {
     buonipagina:''
 };
 
-
+var form3= {
+	username: 'EXPOVIN',
+	password : 'risparmia2016',
+	'login-form-type' : 'pwd'
+}
 
 var formData1 = querystring.stringify(form1);
 var formData2 = querystring.stringify(form2);
+var formData3 = querystring.stringify(form3);
 
 router.route('/mensa')
 
@@ -112,8 +117,109 @@ var Options2 = {
 	}
 });
 
-router.route('/test')
 
+router.route('/edison')
+.get(function(req, res, next){
+
+	var uri=['https://www.edisonenergia.it/edison/widgets/widgets/templates/Edison_buttonBlock.html',
+	'https://www.edisonenergia.it/edison/widgets/widgets/templates/Edison_loginTemplate.html',
+	'https://www.edisonenergia.it/edison/widgets/widgets/templates/Edison_loginHeaderTemplate.html',
+	'https://www.edisonenergia.it/edison/widgets/widgets/templates/Edison_login_mobile.html',
+	'https://www.edisonenergia.it/edison/widgets/widgets/templates/Edison_publicHeader.html',
+	'https://www.edisonenergia.it/edison/widgets/widgets/templates/Edison_comunicazione.html',
+	'https://www.edisonenergia.it/edison/widgets/widgets/templates/Edison_CalendarTemplate.html',
+	'https://www.edisonenergia.it/edison/widgets/widgets/templates/Edison_comunicazionePublicToggle.html',
+	'https://www.edisonenergia.it/edison/widgets/widgets/templates/Edison_publicHeaderProfileMobile.html',
+	'https://www.edisonenergia.it/apimanager-pa-s-mc/clienti/v1/recuperaDatiProfilo?request.preventCache=1494005957408',
+	'https://crossdomain-ws.conversiondrive.it/crossd_iframe.html',
+	'https://m1.vivocha.com/a/edisonenergia/api/dataframe/default/',
+	'https://d8rathq6zmxbv.cloudfront.net/edison_energia/fe/assets/html/anti_exit_template.html',
+	'https://d8rathq6zmxbv.cloudfront.net/edison_energia/fe/assets/html/right_slide_in_template.html'
+	];
+
+	var cookies=[];
+	var setCookie='';
+	var cont=0;
+
+	getAllCookies(0);
+
+	function getAllCookies(idx) {	
+
+		request.get({
+			url: uri[idx],
+			method : 'GET',
+			headers : {
+				'Content-Type':'application/x-www-form-urlencoded',
+				Cookie : setCookie
+			}
+		}, function(err, httpResponse, body){  
+
+				cont+=1;
+
+				if(err)
+					console.log("Errore: "+err);
+
+				//fs.writeFileSync('edison.txt',httpResponse.headers);
+				
+				//var setCookie = WebAccountUtil.coockyfy(cookies);
+				if(httpResponse.headers['set-cookie'])
+					cookies.push(WebAccountUtil.getMensaCookie(httpResponse.headers['set-cookie'][0])); 	
+
+				setCookie = WebAccountUtil.coockyfy(cookies.filter( WebAccountUtil.onlyUnique ));
+				if(uri.length > idx+1){
+					getAllCookies(idx+1);
+				}
+				else{
+					console.log("Usito dal ciclo");
+
+					var PostOptions = {
+							  url: 'https://www.edisonenergia.it/pkmslogin.form',
+							  method: 'POST',
+							  headers: {
+							   'Content-Type':'application/x-www-form-urlencoded; charset=utf-8',
+							   'Content-Length': Buffer.byteLength(formData3),
+							   'Upgrade-Insecure-Requests' : 1,
+							   Cookie: setCookie
+							  },
+							  form: form3,
+							};
+
+
+					request.post(PostOptions, function (postErr, postHttpResponse, postBody) { 
+
+						console.log(postHttpResponse.headers['set-cookie']);
+						if(postHttpResponse.headers['set-cookie'])
+							cookies.push(WebAccountUtil.getMensaCookie(postHttpResponse.headers['set-cookie'][0])); 	
+
+						console.log(JSON.stringify(postHttpResponse.headers['set-cookie']));
+						setCookie = WebAccountUtil.coockyfy(postHttpResponse.headers['set-cookie'].filter( WebAccountUtil.onlyUnique ));
+
+							request.get({
+								url: 'https://www.edisonenergia.it/myportal/myedison/bollette-e-pagamenti',
+								method : 'GET',
+								headers : {
+									'Content-Type':'application/x-www-form-urlencoded',
+									Cookie : setCookie
+								}
+							}, function(BollErr, BollHttpResponse, BollBody){  
+
+									fs.writeFileSync('edison.txt',BollBody);
+									res.json(BollHttpResponse);
+
+							})
+
+						
+					})
+					
+				}
+		})
+
+	}
+
+});
+
+
+router.route('/test')
 .get(function(req, res, next){
     var data = fs.readFileSync('Mensa.txt');
     jData = JSON.parse(data);
