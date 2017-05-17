@@ -36,6 +36,10 @@ angular.module('DomoHome.Dash.home', [
                         templateUrl : 'components/Dash/Home/temperaturaAcquario.html',
                         controller : 'temperaturaAcquarioControllers'
                     },
+                    'buoniMensaBimbiPage@app.Dash.Home': {
+                        templateUrl : 'components/Dash/Home/buoniMensaBimbi.html',
+                        controller : 'MensaBimbiControllers'
+                    },
                 }
             })
 

@@ -4,7 +4,60 @@
 <ds-widget-clock theme="theme" digital-format="'HH:mm:ss'" ></ds-widget-clock>
 -->
 
+<!--
 <small><ds-widget-clock show-digital digital-format="'EEEE d MMMM yyyy'"></ds-widget-clock></small>
 <H3>
 	<ds-widget-clock show-digital digital-format="'HH:mm:ss'"></ds-widget-clock>
 </H3>
+ng-class="{ active: isActive('/Config/settings')}"
+-->
+
+	<div class="MyClock">
+					<div class="row">
+						<div class="week-bar">
+							<div ng-class="{ active: isToday(1)}" class="wday col-sm-1">
+								LUN
+							</div>
+							<div ng-class="{ active: isToday(2)}" class="wday col-sm-1">
+								MAR
+							</div>
+							<div ng-class="{ active: isToday(3)}" class="wday col-sm-1">
+								MER
+							</div>
+							<div ng-class="{ active: isToday(4)}" class="wday col-sm-1">
+								GIO
+							</div>
+							<div ng-class="{ active: isToday(5)}" class="wday col-sm-1">
+								VEN
+							</div>
+							<div ng-class="{ active: isToday(6)}" class="wday col-sm-1">
+								SAB
+							</div>
+							<div ng-class="{ active: isToday(7)}" class="wday col-sm-1">
+								DOM
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="clock-area">
+							<div class="col-md-6">
+								<ds-widget-clock show-digital digital-format="'HH:mm'"></ds-widget-clock>
+							</div>		
+							<div class="col-md-2">
+								<ds-widget-clock show-digital digital-format="'ss'" class="secondi">.</ds-widget-clock>
+							</div>				
+							<div class="data col-md-4">
+								<ds-widget-clock show-digital digital-format="'d MMM'" class="Mese">.</ds-widget-clock>
+								<ds-widget-clock show-digital digital-format="'yyyy'" class="Anno">.</ds-widget-clock>
+							<!--
+								<div class="Mese">12 Mag</div>
+								<div class="Anno">2017</div>
+							-->
+							</div>
+						</div>
+						
+					</div>
+		</div>
+
+
+

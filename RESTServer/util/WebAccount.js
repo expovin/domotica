@@ -23,7 +23,7 @@ utils = {
 		var Refezione = newStr.substring(start+2,fine);
 		console.log("Refezione :"+Refezione);
 
-		callback({'Saldo':Saldo, 'Refezione':Refezione});
+		callback({'Saldo':parseFloat(Saldo.replace(',', '.')), 'Refezione':parseFloat(Refezione.replace(',', '.'))});
 
 
 	},

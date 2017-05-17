@@ -77,13 +77,6 @@ var Options2 = {
 		    Options2.headers['Cookie']=cookie;
 		    Options2.form.badge = req.query.badge;
 
-		    console.log(req.params);
-		    console.log(httpResponse.statusCode);
-		    console.log(httpResponse.headers);
-		    console.log(httpResponse.request.headers);
-		    console.log(cookie);
-		    console.log(Options2);
-
 
 		    /* INNER REQUEST using the Cookie got in the previous request*/
 

@@ -1,34 +1,117 @@
 
- <h2 ng-if="NumEventi[0] == '0'">Non ci sono Eventi per oggi</h2>
- <h2 ng-if="NumEventi[0] != '0'">Eventi per Oggi : {{NumEventi[0]}}</h2>
- <blockquote>
-   <div ng-repeat="evento in Eventi.Oggi">
-        <bold>{{evento.start.dateTime | date  : 'hh:mm'}}</bold> {{evento.summary}}
-   </div>
- </blockquote>
+ <!-- <h2 ng-if="NumEventi[0] == '0'">Non ci sono Eventi per oggi</h2> -->
 
- <h2 ng-if="NumEventi[1] == '0'">Non ci sono Eventi per domani</h2>
- <h2 ng-if="NumEventi[1] != '0'">Eventi per Domani : {{NumEventi[1]}}</h2>
- <blockquote>
-   <div ng-repeat="evento in Eventi.Domani">
-        <bold>{{evento.start.dateTime | date : 'hh:mm'}}</bold> {{evento.summary}}
-   </div>
- </blockquote>
+     <div class="agenda">
+        <div class="table-responsive">
+            <table class="table table-condensed ">
+            <!--
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Ora</th>
+                        <th>Evento</th>
+                    </tr>
+                </thead>
+              -->
+                <tbody>
+                    <!-- Single event in a single day -->
+                    <tr>
+                        <td class="agenda-date" class="active" rowspan="1">
+                            <div class="dayofmonth" style="color:red;">26</div>
+                            <div class="dayofweek" style="color:red;">Saturday</div>
+                            <div class="shortdate text-muted" style="color:white;">Luglio, 2017</div>
+                        </td>
+                        <td class="agenda-time">
+                            5:30 AM
+                        </td>
+                        <td class="agenda-events">
+                            <div class="agenda-event">
+                                <i class="glyphicon glyphicon-repeat text-muted" title="Repeating event"></i> 
+                                Fishing
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Multiple events in a single day (note the rowspan) -->
+                    <tr>
+                        <td class="agenda-date" class="active" rowspan="3">
+                            <div class="dayofmonth">24</div>
+                            <div class="dayofweek">Thursday</div>
+                            <div class="shortdate text-muted" style="color:white;">July, 2014</div>
+                        </td>
+                        <td class="agenda-time">
+                            8:00 - 9:00 AM 
+                        </td>
+                        <td class="agenda-events">
+                            <div class="agenda-event">
+                                Doctor's Appointment
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="agenda-time">
+                            10:15 AM - 12:00 PM 
+                        </td>
+                        <td class="agenda-events">
+                            <div class="agenda-event">
+                                Meeting with executives
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="agenda-time">
+                            7:00 - 9:00 PM
+                        </td>
+                        <td class="agenda-events">
+                            <div class="agenda-event">
+                                Aria's dance recital
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-<h2 ng-if="NumEventi[2] == '0'">Non ci sono Eventi futuri</h2>
-<h2 ng-if="NumEventi[2] != '0'">Eventi Futuri : {{NumEventi[2]}}</h2>
- <blockquote>
-   <div ng-repeat="evento in Eventi.Futuri">
-      <div class="row row-content">
-      <div class="col-sm-4">
-          <bold class="text-warning">{{evento.start.dateTime | date : format : 'hh:mm'}}</bold> 
-          <bold class="text-warning">{{evento.start.date | date : format : 'hh:mm'}}</bold>          
-      </div>
-      <div class="col-sm-8">
-        <p class="text-muted" >{{evento.summary}} </p>
-      </div>
-      </div>
 
-        
-   </div>
- </blockquote>
+
+ <div ng-show="NumEventi[0] != '0'">
+   <h2>Eventi per Oggi : {{NumEventi[0]}}</h2>
+   <blockquote>
+     <div ng-repeat="evento in Eventi.Oggi">
+          <bold>{{evento.start.dateTime | date  : 'hh:mm'}}</bold> {{evento.summary}}
+     </div>
+   </blockquote>
+ </div>
+
+ <!-- <h2 ng-if="NumEventi[1] == '0'">Non ci sono Eventi per domani</h2> -->
+ <div ng-show="NumEventi[1] != '0'">
+ <h2>Eventi per Domani : {{NumEventi[1]}}</h2>
+   <blockquote>
+     <div ng-repeat="evento in Eventi.Domani">
+          <bold>{{evento.start.dateTime | date : 'hh:mm'}}</bold> {{evento.summary}}
+     </div>
+   </blockquote>
+ </div>
+
+<!-- <h2 ng-if="NumEventi[2] == '0'">Non ci sono Eventi futuri</h2> -->
+<div ng-show="NumEventi[2] != '0'">
+<h2 >Eventi Futuri : {{NumEventi[2]}}</h2>
+   <blockquote>
+     <div ng-repeat="evento in Eventi.Futuri">
+        <div class="row row-content">
+        <div class="col-sm-4">
+            <bold class="text-warning">{{evento.start.dateTime | date : format : 'hh:mm'}}</bold> 
+            <bold class="text-warning">{{evento.start.date | date : format : 'hh:mm'}}</bold>          
+        </div>
+        <div class="col-sm-8">
+          <p class="text-muted" >{{evento.summary}} </p>
+        </div>
+        </div>
+
+          
+     </div>
+   </blockquote>
+</div>
+
+

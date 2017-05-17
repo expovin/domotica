@@ -82,9 +82,151 @@
 }
 .temperatura {
     margin-top: 30px;
+}   
+
+
+
+ .agenda {  
+    color:#999;
+ }
+
+/* Dates and Time */
+
+@font-face {
+  font-family: 'Digital';
+  src: url('font-awesome/fonts/digital-7.ttf');
 }
-/*
-      body {
-        font-family: 'Amatic SC', cursive;
-      }
- */     
+
+.btn-black {
+    background-image: linear-gradient(to bottom, #999999 0px, #333333 100%);
+    background-repeat: repeat-x;
+    border-color: #000000;
+    color: white;
+}
+
+.btn-black:hover {
+    color: green;
+}
+
+.btn-group-xlg > .btn, .btn-xlg {
+    border-radius: 6px;
+    font-size: 30px;
+    letter-spacing: 1.33333px;
+    padding: 10px 16px;
+
+}
+.iconBar {
+    height: 50px;
+    background-color: black;
+}
+
+.MyIcon { 
+    margin-top: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+ }
+.MyIcon-ok {color: green;}
+.MyIcon-warning {color: orange;}
+.MyIcon-fatal {color: red;}
+.MyIcon-default {color: blue;}
+.MyIcon-disabled {color: #333;}
+
+.MyClock {
+    margin-left: 20px;
+
+}
+
+.MyClock .widget-clock .time{
+    font-family: 'Digital',sans-serif;
+    font-size: 100px;
+    color: white;
+}
+.MyClock .secondi  .time {
+    
+    font-size :30px;
+}
+
+.MyClock .secondi .widget-clock .digital {
+    margin-top: 70px;
+}
+
+.MyClock .Mese .widget-clock .digital {
+    margin-top: 20px;
+}
+
+.MyClock .wday {
+    margin-right: 15px;
+}
+
+.MyClock .Mese .time {
+    font-size :30px;
+    text-align: center;
+}
+
+.MyClock .Anno .time {
+    font-size :45px;
+    text-align: center;
+}
+
+
+.MyClock .week-bar {
+    height: 20px;
+    color:#333;
+}
+
+.MyClock .week-bar .active {
+    color:white;
+}
+
+
+.unit {
+    color: #666;
+    font-size: 80px;
+    margin-top: 25px;
+}
+
+.termostato{
+    color: white;
+    font-size: 125px;
+    font-family: Roboto;
+}
+
+.setpoint {
+    color: white;
+    font-size: 20px;
+    font-family: Roboto;
+}
+
+.progress-bar-light {
+    background-image: linear-gradient(to bottom, #333 0px, #666 100%);
+    background-repeat: repeat-x;
+}
+/********************************************/
+/* Agenda Style */
+.agenda .agenda-date { width: 170px; }
+.agenda .agenda-date .dayofmonth {
+  width: 40px;
+  font-size: 36px;
+  line-height: 36px;
+  float: left;
+  text-align: right;
+  margin-right: 10px; 
+}
+.agenda .agenda-date .shortdate {
+  font-size: 0.75em; 
+}
+
+
+/* Times */
+.agenda .agenda-time { width: 140px; } 
+
+
+/* Events */
+.agenda .agenda-events {  } 
+.agenda .agenda-events .agenda-event {  } 
+
+/**********************************************/
+
+@media (max-width: 767px) {
+    
+}

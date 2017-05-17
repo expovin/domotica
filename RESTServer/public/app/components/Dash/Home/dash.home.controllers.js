@@ -9,6 +9,17 @@ angular.module('DomoHome')
         $scope.theme = 'dark';
 
 
+        
+        $scope.isToday = function(day) {
+            var d = new Date();
+            var n = d.getDay();
+            if(day==n) {
+                return(true);
+            }
+            return(false);
+
+            
+        }
     }])
 
     /*	Controller sul footer della sezione di configurazione
@@ -20,10 +31,59 @@ angular.module('DomoHome')
     }])
 
 
+    .controller('MensaBimbiControllers', ['$scope','webAccountFactory','chartLibFactory', 
+    function($scope,webAccountFactory,chartLibFactory) {
+/*
+        webAccountFactory.getBuoniPastoAli().get()
+                 .$promise.then(
+                    //success
+                    function( value ){
+                        console.log("Mensa ALice Saldo: "+value.Saldo);
+                        console.log("Costo: "+value.Refezione);
+                        var Qta = value.Saldo/value.Refezione;
+                        var perc = Qta/20*100;
+                        console.log("Numero: "+Qta);
+                        $scope.buoniAli  = value;
+                        $scope.buoniAli['qta']=Qta;
+                        $scope.buoniAli['perc']=perc;
+
+                     
+                    },
+                    //error
+                    function( error ){
+                        console.log(error);
+                     }
+                  );
+
+        webAccountFactory.getBuoniPastoGian().get()
+                 .$promise.then(
+                    //success
+                    function( value ){
+                        console.log("Mensa Gianluca Saldo: "+value.Saldo);
+                        console.log("Costo: "+value.Refezione);
+                        var Qta = value.Saldo/value.Refezione;
+                        var perc = Qta/20*100;
+                        console.log("Numero: "+Qta);
+                        $scope.buoniGia  = value;
+                        $scope.buoniGia['qta']=Qta;
+                        $scope.buoniGia['perc']=perc;
+
+                     
+                    },
+                    //error
+                    function( error ){
+                        console.log(error);
+                     }
+                  );
+*/
+
+
+    }])
     /*	Controller utilizzato per la generazione e la gestione della lista di una 
     	"Collection" arbitraria
     */
-    .controller('temperaturaControllers', ['$scope','sensorFactory','chartLibFactory', function($scope,sensorFactory,chartLibFactory) {
+    .controller('temperaturaControllers', ['$scope','sensorFactory','chartLibFactory', 
+        function($scope,sensorFactory,chartLibFactory) {
 		
 			$scope.changeTemp=false;
 
@@ -32,7 +92,7 @@ angular.module('DomoHome')
 			}
 			
 			
-             sensorFactory.Sensore().get({ids:'57cc7e1fa712bbee2150133d'})
+             sensorFactory.Sensore1().get({ids:'57cc7e1fa712bbee2150133d'})
                  .$promise.then(
                     //success
                     function( value ){
@@ -48,7 +108,7 @@ angular.module('DomoHome')
                   );
 
 
-                sensorFactory.LettureSort().query({ids:'57cc7e1fa712bbee2150133d',Periodo:'201611'},
+                sensorFactory.LettureSort().query({ids:'57cc7ed7a712bbee21501341',Periodo:'201705'},
                     function(response) {
                        var data=[];
                        $scope.letture =  response;
@@ -82,7 +142,7 @@ angular.module('DomoHome')
                        chartLibFactory.timeSeriesZoomable(data,cfg);      
                     },
                     function(response){
-                        console.log('Errore')
+                        console.log('Errore : '+response);
                     }
                 );
 

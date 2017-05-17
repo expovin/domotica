@@ -1,31 +1,19 @@
 <div class="row">
-	<div class="col-md-2">
-
-	</div>
-	<div class="col-md-6" ng-click="toggleTempSwitch()">
-		<div class="row">
-			<div class="col-md-10">
-				<div class="arrowChangeTemp">
-					<h1 class="digitalText"><span class="glyphicon glyphicon-triangle-top arrowsTemp center" ng-show="changeTemp"></span></h1>
-				</div>
-			</div>
-		</div>
 
 
-		<div class="row">
-			<div class="col-md-10">
-				<div class="temperatura">
-					<h1 class="digitalText" >{{result.ultimaLettura}}</h1>
-				</div>
-			</div>
-		</div>
 
-		<div class="row">
-			<div class="col-md-10">
-				<div class="arrowChangeTemp">
-					<h1 class="digitalText"><span class="glyphicon glyphicon-triangle-bottom arrowsTemp center" ng-show="changeTemp"></span> </h1>
-				</div>
-			</div>
-		</div>
-	</div>
+				<div class="termostato">
+					<div class="temp col-md-7">
+						{{result.ultimaLettura}}
+					</div>
+					<div class="unit col-md-1">
+						&deg;C
+					</div>
+					
+				</div>				
+
+
+
+
+
 </div>

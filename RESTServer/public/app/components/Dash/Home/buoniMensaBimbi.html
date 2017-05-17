@@ -1,0 +1,20 @@
+<!--
+<div class="progress-bar progress-bar-warning" 
+  role="progressbar" aria-valuenow="{{buoniAli.perc}}" aria-valuemin="0" 
+  aria-valuemax="100" ng-style="{width : ( buoniAli.perc + '%' ) }">
+    <span class="sr-only">{{buoniAli.perc}}% Complete (warning)</span>
+</div>
+-->
+ <div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="{{buoniAli.perc}}"
+  aria-valuemin="0" aria-valuemax="130" ng-style="{width : ( buoniAli.perc + '%' ) }">
+    Alice {{buoniAli.qta}} : {{buoniAli.Saldo}}€
+  </div>
+</div>
+
+ <div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="{{buoniGia.perc}}"
+  aria-valuemin="0" aria-valuemax="130" ng-style="{width : ( buoniGia.perc)+ '%' }">
+    Gianluca {{buoniGia.qta}} : {{buoniGia.Saldo}}€
+  </div>
+</div>
