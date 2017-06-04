@@ -1,0 +1,37 @@
+<div id="indexIrrigazioneSectionWrapper">
+
+    <h1> Pagina di Irrigazione</h1>
+    
+	<div id="MainPageFirstRowContainer" class="row">
+		<div class="row-content">
+
+		<!-- Spazio dedicato al grafico irrigazione/pioggia -->
+			<div id="chartIrrigatoWrapper" class="col-md-6">
+				<div ui-view="chartIrrigatoWrapperPage"></div>
+			</div>
+
+		<!-- Spazio dedicato al grafico irrigazione/pioggia -->
+			<div id="consoleActualWrapper" class="col-md-6">
+				<div ui-view="consoleActualWrapperPage"></div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div id="MainPageSecondRowContainer" class="row">
+		<div class="row-content">
+
+		<!-- Spazio dedicato al grafico irrigazione/pioggia -->
+			<div id="situazioneMeteoWrapper" class="col-md-6">
+				<div ui-view="situazioneMeteoWrapperPage"></div>
+			</div>
+
+		<!-- Spazio dedicato al grafico irrigazione/pioggia -->
+			<div id="switchesWrapper" class="col-md-6">
+				<div ui-view="switchesWrapperPage"></div>
+			</div>
+
+		</div>
+	</div>
+</div>

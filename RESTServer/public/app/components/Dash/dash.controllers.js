@@ -22,8 +22,21 @@ angular.module('DomoHome')
     /*	Controller utilizzato per la generazione e la gestione della lista di una 
     	"Collection" arbitraria
     */
-    .controller('NavigationControllers', ['$scope','sensorFactory', function($scope,sensorFactory) {
+    .controller('NavigationControllers', ['$scope','$location', function($scope,$location) {
 
+            var audio = new Audio('audio/Button_1.wav');
+            audio.play();
+                
+        $scope.playAudio =  function(){
+            console.log("Bottone Cliccato!")
+
+
+
+        }
+
+        $scope.isActive = function (viewLocation) { 
+            return $location.path().includes(viewLocation);
+        };
 
     }])
 

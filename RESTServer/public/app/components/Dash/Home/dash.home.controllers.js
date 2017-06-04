@@ -33,7 +33,7 @@ angular.module('DomoHome')
 
     .controller('MensaBimbiControllers', ['$scope','webAccountFactory','chartLibFactory', 
     function($scope,webAccountFactory,chartLibFactory) {
-/*
+
         webAccountFactory.getBuoniPastoAli().get()
                  .$promise.then(
                     //success
@@ -75,7 +75,7 @@ angular.module('DomoHome')
                         console.log(error);
                      }
                   );
-*/
+
 
 
     }])
@@ -152,57 +152,93 @@ angular.module('DomoHome')
 
     .controller('googleCalendarControllers', ['$scope','eventsCalendarFactory', function($scope,eventsCalendarFactory) {
 
-        var today = new Date();
-        today.setHours(0,0,0,0);
-        var tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
-        tomorrow.setHours(0,0,0,0);
-        var afterTomorrow = new Date(new Date().getTime() + 48 * 60 * 60 * 1000);
-        afterTomorrow.setHours(0,0,0,0);
-
-        console.log(today);
-        console.log(tomorrow);
-        console.log(afterTomorrow);
-
-        var oggi = [];
-        var domani = [];
-        var futuri = [];
+        function pad(n, width, z) {
+          z = z || '0';
+          n = n + '';
+          return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+        }
 
         $scope.nextEvents =  eventsCalendarFactory.EventCalendar().query({},
             function(response) {
-                for(var event in response){
 
-                    if(response[event].hasOwnProperty('start')){
+                var eventi = [];
+                var days = ['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'];
+                var months = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+                var keyPrec ="";
+                var Calendar={};
+                response.forEach(function(eventoCal){
+                    var evento={'start':{}, 'end':{}};
+                    var allDayS=false ;
 
-                        if(response[event].start.hasOwnProperty('date')){
-                            var dataEvento = new Date(response[event].start.date);
-                        } 
-                        else if (response[event].start.hasOwnProperty('dateTime'))
-                            var dataEvento = new Date(response[event].start.dateTime);
 
-                        if ((dataEvento>today) && (dataEvento<tomorrow)) {
-                            console.log("Evento in data Odierna : "+dataEvento);
-                            oggi.push(response[event]);
+                    if(eventoCal.start.hasOwnProperty('date')){
+                        var dataEventoS = new Date(eventoCal.start.date);
+                        allDayS = true;
+                    } 
+                    else if (eventoCal.start.hasOwnProperty('dateTime'))
+                        var dataEventoS = new Date(eventoCal.start.dateTime);
 
-                        } else if ((dataEvento>tomorrow) && (dataEvento<afterTomorrow)) {
-                            console.log("Evento schedulato per domani : "+dataEvento);
-                            domani.push(response[event]);
-                        } else if (dataEvento>afterTomorrow) {
-                          console.log("Evento Futuro : "+dataEvento);
-                          futuri.push(response[event])
-                        }
+                    /* Chiave Evento. Rappresenta tutti gli eventi in un giorno */
+                    var key=dataEventoS.getFullYear()+pad(dataEventoS.getMonth(),2)+pad(dataEventoS.getDate(),2);
+
+                    if(key != keyPrec){
+                        eventi = [];
+                        var giorno={};
+                        giorno['Day']=dataEventoS.getDate();
+                        giorno['Month']=months[dataEventoS.getMonth()];
+                        giorno['Year']=dataEventoS.getFullYear();
+                        giorno['wDay']=days[dataEventoS.getDay()];
+                        if ((dataEventoS.getDay() == 0) || (dataEventoS.getDay() == 6))
+                            giorno['isWE']=true;
+                        else
+                            giorno['isWE']=false;
+                        Calendar[key]=giorno;
                     }
+                    keyPrec=key;
 
-                }
-                $scope.Eventi={'Oggi':oggi, 'Domani':domani, 'Futuri':futuri};
-                console.log($scope.Eventi);
-                $scope.NumEventi = [$scope.Eventi.Oggi.length, $scope.Eventi.Domani.length, $scope.Eventi.Futuri.length];
-                console.log($scope.NumEventi);
-            },
+/*
+                    evento['start']['Day']=dataEventoS.getDate();
+                    evento['start']['Month']=months[dataEventoS.getMonth()];
+                    evento['start']['Year']=dataEventoS.getFullYear();
+                    evento['start']['wDay']=days[dataEventoS.getDay()];
+*/
+                    if(!allDayS){
+                        evento['start']['Time']=pad(dataEventoS.getHours(),2)+':'+pad(dataEventoS.getMinutes(),2);
+                        evento['allDay']=false;
+                    }
+                    else
+                        evento['allDay']=true
+
+                    if(eventoCal.end.hasOwnProperty('date')){
+                        var dataEventoE = new Date(eventoCal.end.date);
+                    } 
+                    else if (eventoCal.end.hasOwnProperty('dateTime'))
+                        var dataEventoE = new Date(eventoCal.end.dateTime);
+/*
+                    evento['end']['Day']=dataEventoE.getDate();
+                    evento['end']['Month']=months[dataEventoE.getMonth()];
+                    evento['end']['Year']=dataEventoE.getFullYear();
+                    evento['end']['wDay']=days[dataEventoE.getDay()];
+*/
+                    evento['end']['Time']=pad(dataEventoE.getHours(),2)+':'+pad(dataEventoE.getMinutes(),2);
+
+
+                    evento['summary']=eventoCal.summary;
+                    evento['location']=eventoCal.location;
+
+                    eventi.push(evento);
+        
+                    Calendar[key]['eventi']=eventi;
+
+                });
+                $scope.giorni=Calendar;
+                console.log($scope.giorni);
+            },   
+            
             function(response){
                 console.log('Errore')
             }
         );
-
     }])
 
 

@@ -1,2 +1,44 @@
 <div id="navigationSectionWrapper">
-</div>
+
+<a ui-sref="app.Dash.Home.Datario">
+	<button type="button" class="btn btn-black btn-lg navigationButton" ng-class="{ active: isActive('/Dash/home/Datario')}" aria-label="Left Align">
+	        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+	</button>
+</a>
+
+<a ui-sref="app.Dash.Irrigazione">
+<button type="button" class="btn btn-black btn-lg navigationButton" ng-class="{ active: isActive('/Dash/irrigazione')}" aria-label="Left Align" on-Click="playAudio()">
+      <span class="glyphicon glyphicon-tint" aria-hidden="true"></span>
+</button>
+</a>
+
+<a ui-sref="app.Dash.Energia">
+	<button type="button" class="btn btn-black btn-lg navigationButton" ng-class="{ active: isActive('/Dash/energia')}" aria-label="Left Align">
+		  <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+	</button>
+</a>
+
+<a ui-sref="app.Dash.Allarme">
+	<button type="button" class="btn btn-black btn-lg navigationButton" ng-class="{ active: isActive('/Dash/allarme')}" aria-label="Left Align">
+	  <span class="glyphicon glyphicon-tree-conifer" aria-hidden="true"></span>
+	</button>
+</a>
+
+<a ui-sref="app.Dash.Switch">
+	<button type="button" class="btn btn-black btn-lg navigationButton" ng-class="{ active: isActive('/Dash/switch')}" aria-label="Left Align">
+	  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+	</button>
+</a>
+
+<a ui-sref="app.Dash.WiFi">
+	<button type="button" class="btn btn-black btn-lg navigationButton" ng-class="{ active: isActive('/Dash/wifi')}" aria-label="Left Align">
+	  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+	</button>
+</a>
+
+<a ui-sref="app.Dash.Settings">
+	<button type="button" class="btn btn-black btn-lg navigationButton" ng-class="{ active: isActive('/Dash/settings')}" aria-label="Left Align">
+	  <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+	</button>
+</a>
+

@@ -120,7 +120,7 @@ function listEvents(auth) {
     auth: auth,
     calendarId: 'zuccherofarina@gmail.com',
     timeMin: (new Date()).toISOString(),
-    maxResults: 10,
+    maxResults: 5,
     singleEvents: true,
     orderBy: 'startTime'
   }, function(err, response) {
