@@ -2,6 +2,7 @@
 
 angular.module('DomoHome.Dash', [
                             'DomoHome.Dash.home'
+                            ,'DomoHome.Dash.irrigazione'
                             ,'ui.router'
                             ,'ngResource'
                             ,'ui.bootstrap'])
@@ -29,8 +30,8 @@ angular.module('DomoHome.Dash', [
                 }
             })      
 
-            .state('app.Dash.Irrigazione', {
-                url: '/irrigazione',
+            .state('app.Dash.IrrigazioneMenu', {
+                url: '/irrigazioneMenu',
                 views: {
                     'iconWarningBar@app.Dash' : {
                         templateUrl : 'components/Dash/iconWarningBar.html',

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('DomoHome.Dash.Irrigazione', [
+angular.module('DomoHome.Dash.irrigazione', [
                              'ui.router'
                             ,'ngResource'
                             ,'ui.bootstrap'
@@ -11,22 +11,22 @@ angular.module('DomoHome.Dash.Irrigazione', [
 
 
 
-            .state('app.Dash.Irrigazione', {
+            .state('app.Dash.IrrigazioneMenu.Irrigazione', {
                 url: '/Irrigazione',
                 views: {
-                    'chartIrrigato@app.Dash.Irrigazione': {
+                    'chartIrrigatoWrapperPage@app.Dash.IrrigazioneMenu': {
                         templateUrl : 'components/Dash/Irrigazione/chartIrrigato.html',
                         controller : 'chartIrrigatoControllers'
                     },
-                    'situazioneMeteo@app.Dash.Irrigazione': {
+                    'situazioneMeteoWrapperPage@app.Dash.IrrigazioneMenu': {
                         templateUrl : 'components/Dash/Irrigazione/situazioneMeteo.html',
                         controller : 'situazioneMeteoControllers'
                     },
-                    'consoleActual@app.Dash.Irrigazione': {
+                    'consoleActualWrapperPage@app.Dash.IrrigazioneMenu': {
                         templateUrl : 'components/Dash/Irrigazione/consoleActual.html',
                         controller : 'consoleActualControllers'
                     },
-                    'switches@app.Dash.Irrigazione': {
+                    'switchesWrapperPage@app.Dash.IrrigazioneMenu': {
                         templateUrl : 'components/Dash/Irrigazione/switches.html',
                         controller : 'switchesControllers'
                     }
